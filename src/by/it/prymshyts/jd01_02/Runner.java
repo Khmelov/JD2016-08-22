@@ -117,5 +117,10 @@ public class Runner {
         System.out.println("Матрица после задания 7:");
         arr = TaskC.zeroToEnd(arr);
         TaskC.printArray(arr);
+
+        // Цикл do..while() для бота.
+        do {
+            break;
+        } while(false);
     }
 }

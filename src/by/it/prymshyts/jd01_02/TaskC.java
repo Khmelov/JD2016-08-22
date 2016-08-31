@@ -220,7 +220,7 @@ public class TaskC {
                 }
             }
             if (moved)
-                break;
+                break;  // Выход из вложенного цикла.
         }
 
         return newArr;
@@ -270,11 +270,11 @@ public class TaskC {
             columnIndex = 0;
 
             if (isInArray(rowsWithMax, i))
-                continue;
+                continue;   // Пропускаем ряд.
 
             for (int j = 0; j < copyFrom[0].length; j++) {
                 if (isInArray(columnsWithMax, j))
-                    continue;
+                    continue;   // Пропускаем колонку.
 
                 copyTo[rowIndex][columnIndex] = copyFrom[i][j];
                 columnIndex++;
