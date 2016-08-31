@@ -127,66 +127,55 @@ public class TaskC {
             System.out.println("Размер массива не соответствует заданию.");
         } else {
 
+            int rowCounter = 0, columnCounter = 0;
             int min = Integer.MAX_VALUE;
 
             for (int i = 0; i < a.length; i++) {
                 for (int j = 0; j < a[0].length; j++) {
-                    if (a[i][j] < min)
+                    if (a[i][j] < min) {
                         min = a[i][j];
+                        rowCounter = i;
+                        columnCounter = j;
+                    }
                 }
             }
 
             if (a[1][1] != min) {
 
-                boolean swapped = false;
-
-                for (int i = 0; i < a.length; i++) {
-                    for (int j = 0; j < a[0].length; j++) {
-                        if (a[i][j] == min) {
-
-                            int rowCounter = i, columnCounter = j;
-
-                            if (rowCounter > 1) {
-                                while (rowCounter-- > 1) {
-                                    for (int k = 0; k < a[0].length; k++) {
-                                        int buffer = a[rowCounter][k];
-                                        a[rowCounter][k] = a[rowCounter + 1][k];
-                                        a[rowCounter + 1][k] = buffer;
-                                    }
-                                }
-                            } else if (rowCounter < 1) {
-                                while (rowCounter++ < 1) {
-                                    for (int k = 0; k < a[0].length; k++) {
-                                        int buffer = a[rowCounter][k];
-                                        a[rowCounter][k] = a[rowCounter - 1][k];
-                                        a[rowCounter - 1][k] = buffer;
-                                    }
-                                }
-                            }
-
-                            if (columnCounter > 1) {
-                                while (columnCounter-- > 1) {
-                                    for (int k = 0; k < a.length; k++) {
-                                        int buffer = a[k][columnCounter];
-                                        a[k][columnCounter] = a[k][columnCounter + 1];
-                                        a[k][columnCounter + 1] = buffer;
-                                    }
-                                }
-                            } else if (columnCounter < 1) {
-                                while (columnCounter++ < 1) {
-                                    for (int k = 0; k < a.length; k++) {
-                                        int buffer = a[k][columnCounter];
-                                        a[k][columnCounter] = a[k][columnCounter - 1];
-                                        a[k][columnCounter - 1] = buffer;
-                                    }
-                                }
-                            }
-                            swapped = true;
-                            break;
+                if (rowCounter > 1) {
+                    while (rowCounter-- > 1) {
+                        for (int k = 0; k < a[0].length; k++) {
+                            int buffer = a[rowCounter][k];
+                            a[rowCounter][k] = a[rowCounter + 1][k];
+                            a[rowCounter + 1][k] = buffer;
                         }
                     }
-                    if (swapped)
-                        break;
+                } else if (rowCounter < 1) {
+                    while (rowCounter++ < 1) {
+                        for (int k = 0; k < a[0].length; k++) {
+                            int buffer = a[rowCounter][k];
+                            a[rowCounter][k] = a[rowCounter - 1][k];
+                            a[rowCounter - 1][k] = buffer;
+                        }
+                    }
+                }
+
+                if (columnCounter > 1) {
+                    while (columnCounter-- > 1) {
+                        for (int k = 0; k < a.length; k++) {
+                            int buffer = a[k][columnCounter];
+                            a[k][columnCounter] = a[k][columnCounter + 1];
+                            a[k][columnCounter + 1] = buffer;
+                        }
+                    }
+                } else if (columnCounter < 1) {
+                    while (columnCounter++ < 1) {
+                        for (int k = 0; k < a.length; k++) {
+                            int buffer = a[k][columnCounter];
+                            a[k][columnCounter] = a[k][columnCounter - 1];
+                            a[k][columnCounter - 1] = buffer;
+                        }
+                    }
                 }
             }
         }
