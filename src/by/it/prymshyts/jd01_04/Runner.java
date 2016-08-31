@@ -22,5 +22,8 @@ public class Runner {
 
         System.out.println("Обратная матрица:");
         InOut.printArray(Solver.inverseMatrix(m));
+
+        System.out.println("Проверка умножением матрицы на обратную матрицу:");
+        InOut.printArray(Util.matrixMulMatrix(m, Solver.inverseMatrix(m)));
     }
 }
