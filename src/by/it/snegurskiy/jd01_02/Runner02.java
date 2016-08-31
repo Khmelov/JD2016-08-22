@@ -65,7 +65,7 @@ public class Runner02 {
         int endNumber=Util.getIntConsole();
         System.out.println("Введите размер матрицы");
         int sizeArray=Util.getIntConsole();
-        for (int i = 1; i <endNumber ; i++) {
+        for (int i = 1; i <=endNumber ; i++) {
             System.out.print("  "+i+"  ");
             if (i%sizeArray==0) System.out.println();
 
