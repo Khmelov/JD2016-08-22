@@ -1,0 +1,19 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+#все равно под контролем ( RestoreJD2016.cmd )
+out/
+out-test/
+.idea
+*.iml
+workspace.xml
+
+# virtual machine crash logs
+hs_err_pid*
