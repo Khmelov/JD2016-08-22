@@ -19,12 +19,15 @@ public class Task_A {
     protected static String getMin(String arrStr[]) {
         Integer min = Integer.MAX_VALUE;
         String h = null;
-        for (int i = 0; i < arrStr.length; i++) {
+        int i = 0;
+        do{
             if (min > arrStr[i].length()) {
                 min = arrStr[i].length();
                 h = arrStr[i];
             }
+            i++;
         }
+        while (i<arrStr.length);
         return "Самое короткое число: " + h + ", длинной " + min.toString() + " символ(ов)";
     }
 

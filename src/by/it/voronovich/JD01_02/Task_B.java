@@ -35,9 +35,11 @@ public class Task_B {
         int matrix[][] = new int[l][l];
         int n = 0;
         for (int i = 0; i < l; i++) {
-            for (int j = 0; j < l; j++) {
+            int j = 0;
+            while(j < l){
                 n += 1;
                 matrix[i][j] = n;
+                j++;
             }
         }
         return matrix;
