@@ -1,12 +1,12 @@
 package by.it.akhmelev.jd01_01;
 
-public class Hello {
+class Hello {
 
-    public void setSlogan(String slogan) {
+    void setSlogan(String slogan) {
         this.slogan = slogan;
     }
 
-    public void printSlogan(){
+    void printSlogan(){
         System.out.println(slogan);
     }
 
