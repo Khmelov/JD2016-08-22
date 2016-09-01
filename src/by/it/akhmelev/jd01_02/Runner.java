@@ -8,8 +8,8 @@ import java.io.IOException;
 public class Runner {
     public static void main(String[] args) throws IOException {
         //прочитаем линию значений с клавиатуры.
-        //String  line=Util.getOneLine();
-        String  line="11 22 343 123 67 456 333 22 853 -999";
+        String  line=Util.getOneLine();
+        //String  line="11 22 343 123 67 456 333 22 853 -999";
         //получим массив чисел с которым будем работать:
         int arr[]=Util.lineToIntArray(line);
         //1. Найти самое короткое и самое длинное число.
@@ -37,6 +37,7 @@ public class Runner {
                 break; //больше ничего не ищем
             }
         }
+
 
     }
 

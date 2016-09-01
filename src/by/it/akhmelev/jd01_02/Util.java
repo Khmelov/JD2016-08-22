@@ -1,19 +1,15 @@
 package by.it.akhmelev.jd01_02;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
 /**
  * Утилиты ввода, вывода и преобразований
  */
-public class Util {
+class Util {
     //чтение одной строки с консоли
     static String getOneLine() throws IOException {
-        BufferedReader stin = new BufferedReader(new InputStreamReader(System.in));
-        String line = stin.readLine();
-        //для файлов нужно закрывать: stin.close();
-        return line;
+        return new Scanner(System.in).nextLine();
     }
 
     //преобразование одной строки в массив чисел

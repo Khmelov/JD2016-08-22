@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd01_02;
 
-public class TaskA {
+class TaskA {
     //метод поиска самого длинного элемента и его длины
     //результат - строка для вывода на консоль
     static String getMax(int array[]) {
