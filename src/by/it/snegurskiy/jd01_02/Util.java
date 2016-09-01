@@ -50,4 +50,36 @@ public class Util {
 
         return intMas;
     }
+
+    static protected void arrayOnePrint(double mas[]) {
+        for (int i = 0; i < mas.length; i++) {
+            System.out.print(mas[i]+"  ");
+                    }
+        System.out.println();}
+
+    static protected void arrayOnePrint(int mas[]) {
+        for (int i = 0; i < mas.length; i++) {
+            System.out.print(mas[i]+"  ");
+        }
+        System.out.println();}
+
+    static protected void arrayTwoPrint(double mas[][]) {
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                System.out.print(mas[i][j]+"  ");
+                            }
+            System.out.println();
+        }
+
+    }
+
+    static protected void arrayTwoPrint(int mas[][]) {
+        for (int i = 0; i < mas.length; i++) {
+            for (int j = 0; j < mas[0].length; j++) {
+                System.out.print(mas[i][j]+"  ");
+            }
+            System.out.println();
+        }
+
+    }
 }

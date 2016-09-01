@@ -146,7 +146,7 @@ public class Util {
         for (int i = 0; i <n ; i++) {
             x=m[i][i]*x;
         }
-        System.out.println(x);
+        System.out.println("Определитель матрицы"+x);
         return x;
         }
 

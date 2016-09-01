@@ -17,22 +17,22 @@ public class Runner03 {
         //double masTwo [][]=InOut.stringToDoubleTwoArray();
 
 
-        //InOut.arrayOnePrint(mas,"m", 6);
-        //InOut.arrayTwoPrint(masTwo,"m",3);
-        // Util.sortUpOneArray(mas);
-        //InOut.arrayOnePrint(mas,"m", 6);
-        //Util.sortDownOneArray(mas);
-        //InOut.arrayOnePrint(mas,"m", 6);
-        //Util.maxElemOneArray(mas);
-        // Util.minElemOneArray(mas);
-        //double masTwoMulMas[] =Util.arrayMulVector(masTwo,mas);
-        //InOut.arrayOnePrint(masTwoMulMas,"m",4);
-        //double masTwoMulMasTwo[][]=Util.arrayMulArray(masTwo,masTwo);
-        //InOut.arrayTwoPrint(masTwoMulMasTwo,"m",4);
-//        double[] x=Util.findRoot(masTwo,mas,true);
-//        double [] proverka1=Util.arrayMulVector(masTwo,x);
-//        InOut.arrayOnePrint(proverka1,"m",4);
-        //Util.findDeterminant(masTwo,true);
+        InOut.arrayOnePrint(mas,"m", 6);
+        InOut.arrayTwoPrint(masTwo,"m",4);
+         Util.sortUpOneArray(mas);
+        InOut.arrayOnePrint(mas,"m", 6);
+        Util.sortDownOneArray(mas);
+        InOut.arrayOnePrint(mas,"m", 6);
+        Util.maxElemOneArray(mas);
+         Util.minElemOneArray(mas);
+        double masTwoMulMas[] =Util.arrayMulVector(masTwo,mas);
+        InOut.arrayOnePrint(masTwoMulMas,"m",4);
+        double masTwoMulMasTwo[][]=Util.arrayMulArray(masTwo,masTwo);
+        InOut.arrayTwoPrint(masTwoMulMasTwo,"m",4);
+        double[] x=Util.findRoot(masTwo,mas,true);
+        double [] proverka1=Util.arrayMulVector(masTwo,x);
+        InOut.arrayOnePrint(proverka1,"m",4);
+        Util.findDeterminant(masTwo,true);
         Util.inverseMatrix(masTwo,mas,true);
 
 
