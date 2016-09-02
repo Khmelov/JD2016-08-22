@@ -11,7 +11,7 @@ public class Util {
         return scanner.nextInt();
     }
 
-    protected static String getConsoleLine() {
+    public static String getConsoleLine() {
 
         return scanner.nextLine();
     }
@@ -57,7 +57,7 @@ public class Util {
         return true;
     }
 
-    protected static int getRandomNum(int min, int max) {
+    public static int getRandomNum(int min, int max) {
 
         return min + (int)(Math.random() * ((max - min) + 1));
     }
