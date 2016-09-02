@@ -11,8 +11,8 @@ public class Runner {
 
     public static void main(String[] args) {
 //        Ввод-Вывод матриц
-//        input();
-//        output();
+        input();
+        output();
 
 //        тест сортировок
 
@@ -21,10 +21,10 @@ public class Runner {
         sort();
 
 //        Поиск минимума и максимума
-//        minAndMax();
+        minAndMax();
 
 //        Умножение матрицы на вектор и матрицы на матрицу
-//        multiply();
+        multiply();
     }
 
     public static void input() {
