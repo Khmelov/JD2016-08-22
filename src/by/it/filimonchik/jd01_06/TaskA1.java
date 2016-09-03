@@ -1,4 +1,4 @@
-package by.it.filimonchik.jd_01_06.jd_01_06;
+package by.it.filimonchik.jd01_06;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
