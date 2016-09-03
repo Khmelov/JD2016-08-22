@@ -1,7 +1,4 @@
-package by.it.filimonchik.jd_01_06.jd_01_06;
-
-import by.it.filimonchik.jd_01_06.jd_01_06.Data;
-import by.it.filimonchik.jd_01_06.jd_01_06.TaskA1;
+package by.it.filimonchik.jd01_06;
 
 /**
  * Created by user on 02.09.2016.

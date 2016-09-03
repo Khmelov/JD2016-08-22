@@ -1,4 +1,4 @@
-package by.it.filimonchik.jd_01_06.jd_01_06;
+package by.it.filimonchik.jd01_06;
 
 /**
  * Created by user on 02.09.2016.
