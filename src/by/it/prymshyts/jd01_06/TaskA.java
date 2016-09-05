@@ -29,7 +29,7 @@ public class TaskA {
         for (int i = 0; i < words.length; i++) {
             int count = 1;
 
-            if (!words.equals("") && words[i].length() != 0) {
+            if (words[i].length() != 0) {
                 for (int j = i + 1; j < words.length; j++) {
                     if (words[i].equals(words[j])) {
                         count++;
@@ -51,8 +51,9 @@ public class TaskA {
         for (String word : words) {
             matcher = pattern.matcher(word);
 
-            if (matcher.matches())
+            if (matcher.matches()) {
                 count++;
+            }
         }
 
         System.out.println("Количество слов, начинающихся и заканчивающихся на гласную: " + count);

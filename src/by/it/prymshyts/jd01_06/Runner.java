@@ -8,7 +8,7 @@ public class Runner {
         //String result = TaskA.t1(Data.poem);
         //System.out.println(result + "\n");
 
-        //TaskA.t2(Data.poem);
-        TaskA.t3(Data.poem);
+        TaskA.t2(Data.poem);
+        //TaskA.t3(Data.poem);
     }
 }
