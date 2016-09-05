@@ -44,15 +44,18 @@ public class TaskA {
     protected static void t3(String txt) {
 
         String[] words = txt.split("[^а-яА-ЯёЁ]+");
-        Pattern pattern = Pattern.compile("^[аяоёуюиыэеАЯОЁУЮИЫЭУ][а-яА-ЯёЁ]+[аяоёуюиыэеАЯОЁУЮИЫЭУ]$");
-        Matcher matcher = null;
+        Pattern pattern = Pattern.compile("^[аяоёуюиыэеАЯОЁУЮИЫЭУ].*([аяоёуюиыэеАЯОЁУЮИЫЭУ]$)+");  // Паттерн для поиска "полноценных" слов, исключая "а", "я", "у" и т.д.
+        Matcher matcher;
+        int count = 0;
 
         for (String word : words) {
             matcher = pattern.matcher(word);
 
-            if (matcher.find())
-                System.out.println(word);
+            if (matcher.matches())
+                count++;
         }
+
+        System.out.println("Количество слов, начинающихся и заканчивающихся на гласную: " + count);
     }
 }
 
