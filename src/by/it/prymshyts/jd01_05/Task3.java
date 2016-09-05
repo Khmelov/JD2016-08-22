@@ -14,9 +14,8 @@ public class Task3 {
 
 
         for (double a = -5; a <= 12; a += 3.75){
-
             double f = exp(a * x) - 3.45 * a;
-            System.out.println(String.format("%-2s%6s%-2s%-18.15s%s", "┃", a, "┃", f, "┃"));
+            System.out.printf("%-2s%6s%-2s%-18.15s%s\n", "┃", a, "┃", f, "┃");
         }
 
         System.out.println("┗━━━━┻━━━━━━━━━━━┛");

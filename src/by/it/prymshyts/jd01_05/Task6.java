@@ -31,6 +31,7 @@ public class Task6 {
         for (int i = 0; i < array.length; i++) {
             System.out.printf("%s[%2d] = %f\n", arrayName, i, array[i]);
         }
+        System.out.println();
     }
 
     protected static double[] getNewArray(double[] array) {

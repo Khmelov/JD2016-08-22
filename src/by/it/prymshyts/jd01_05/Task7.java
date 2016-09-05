@@ -48,8 +48,6 @@ public class Task7 {
 
     protected static void printArrayA(int[] array) {
 
-        System.out.println("Массив А:");
-
         for (int i = 0; i < array.length; i++) {
 
             System.out.printf("┃A(%2d)=%3d┃", i + 1, array[i]);
@@ -64,22 +62,13 @@ public class Task7 {
 
     protected static void printArrayB(int[] array) {
 
-        System.out.println("Массив В:");
-
-        if (array.length % 2 != 0)
-            System.out.println(array.length / 2);
-
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(i + " - " + array[i]);
-        }
-
-        for (int i = 0, j = array.length / 2; i < array.length / 2; i++, j++) {
-            System.out.printf("┃A(%2d)=%3d┃┃A(%2d)=%3d┃\n", i + 1, array[i], j + 1, array[j]);
-        }
-
-        if (array.length % 2 != 0) {
+        if (array.length % 2 == 0) {
+            for (int i = 0, j = array.length / 2; i < array.length / 2; i++, j++) {
+                System.out.printf("┃A(%2d)=%3d┃┃A(%2d)=%3d┃\n", i + 1, array[i], j + 1, array[j]);
+            }
+        } else {
             int counter = 0;
-            int i = 0, j = (int)ceil(array.length / 2);
+            int i = 0, j = array.length / 2 + 1;
 
             while (counter < ceil(array.length / 2)) {
 
@@ -88,7 +77,8 @@ public class Task7 {
                 j++;
                 counter++;
             }
-        }
 
+            System.out.printf("┃A(%2d)=%3d┃\n\n", i + 1, array[i]);
+        }
     }
 }
