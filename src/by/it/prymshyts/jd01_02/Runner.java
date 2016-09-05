@@ -7,8 +7,8 @@ public class Runner {
         //* Task A
         System.out.println("Задания А\n-----------");
         System.out.print("Введите строку из чисел: ");
-        String line = Util.getConsoleLine();
-        //String line = "3 11 22 343 123 67 4565 333 22 853";
+        //String line = Util.getConsoleLine();
+        String line = "3 11 22 343 123 67 4565 333 22 853";
 
         //1
         String longestNum = TaskA.getLongestNum(line);
