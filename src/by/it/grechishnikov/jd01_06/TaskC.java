@@ -82,7 +82,7 @@ class TaskC {
         }
     }
 
-    private static Map initMap() {
+    private static Map<String, Integer> initMap() {
         TreeMap<String, Integer> map = new TreeMap<>(new Comparator<String>(){
             public int compare(String s1, String s2) {
                 if(s1.equalsIgnoreCase(s2)) {

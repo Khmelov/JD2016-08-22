@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class TaskA {
 
-    public static void task() {
+    static void task() {
         a1();
         a2();
         a3();
@@ -22,13 +22,13 @@ public class TaskA {
         while(m.find()) {
             int start = m.start();
             int length = m.group().length();
-            text.setCharAt(start+4, '#');
+            text.setCharAt(start + 4, '#');
             if(length > 6) {
-                text.setCharAt(start+6, '#');
+                text.setCharAt(start + 6, '#');
             }
         }
 
-        System.out.println(text + "\n");
+        System.out.println(text.toString() + "\n");
     }
 
     private static void a2() {
@@ -62,8 +62,8 @@ public class TaskA {
         String pattern = "аэиоуыяеёюАЭИОУЫЯЕЁЮ";
 
         while(m.find()) {
-            String word = m.group();
-            String first = String.valueOf(word.charAt(0));
+            StringBuilder word = new StringBuilder(m.group());
+            StringBuilder first = new StringBuilder(word.substring(0, 1));
             String last = String.valueOf(word.charAt(word.length() - 1));
             if(pattern.contains(first) && pattern.contains(last)) {
                 counter++;
