@@ -6,8 +6,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TaskA {
-    public static void a1() {
-        //Замена 5 и 7 символов на #
+
+    public static void task() {
+        a1();
+        a2();
+        a3();
+    }
+
+    private static void a1() {
+        System.out.println("1. Замена 5 и 7 символов на #\n");
         StringBuilder text = new StringBuilder(Runner.text);
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]{5,}");
 
@@ -21,14 +28,13 @@ public class TaskA {
             }
         }
 
-        System.out.println(text);
+        System.out.println(text + "\n");
     }
 
-    public static void a2() {
-        //Подсчет повторов слов
+    private static void a2() {
+        System.out.println("2. Подсчет повторов слов\n");
         HashMap<String, Integer> map = new HashMap<>();
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]+");
-        StringBuilder text = new StringBuilder(Runner.text);
         Matcher m = p.matcher(Runner.text);
 
         while(m.find()) {
@@ -45,15 +51,15 @@ public class TaskA {
         for(Map.Entry<String, Integer> pair: map.entrySet()) {
             System.out.println(pair.getKey() + " : " + pair.getValue());
         }
-
+        System.out.println("\n");
     }
 
-    public static void a3() {
-        //Подсчет слов, начинающихся и заканчивающихся на глассную
+    private static void a3() {
+        System.out.println("3. Подсчет слов, начинающихся и заканчивающихся на глассную\n");
         int counter = 0;
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher m = p.matcher(Runner.text);
-        String pattern = "аэиоуяеёюАЭИОУЯЕЁЮ";
+        String pattern = "аэиоуыяеёюАЭИОУЫЯЕЁЮ";
 
         while(m.find()) {
             String word = m.group();
@@ -65,7 +71,6 @@ public class TaskA {
             }
         }
 
-        System.out.println("Количество слов, начинающихся и заканчивающихся на глассную = " + counter);
-
+        System.out.println("Количество слов, начинающихся и заканчивающихся на глассную = " + counter + "\n");
     }
 }
