@@ -171,6 +171,27 @@ public class Runner {
         System.out.println();
         System.out.print("Оставшиеся две задачи из JD01_02(С) скоро доделаю, На пятую из (С) все силы ушли :)");
 
+        System.out.println();
+        System.out.println("6.В матрице найти минимальный элемент и переместить его на место [1,1] путем перестановки строк и столбцов");
+        System.out.println("ИСХОДНАЯ МАТРИЦА а[][]:");
+        Util.printMatrix(a);
+        System.out.println();
+
+        System.out.print("РЕЗУЛЬТАТ. Матрица с переставленным в позицию 1,1 минимумом:");
+        System.out.println("Между собой сразу переставились строки номер 1 и с строка с минимумом");
+        System.out.println("затем столбец номер 1 и столбец с минимумом:");
+        int g[][]=TaskC.minPerestavit11(a);
+        Util.printMatrix(g);
+        System.out.println();
+
+        System.out.print("7. Преобразовать строки матрицы таким образом,");
+        System.out.println("чтобы элементы равные нулю, распологались после всех остальных.");
+        System.out.println("Используем последнюю матрицу, с минимумом в 1,1. Результат ниже: ");
+
+        int h[][]=TaskC.nuliPostavitVkonec(g);
+        Util.printMatrix(h);
+        System.out.println();
     }
 
+        // 4 ночи пора поспать :))
 }

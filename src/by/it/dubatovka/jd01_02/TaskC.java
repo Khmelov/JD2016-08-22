@@ -49,7 +49,7 @@ public class TaskC {
     public static int[][] povorot90GradProtiv(int a[][]) {
         int b[][] = new int[a.length][a.length];
         for (int i = 0; i < a.length; i++) {
-            for (int j = a.length-1; j >= 0; j--)
+            for (int j = a.length - 1; j >= 0; j--)
                 b[a.length - 1 - j][i] = a[i][j];
         }
         return b;
@@ -159,10 +159,63 @@ public class TaskC {
                     b[i][j] = a[i][j]; //если записывали index, значит столбец занулен и переносить a[i][j] нельзя
             }
         }
+        return b;
+    }
 
+    public static int[][] minPerestavit11(int a[][]) {
+        int min = Integer.MAX_VALUE;
+        int minRow = -1;
+        int minCol = -1;
+        int[] b = new int[a.length];
+
+        for (int i = 0; i < a.length; i++) {
+            for (int j = 0; j < a[i].length; j++) {
+                if (min > a[i][j]) {
+                    min = a[i][j];
+                    minRow = i;
+                    minCol = j;
+                }
+            }
+        }
+        if (minCol == 1 && minRow == 1) return a;
+        else {
+            if (minRow != 1) {
+                for (int j = 0; j < a.length; j++) {
+                    b[j] = a[1][j];
+                    a[1][j] = a[minRow][j];
+                    a[minRow][j] = b[j];
+                }
+            }
+            if (minCol != 1)
+                for (int i = 0; i < a.length; i++) {
+                    b[i] = a[1][i];
+                    a[i][1] = a[i][minCol];
+                    a[i][minCol] = b[i];
+                }
+            return a;
+        }
+    }
+
+
+    public static int[][] nuliPostavitVkonec(int a[][]) {
+        int b[][] = new int[a.length][a.length];
+        int k = a.length - 1;
+
+        for (int i = 0; i < a.length; i++) {
+            int counter = 0;
+            for (int j = 0; j < a[i].length; j++) {
+                if (a[i][j] != 0) {
+                    b[i][j - counter] = a[i][j];
+                } else
+                    counter++;
+            }
+
+        }
         return b;
     }
 }
+
+
 
 
 
