@@ -11,10 +11,15 @@ public class Util {
     //чтение одной строки с консоли
     static String getOneLine() throws IOException {
         BufferedReader stin = new BufferedReader( new InputStreamReader(System.in));
-        System.out.println("type the text");
         String line = stin.readLine();
         stin.close();
         return line;
+    }
+
+    //преобразование строки в число
+    static int lineToNumber(String line) {
+        int number = Integer.parseInt(line);
+        return number;
     }
 
     //преобразование одной строки в массив чисел
