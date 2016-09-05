@@ -1,12 +1,17 @@
 package by.it.aborisenok.JD01_04;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Created by Лёша on 06.09.2016.
+ * Класс служит для ввода-вывода одномерного массива,
+ * для ввода-вывода двумерного массива.
+ * @author Aliaksei Borisenok
+ * @version 1.0
  */
+
 public class InOut {
     /**
      * Метод служит для ввода одномерного массива с консоли
