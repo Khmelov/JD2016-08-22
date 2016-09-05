@@ -75,17 +75,19 @@ class TaskC {
     }
 
     private static void c3() {
-        System.out.println("Сортировка...");
+        System.out.println("Сортировка и подсчет...");
         Map<String, Integer> map = initMap();
         for(Map.Entry<String, Integer> pair : map.entrySet()) {
             System.out.println(pair.getKey() + " : " + pair.getValue());
         }
     }
-
     private static Map<String, Integer> initMap() {
         TreeMap<String, Integer> map = new TreeMap<>(new Comparator<String>(){
             public int compare(String s1, String s2) {
-                if(s1.equalsIgnoreCase(s2)) {
+                s1 = s1.toLowerCase();
+                s2 = s2.toLowerCase();
+                StringBuilder b = new StringBuilder(s2); //для задания contentEquals
+                if(s1.contentEquals(b)) {
                     return 0;
                 }
                 int first = s1.length();
@@ -107,18 +109,36 @@ class TaskC {
                         }
                     }
                     if(first - second == 0) {
-                        return -1;
+                        return s1.compareToIgnoreCase(s2);
                     }
                     return first - second;
                 }
             }
         });
         for(String word : words) {
-            if(!map.containsKey(word)) {
+            word = word.toLowerCase();
+            boolean flag = false;
+            for(Map.Entry<String, Integer> pair : map.entrySet()) {
+                String tmp = pair.getKey();
+                if(word.equalsIgnoreCase(tmp)) {
+                    flag = true;
+                }
+            }
+            if(!flag) {
                 map.put(word, 1);
             } else {
-                int count = map.get(word) + 1;
-                map.remove(word);
+                int count = 1;
+                ArrayList<String> forRemove = new ArrayList<>();
+                for(Map.Entry<String, Integer> pair : map.entrySet()) {
+                    String tmp = pair.getKey();
+                    if (word.equalsIgnoreCase(tmp)) {
+                        count += pair.getValue();
+                        forRemove.add(pair.getKey());
+                    }
+                }
+                for(String s : forRemove) {
+                    map.remove(s);
+                }
                 map.put(word, count);
             }
         }
