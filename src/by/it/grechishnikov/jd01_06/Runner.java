@@ -40,5 +40,8 @@ public class Runner {
         TaskA.task();
         TaskB.task();
         TaskC.task();
+
+        //Для оценки
+        String[] lines = text.split("\n");
     }
 }
