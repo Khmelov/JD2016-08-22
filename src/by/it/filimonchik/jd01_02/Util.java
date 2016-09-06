@@ -9,7 +9,6 @@ public class Util {
     public static String getLineFromConsole() {
         Scanner scan = new Scanner(System.in);
         String line = scan.nextLine();
-        scan.close();
         return line;
     }
 
