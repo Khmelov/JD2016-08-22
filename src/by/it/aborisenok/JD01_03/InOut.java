@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD01_04;
+package by.it.aborisenok.JD01_03;
 
 
 import java.io.BufferedReader;
