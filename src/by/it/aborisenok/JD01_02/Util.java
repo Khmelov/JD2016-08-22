@@ -27,4 +27,11 @@ public class Util {
         }
         return array;
     }
+
+    //чтение одного числа из консоли и преобразование его в int
+    public static int lineToInt() throws IOException {
+        String line = getOneLine();
+        int number = Integer.parseInt(line);
+        return number;
+    }
 }
