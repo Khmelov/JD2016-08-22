@@ -37,6 +37,12 @@ public class Runner05 {
         task6.printArray(a, "testname", true);
         double b[] = task6.getEveryThirdElement(a);
         task6.printArray(b, "array", true);
+
+        //Task7
+        System.out.println("Task7");
+Task7.getArray();
+
+
     }
 
 
