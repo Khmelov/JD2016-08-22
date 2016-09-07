@@ -11,20 +11,23 @@ public class TaskB {
     // Task 1
     public static void deletWords(String text){
         StringBuilder string = new StringBuilder(text);
-        Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]{5,}");
+        Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]+");
         Matcher matcher = pattern.matcher(string);
 
-        while (matcher.find()) {
-            int first = matcher.start();
-            int end = matcher.end();
-            int length = matcher.group().length(); //тут длина найденого слова
+       String s =  text.replaceAll("[а-яА-ЯёЁ]+", "*");
 
-            if ((length == 5) && isWord(matcher.group())){
-                System.out.println(matcher.group());
-                string.delete(first, end);
-
-            }
-        }
+        System.out.println(s);
+//        while (matcher.find()) {
+//            int first = matcher.start();
+//            int end = matcher.end();
+//            int length = matcher.group().length(); //тут длина найденого слова
+//
+//            if ((length == 5) && isWord(matcher.group())){
+//                System.out.println(matcher.group());
+//                string.delete(first, end);
+//
+//            }
+//        }
 
     }
 
