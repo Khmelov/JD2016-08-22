@@ -57,7 +57,7 @@ public class Util {
         return true;
     }
 
-    protected static int getRandomNum(int min, int max) {
+    public static int getRandomNum(int min, int max) {
 
         return min + (int)(Math.random() * ((max - min) + 1));
     }

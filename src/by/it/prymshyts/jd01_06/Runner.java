@@ -1,7 +1,5 @@
 package by.it.prymshyts.jd01_06;
 
-import com.sun.javafx.tk.Toolkit;
-
 public class Runner {
 
     public static void main(String[] args) {
@@ -22,5 +20,6 @@ public class Runner {
         //System.out.println(TaskB.t3(Data.poem, 'о'));
 
         System.out.println(TaskC.t1(Data.poem));
+        //TaskC.t2(Data.poem);
     }
 }
