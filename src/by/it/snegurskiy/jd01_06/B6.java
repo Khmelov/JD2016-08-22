@@ -21,7 +21,8 @@ public class B6 {
         Matcher m = p.matcher(tmp);
         while (m.find()) {
             System.out.println(m);
-            tmp.delete(m.start(),m.start()+4);
+            int i=Math.min(m.start()+4,tmp.length()-1);
+            tmp.delete(m.start(),i);
 
         }
         return tmp.toString();
