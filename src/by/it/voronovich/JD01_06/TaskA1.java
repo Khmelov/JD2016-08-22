@@ -1,7 +1,5 @@
 package by.it.voronovich.JD01_06;
 
-import by.it.akhmelev.jd01_06.Level_A.*;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
