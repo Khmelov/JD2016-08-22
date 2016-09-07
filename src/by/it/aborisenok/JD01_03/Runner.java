@@ -7,13 +7,11 @@ public class Runner {
     public static void main(String[] args) throws IOException {
 
         // вводим одномерный массив
-        // double[] array = InOut.inputLineArray();
-        //или
+        // double[] array = InOut.inputLineArray(); //ввод через консоль
         double[] array = {3, 1, 3, 4};
 
         // вводим двухмерный массив
-        // double[][] doubleArray = InOut.inputDoubleArray();
-        // или
+        // double[][] doubleArray = InOut.inputDoubleArray(); //ввод через консоль
         double[][] doubleArray = {
                 {2, 5,  4, 1},
                 {1, 3,  2, 1},
