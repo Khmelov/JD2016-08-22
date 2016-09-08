@@ -43,23 +43,23 @@ public class Main {
     public static void main(String[] args) {
         // Task A1
         System.out.println("TaskA1***************");
-    //    TaskA.charChange(TEXT);
+        TaskA.charChange(TEXT);
 
         // Task A2
         System.out.println("TaskA2***************");
-//        TaskA.wordRepeat(TEXT);
+        TaskA.wordRepeat(TEXT);
 
         // Task A3
         System.out.println("TaskA3***************");
-    //    TaskA.countOfVowel(TEXT);
+        TaskA.countOfVowel(TEXT);
 
         // Task B1
         System.out.println("TaskB1***************");
-   //     TaskB.deletWords(TEXT);
+        TaskB.deletWords(TEXT);
 
         // Task B2
         System.out.println("TaskAB2***************");
-       // TaskB.orderOfSentences(TEXT);
+        TaskB.orderOfSentences(TEXT);
 
         // Task B3
         System.out.println("TaskB3***************");
