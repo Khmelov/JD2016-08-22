@@ -5,6 +5,7 @@ package by.it.aborisenok.JD01_05;
  */
 public class Task4 {
     public static void solution() {
+        System.out.println("Task 4");
         double sum = 0;
 
         for (int x = 1; x <= 8; x += 1){

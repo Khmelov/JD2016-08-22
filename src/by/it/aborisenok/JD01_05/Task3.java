@@ -5,6 +5,7 @@ package by.it.aborisenok.JD01_05;
  */
 public class Task3 {
     public static void solution() {
+        System.out.println("Task 3");
         double t =0.1;
         System.out.println("|-------|-----------|");
         System.out.println("| param |   value   |");

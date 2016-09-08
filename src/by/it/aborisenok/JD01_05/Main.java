@@ -14,9 +14,15 @@ public class Main {
         Task2.solution(23.55, 0.9);
 
         // Task 3
-        Task3.solution();
+         Task3.solution();
 
         // Task 4
         Task4.solution();
+
+        // Task 5
+        Task5.solution();
+
+        //Task 6
+        Task6.solution();
     }
 }
