@@ -9,8 +9,6 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        Scanner scanner = new Scanner(System.in);
-
         String line = Util.getLineFromConsole();
         System.out.println("Массив строк = " + line);
         int mas[] = Util.getIntFromLine(line);
@@ -27,13 +25,13 @@ public class Runner {
 
         System.out.println("Задача А2");
         double mean = TaskA.mean(mas);
-        System.out.println("Среднее африфметическое:" + mean);
+        System.out.println("Среднее арифметическое: " + mean);
         for (int i : mas) {
             if (i < mean) {
                 System.out.print(i + " ");
             }
         }
-        System.out.println();
+        System.out.println("\nЗадача А3");
         for (String i : arrStr) {
             if (TaskA.uniqueDigits(i)) {
                 System.out.print("Число из разных чисел: " + i);
