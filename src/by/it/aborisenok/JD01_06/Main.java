@@ -54,7 +54,16 @@ public class Main {
     //    TaskA.countOfVowel(TEXT);
 
         // Task B1
-        TaskB.deletWords(TEXT);
+        System.out.println("TaskB1***************");
+   //     TaskB.deletWords(TEXT);
+
+        // Task B2
+        System.out.println("TaskAB2***************");
+       // TaskB.orderOfSentences(TEXT);
+
+        // Task B3
+        System.out.println("TaskB3***************");
+        TaskB.wordCount(TEXT, 'а');
 
     }
 }

@@ -28,7 +28,7 @@ public class TaskA {
     // Task 2
     public static void wordRepeat(String text) {
 
-        String[] textArr= text.split("[^а-яА-ЯёЁ]+");
+        String[] textArr = text.split("[^а-яА-ЯёЁ]+");
 
         for (int i = 0; i < textArr.length; i++) {
             if (textArr[i].length()>0) {

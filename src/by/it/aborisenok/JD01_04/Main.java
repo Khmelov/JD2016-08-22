@@ -18,9 +18,16 @@ public class Main {
                 {3, 8,  9, 2},
         };
 
+        System.out.println("Task A ----------------");
         // поиск корней
         double[] roots = Utils.findRoot(doubleArray,array);
         // вывод результата в консоль
         InOut.printLineArray(roots, "R");
+
+        System.out.println("Task B ----------------");
+        //поиск определителя матрицы
+        double determinate = Utils.findDeterminate(doubleArray);
+        System.out.println("Determinate = " + determinate);
+
     }
 }
