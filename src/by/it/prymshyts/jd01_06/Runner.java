@@ -1,25 +1,71 @@
 package by.it.prymshyts.jd01_06;
 
+import by.it.prymshyts.jd01_02.Util;
+
 public class Runner {
 
     public static void main(String[] args) {
 
-        //System.out.println(Data.poem);
-        //String result = TaskA.t1(Data.poem);
-        //System.out.println(result + "\n");
+        System.out.println("Изначальный текст:\n-----");
+        System.out.println(Data.poem);
+        System.out.println("-----\n");
 
-        //TaskA.t2(Data.poem);
-        //TaskA.t3(Data.poem);
+        // Задание А
+        System.out.println("Задание А:");
 
-        //System.out.println(Data.poem);
-        //System.out.println();
-        //System.out.println(TaskB.t1(Data.poem));
+        // 1
+        System.out.println("Задание 1:\n-----");
+        System.out.println(TaskA.t1(Data.poem));
+        System.out.println("-----\n");
 
-        //System.out.println(TaskB.t2(Data.poem));
+        // 2
+        System.out.println("Задание 2:\n-----");
+        TaskA.t2(Data.poem);
+        System.out.println("-----\n");
 
-        //System.out.println(TaskB.t3(Data.poem, 'о'));
+        // 3
+        System.out.println("Задание 3:\n-----");
+        TaskA.t3(Data.poem);
+        System.out.println("-----\n");
 
-        System.out.println(TaskC.t1(Data.poem));
-        //TaskC.t2(Data.poem);
+
+        // Задание В
+        System.out.println("Задание В:");
+
+        // 1
+        System.out.println("Задание 1:\n-----");
+        System.out.println(TaskB.t1(Data.poem));
+        System.out.println("-----\n");
+
+        // 2
+        System.out.println("Задание 2:\n-----");
+        System.out.println(TaskB.t2(Data.poem));
+        System.out.println("-----\n");
+
+        // 3
+        System.out.println("Задание 3:\n-----");
+        System.out.print("Введите букву: ");
+        char letter = Util.getConsoleLine().charAt(0);
+        System.out.println(TaskB.t3(Data.poem, letter));
+        System.out.println("-----\n");
+
+
+        // Задание С
+        System.out.println("Задание С:");
+
+        // 1
+        System.out.println("Задание 1:\n-----");
+        System.out.print(TaskC.t1(Data.poem));
+        System.out.println("-----\n");
+
+        // 2
+        System.out.println("Задание 2:\n-----");
+        TaskC.t2(Data.poem);
+        System.out.println("-----\n");
+
+        // 3
+        System.out.println("Задание 3:\n-----");
+        System.out.print(TaskC.t3(Data.poem));
+        System.out.println("-----");
     }
 }

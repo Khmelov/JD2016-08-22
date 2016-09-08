@@ -29,14 +29,14 @@ public class TaskA {
         for (int i = 0; i < words.length; i++) {
             int count = 1;
 
-            if (words[i].length() != 0) {
+            if (!words[i].equals("")) {
                 for (int j = i + 1; j < words.length; j++) {
                     if (words[i].equals(words[j])) {
                         count++;
                         words[j] = "";
                     }
                 }
-                System.out.println("Слово " +  words[i].toLowerCase() + " встречается " + count + " раз.");
+                System.out.println("Слово " +  words[i] + " встречается " + count + " раз.");
             }
         }
     }
@@ -56,7 +56,7 @@ public class TaskA {
             }
         }
 
-        System.out.println("Количество слов, начинающихся и заканчивающихся на гласную: " + count);
+        System.out.println("Количество слов длиннее одного символа и при этом начинающихся и заканчивающихся на гласную: " + count);
     }
 }
 

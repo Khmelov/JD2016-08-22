@@ -10,7 +10,7 @@ public class TaskB {
         Pattern pattern = Pattern.compile("\\b[бвгджзйклмнпрстфхцчшщБВГДЖЗЙКЛМНПРСТФХЦЧШЩ][а-яА-ЯёЁ]{4}\\b");
         Matcher matcher = pattern.matcher(txt);
 
-        txt = matcher.replaceAll("").replaceAll(" +", " ");
+        txt = matcher.replaceAll("").replaceAll(" +", " ").replaceAll("\\n\\s", "\n");
 
         return txt;
     }
@@ -19,25 +19,31 @@ public class TaskB {
 
         String[] sentences = txt.split("\\n");
 
-        for (int i = 0; i < sentences.length - 1; i++) {
-            int wordsInSentence = countWordsInLine(sentences[i]);
+        boolean swap;
+        int first = sentences.length - 1;
 
-            for (int j = i + 1; j < sentences.length; j++) {
-                if (wordsInSentence > countWordsInLine(sentences[j])) {
+        do {
+            swap = false;
+
+            for (int i = 0; i < first; i++) {
+                if (countWordsInLine(sentences[i]) > countWordsInLine(sentences[i + 1])) {
                     String buffer = sentences[i];
-                    sentences[i] = sentences[j];
-                    sentences[j] = buffer;
+                    sentences[i] = sentences[i + 1];
+                    sentences[i + 1] = buffer;
+                    swap = true;
                 }
             }
-        }
 
-        StringBuilder result = new StringBuilder();
+            first--;
+        } while (swap);
+
+        StringBuilder resultString = new StringBuilder();
 
         for (String line : sentences) {
-            result.append(line + " ");
+            resultString.append(line + " ");
         }
 
-        return result.toString();
+        return resultString.toString();
     }
 
     private static int countWordsInLine(String line) {
@@ -115,7 +121,8 @@ public class TaskB {
                 int letterInSecondWord = countLetterInWord(words[j], letter);
 
                 if ((lettersInFirstWord == letterInSecondWord) && (words[i].compareToIgnoreCase(words[j]) > 0)) {
-                    if ((lettersInFirstWord > 0 && letterInSecondWord > 0) || (lettersInFirstWord == 0 && letterInSecondWord == 0)) {
+                    if ((lettersInFirstWord > 0 && letterInSecondWord > 0) ||
+                            (lettersInFirstWord == 0 && letterInSecondWord == 0)) {
                         String buffer = words[i];
                         words[i] = words[j];
                         words[j] = buffer;

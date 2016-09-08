@@ -11,7 +11,7 @@ public class Util {
         return scanner.nextInt();
     }
 
-    protected static String getConsoleLine() {
+    public static String getConsoleLine() {
 
         return scanner.nextLine();
     }
