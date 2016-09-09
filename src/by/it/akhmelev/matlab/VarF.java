@@ -23,7 +23,27 @@ public class VarF extends Var{
     }
 
     @Override
+    public Var sub(VarF v) {
+        return new VarF(this.value-v.value);
+    }
+
+    @Override
+    public Var mul(VarF v) {
+        return new VarF(this.value*v.value);
+    }
+
+    @Override
+    public Var div(VarF v) {
+        return new VarF(this.value/v.value);
+    }
+
+    @Override
     public Var add(VarV v) {
+        return v.add(this);
+    }
+
+    @Override
+    public Var add(VarM v) {
         return v.add(this);
     }
 }

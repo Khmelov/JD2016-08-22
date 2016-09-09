@@ -21,6 +21,16 @@ public class Runner {
         Var v6=v1.add(v5);
         System.out.println("Сумма двух разных (по размеру) векторов: "+v6);
 
+        Var m1=new VarM(new double[][]{{1,2},{3,4}});
+        Var m2=m1.add(f1);
+        System.out.println("Сумма матрицы и числа: "+m2);
+
+        Var m3=f2.add(m1);
+        System.out.println("Сумма числа и матрицы: "+m3);
+
+        Var m4=v2.add(m1);
+        System.out.println("Сумма матрицы и вектора: "+m4);
+
 
     }
 
