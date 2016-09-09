@@ -1,8 +1,5 @@
 package by.it.akhmelev.jd01_09.nested;
 
-/**
- * Created by Alex on 18.02.2016.
- */
 public class Main {
     public static void main(String[ ] args) {
         // вызов статического метода
