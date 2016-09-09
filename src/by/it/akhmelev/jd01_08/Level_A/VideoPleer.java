@@ -1,6 +1,6 @@
 package by.it.akhmelev.jd01_08.Level_A;
 
-class VideoPleer extends Pleer{
+class VideoPleer extends Pleer implements ITechnic{
     @Override
     public String showState() {
         String state="Плеер остановлен";
@@ -11,4 +11,5 @@ class VideoPleer extends Pleer{
         }
         return state;
     }
+
 }
