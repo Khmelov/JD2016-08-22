@@ -2,7 +2,7 @@ package by.it.dubatovka.jd01_05;
 
 import static java.lang.Math.*;
 
-public class Task1 {
+public class Task_1 {
 
     public static double task11(double a, double b) {
 

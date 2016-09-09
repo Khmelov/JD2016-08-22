@@ -5,12 +5,14 @@ import static java.lang.Math.*;
 /**
  * Created by Dubatovka Sergey on 07.09.2016.
  */
-public class Task3 {
+public class Task_3 {
 
 
-    public static double task3(double x, double deltaC) {
+    public static void task3() {
 
-        double y = 0;
+        double x = 12.1;
+        double deltaC = 0.5;
+
         System.out.println("----------------------------");
         System.out.println("|   c   |      Результат   |");
         System.out.println("----------------------------");
@@ -19,7 +21,7 @@ public class Task3 {
 
             double modul = abs(2 * x - c);
             double a = pow(pow(modul, 3), 1 / 5);
-            y = a + 0.567;
+            double y = a + 0.567;
 
             System.out.print("| ");
             System.out.printf("%5.1f", c);
@@ -29,6 +31,5 @@ public class Task3 {
             System.out.println();
         }
         System.out.println("----------------------------");
-        return y;
     }
 }
