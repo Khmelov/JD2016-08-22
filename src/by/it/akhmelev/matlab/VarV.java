@@ -31,6 +31,19 @@ public class VarV extends Var {
         return res;
     }
 
-
-
+    @Override
+    public Var add(VarV v) {
+        if (this.value.length==v.value.length) {
+            VarV res=new VarV(value);
+            for (int i = 0; i < res.value.length; i++) {
+                res.value[i]=res.value[i]+v.value[i];
+            }
+            return res;
+        }
+        else
+        {
+            Log.print("Разные размеры векторов");
+            return null;
+        }
+    }
 }
