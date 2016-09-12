@@ -6,6 +6,10 @@ import by.it.akhmelev.jd01_05.math.*;
 //это реальный образец работы студентов прошлых выпусков JD01
 //вы можете реализовать свой вариант примерно таким же образом
 
+//для корректного вывода настройте шрифт в консоли
+//Откройте Setting->Editor->Color&Font->Console Font
+//и выберите Primary Font: Source Code Pro
+
 public class Main {
     public static void main(String[] args) {
         // Задача 1
