@@ -5,6 +5,9 @@ public abstract class Engineer implements Worker {
     private int age;
     private int salary;
 
+    public Engineer() { //для оценки
+    }
+
     public Engineer(String name, int age, int salary) {
         this.name = name;
         this.age = age;
