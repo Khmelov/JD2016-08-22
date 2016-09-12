@@ -37,11 +37,10 @@ public class VarM extends Var {
 
     @Override
     public String toString() {
+        String res  = " [";
+        String delimiter = "";
+        for (double[] v: )
 
 
-
-        return "VarM{" +
-                "value=" + Arrays.toString(value) +
-                '}';
     }
 }
