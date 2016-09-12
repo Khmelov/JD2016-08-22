@@ -1,4 +1,4 @@
-package by.it.akhmelev.matlab;
+package by.it.akhmelev.jd01_10.matlab_in_class;
 
 /**
  * Created by user on 09.09.2016.
