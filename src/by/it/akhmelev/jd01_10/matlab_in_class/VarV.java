@@ -1,4 +1,4 @@
-package by.it.akhmelev.matlab;
+package by.it.akhmelev.jd01_10.matlab_in_class;
 
 import java.util.Arrays;
 
