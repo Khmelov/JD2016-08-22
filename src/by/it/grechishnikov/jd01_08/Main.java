@@ -16,7 +16,7 @@ public class Main {
         secondEngineer.goToWork();
         secondEngineer.talkWithWorkers();
 
-        System.out.println(major.toString());
+        System.out.println(major);
         major.goToWork();
         major.talkWithWorkers();
     }

@@ -34,7 +34,7 @@ public class SeniorLead extends Lead { //SeniorLead расширяет Lead. С�
 
     @Override
     public String toString() { //Полиморфизм. Переопределен метод toString для правильной его работы
-        String result = "Я руководитель над: ";
+        String result = String.format("Меня зовут %s, мне %d и я получаю $%d. ", getName(), getAge(), getSalary()) + "Я руководитель над: ";
         for(Engineer e : getList()) {
             result += e.getName() + ", ";
         }
