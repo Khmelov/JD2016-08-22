@@ -11,12 +11,24 @@ public class VarF extends Var {
         this.value = v;
     }
 
+    public VarF(String str){
+        setFrom( str);
+    }
+
     @Override
     public String toString() {
         return ((Double)value).toString();
     }
 
-// Addition
+    @Override
+    public void setFrom(String str) {
+        try {Double.parseDouble(str);
+        }catch (NumberFormatException e){
+            System.out.println("NumberFormatException");
+        }
+    }
+
+    // Addition
     @Override
     public Var add(VarF d) {
         return new VarF(this.value + d.value);
@@ -52,7 +64,7 @@ public class VarF extends Var {
 //  Division
     @Override
     public Var div (VarF s){
-        return new VarF(value / s.value);
+        return new VarF(this.value / s.value);
     }
     @Override
     public Var div (VarV v){

@@ -5,5 +5,7 @@ package by.it.shkantau.mathlab.core;
  */
 public interface IVariable {
 
+    String toString();            //метод вывода переменной в строку
+    void setFrom(String str);     //метод чтения значения переменной из строки
 
 }
