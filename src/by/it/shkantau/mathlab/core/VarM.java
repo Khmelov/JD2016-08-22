@@ -24,16 +24,21 @@ public class VarM extends  Var{
 
     @Override
     public String toString() {
-        String res="[";
+        String res="{";
         String delimiter="";
         for (double[] v : matrix) {
             res=res+delimiter+ Arrays.toString(v);
             delimiter=",";
         }
-        res=res+"]";
+        res=res+"}";
         return res;
     }
-// Addition
+    @Override
+    public void setFrom(String str) {
+
+    }
+
+    // Addition
     @Override
     public Var add (VarF value){
         VarM resMatrix = new VarM(new double[rows][cols]);

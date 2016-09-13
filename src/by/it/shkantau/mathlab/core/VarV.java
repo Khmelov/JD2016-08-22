@@ -15,7 +15,13 @@ public class VarV extends Var {
     public String toString() {
         return Arrays.toString(vector);
     }
-// Addition
+
+    @Override
+    public void setFrom(String str) {
+
+    }
+
+    // Addition
     @Override
     public Var add (VarF scalar){
         VarV resVector = new    VarV(new double[vector.length]);
