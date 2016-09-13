@@ -5,39 +5,29 @@ package by.it.aborisenok.JD01_08;
  */
 public class Encyclopedia extends Book {
 
-    private String bookName;
+    private int pagesAmount;
 
-    public Encyclopedia(String bookName) {
-        this.bookName = bookName;
+    public Encyclopedia(String bookName, int pagesAmount) {
+        super(bookName);
+        this.pagesAmount = pagesAmount;
     }
 
-    @Override
-    public void readBook() {
-
+    public int getPagesAmount(){
+        return pagesAmount;
     }
 
-    @Override
-    public void listBook() {
-
-    }
-
-    @Override
-    public void doRemark() {
-
-    }
-
-    @Override
-    public void lendBook() {
-
-    }
-
-    @Override
-    public void killSpider() {
-
+    public void killSpider(){
+        if (this.pagesAmount < 100){
+            System.out.println("Бум!");
+        } if (this.pagesAmount >= 100 && this.pagesAmount < 500){
+            System.out.println("Баам!!");
+        } if (this.pagesAmount >=500){
+            System.out.println("БааБаааммм!!!");
+        }
     }
 
     @Override
     public String toString() {
-        return bookName;
+        return super.toString() + " | " + "Pages amount - " + pagesAmount;
     }
 }

@@ -39,8 +39,7 @@ public class VarM extends Var {
     public String toString() {
         String res  = " [";
         String delimiter = "";
-        for (double[] v: )
 
-
+return null;
     }
 }
