@@ -9,7 +9,10 @@ public interface IEdition {
 
     boolean closeBook();
 
-    String readBook();
+    void readBook();
+
+    void listBook();
+
+    void doRemark();
+
 }
-// false - closes
-// true - open

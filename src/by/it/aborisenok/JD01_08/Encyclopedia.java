@@ -4,18 +4,40 @@ package by.it.aborisenok.JD01_08;
  * Created by user on 07.09.2016.
  */
 public class Encyclopedia extends Book {
-    @Override
-    public boolean openBook() {
-        return false;
+
+    private String bookName;
+
+    public Encyclopedia(String bookName) {
+        this.bookName = bookName;
     }
 
     @Override
-    public boolean closeBook() {
-        return false;
+    public void readBook() {
+
     }
 
     @Override
-    public String readBook() {
-        return null;
+    public void listBook() {
+
+    }
+
+    @Override
+    public void doRemark() {
+
+    }
+
+    @Override
+    public void lendBook() {
+
+    }
+
+    @Override
+    public void killSpider() {
+
+    }
+
+    @Override
+    public String toString() {
+        return bookName;
     }
 }
