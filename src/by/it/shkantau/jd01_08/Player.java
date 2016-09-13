@@ -45,7 +45,7 @@ public  abstract class Player implements ElectronicDevice {
     abstract  void pause();
 
     public String toString(){
-        return this.getClass().getName() + "name-"+name+", weigth-"+weight+", type-"+type;
+        return "Class - "+this.getClass().getSimpleName() + ", name-"+name+", weigth-"+weight+", type-"+type;
     }
 
 }
