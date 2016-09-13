@@ -1,8 +1,9 @@
-package by.it.shkantau;
+package by.it.shkantau.mathlab;
 
 
 import by.it.shkantau.mathlab.core.Var;
 import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.util.parser.RegexPattrn;
 import by.it.shkantau.mathlab.util.printer.ConsolePrinter;
 import by.it.shkantau.mathlab.util.printer.Printer;
 
@@ -29,7 +30,7 @@ public class ConsoleRunner {
             if(consoleString.equals("\\q")){
                 break;
             }else {
-                if(Pattern.matches(Parser.regexFullExpr , consoleString)){
+                if(Pattern.matches(RegexPattrn.regexFullExpr , consoleString)){
                     operands = parser.parseStringToVarList(consoleString);
                     operators = parser.parseStringToOperatorList(consoleString);
                     for (int i = 0; i < operators.size() ; i++) {
