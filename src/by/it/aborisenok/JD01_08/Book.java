@@ -5,9 +5,13 @@ package by.it.aborisenok.JD01_08;
  */
 abstract public class Book implements IEdition{
 
-    private int lastPage;
+    private String bookName;
+
     private boolean bookOpen = false;
- 
+
+    public Book(String bookName) {
+        this.bookName = bookName;
+    }
 
     @Override
     public boolean openBook() {
@@ -30,14 +34,34 @@ abstract public class Book implements IEdition{
     }
 
     @Override
-    public abstract void listBook();
+    public void listBook(){
+        if (bookOpen)
+            System.out.println("Листаем книгу...");
+        else
+            System.out.println("Не могу листать, сразу нужно открыть книгу");
+    }
 
     @Override
-    public abstract void doRemark();
+    public  void doRemark(){
+        if (bookOpen)
+            System.out.println("Делаем пометки в книге...");
+        else
+            System.out.println("Не могу пометить, сразу нужно открыть книгу");
+    }
 
-    public int getLastPage(){
-        return lastPage;
+    @Override
+    public void lendBook() {
+        System.out.println("Отдолжили книгу другу");
+    }
+
+    public String getBookName(){
+        return bookName;
     }
 
     boolean isBookOpen(){return bookOpen;}
+
+    @Override
+    public String toString() {
+        return "Book name - " + getBookName();
+    }
 }

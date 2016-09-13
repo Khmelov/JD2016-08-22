@@ -15,4 +15,6 @@ public interface IEdition {
 
     void doRemark();
 
+    void lendBook();
+
 }
