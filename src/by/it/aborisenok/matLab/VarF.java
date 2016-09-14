@@ -31,13 +31,13 @@ public class VarF extends Var{
     }
 
     @Override
+    public Var add(VarM v) {
+        return v.add(this);
+    }
+
+    @Override
     public String toString() {
         return ((Double)value).toString();
     }
 
-    @Override
-    public Var add(VarM v) {
-
-        return v.add(this);
-    }
 }

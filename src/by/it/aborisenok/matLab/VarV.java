@@ -41,7 +41,7 @@ public class VarV extends Var {
             return res;
         }
         else {
-            Log.print("Разные размеры векторов");
+            Log.print(" Разные размеры векторов");
             return null;
         }
     }
