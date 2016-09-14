@@ -8,22 +8,27 @@ import java.util.regex.Pattern;
  */
 public class ZadanieB1 {
 
-   public static  void soglasnaya(String data) {
-        Pattern p = Pattern.compile("[а-яА-ЯёЁ]{5,}]");
-        StringBuilder res = new StringBuilder(RuslanLudmila.dubzelenij);
-        Matcher m = p.matcher(res);
-        String soglas = "йцкнгшщзхфвпрлджчсмтб";
-        soglas += soglas.toUpperCase();
+    public static void taskB_1(String data) {
+        Pattern p = Pattern.compile("[а-яА-ЯёЁ]{5,}");
+        StringBuilder text = new StringBuilder(data);
+        Matcher m = p.matcher(text);
+        String soglasnie = "йцкнгшщзхфвпрлджчсмтб";
+        soglasnie += soglasnie.toUpperCase();
 
         while (m.find()) {
             String slovo = m.group();
-            System.out.println(m.group());
-            if (5 == slovo.length()) {
 
-                for (int i = 0; i < soglas.length() - 1; i++) {
-                    if (slovo.charAt(0) == soglas.charAt(i)) {
-                        res=res.delete(res.indexOf(slovo), res.indexOf(slovo) + 5);
-                        System.out.println(soglas.charAt(i));
+            if (5 == slovo.length()) {
+                int dlinaSoglasnih=soglasnie.length();
+
+                for (int i = 0; i < dlinaSoglasnih; i++) {
+                    char firstSymbol=slovo.charAt(0);
+                    char soglasnijSymbol=soglasnie.charAt(i);
+
+                    if (firstSymbol==soglasnijSymbol) {
+                        int start=text.indexOf(slovo);
+                        int end=text.indexOf(slovo) + 4;
+                        text=text.delete(start, end);
                         break;
                     }
                 }
@@ -31,6 +36,6 @@ public class ZadanieB1 {
         }
 
 
-       System.out.println(res);
+        System.out.println(text);
     }
 }
