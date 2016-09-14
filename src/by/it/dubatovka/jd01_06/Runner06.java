@@ -3,7 +3,7 @@ package by.it.dubatovka.jd01_06;
 /**
  * Created by Dubatovka Sergey on 13.09.2016.
  */
-public class Runner {
+public class Runner06 {
     public static void main(String[] args) {
         String s = RuslanLudmila.dubzelenij;
 
@@ -19,6 +19,6 @@ public class Runner {
         ZadanieA3.poiskSlov(s);
 
         System.out.println("\n//Задание B1");
-        ZadanieB1.soglasnaya(s);
+        ZadanieB1.taskB_1(s);
     }
 }
