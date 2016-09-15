@@ -7,9 +7,12 @@ import java.util.Arrays;
  */
 public class VarV extends Var {
     public double [] value;
+
+
     public VarV(double [] value){
         this.value=new double[value.length];
         System.arraycopy(value,0,this.value,0,value.length);
+
     }
 
     @Override

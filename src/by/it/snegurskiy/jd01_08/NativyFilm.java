@@ -7,6 +7,8 @@ abstract class NativyFilm implements Film {
 
     private boolean statePlay=false;
     private boolean statePause=true;
+    public int sound=0;
+    private boolean soundStatus=false;
 
 
     @Override
@@ -30,23 +32,29 @@ abstract class NativyFilm implements Film {
     }
 
     @Override
-    public boolean subtitlesOn() {
-        return false;
+    public int soundUp() {
+        sound=sound+10;
+        return sound;
     }
 
     @Override
-    public boolean subtitlesOff() {
-        return false;
+    public void soundDown() {
+        if (sound>=10) sound=sound-10;
+
     }
 
     @Override
     public boolean soundOn() {
-        return false;
+
+        soundStatus=true;
+        return true;
     }
 
     @Override
     public boolean soundOff() {
-        return false;
+
+        soundStatus=false;
+        return true;
     }
 
     public abstract String showState();
@@ -57,6 +65,10 @@ abstract class NativyFilm implements Film {
 
     boolean isStatePause() {
         return statePause;
+    }
+
+    boolean isSoundStatus() {
+        return soundStatus;
     }
 
 

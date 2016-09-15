@@ -11,8 +11,12 @@ class Comedy extends NativyFilm{
         if (this.isStatePlay()) {
             state = "Воспроизведение видео";
             if (this.isStatePause())
-                state = "Плеер на паузе";
-        }
-        return state;
+                state = "Плеер на паузе";}
+        String state2="Звук выключен";
+            if (this.isSoundStatus()){
+                state2="Громкость звука"+" "+sound;
+            }
+
+        return state+" и "+state2;
     }
 }

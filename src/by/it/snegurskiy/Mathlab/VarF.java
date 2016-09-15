@@ -16,6 +16,18 @@ public class VarF extends Var {
         return new VarF(this.value+v.value);
     }
 
+    public Var sub (VarF v) {
+        return new VarF(this.value-v.value);
+    }
+
+    public Var mul(VarF v) {
+        return new VarF(this.value*v.value);
+    }
+
+    public Var div(VarF v) {
+        return new VarF(this.value/v.value);
+    }
+
 
 
     @Override
@@ -27,6 +39,8 @@ public class VarF extends Var {
     public Var add(VarV v) {
         return v.add(this);
     }
+
+    public Var add(VarM v) {return v.add(this);}
 
 
 
