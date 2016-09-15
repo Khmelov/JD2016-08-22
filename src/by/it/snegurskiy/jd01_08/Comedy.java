@@ -17,6 +17,6 @@ class Comedy extends NativyFilm{
                 state2="Громкость звука"+" "+sound;
             }
 
-        return state+" и "+state2;
+        return getClass()+" " +state+" и "+state2;
     }
 }
