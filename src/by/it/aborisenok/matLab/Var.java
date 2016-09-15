@@ -27,4 +27,46 @@ public abstract class Var implements IOperation{
         Log.print("Сложение с матрицей невозможно");
         return null;
     }
+
+    @Override
+    public Var sub(Var v) {
+        if (v instanceof VarF) return sub((VarF) v);
+        if (v instanceof VarV) return sub((VarV) v);
+        if (v instanceof VarM) return sub((VarM) v);
+        return null;
+    }
+
+    public Var sub(VarF v){
+        Log.print("Вычитание со скаляром невозможно");
+        return null;
+    }
+    public Var sub(VarV v){
+        Log.print("Вычитание с вектором невозможно");
+        return null;
+    }
+    public Var sub(VarM v){
+        Log.print("Вычитание с матрицей невозможно");
+        return null;
+    }
+
+    @Override
+    public Var mul(Var v) {
+        if (v instanceof VarF) return mul((VarF) v);
+        if (v instanceof VarV) return mul((VarV) v);
+        if (v instanceof VarM) return mul((VarM) v);
+        return null;
+    }
+
+    public Var mul(VarF v){
+        Log.print("Перемножение со скаляром невозможно");
+        return null;
+    }
+    public Var mul(VarV v){
+        Log.print("Перемножение с вектором невозможно");
+        return null;
+    }
+    public Var mul(VarM v){
+        Log.print("Перемножение с матрицей невозможно");
+        return null;
+    }
 }

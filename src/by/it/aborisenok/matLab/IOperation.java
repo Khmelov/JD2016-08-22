@@ -5,7 +5,7 @@ package by.it.aborisenok.matLab;
  */
 public interface IOperation {
     Var add(Var v);
-   // Var sub(Var v);
- //   Var mul(Var v);
+    Var sub(Var v);
+    Var mul(Var v);
   //  Var div(Var V);
 }

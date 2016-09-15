@@ -19,7 +19,7 @@ public class VarF extends Var{
         this.value = value;
     }
 
-
+//******************************************
     @Override
     public Var add(VarF v) {
         return new VarF(this.value + v.getValue());
@@ -31,13 +31,43 @@ public class VarF extends Var{
     }
 
     @Override
-    public String toString() {
-        return ((Double)value).toString();
-    }
-
-    @Override
     public Var add(VarM v) {
 
         return v.add(this);
+    }
+//******************************************
+    @Override
+    public Var sub(VarF v) {
+        return new VarF(this.value - v.getValue());
+    }
+
+    @Override
+    public Var sub(VarV v) {
+        return v.sub(this);
+    }
+
+    public Var sub(VarM v){
+        return v.sub(this);
+    }
+//******************************************
+
+    @Override
+    public Var mul(VarF v) {
+        return new VarF(this.value * v.getValue());
+    }
+
+    @Override
+    public Var mul(VarV v) {
+        return v.mul(this);
+    }
+
+    @Override
+    public Var mul(VarM v) {
+        return v.mul(this);
+    }
+//******************************************
+    @Override
+    public String toString() {
+        return ((Double)value).toString();
     }
 }
