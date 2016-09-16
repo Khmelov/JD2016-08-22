@@ -8,7 +8,7 @@ public class ZadanieA2 {
     //поиск повтора слов, рабочий метод. Быстрый вариант.
 
 //    public static void povtorSlov(String data) {
-//
+// System.out.println("\n//Задание А2. Подсчет повторов слов");
 //        String[] arrtext = data.split("[^а-яА-ЯёЁ]+");
 //        for (int i = 0; i < arrtext.length - 1; i++) {
 //            if (arrtext[i].length() > 0) {
@@ -28,6 +28,7 @@ public class ZadanieA2 {
 
     //метод усложнил искусственно, чтобы потренироваться. (для практики). Выше закомментированный метод такой же  :)
     public static void povtorSlov(String data) {
+        System.out.println("\n//Задание А2. Подсчет повторов слов");
 
         String[] arrtext = data.split("[^а-яА-ЯёЁ]+");
         int[] povtor= new int[arrtext.length];  //массив с числом повторений для каждого слова

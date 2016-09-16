@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
 public class ZadanieB1 {
 
     public static void taskB_1(String data) {
+        System.out.println("\n//Задание B1. Удалить слова длинны 5, которые начинаются на согласную");
+        System.out.println("");
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]{5,}");
         StringBuilder text = new StringBuilder(data);
         Matcher m = p.matcher(text);
@@ -16,26 +18,18 @@ public class ZadanieB1 {
         soglasnie += soglasnie.toUpperCase();
 
         while (m.find()) {
-            String slovo = m.group();
+            String word = m.group();
+            if (5 == word.length()) {
 
-            if (5 == slovo.length()) {
-                int dlinaSoglasnih=soglasnie.length();
-
-                for (int i = 0; i < dlinaSoglasnih; i++) {
-                    char firstSymbol=slovo.charAt(0);
-                    char soglasnijSymbol=soglasnie.charAt(i);
-
-                    if (firstSymbol==soglasnijSymbol) {
-                        int start=text.indexOf(slovo);
-                        int end=text.indexOf(slovo) + 4;
-                        text=text.delete(start, end);
+                for (int i = 0; i < soglasnie.length(); i++) {
+                    if (word.charAt(0) == soglasnie.charAt(i)) {
+                        text = text.delete(m.start(), m.end());
+                        m.reset();
                         break;
                     }
                 }
             }
         }
-
-
         System.out.println(text);
     }
 }

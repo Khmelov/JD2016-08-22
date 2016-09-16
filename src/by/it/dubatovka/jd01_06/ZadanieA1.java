@@ -8,6 +8,7 @@ import java.util.regex.Pattern;
  */
 public class ZadanieA1 {
     public static void zamenaSimvolov5i7(String s) {
+        System.out.println("//Задание А1. Замена 5 и 7 символов на #");
 
         StringBuilder data = new StringBuilder(s);
         Pattern p = Pattern.compile("[а-яА-ЯёЁ]{5,}");
