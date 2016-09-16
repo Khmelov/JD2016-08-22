@@ -6,7 +6,7 @@ package by.it.grechishnikov.jd01_02;
 public class Runner {
     public static void main(String[] args) {
         String[] arr = introduction();
-//        String[] test = { "10", "12", "-30" }; //для тестов
+//        String[] Test = { "10", "12", "-30" }; //для тестов
 
         taskA(arr);
         taskB(args);

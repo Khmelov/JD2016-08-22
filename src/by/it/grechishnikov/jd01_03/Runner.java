@@ -54,17 +54,17 @@ public class Runner {
             test1[i] = ThreadLocalRandom.current().nextDouble();
             test2[i] = test1[i];
         }
-        System.out.println("\n***Start first (Bubble sort) speed test***\n" + count + " elements");
+        System.out.println("\n***Start first (Bubble sort) speed TackB***\n" + count + " elements");
         Util.sort(test1, true);
         Util.sort(test1, false);
         Util.sort(test1, true);
-        System.out.println("***End test***\n");
+        System.out.println("***End TackB***\n");
 
-        System.out.println("\n***Start second (Arrays.sort()) speed test***\n" + count + " elements");
+        System.out.println("\n***Start second (Arrays.sort()) speed TackB***\n" + count + " elements");
         Util.sort(test2, true);
         Util.sort(test2, false);
         Util.sort(test2, true);
-        System.out.println("***End test***\n");
+        System.out.println("***End TackB***\n");
     }
 
     private static void minAndMax() {
