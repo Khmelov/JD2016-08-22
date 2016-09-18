@@ -1,6 +1,7 @@
 package by.it.shkantau.jd01_08;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,6 +13,14 @@ public class VideoPlayer extends Player {
     private double demand;
     List <String> supportedVideoFormatList = new ArrayList<>();
     List <String> videoInputTypeList = new ArrayList<>();
+
+    public VideoPlayer(String name, double weight, String type, int supplyVoltage, double demand) {
+        super(name, weight, type);
+        this.supplyVoltage = supplyVoltage;
+        this.demand = demand;
+        this.supportedVideoFormatList  = Arrays.asList("mp3", "mp4");
+        this.videoInputTypeList = Arrays.asList("internalFlash");
+    }
 
     public VideoPlayer(String name, double weight, String type, List<String> supportedVideoFormatList, List<String> videoInputTypeList) {
         super(name, weight, type);
@@ -41,7 +50,7 @@ public class VideoPlayer extends Player {
 
     @Override
     public void plugPower(int voltage) {
-        System.out.println("Plugin " + voltage + "to VideoPlayer "+ name);
+        System.out.println("Plugin " + voltage + "V to VideoPlayer "+ name);
     }
 
     @Override
@@ -65,7 +74,7 @@ public class VideoPlayer extends Player {
     }
 
     void play(String source) {
-        System.out.println("play from "+source);
+        System.out.println("Play from "+source);
     }
 
     @Override
