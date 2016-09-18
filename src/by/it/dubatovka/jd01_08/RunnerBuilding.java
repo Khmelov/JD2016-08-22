@@ -1,46 +1,38 @@
 package by.it.dubatovka.jd01_08;
 
+import sun.security.krb5.internal.Ticket;
+
 /**
- * Created by Dubatovka Sergey on 17.09.2016.
+ * Created by Dubatovka Sergey on 18.09.2016.
  */
 public class RunnerBuilding {
+
     public static void main(String[] args) {
+        //посторили театр в один этаж на 2 места
+        Theatre theatre = new Theatre("Скрыганова 14.", 2);
+        System.out.println("Сценарий >>> Открыть театр. Купить билет. Посмотреть представление >>>");
+        theatre.open();
+        Theatre.Ticket ticket = theatre.buyTicket();
+        theatre.show(ticket);
 
-        //Построили Здание (Театр) 1000м2 - установили ему адрес
-        PublicBuilding publicBuilding = new Theatre();
-        publicBuilding.buildNew(1000);
-        publicBuilding.setAdress("Скрыганова 14");
-        //проверим площадь, режим работы, адрес
-        publicBuilding.getBuildingArea();
-        publicBuilding.openTime();
-        publicBuilding.getAdress();
-        //случается катаклизм
-        publicBuilding.cataclysm();
-        //ремонтируем
-        publicBuilding.repair();
-        //случается катаклизм
-        publicBuilding.cataclysm();
-        //ремонтируем
-        publicBuilding.repair();
-        //сносим здание
-        publicBuilding.destroy();
-        //проверяем его адрес
-        publicBuilding.getAdress();
-        //пробуем установить адрес снесенному зданию
-        publicBuilding.setAdress("г. Минск, пл. Парижской Коммуны, 1");
-        //проверяем афишу
-        publicBuilding.openTime();
-        //строим новый театр
-        PublicBuilding publicBuildingNew = new Theatre();
-        //установаем адрес построенному театру
-        publicBuildingNew.setAdress("г. Минск, пл. Парижской Коммуны, 1");
-        publicBuildingNew.getAdress();
-        publicBuildingNew.repair();
-        publicBuildingNew.getBuildingArea();
-        publicBuildingNew.openTime("Петр Чайковский\n" +
-                "ЩЕЛКУНЧИК");
+        theatre.close();
+        System.out.println();
+        System.out.println("Сценарий >>> . Театр закрыт. Попытаться Купить билет и Посмотреть представление >>>");
+        Theatre.Ticket ticket1 = theatre.buyTicket();
+        theatre.show(ticket1);
 
+        System.out.println();
+        System.out.println("Сценарий >>> Открыть театр. Попытаться Купить 2 билета и посмотреть представление >>>");
+        theatre.open();
+        Theatre.Ticket ticket2 = theatre.buyTicket();
+        theatre.show(ticket2);
+        Theatre.Ticket ticket3 = theatre.buyTicket();
+        theatre.show(ticket3);
 
+        System.out.println();
+        System.out.println("Сценарий >>> Турист хочет узнать информацию о здании");
+        System.out.println(theatre.info());
+        System.out.println("Количество билетов: " + theatre.getFreePlaces());
 
 
     }

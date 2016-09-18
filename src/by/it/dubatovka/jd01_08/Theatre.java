@@ -1,54 +1,88 @@
 package by.it.dubatovka.jd01_08;
 
-/**
- * Created by Dubatovka Sergey on 17.09.2016.
- */
-public class Theatre extends PublicBuilding {
+import java.util.Random;
 
-    public String afisha = " 29 сентября, 19.00\n" +
-            "КАРМЕН\n" +
-            "опера в 3-х действиях\n";
+class Theatre extends PublicBuilding {
 
-    double x=getBuildingArea();
+    private String name;
+    private int freePlaces;
 
-    @Override
-    public void buildNew(int buildingArea) {
-        super.buildNew(buildingArea);
-        this.name = "ТЕАТР";
-
-        System.out.println(this.name);
+    Theatre(String address, int freePlaces) {
+        super(address);
+        this.freePlaces = freePlaces;
+        name = "Театр";
     }
 
+    public String getName() {
+        return name;
+    }
 
-    @Override
-    public String openTime() {
-        System.out.print("---openTime--- ");
+    public int getFreePlaces() {            //инкапсуляция
+        return freePlaces;
+    }
 
-        if (x != 0) {
-            System.out.println("Афиша:\n" + afisha);
-            return afisha;
+    public Ticket buyTicket() {
+        if (isOpen()) {
+            if (freePlaces > 0) {
+                freePlaces--;
+                return new Ticket();
+            } else {
+                System.out.println("Билетов нет.");
+                return null;
+            }
         } else {
-            System.out.println("Здания нет и сеансов нет");
+            System.out.println("Театр закрыт. Вы не можете приобрести билет");
             return null;
         }
     }
-@Override
-    public String openTime(String afisha){
-    System.out.print("---openTime---СтатПолим--- ");
-this.afisha=afisha;
 
-    if (x != 0) {
-        System.out.println("Афиша:\n" + afisha);
-        return afisha;
-    } else {
-        System.out.println("Здания нет и сеансов нет");
-        return null;
+
+    public void show(Ticket bilet) {
+        if (isOpen()) {
+            if (bilet != null) {
+                System.out.println("Ваш ряд: " + bilet.row + "\nВаше место: " + bilet.number);
+                System.out.println("Приятного просмотра!");
+            } else {
+                System.out.println("У вас нет билета.");
+            }
+        } else System.out.println("Театр закрыт. Вы не можете посмотреть спектакль");
     }
 
-}
+
+    class Ticket {
+
+        private int row;
+        private int number;
+
+        Ticket() {
+            Random random = new Random();
+            row = random.nextInt(20) + 1;
+            number = random.nextInt(100) + 1;
+        }
+    }
+
+    /**
+     * Динамический полиморфизм
+     *
+     * @return Выводит режим работы театра.
+     */
+    @Override
+    public String workTime() {
+        String workTime = super.workTime();
+        return name + "\nВремя работы:" + workTime;
+    }
+
+    @Override
+    public String workTime(String openTime, String closeTime) {
+        return name + "\nВремя работы:" + super.workTime(openTime, closeTime);
+    }
+//наследование метода из родительского класса
+    @Override
+    public String info() {
+        String str = isOpen() ? "Открыто." : "Закрыто.";
+        return name + ". " + getFloor() + "-этажное здание, по адресу: " +
+                getAddress() + " В данный момент " + str;
+    }
+
 
 }
-
-
-
-

@@ -1,22 +1,21 @@
 package by.it.dubatovka.jd01_08;
 
 /**
- * Created by Dubatovka Sergey on 17.09.2016.
+ * Created by Dubatovka Sergey on 18.09.2016.
  */
-public interface IBuild {
-    void buildNew(int area);
+interface IBuild {
 
-    void destroy();
+    String getAddress();
 
-    void repair();
+    void open();
 
-    void setAdress(String adress);
+    void close();
 
-    void getAdress();
+    String info();
 
-    double getBuildingArea();
+    int getFloor();
 
-    void cataclysm();
+    boolean isOpen();
 
 
 }
