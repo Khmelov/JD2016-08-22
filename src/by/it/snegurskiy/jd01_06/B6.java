@@ -8,24 +8,43 @@ import java.util.regex.Pattern;
  */
 public class B6 {
 
-    public static boolean glasnaya(String word) {
-        String glasnie="уеёыиаоэяюУЕЁЫАОЭЯИЮ";
-        char first=word.charAt(0);
-        char last=word.charAt(word.length()-1);
-        return  (glasnie.indexOf(first)>=0&&glasnie.indexOf(last)>=0);
 
-    }
     public static String b1(String txt) {
         StringBuilder tmp = new StringBuilder(txt);
         Pattern p = Pattern.compile("[^а-яА-Я][уеёыиаоэяюУЕЁЫАОЭЯИЮ]{1}[а-яёА-ЯЁ]{4}[^а-яА-Я]");
         Matcher m = p.matcher(tmp);
+        int col=0;
         while (m.find()) {
-            System.out.println(m);
-            int i=Math.min(m.start()+4,tmp.length()-1);
-            tmp.delete(m.start(),i);
+           col++;
+        }
+        StringBuilder tmp1 = new StringBuilder(txt);
+        Pattern p1 = Pattern.compile("[^а-яА-Я][уеёыиаоэяюУЕЁЫАОЭЯИЮ]{1}[а-яёА-ЯЁ]{4}[^а-яА-Я]");
+        Matcher m1 = p.matcher(tmp1);
+        for (int i = 0; i <col ; i++) {
+        while (m1.find()) {
+            tmp1.delete(m1.start(),m1.end()-1);
+            break;
+        }}
+        return tmp1.toString();
+    }
+
+    public static String[] b2(String txt) {
+        StringBuilder tmp = new StringBuilder(txt);
+        Pattern p = Pattern.compile("\n");
+        Matcher m = p.matcher(tmp);
+        while (m.find()) {
+            tmp.replace(m.start(),m.end()," ");
+        }
+        String[] sentence=(txt).toString().split("[.!?]");
+        for (int i = 0; i <sentence.length-1 ; i++) {
+            for (int j = i+1; j <sentence.length ; j++) {
+
+
+            }
 
         }
-        return tmp.toString();
+
+        return sentence;
     }
 
 }

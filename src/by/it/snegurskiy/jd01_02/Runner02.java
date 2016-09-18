@@ -17,9 +17,8 @@ public class Runner02 {
         System.out.println();
 
 
-        //for (int i : arr) {
-        //    System.out.println(i + " ");
-        //Задание А1
+
+//        Задание А1
         String strMas[] = line.split(" ");
         System.out.println("Задание А1:");
         System.out.println("MAX " + A.maxLength(strMas));
@@ -85,15 +84,15 @@ public class Runner02 {
         int xMonth=Util.getIntConsole();
         System.out.println(B.selectionMonth(xMonth));
 
-//        //Задание С1
+        //Задание С1
         System.out.println("Задание C1");
         double[][] masTwo = {
-                {-1, -2, -8, 5, -8, 1},
-                {4, -1, -1, 8, 0, 1},
-                {11, 1, -11, 11, 1, 1},
-                {7, -8, 8, 1, 1, 11},
-                {7, -8, -8, 1, 1, 11},
-                {7, -8, 8, 1, 1, 11},
+                {0, 0, -8, 5, 0, 1},
+                {0, -1, -1, 8, 0, 1},
+                {0, 0, -15, 11, 1, 1},
+                {7, -8, 0, 1, 1, -20},
+                {7, -8, -8, 0, 1, 11},
+                {0, -8, 8, 0, 1, 0},
         };
 
 
@@ -146,9 +145,9 @@ public class Runner02 {
                 copyС4MasTwo[i][j]=masTwo[i][j]-c4Array[i];
             }}
         Util.arrayTwoPrint(copyС4MasTwo);
-
-        //Задание С5
-
+//
+//        //Задание С5
+//
 //        double maxC5 = Double.MIN_VALUE;
 //        for (int i = 0; i < masTwo.length; i++) {
 //            for (int j = 0; j < masTwo[0].length; j++) {
@@ -220,7 +219,55 @@ public class Runner02 {
 //
 //        C.c5Col(othStr,sborCol3);
 
-        }}
+        //Задание С6
+        System.out.println("Задание C6");
+        double [][]copyС6MasTwo=new double[masTwo.length][masTwo[0].length];
+        double minArray=Double.MAX_VALUE;
+        int minStr=0;
+        int minCol=0;
+        for (int i = 0; i <masTwo.length ; i++) {
+            for (int j = 0; j < masTwo[0].length; j++) {
+                copyС6MasTwo[i][j] = masTwo[i][j];
+                if (copyС6MasTwo[i][j]<minArray) {minArray=copyС6MasTwo[i][j];
+                minStr=i;
+                minCol=j;}
+            }}
+        double zamArray=0;
+        for (int i = 0; i <copyС6MasTwo.length ; i++) {
+            zamArray=copyС6MasTwo[i][1];
+            copyС6MasTwo[i][1]=copyС6MasTwo[i][minCol];
+            copyС6MasTwo[i][minCol]=zamArray;
+        }
+        for (int i = 0; i <copyС6MasTwo[0].length ; i++) {
+            zamArray=copyС6MasTwo[1][i];
+            copyС6MasTwo[1][i]=copyС6MasTwo[minStr][i];
+            copyС6MasTwo[minStr][i]=zamArray;
+        }
+
+        Util.arrayTwoPrint(copyС6MasTwo);
+
+        //Задание С7
+        System.out.println("Задание C7");
+        double [][]copyС7MasTwo=new double[masTwo.length][masTwo[0].length];
+       for (int i = 0; i <masTwo.length ; i++) {
+            for (int j = 0; j < masTwo[0].length; j++) {
+                copyС7MasTwo[i][j] = masTwo[i][j];
+                            }}
+        for (int i = 0; i <copyС7MasTwo.length ; i++) {
+            for (int k = 0; k <copyС7MasTwo[0].length ; k++) {
+            for (int j = 0; j <copyС7MasTwo[0].length-1 ; j++) {
+                if (Math.abs(copyС7MasTwo[i][j])==0) {
+                    zamArray=copyС7MasTwo[i][j];
+            copyС7MasTwo[i][j]=copyС7MasTwo[i][j+1];
+            copyС7MasTwo[i][j+1]=zamArray;
+                }}}}
+        Util.arrayTwoPrint(copyС7MasTwo);
+
+            }}
+
+
+
+
 
 
 

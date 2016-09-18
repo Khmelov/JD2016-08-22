@@ -5,9 +5,12 @@ package by.it.snegurskiy.jd01_08;
  */
 public interface Film {
 
-    void review ();
-    void open();
-    void close();
-
+    boolean play (); //воспроизведение фильма
+    boolean stop(); // выключить фильм
+    void pause();   // поставить фильм на паузу
+    int soundUp (); //сделать громче
+    void soundDown (); //сделать тише
+    boolean soundOn(); // включить звук
+    boolean soundOff(); //выключить звук
 
 }
