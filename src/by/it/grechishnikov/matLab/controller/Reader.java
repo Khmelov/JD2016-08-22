@@ -6,7 +6,7 @@ import java.io.*;
 abstract class Reader implements IReadable {
     private static BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
-    static String readString() {
+    static String readStringFromConsole() {
         String result = "";
         try {
             result = consoleReader.readLine();

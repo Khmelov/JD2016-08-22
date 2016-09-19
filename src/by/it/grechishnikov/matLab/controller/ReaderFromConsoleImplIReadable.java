@@ -6,6 +6,6 @@ public class ReaderFromConsoleImplIReadable extends Reader{
     @Override
     public String readValue() {
         System.out.println("Введите уравнение: ");
-        return readString();
+        return readStringFromConsole();
     }
 }

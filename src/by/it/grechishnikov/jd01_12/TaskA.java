@@ -4,6 +4,11 @@ package by.it.grechishnikov.jd01_12;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * Задание А
+ * @author Grechishnikov
+ * @version 1.0
+ */
 public class TaskA {
     static void start() {
         taskA1();
@@ -11,6 +16,11 @@ public class TaskA {
         taskA3();
     }
 
+    /**
+     * Задание А1
+     * Генерируются случайные оценки для 15 учеников.
+     * Затем удаляются все оценки ниже 5.
+     */
     private static void taskA1() {
         ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
@@ -28,6 +38,11 @@ public class TaskA {
         System.out.println("Удаляем оценки ниже 5:\n" + list);
     }
 
+    /**
+     * Задание А2
+     * Генерируем 2 множества на 10 элементов каждое.
+     * Сначала объеденяем множества, затем находим пересечения значений множества
+     */
     private static void taskA2() {
         Set<Integer> a = new HashSet<>();
         for (int i = 0; i < 10; i++) {
@@ -42,19 +57,23 @@ public class TaskA {
         System.out.println("Множество пересечения:\n" + MyCollect.getCross(a, b));
     }
 
+    /**
+     * Задание А3
+     * Генерируем список случайных чисел от -10 да 10 на 15 элементов.
+     * Затем сдвигаем отрицательные числа в конец списка без использования сторонних объектов
+     */
     private static void taskA3() {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
             list.add(ThreadLocalRandom.current().nextInt(-10, 10));
         }
         System.out.println("Изначальный список чисел:\n" + list);
-        Set<Integer> set = new TreeSet<Integer>(new Comparator<Integer>() {
+        Collections.sort(list, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
                 return o2 - o1;
             }
         });
-        set.addAll(list);
-        System.out.println("Сдвигаем отрицательные числа ниже нуля в конец:\n" + set);
+        System.out.println("Сдвигаем отрицательные числа в конец:\n" + list);
     }
 }

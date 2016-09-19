@@ -7,7 +7,7 @@ public class ReaderFromFileImplIReadable extends Reader {
 
     public ReaderFromFileImplIReadable() {
         System.out.println("Введите путь к файлу:");
-        from = new File(readString());
+        from = new File(readStringFromConsole());
     }
 
     @Override

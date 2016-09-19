@@ -5,7 +5,15 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Задание В
+ * @author Grechishnikov
+ * @version 1.0
+ */
 public class TaskB {
+    /**
+     * text - текст на английском для тестов. Содержит 235 слов.
+     */
     private static String text = "As its name states, EETS was begun as a 'club', and it retains certain features " +
             "of that even now. It has no physical location, or even office, no paid staff or editors, but books in the " +
             "Original Series are published in the first place to satisfy subscriptions paid by individuals or institutions. " +
@@ -20,11 +28,18 @@ public class TaskB {
             "can only be obtained through the Membership Secretary (the books are sent by post); they are not available through " +
             "bookshops, and such bookstores as carry EETS books have only a very limited selection of the many published.";
 
+    /**
+     * Метод для запуска всех заданий
+     */
     static void start() {
-//        taskB1();
+        taskB1();
         taskB2();
     }
 
+    /**
+     * Задание В1
+     * Метод выводит все различные слова на консоль с подсчетом количества их повторения
+     */
     private static void taskB1() {
         Map<String, Integer> map = new HashMap<>();
         Pattern pattern = Pattern.compile("[a-zA-Z0123456789]+");
@@ -42,6 +57,13 @@ public class TaskB {
         printMap(map);
     }
 
+    /**
+     * Задание В2
+     * int n - количество человек в кругу
+     * Метод идет по кругу и удаляет каждого второго человека.
+     * Работает через LinkedList и ArrayList и проверяет их быстродействие.
+     * Результат выводится в консоль. Время в наносекундах.
+     */
     private static void taskB2() {
         long start = System.nanoTime();
         int n = 100;
@@ -52,6 +74,10 @@ public class TaskB {
         System.out.println("Время работы через LinkedList = " + (System.nanoTime() - start) + " наносекунд.");
     }
 
+    /**
+     * Метод для проверки быстродействия ArrayList
+     * @param n - количество людей
+     */
     private static void processArray(int n) {
         List<Integer> list = new ArrayList<>();
         for (int i = 1; i < n; i++) {
@@ -60,6 +86,10 @@ public class TaskB {
         delete(list);
     }
 
+    /**
+     * Метод для проверки быстродействия LinkedList
+     * @param n - количество людей
+     */
     private static void processLinked(int n) {
         List<Integer> list = new LinkedList<>();
         for (int i = 1; i < n; i++) {
@@ -68,6 +98,10 @@ public class TaskB {
         delete(list);
     }
 
+    /**
+     * Метод для удаления людей из списка
+     * @param list - список людей
+     */
     private static void delete(List<Integer> list) {
         int count = 0;
         while (true) {
@@ -87,7 +121,11 @@ public class TaskB {
         }
     }
 
-    static void printMap(Map<String, Integer> map) {
+    /**
+     * Метод для вывода карты в консоль
+     * @param map - карта
+     */
+    private static void printMap(Map<String, Integer> map) {
         for(Map.Entry<String, Integer> pair : map.entrySet()) {
             System.out.println(pair.getKey() + " = " + pair.getValue());
         }
