@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD01_12;
+package by.it.aborisenok.JD01_12.TaskA;
 
 import java.util.ArrayList;
 
