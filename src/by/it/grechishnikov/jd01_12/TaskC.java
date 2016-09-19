@@ -100,6 +100,6 @@ public class TaskC {
     private static void clearMap(Map<String, Integer> map) {
         long start = System.nanoTime();
         map.clear();
-        System.out.println("Время на добавление в " + map.getClass().getSimpleName() + " = " + (System.nanoTime() - start) + " наносекунд.");
+        System.out.println("Время на удаление в " + map.getClass().getSimpleName() + " = " + (System.nanoTime() - start) + " наносекунд.");
     }
 }
