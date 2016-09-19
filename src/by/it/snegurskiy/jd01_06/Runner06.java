@@ -40,9 +40,8 @@ public class Runner06 {
 //        String resb1=B6.b1(s);
 //        System.out.println(resb1);
 
-//        System.out.println("Задание B2");
-//        String[] resb2=B6.b2(s);
-//        System.out.println(resb2);
+        System.out.println("Задание B2");
+        System.out.println(B6.b2(s));
 
 
 

@@ -17,6 +17,24 @@ public class A12 {
         return res;
 
         }
+
+    public static ArrayList A1(ArrayList A) {
+        for (int i = 0; i <10 ; i++) {
+            A.add((int)(Math.random()*5));
+           }
+return A;
+
+    }
+
+    public static ArrayList A11(ArrayList A) {
+        for (int i = 0; i <A.size() ; i++) {
+            if ((int)A.get(i)<3) A.remove(i);
+        }
+        return A;
+
+    }
+
+
 }
 
 //(int)(Math.random() * ((5 - 0) + 1))
