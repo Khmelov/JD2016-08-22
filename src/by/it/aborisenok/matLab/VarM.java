@@ -138,6 +138,20 @@ public class VarM extends Var {
             return res;
         }
     }
+//***********************************
+
+    @Override
+    public Var div(VarF v) {
+        VarM res = new VarM(value);
+        int rows = value.length;
+        int cols = value[0].length;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                res.value[i][j ] /= + v.getValue();
+            }
+        }
+        return res;
+    }
 
     @Override
     public String toString() {
