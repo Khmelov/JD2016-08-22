@@ -24,22 +24,12 @@ public class TaskB2 {
         TaskB2.prоcessLinked(linkedList);
         System.out.println("Удаление элементов из LinkedList." + timer);
     }
-    /**
-     * Метод служит для удаления из списка каждого второго элемента, до тех пор
-     * пока не останется только один
-     * @param list входное выражение типа List
-     * @param elemAmount входное выражение типа int
-     */
+
     public static void listCreating(List<Integer> list, int elemAmount){
         for (int i = 0; i < elemAmount; i++){
             list.add(i + 1);
         }
     }
-    /**
-     * Метод служит для удаления из списка каждого второго элемента, до тех пор
-     * пока не останется только один
-     * @param arrayList входное выражение типа ArrayList
-     */
     public static void processArray(ArrayList<Integer> arrayList){
         boolean count = true;
         while (arrayList.size() != 1){
@@ -56,11 +46,7 @@ public class TaskB2 {
             //   System.out.println(arrayList); //возможность выводить состояние списка чисел после каждого круга
         }
     }
-    /**
-     * Метод служит для удаления из списка каждого второго элемента, до тех пор
-     * пока не останется только один
-     * @param linkedList входное выражение типа LinkedList
-     */
+
     public static void prоcessLinked(LinkedList<Integer> linkedList){
         boolean count = true;
         while (linkedList.size() != 1){

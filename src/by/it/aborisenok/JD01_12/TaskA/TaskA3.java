@@ -19,10 +19,7 @@ public class TaskA3 {
     }
 
 
-    /**
-     * Метод служит для заполнения списка случайными значениями [-10;20]
-     * @param count входное выражение типа int
-     */
+
     public static ArrayList<Integer> randomInt(int count){
         ArrayList<Integer> arrayList = new ArrayList<>();
         for (int  i = 0; i < count; i++){
