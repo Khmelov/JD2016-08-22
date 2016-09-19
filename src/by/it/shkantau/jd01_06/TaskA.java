@@ -17,7 +17,7 @@ public class TaskA {
         System.out.println("TaskA1");
         StringBuilder sbResult = new StringBuilder(text);
         String word ;
-        pattern = Pattern.compile(Regexes.regexWord);
+        pattern = Pattern.compile(Regexes.regexRussianWord);
         matcher = pattern.matcher(text);
 
         while(matcher.find()){
@@ -34,7 +34,7 @@ public class TaskA {
     public static void a2 (String text){
         System.out.println("\nTaskA2");
         List <String > words = new ArrayList<>(200);
-        pattern = Pattern.compile(Regexes.regexWord);
+        pattern = Pattern.compile(Regexes.regexRussianWord);
         matcher = pattern.matcher(text);
 
         while (matcher.find()){
@@ -51,7 +51,7 @@ public class TaskA {
         List <String > words = new ArrayList<>(200);
         int repetitionCounter = 0;
 
-        pattern = Pattern.compile(Regexes.regexWord);
+        pattern = Pattern.compile(Regexes.regexRussianWord);
         matcher = pattern.matcher(text);
         while(matcher.find()){
             words.add(matcher.group());
