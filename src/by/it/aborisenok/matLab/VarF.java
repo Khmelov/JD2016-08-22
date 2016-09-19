@@ -66,6 +66,22 @@ public class VarF extends Var{
         return v.mul(this);
     }
 //******************************************
+
+    @Override
+    public Var div(VarF v) {
+        return new VarF(this.value/v.getValue());
+    }
+
+    @Override
+    public Var div(VarV v) {
+        return v.div(this);
+    }
+
+    @Override
+    public Var div(VarM v) {
+        return v.div(this);
+    }
+//************************************************
     @Override
     public String toString() {
         return ((Double)value).toString();
