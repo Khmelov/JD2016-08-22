@@ -77,12 +77,12 @@ public class VarV extends Var {
 
     @Override
     public Var mul(VarM v) {
-        VarV res = new VarV(value);
+        VarV res = new VarV(new double[value.length]);
         if (v.getValue().length == v.getValue()[0].length &&
-                res.value.length == v.getValue().length) {
+                res.getValue().length == v.getValue().length) {
             for (int i = 0; i < res.value.length; i++) {
                 for (int j = 0; j < v.getValue().length; j++) {
-                    res.value[i] = res.value[i] + res.value[j] * v.getValue()[j][i];
+                    res.value[i] = res.value[i] + value[j] * v.getValue()[j][i];
                 }
             }
             return res;
