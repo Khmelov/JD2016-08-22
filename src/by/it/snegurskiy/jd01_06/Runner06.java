@@ -26,23 +26,22 @@ public class Runner06 {
     "Чредой из вод выходят ясных,\n"+
     "И с ними дядька их морской\n";
 
-//        System.out.println("Задание А1");
-//    String res=A6.a1(s);
-//        System.out.println(res);
-//
-//        System.out.println("Задание А2");
-//        A6.a2(s);
-//
-//        System.out.println("Задание А3");
-//        A6.a3(s);
+        System.out.println("Задание А1");
+    String res=A6.a1(s);
+        System.out.println(res);
 
-//        System.out.println("Задание B1");
-//        String resb1=B6.b1(s);
-//        System.out.println(resb1);
+        System.out.println("Задание А2");
+        A6.a2(s);
 
-//        System.out.println("Задание B2");
-//        String[] resb2=B6.b2(s);
-//        System.out.println(resb2);
+        System.out.println("Задание А3");
+        A6.a3(s);
+
+        System.out.println("Задание B1");
+        String resb1=B6.b1(s);
+        System.out.println(resb1);
+
+        System.out.println("Задание B2");
+        System.out.println(B6.b2(s));
 
 
 
