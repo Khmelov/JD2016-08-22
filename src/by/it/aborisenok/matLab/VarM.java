@@ -104,9 +104,9 @@ public class VarM extends Var {
         VarV res = new VarV(new double[value.length]);
         if (value.length == value[0].length &&
                 value.length == v.getValue().length) {
-            for (int i = 0; i < value.length; i++){
+            for (int i = 0; i < res.getValue().length; i++){
                 for (int j = 0; j < v.getValue().length; j++)
-                    res.getValue()[i] = res.getValue()[i] + value[i][j]*v.getValue()[j];
+                    res.getValue()[i] = res.getValue()[i] + value[i][j] + v.getValue()[j];
             }
             return res;
         } else {
@@ -137,20 +137,6 @@ public class VarM extends Var {
             Log.print("Заданные неверные размеры матриц");
             return res;
         }
-    }
-//***********************************
-
-    @Override
-    public Var div(VarF v) {
-        VarM res = new VarM(value);
-        int rows = value.length;
-        int cols = value[0].length;
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                res.value[i][j ] /= + v.getValue();
-            }
-        }
-        return res;
     }
 
     @Override
