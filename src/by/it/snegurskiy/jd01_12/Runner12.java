@@ -19,13 +19,16 @@ public class Runner12 {
         spisok=A12.supplyAssessment(spisok);// проставил оценки рандом
         ArrayList <Integer> Assessment = new ArrayList<Integer>();
 //        System.out.println("Залание А1");
-//        A12.A1(Assessment);
+//        A12.zapolnitspisok(Assessment);
 //        System.out.println(Assessment);
 //        A12.A11(Assessment);
 //        System.out.println(Assessment);
         System.out.println("Залание А2");
-//        ArrayList <Integer> Assessment = new ArrayList<Integer>();
-//        ArrayList <Integer> Assessment = new ArrayList<Integer>();
+        ArrayList <Integer> set1 = new ArrayList<Integer>();
+        ArrayList <Integer> set2 = new ArrayList<Integer>();
+        A12.zapolnitspisok(set1);
+        A12.zapolnitspisok(set2);
+
 
         //System.out.println(spisok);
     }

@@ -18,7 +18,7 @@ public class A12 {
 
         }
 
-    public static ArrayList A1(ArrayList A) {
+    public static ArrayList zapolnitspisok (ArrayList A) {
         for (int i = 0; i <10 ; i++) {
             A.add((int)(Math.random()*5));
            }
