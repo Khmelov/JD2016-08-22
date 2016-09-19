@@ -76,6 +76,11 @@ public class VarV extends Var {
     }
 
     @Override
+    public Var mul(VarV v) {
+        return super.mul(v);
+    }
+
+    @Override
     public Var mul(VarM v) {
         VarV res = new VarV(new double[value.length]);
         if (v.getValue().length == v.getValue()[0].length &&
@@ -92,7 +97,18 @@ public class VarV extends Var {
             return null;
         }
     }
+//*******************************************************
 
+    @Override
+    public Var div(VarF v) {
+        VarV res = new VarV(value);
+        for (int i = 0; i < res.value.length; i++){
+            res.value[i] /= v.getValue();
+        }
+        return res;
+    }
+
+//*******************************************************
     @Override
     public String toString() {
         return Arrays.toString(value);

@@ -69,4 +69,25 @@ public abstract class Var implements IOperation{
         Log.print("Перемножение с матрицей невозможно");
         return null;
     }
+
+    @Override
+    public Var div(Var v) {
+        if (v instanceof VarF) return div((VarF) v);
+        if (v instanceof VarV) return div((VarV) v);
+        if (v instanceof VarM) return div((VarM) v);
+        return null;
+    }
+
+    public Var div(VarF v){
+        Log.print("Деление со скаляром невозможно");
+        return null;
+    }
+    public Var div(VarV v){
+        Log.print("Деление с вектором невозможно");
+        return null;
+    }
+    public Var div(VarM v){
+        Log.print("Деление с матрицей невозможно");
+        return null;
+    }
 }

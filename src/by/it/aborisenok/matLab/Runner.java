@@ -15,7 +15,6 @@ public class Runner {
         Var mn = new VarM(new double[][]{{9,8,7},{6,5,4},{3,2,1}});
 
 
-
 //            Var f3 =f1.add(f2);
 //        System.out.println("Сумма скаляров = " + f3);
 //             Var v3 = v1.add(f1);
@@ -57,8 +56,10 @@ public class Runner {
 //        Var ggg = v1.mul(m1);
 //        System.out.println(ggg);
 //        Var gg = m1.mul(v1);
-//        System.out.println("Умножение вектора на матрицу - " + gg);
-        Var ggg = m4.mul(mn);
-        System.out.println("Перемножение матриц - " + ggg);
+//        System.out.println("Умножение матрицы на вектор - " + gg);
+//        Var ggg = m4.mul(mn);
+//        System.out.println("Перемножение матриц - " + ggg);
+//        Var ggg = v2.mul(v2);
+//        System.out.println("Перемножение векторов - " + ggg);
     }
 }
