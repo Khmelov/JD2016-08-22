@@ -1,9 +1,14 @@
 package by.it.grechishnikov.jd01_08;
 
 public abstract class Engineer implements Worker {
+    private static final String COMPANY_NAME; //константа. название фирмы никому менять нельзя
     private String name;
     private int age;
     private int salary;
+
+    static {
+        COMPANY_NAME = "EPAM SYSTEMS"; //статический блок инициализации. для оценки
+    }
 
     public Engineer() { //для оценки
     }
@@ -48,11 +53,15 @@ public abstract class Engineer implements Worker {
         return name;
     }
 
-    public int getAge() {
+    protected void printCompanyName() {
+        System.out.println("Я работаю в " + COMPANY_NAME);
+    }
+
+    int getAge() {
         return age;
     }
 
-    public int getSalary() {
+    int getSalary() {
         return salary;
     }
 }

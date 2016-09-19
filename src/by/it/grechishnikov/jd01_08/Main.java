@@ -19,5 +19,6 @@ public class Main {
         System.out.println(major);
         major.goToWork();
         major.talkWithWorkers();
+        major.printCompanyName();
     }
 }
