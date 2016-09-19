@@ -13,10 +13,16 @@ public class Runner {
         // вводим двухмерный массив
         // double[][] doubleArray = InOut.inputDoubleArray(); //ввод через консоль
         double[][] doubleArray = {
-                {2, 5,  4, 1},
-                {1, 3,  2, 1},
-                {2, 10, 9, 7},
-                {3, 8,  9, 2},
+                {1, 2, 3, 3},
+                {4, 5, 6, 3},
+                {7, 8, 9, 3},
+                {7, 8, 9, 3}
+        };
+        double[][] doubleArray2 = {
+                {9, 8, 7, 2},
+                {6, 5, 4, 3},
+                {3, 2, 1, 3},
+                {7, 8, 9, 3}
         };
         // выводим одномерный массив на печать
         InOut.printLineArray(array, "M");
