@@ -19,10 +19,18 @@ public class A12 {
         }
 
     public static ArrayList zapolnitspisok (ArrayList A) {
-        for (int i = 0; i <10 ; i++) {
-            A.add((int)(Math.random()*5));
+        for (int i = 0; i <5 ; i++) {
+            A.add((int)(Math.random()*10));
            }
 return A;
+
+    }
+
+    public static ArrayList zapolnitspisok2 (ArrayList A) {
+        for (int i = 0; i <10 ; i++) {
+            A.add((int)(Math.random()*20)-10);
+        }
+        return A;
 
     }
 
