@@ -12,14 +12,13 @@ public class TaskC3 {
         String correct = "((){}[()])";
         String wrong = "({}[({)])";
         System.out.println("Правильный вариант:" + correct);
-        checkBrackets(correct);
+        TaskC3.checkBrackets(correct);
         System.out.println("Неправильный вариант:" + wrong);
-        checkBrackets(wrong);
+        TaskC3.checkBrackets(wrong);
     }
 
     /**
      * Метод служит для определения корректности расстановки скобок в выражениях
-     * Этот метод можно использовать для проверки правильности ввода выражения в MathLab
      * @param expression входное выражение типа String
      */
     public static void checkBrackets(String expression){
