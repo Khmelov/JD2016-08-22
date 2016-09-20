@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class TaskC2 {
     {
-        System.out.println("***Task C2");
+        System.out.println("***Task A2");
         ArrayList<Integer> A = Utils.randomInt(10);
         System.out.println("А - " + A);
         ArrayList<Integer> B = Utils.randomInt(10);

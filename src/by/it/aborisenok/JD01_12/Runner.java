@@ -5,6 +5,8 @@ import by.it.aborisenok.JD01_12.TaskA.TaskA2;
 import by.it.aborisenok.JD01_12.TaskA.TaskA3;
 import by.it.aborisenok.JD01_12.TaskB.TaskB1;
 import by.it.aborisenok.JD01_12.TaskB.TaskB2;
+import by.it.aborisenok.JD01_12.TaskC.TaskC1;
+import by.it.aborisenok.JD01_12.TaskC.TaskC2;
 import by.it.aborisenok.JD01_12.TaskC.TaskC3;
 
 /**
@@ -22,8 +24,13 @@ public class Runner {
         TaskB1 B1 = new TaskB1();
         // Task B2//////////
         TaskB2 B2 = new TaskB2();
+        // Task C1/////////
+        TaskC1 C1 = new TaskC1();
+        // Task C2/////////
+        TaskC2 C2 = new TaskC2();
         // Task C3/////////
         TaskC3 C3 = new TaskC3();
+
 
     }
 }
