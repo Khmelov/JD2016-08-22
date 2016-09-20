@@ -13,14 +13,14 @@ public class Runner {
 //
 //        //A.1 Найти самое короткое и самое длинное число.
 //        //   Вывести найденные числа и их длину.
-//        String max = TaskA.getMax(arr);
+//        String max = Task1.getMax(arr);
 //        System.out.println(max);
-//        String min = TaskA.getMin(arr);
+//        String min = Task1.getMin(arr);
 //        System.out.println(min);
 //
 //        //A.2 Вывести на консоль те числа, длина которых меньше
 //        //   (больше) средней.
-//        double mean=TaskA.mean(arr);
+//        double mean=Task1.mean(arr);
 //        System.out.print("Числа меньше "+mean+" таковы: ");
 //        for (int i:arr) {
 //            if (i<mean) {
@@ -32,7 +32,7 @@ public class Runner {
 //        //A.3 Найти число, состоящее только из различных цифр.
 //        //Если таких чисел несколько, найти первое из них.
 //        for (int i:arr) {
-//            if (TaskA.uniqueDigits(i)) {
+//            if (Task1.uniqueDigits(i)) {
 //                System.out.print("Найдено число из разных цифр: "+i);
 //                break; //больше ничего не ищем
 //            }
@@ -47,6 +47,6 @@ public class Runner {
         // (k выберите квадратом целого числа).
 
         //Б.3 Найти корни квадратного уравнения
-       // TaskB.quadraticEquation();
+       // Task2.quadraticEquation();
     }
 }

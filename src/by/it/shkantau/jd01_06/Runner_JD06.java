@@ -4,7 +4,7 @@ package by.it.shkantau.jd01_06;
 /**
  * Created by Aliaksei on 13.09.2016.
  */
-public class RunnerJD06 {
+public class Runner_JD06 {
     private static final String uLukomoriaDubZeliony = "У лукоморья дуб зелёный;\n" +
             "Златая цепь на дубе том:\n" +
             "И днём и ночью кот учёный\n" +

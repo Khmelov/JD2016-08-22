@@ -1,4 +1,4 @@
-package by.it.shkantau.JD01_12;
+package by.it.shkantau.jd01_12;
 
 import by.it.shkantau.jd01_06.Regexes;
 

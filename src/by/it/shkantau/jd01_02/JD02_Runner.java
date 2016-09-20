@@ -1,5 +1,7 @@
 package by.it.shkantau.jd01_02;
 
+import by.it.aborisenok.JD01_03.InOut;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,6 +23,7 @@ public class JD02_Runner {
             if(str.equals("\\q")){
                 break;
             }else {
+
 
             }
         }
