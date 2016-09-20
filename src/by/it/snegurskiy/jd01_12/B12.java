@@ -1,8 +1,6 @@
 package by.it.snegurskiy.jd01_12;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * Created by snegurskiy.nn on 19.09.2016.
@@ -28,6 +26,16 @@ public class B12 {
             else H.put(S.get(i),1);
         }
         return H;
+    }
+
+    public static List<Integer> deletecircul(List<Integer> A) {
+        int i=0;
+        while (A.size()>1){
+            if (i>=A.size()) i=i-A.size();
+            A.remove(i);
+            i++;
+        }
+           return A;
     }
 
 }
