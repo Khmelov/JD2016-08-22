@@ -1,12 +1,12 @@
-package by.it.grechishnikov.matLab.controller.operation;
+package by.it.grechishnikov.jd01_13.matLab.controller.operation;
 
-import by.it.grechishnikov.matLab.model.*;
+import by.it.grechishnikov.jd01_13.matLab.model.*;
 
 
 public  class Operation implements IOperationable {
 
     @Override
-    public <T extends Var> Var add(String name, T var1, T var2) {
+    public Var add(String name, Var var1, Var var2) {
         try {
             if (var1 instanceof Scalar && var2 instanceof Scalar)
                 return Add.add(name, (Scalar) var1, (Scalar) var2);
@@ -36,7 +36,7 @@ public  class Operation implements IOperationable {
         }
     }
 
-    public <T extends Var> Var mul(String name, T var1, T var2) {
+    public Var mul(String name, Var var1, Var var2) {
         try {
             if (var1 instanceof Scalar && var2 instanceof Scalar)
                 return Mul.mul(name, (Scalar) var1, (Scalar) var2);
@@ -66,7 +66,7 @@ public  class Operation implements IOperationable {
         }
     }
 
-    public <T extends Var> Var div(String name, T var1, T var2) {
+    public Var div(String name, Var var1, Var var2) {
         try {
             if (var1 instanceof Scalar && var2 instanceof Scalar)
                 return Div.div(name, (Scalar) var1, (Scalar) var2);
@@ -97,7 +97,7 @@ public  class Operation implements IOperationable {
     }
 
 
-    public <T extends Var> Var sub(String name, T var1, T var2) {
+    public Var sub(String name, Var var1, Var var2) {
         try {
             if (var1 instanceof Scalar && var2 instanceof Scalar)
                 return Sub.sub(name, (Scalar) var1, (Scalar) var2);
