@@ -18,10 +18,15 @@ public class A13 {
                 try {
                     int sInt = new Integer(s);
                 } catch (NumberFormatException e) {
+                    i--;
                     System.out.println("введено не число");
                 }
                 int sInt = new Integer(s);
-                if (sInt < 0) throw new Exception13("Введено отрицательное число");
+                if (sInt < 0) {
+                    i--;
+                    throw new Exception13("Введено отрицательное число");
+
+                }
                 sum = sum + Math.sqrt(sInt);
 
                 System.out.println(sInt + " " + sum);
