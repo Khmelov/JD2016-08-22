@@ -18,6 +18,10 @@ public class TaskA1 {
         System.out.println(goodMarkList);
     }
     //Метод удаляет неудовлетворительные оценки
+    /**
+     * Метод служит для удаления неудовлетворительных оценок
+     * @param list входное выражение типа ArrayList
+     */
     public ArrayList<Integer> badMarkDelete(ArrayList<Integer> list){
         ArrayList<Integer> newList = new ArrayList<>(list);
         Iterator<Integer> iterator = newList.iterator();

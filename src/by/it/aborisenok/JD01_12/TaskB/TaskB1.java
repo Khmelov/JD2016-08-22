@@ -17,14 +17,17 @@ public class TaskB1 {
         TaskB1.hashMapPrint(hashMap);
     }
 
-
+    /**
+     * Метод служит для определения колличества повторений слов
+     */
     public static HashMap<String, Integer> wordsCount() {
-
+        // создаём список для кранения слова и числа его повторений
         HashMap<String, Integer> hashMap = new HashMap<>();
         String text = MyRandomText.getText();
+        // создаём шаблон для поиска слов
         Pattern pattern = Pattern.compile("[a-zA-Z]+");
         Matcher matcher = pattern.matcher(text);
-
+            // заполняем список словами и их повторениями
         while (matcher.find()) {
             String word = matcher.group();
             if (!hashMap.containsKey(word)){
@@ -37,6 +40,10 @@ public class TaskB1 {
         return hashMap;
     }
 
+    /**
+     * Метод служит для выода на печать карты HashMap
+     * @param hashMap входное выражение типа HashMap
+     */
     public static <T1, T2> void hashMapPrint(HashMap<T1, T2> hashMap ){
         Iterator<Map.Entry<T1, T2>> itr = hashMap.entrySet().iterator();
         while (itr.hasNext()){
