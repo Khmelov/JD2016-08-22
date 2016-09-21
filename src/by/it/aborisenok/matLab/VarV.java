@@ -77,7 +77,16 @@ public class VarV extends Var {
 
     @Override
     public Var mul(VarV v) {
-        return super.mul(v);
+        double res = 0;
+        if (value.length == v.getValue().length ) {
+            for (int i = 0; i < value.length; i++){
+                res = res + value[i] * v.getValue()[i];
+            }
+            return new VarF(res);
+        } else {
+            Log.print("Некорректные введённые данные");
+            return null;
+        }
     }
 
     @Override
