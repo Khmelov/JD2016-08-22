@@ -104,9 +104,9 @@ public class VarM extends Var {
         VarV res = new VarV(new double[value.length]);
         if (value.length == value[0].length &&
                 value.length == v.getValue().length) {
-            for (int i = 0; i < res.getValue().length; i++){
+            for (int i = 0; i < value.length; i++){
                 for (int j = 0; j < v.getValue().length; j++)
-                    res.getValue()[i] = res.getValue()[i] + value[i][j] + v.getValue()[j];
+                    res.getValue()[i] = res.getValue()[i] + value[i][j]*v.getValue()[j];
             }
             return res;
         } else {
