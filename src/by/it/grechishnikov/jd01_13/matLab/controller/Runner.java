@@ -1,8 +1,13 @@
-package by.it.grechishnikov.matLab.controller;
+package by.it.grechishnikov.jd01_13.matLab.controller;
 
-import by.it.grechishnikov.matLab.controller.operation.*;
-import by.it.grechishnikov.matLab.model.*;
-import by.it.grechishnikov.matLab.view.*;
+import by.it.grechishnikov.jd01_13.matLab.controller.operation.Operation;
+import by.it.grechishnikov.jd01_13.matLab.model.Matrix;
+import by.it.grechishnikov.jd01_13.matLab.model.Scalar;
+import by.it.grechishnikov.jd01_13.matLab.model.Var;
+import by.it.grechishnikov.jd01_13.matLab.model.Vector;
+import by.it.grechishnikov.jd01_13.matLab.view.ConsolePrinterImplIprintable;
+import by.it.grechishnikov.jd01_13.matLab.view.IPrintable;
+
 import java.util.LinkedHashMap;
 
 public class Runner {
@@ -13,7 +18,22 @@ public class Runner {
 
     public static void main(String[] args) {
         init();
-        test();
+//        test();
+        Scalar s1 = new Scalar(4);
+        Scalar s2 = new Scalar(0);
+        Vector v1 = new Vector(1, 2);
+        Vector v2 = new Vector(0);
+        Var v = operation.div("test", s1, s2);
+        Var s = operation.mul("test", v1, v2);
+        double[][] a = {{1}};
+        double[][] b = {{1}, {1}};
+        Matrix m1 = new Matrix(a);
+        Matrix m2 = new Matrix(b);
+        Var m = operation.mul("m", m1, m2);
+        m.assign();
+        v.assign();
+        s.assign();
+        printer.printMap();
     }
 
     public static void init() {

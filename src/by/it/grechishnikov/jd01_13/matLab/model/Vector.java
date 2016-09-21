@@ -1,4 +1,4 @@
-package by.it.grechishnikov.matLab.model;
+package by.it.grechishnikov.jd01_13.matLab.model;
 
 
 import java.util.Arrays;

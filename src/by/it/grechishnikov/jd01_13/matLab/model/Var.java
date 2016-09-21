@@ -1,6 +1,6 @@
-package by.it.grechishnikov.matLab.model;
+package by.it.grechishnikov.jd01_13.matLab.model;
 
-import by.it.grechishnikov.matLab.controller.Runner;
+import by.it.grechishnikov.jd01_13.matLab.controller.Runner;
 
 public abstract class Var implements IData {
     boolean alive = false;

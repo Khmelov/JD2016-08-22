@@ -13,8 +13,28 @@ public class TaskC {
      * Запуск задания
      */
     static void start() {
+        taskC1("Слива:7 Яблоко:1 Груша:4 Кокос:2 Тыква:3 Арбуз:6 Хурма:8 Морковь:9 Ананас:5 Морковь:9");
         taskC2();
         naOcenku();
+    }
+
+    /**
+     * Задание С1
+     * Передается текст с объектами. Создать отсортированный список с наименованиями и шифрами
+     * @param text - входной текст
+     */
+    private static void taskC1(String text) {
+        String[] arr = text.split(" ");
+        Map<Integer, String> map = new TreeMap<>();
+        for(String s : arr) {
+            String name = s.split(":")[0];
+            int hash = Integer.parseInt(s.split(":")[1]);
+            map.put(hash, name);
+        }
+        for(Map.Entry<Integer, String> pair : map.entrySet()) {
+            System.out.print(pair.getValue() + ":" + pair.getKey() + " ");
+        }
+        System.out.println();
     }
 
     /**

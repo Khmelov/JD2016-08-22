@@ -32,6 +32,10 @@ public class SeniorLead extends Lead { //SeniorLead расширяет Lead. С�
         this.list = list;
     }
 
+    public static void cleanToilet() throws NotSupportedOperationException {
+        throw new NotSupportedOperationException("SeniorLead не должен чистить туалет. ");
+    }
+
     @Override
     public String toString() { //Полиморфизм. Переопределен метод toString для правильной его работы
         String result = String.format("Меня зовут %s, мне %d и я получаю $%d. Я руководитель над: ", getName(), getAge(), getSalary());
