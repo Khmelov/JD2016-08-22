@@ -46,7 +46,7 @@ public class B14 {
                 col2++;
             }
             System.out.println("количество слов = "+col);
-            System.out.println("количество знаокв препинания = "+col2);
+            System.out.println("количество знаков препинания = "+col2);
         } catch (IOException e) {
             System.out.println(e);}
     }
