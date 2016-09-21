@@ -7,6 +7,22 @@ import java.util.regex.Pattern;
 
 public class Test {
     public static void main(String[] args) {
+
+        try
+        {
+            int i=0;
+            i=1/i;
+        }
+        catch (Exception e) {
+            throw e;
+        }
+        finally {
+            System.out.println("fin");
+        }
+
+
+
+
         int a=9; int b=13;
         a=-(a-=b)+(b+=a);
         System.out.println(a+" "+b);
