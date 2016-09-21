@@ -22,7 +22,7 @@ public class BlackPrinter extends Printer implements IPrinter {
             }
             else
                 System.out.println("Принтер выключен");
-            System.out.println("Напечатано " + level + " страниц");
+            System.out.println("Напечатано " + level + " страниц(а)");
         }
 
         @Override
