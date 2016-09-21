@@ -11,9 +11,10 @@ public class Operation {
     }
 
     /**
-     * Суммирует две переменные
-     * @param var1 1я переменная
-     * @param var2 2я переменная
+     * Метод суммирует две переменные
+     *
+     * @param var1 первая переменная
+     * @param var2 вторая переменная
      * @return сумма
      */
     public static Variable add(Variable var1, Variable var2) {
@@ -42,10 +43,42 @@ public class Operation {
     }
 
     /**
-     * Умножает две переменные
-     * @param var1 1
-     * @param var2 2
-     * @return произведение
+     * Метод вычитает переменные
+     *
+     * @param var1 первая переменная
+     * @param var2 вторая переменная
+     * @return результат
+     */
+    public static Variable sub(Variable var1, Variable var2) {
+        if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
+            return Substruction.sub((VariableFloat) var1, (VariableFloat) var2);
+        else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
+            return Substruction.sub((VariableFloat) var1, (VariableVector) var2);
+        else if (var1 instanceof VariableFloat && var2 instanceof VariableMatrix)
+            return Substruction.sub((VariableFloat) var1, (VariableMatrix) var2);
+
+        else if (var1 instanceof VariableVector && var2 instanceof VariableFloat)
+            return Substruction.sub((VariableVector) var1, (VariableFloat) var2);
+        else if (var1 instanceof VariableVector && var2 instanceof VariableVector)
+            return Substruction.sub((VariableVector) var1, (VariableVector) var2);
+        else if (var1 instanceof VariableVector && var2 instanceof VariableMatrix)
+            return Substruction.sub((VariableVector) var1, (VariableMatrix) var2);
+
+        else if (var1 instanceof VariableMatrix && var2 instanceof VariableFloat)
+            return Substruction.sub((VariableMatrix) var1, (VariableFloat) var2);
+        else if (var1 instanceof VariableMatrix && var2 instanceof VariableVector)
+            return Substruction.sub((VariableMatrix) var1, (VariableVector) var2);
+        else if (var1 instanceof VariableMatrix && var2 instanceof VariableMatrix)
+            return Substruction.sub((VariableMatrix) var1, (VariableMatrix) var2);
+        else
+            return Substruction.sub(var1, var2);
+    }
+    /**
+     * Метод умножает две переменные
+     *
+     * @param var1 первая переменная
+     * @param var2 вторая переменная
+     * @return результат
      */
     public static Variable mult(Variable var1, Variable var2) {
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
@@ -73,10 +106,11 @@ public class Operation {
     }
 
     /**
-     * Находит частное двух переменнх
-     * @param var1 1
-     * @param var2 2
-     * @return частное
+     * Метод делит одну переменную на другую
+     *
+     * @param var1 первая переменная
+     * @param var2 вторая переменная
+     * @return результат
      */
     public static Variable div(Variable var1, Variable var2) {
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
@@ -101,36 +135,5 @@ public class Operation {
             return Division.div((VariableMatrix) var1, (VariableMatrix) var2);
         else
             return Division.div(var1, var2);
-    }
-
-    /**
-     * Вычитает переменные
-     * @param var1 1
-     * @param var2 2
-     * @return разница
-     */
-    public static Variable sub(Variable var1, Variable var2) {
-        if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
-            return Substruction.sub((VariableFloat) var1, (VariableFloat) var2);
-        else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
-            return Substruction.sub((VariableFloat) var1, (VariableVector) var2);
-        else if (var1 instanceof VariableFloat && var2 instanceof VariableMatrix)
-            return Substruction.sub((VariableFloat) var1, (VariableMatrix) var2);
-
-        else if (var1 instanceof VariableVector && var2 instanceof VariableFloat)
-            return Substruction.sub((VariableVector) var1, (VariableFloat) var2);
-        else if (var1 instanceof VariableVector && var2 instanceof VariableVector)
-            return Substruction.sub((VariableVector) var1, (VariableVector) var2);
-        else if (var1 instanceof VariableVector && var2 instanceof VariableMatrix)
-            return Substruction.sub((VariableVector) var1, (VariableMatrix) var2);
-
-        else if (var1 instanceof VariableMatrix && var2 instanceof VariableFloat)
-            return Substruction.sub((VariableMatrix) var1, (VariableFloat) var2);
-        else if (var1 instanceof VariableMatrix && var2 instanceof VariableVector)
-            return Substruction.sub((VariableMatrix) var1, (VariableVector) var2);
-        else if (var1 instanceof VariableMatrix && var2 instanceof VariableMatrix)
-            return Substruction.sub((VariableMatrix) var1, (VariableMatrix) var2);
-        else
-            return Substruction.sub(var1, var2);
     }
 }
