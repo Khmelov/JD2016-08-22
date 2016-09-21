@@ -18,14 +18,14 @@ class TaskC {
     }
 
     static void task() {
-        System.out.println("TaskC - 2");
+        System.out.println("Task3 - 2");
         long first = c2(false);
         long last = c2(true);
         System.out.println("Время выполнения через String = " + first + " милисек.");
         System.out.println("Время выполнения через StringBuilder = " + last + " милисек.");
         System.out.printf("StringBuilder быстрее в %.2f раз.\n\n", ((double) first / last));
 
-        System.out.println("TaskC - 3");
+        System.out.println("Task3 - 3");
         c3();
     }
 

@@ -1,6 +1,5 @@
-package by.it.shkantau.JD01_12;
+package by.it.shkantau.jd01_12;
 
-import java.util.List;
 import java.util.Set;
 
 /**

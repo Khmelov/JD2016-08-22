@@ -1,4 +1,4 @@
-package by.it.shkantau.JD01_12;
+package by.it.shkantau.jd01_12;
 
 /**
  * Created by user on 16.09.2016.
