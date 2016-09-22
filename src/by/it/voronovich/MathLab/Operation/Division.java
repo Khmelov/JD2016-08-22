@@ -4,7 +4,7 @@ import by.it.voronovich.MathLab.Var.VariableMatrix;
 import by.it.voronovich.MathLab.Var.VariableFloat;
 import by.it.voronovich.MathLab.Var.Variable;
 import by.it.voronovich.MathLab.Var.VariableVector;
-
+import by.it.voronovich.MathLab.UnsupportedException;
 /**
  * Класс содержит реализацию методов деления  различных переменных
  *
@@ -28,8 +28,10 @@ public class Division {
      * @param var2 число
      * @return число
      */
-    public static VariableFloat div(VariableFloat var1, VariableFloat var2) {
+    public static VariableFloat div(VariableFloat var1, VariableFloat var2) throws UnsupportedException {
+        if(var2.getValue()!=0) {
             return new VariableFloat(var1.getValue() / var2.getValue());
+        } else throw new UnsupportedException("Нельзя делить на ноль!");
     }
 
     public static Variable div(VariableFloat var1, VariableVector var2) {

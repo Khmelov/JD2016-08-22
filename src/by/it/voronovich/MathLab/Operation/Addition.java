@@ -4,6 +4,7 @@ import by.it.voronovich.MathLab.Var.VariableMatrix;
 import by.it.voronovich.MathLab.Var.VariableFloat;
 import by.it.voronovich.MathLab.Var.Variable;
 import by.it.voronovich.MathLab.Var.VariableVector;
+import by.it.voronovich.MathLab.UnsupportedException;
 
 /**
  * Класс содержит реализацию методов сложения  различных переменных

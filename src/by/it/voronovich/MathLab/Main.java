@@ -1,5 +1,7 @@
 package by.it.voronovich.MathLab;
 
+import static by.it.voronovich.MathLab.Operation.KeyMapper.printVar;
+import by.it.voronovich.MathLab.Operation.KeyMapper;
 import by.it.voronovich.MathLab.Operation.Operation;
 import by.it.voronovich.MathLab.Var.VariableMatrix;
 import by.it.voronovich.MathLab.Var.VariableFloat;
@@ -7,10 +9,11 @@ import by.it.voronovich.MathLab.Var.VariableVector;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedException{
 
         VariableFloat f1 = new VariableFloat(5.0);
         VariableFloat f2 = new VariableFloat(10.0);
+        VariableFloat f3 = new VariableFloat(0);
 
         double[] v1 = {1, 2, 3};
         VariableVector vct1 = new VariableVector(v1);
@@ -26,6 +29,16 @@ public class Main {
                 {1, 1, 1, 1, 1}};
         VariableMatrix m1 = new VariableMatrix(Matrix1);
         VariableMatrix m2 = new VariableMatrix(Matrix2);
+
+        System.out.println("------------------>>>>>Проверка сборки параметров в список с ключами<<<<<------------------");
+        KeyMapper.setParameter("f1", f1);
+        KeyMapper.setParameter("f2", f2);
+        KeyMapper.setParameter("vct1", vct1);
+        KeyMapper.setParameter("vct2", vct2);
+        KeyMapper.setParameter("m1", m1);
+        KeyMapper.setParameter("m2", m2);
+        printVar(); //немного не красивый форматный вывод  на консоль, но я думаю это не принципиально
+        System.out.println("/////////////////////////////////////////////////////////////////////////");
 
         System.out.println("------------------>>>>>Проверка операций сложения<<<<<------------------");
         System.out.println("скаляр+скаляр:");
@@ -116,7 +129,7 @@ public class Main {
         System.out.println("скаляр/скаляр:");
         System.out.println(Operation.div(f1, f2));
         System.out.println("скаляр/скаляр:");
-        System.out.println(Operation.div(f1, null));
+        System.out.println(Operation.div(f1, f3)); //деление на ноль, срабатывание исключения
         System.out.println("скаляр/вектор:");
         System.out.println(Operation.div(f1, vct1));
         System.out.println("скаляр/матрица:");
