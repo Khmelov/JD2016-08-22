@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD01_12;
+package by.it.aborisenok.JD01_12.TaskA;
 
 
 
@@ -11,13 +11,17 @@ import java.util.Iterator;
 public class TaskA1 {
     //Task A
     {
-        System.out.println("Task A1");
+        System.out.println("***Task A1");
         ArrayList<Integer> markList = Utils.randomInt(20);
         System.out.println(markList);
         ArrayList<Integer> goodMarkList = badMarkDelete(markList);
         System.out.println(goodMarkList);
     }
     //Метод удаляет неудовлетворительные оценки
+    /**
+     * Метод служит для удаления неудовлетворительных оценок
+     * @param list входное выражение типа ArrayList
+     */
     public ArrayList<Integer> badMarkDelete(ArrayList<Integer> list){
         ArrayList<Integer> newList = new ArrayList<>(list);
         Iterator<Integer> iterator = newList.iterator();

@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD01_12;
+package by.it.aborisenok.JD01_12.TaskA;
 
 import java.util.ArrayList;
 
@@ -10,6 +10,13 @@ public class MyCollect {
         ArrayList<Integer> arrayList = new ArrayList<>(A);
         arrayList.retainAll(B);
         return arrayList;
+    }
+
+    public static ArrayList<Integer> getUnion(ArrayList<Integer> A, ArrayList<Integer> B){
+        ArrayList<Integer> generalList = new ArrayList<>(A);
+        generalList.removeAll(B);
+        generalList.addAll(A);
+        return generalList;
     }
 }
 

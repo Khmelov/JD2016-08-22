@@ -7,15 +7,13 @@ public class Runner {
     public static void main(String[] args) {
         Var f1 = new VarF(1);
         Var f2 = new VarF(2);
-        Var v1 = new VarV(new double[] {1, 2});
+        Var v1 = new VarV(new double[] {3, 1});
         Var v2 = new VarV(new double[] {1, 2, 3});
         Var vn = new VarV(new double[] {1, 2, 3, 4});
-        Var m1 = new VarM(new double[][]{{1,2},{3,4}});
-        Var m4 = new VarM(new double[][]{{1,1},{1,1}});
-        Var mn = new VarM(new double[][]{{1,2,3},{3,4.5},{5,6.7}});
+        Var m1 = new VarM(new double[][]{{2,10},{3,8}});
+        Var m4 = new VarM(new double[][]{{1,2,3},{4,5,6},{7,8,9}});
+        Var mn = new VarM(new double[][]{{9,8,7},{6,5,4},{3,2,1}});
 
-        Var ggg = v1.mul(m1);
-        System.out.println(ggg);
 
 //            Var f3 =f1.add(f2);
 //        System.out.println("Сумма скаляров = " + f3);
@@ -55,5 +53,13 @@ public class Runner {
 //        Var m6 = m1.sub(mn);
 //        System.out.println("Разность двух разноразмерных матриц = " + m6);
         /////////////////////////////
+//        Var ggg = v1.mul(m1);
+//        System.out.println(ggg);
+//        Var gg = m1.mul(v1);
+//        System.out.println("Умножение матрицы на вектор - " + gg);
+//        Var ggg = m4.mul(mn);
+//        System.out.println("Перемножение матриц - " + ggg);
+//        Var ggg = v2.mul(v2);
+//        System.out.println("Перемножение векторов - " + ggg);
     }
 }
