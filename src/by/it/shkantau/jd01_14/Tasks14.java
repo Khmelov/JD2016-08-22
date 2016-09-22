@@ -1,15 +1,16 @@
 package by.it.shkantau.jd01_14;
 
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 class Tasks14 {
 
-     static void taskA() throws IOException {
-        int arraySize = 20;
+    private static String src = System.getProperty("user.dir")+"/src/by/it/shkantau/";
 
-        String fileName = "/home/duch/IdeaProjects/JD2016-08-22/src/by/it/shkantau/jd01_14/TaskA.dat";
-        File file = new File(fileName);
+    static void taskA() throws IOException {
+         int arraySize = 20;
+         String fileName = src + "jd01_14/TaskA.dat";
+         File file = new File(fileName);
 // File creation
         try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(file))){
             for (int i = 0; i < arraySize; i++) {
@@ -31,18 +32,52 @@ class Tasks14 {
         }
     }
 
-    public static void taskB() throws FileNotFoundException {
-        String fileName = "/home/duch/IdeaProjects/JD2016-08-22/src/by/it/shkantau/jd01_14/TaskB.txt";
+    static void taskB() throws FileNotFoundException {
+        String fileName = src + "jd01_14/TaskB.txt";
         File file = new File(fileName);
-        Scanner scanner = new Scanner(file);
+
         int punctCounter = 0, wordsCounter = 0;
-        while (scanner.hasNext("\\p{Punct}")){
+        Scanner scanner = new Scanner(file);
+
+        scanner.useDelimiter("[.,!?]+");
+//Count punctuation symbols
+        while (scanner.hasNext()){
             punctCounter++;
+            scanner.next();
         }
-
-        scanner.useDelimiter("\\b");
-//        scanner.reset()
-
+        scanner = new Scanner(file);
+        scanner.useDelimiter("[a-zA-Z]+");
+//Count punctuation symbols
+        while (scanner.hasNext()){
+            wordsCounter++;
+            scanner.next();
+        }
+        scanner.close();
+        System.out.println("punctCounter = " + punctCounter + ", wordsCounter = "+wordsCounter);
     }
 
+    static void taskC(){
+        String rootDir = System.getProperty("user.dir");
+        File file  = new File(rootDir);
+        System.out.println(file.getName());
+        recursiveDirectoryBuilder(file, 1);
+    }
+
+    private static void recursiveDirectoryBuilder(File file, int depth){
+        String [] filesNameArray = file.list();
+        File tmpFile;
+        int tmpDepth = depth;
+        if (filesNameArray != null) {
+            for (String fileName : filesNameArray) {
+                tmpFile = new File(file.getPath() + "/" + fileName);
+                if (tmpFile.isDirectory() && !tmpFile.isHidden()) {
+                    for (int i = 0; i < tmpDepth; i++) {
+                        System.out.print("\t");
+                    }
+                    System.out.println(fileName);
+                    recursiveDirectoryBuilder(tmpFile, ++depth);
+                }
+            }
+        }
+    }
 }
