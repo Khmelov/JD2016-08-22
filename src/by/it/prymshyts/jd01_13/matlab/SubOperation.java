@@ -1,115 +1,115 @@
-package by.it.prymshyts.matlab;
+package by.it.prymshyts.jd01_13.matlab;
 
-public class AddOperation extends Operation implements IAddOperation {
+public class SubOperation extends Operation implements ISubOperation {
 
     @Override
-    public Variable add(Variable firstVar, Variable secondVar) {
+    public Variable sub(Variable firstVar, Variable secondVar) {
         if (firstVar instanceof FloatVariable) {
 
             if (secondVar instanceof FloatVariable) {
-                return add((FloatVariable) firstVar, (FloatVariable) secondVar);
+                return sub((FloatVariable) firstVar, (FloatVariable) secondVar);
 
             } else if (secondVar instanceof VectorVariable) {
-                return add((FloatVariable) firstVar, (VectorVariable) secondVar);
+                return sub((FloatVariable) firstVar, (VectorVariable) secondVar);
 
             } else if (secondVar instanceof  MatrixVariable) {
-                return add((FloatVariable) firstVar, (MatrixVariable) secondVar);
+                return sub((FloatVariable) firstVar, (MatrixVariable) secondVar);
             }
         } else if (firstVar instanceof VectorVariable) {
 
             if (secondVar instanceof FloatVariable) {
-                return add((VectorVariable) firstVar, (FloatVariable) secondVar);
+                return sub((VectorVariable) firstVar, (FloatVariable) secondVar);
 
             } else if (secondVar instanceof VectorVariable) {
-                return add((VectorVariable) firstVar, (VectorVariable) secondVar);
+                return sub((VectorVariable) firstVar, (VectorVariable) secondVar);
             }
         } else if (firstVar instanceof MatrixVariable) {
 
             if (secondVar instanceof FloatVariable) {
-                return add((MatrixVariable) firstVar, (FloatVariable) secondVar);
+                return sub((MatrixVariable) firstVar, (FloatVariable) secondVar);
 
             } else if (secondVar instanceof MatrixVariable) {
-                return add((MatrixVariable) firstVar, (MatrixVariable) secondVar);
+                return sub((MatrixVariable) firstVar, (MatrixVariable) secondVar);
             }
         }
-        return super.add(firstVar, secondVar);
+        return super.sub(firstVar, secondVar);
     }
 
 
-    // Сложение к целому.
+    // Вычитания от целого.
     @Override
-    public Variable add(FloatVariable firstVar, FloatVariable secondVar) {
-        return new FloatVariable(firstVar.getValue() + secondVar.getValue());
+    public Variable sub(FloatVariable firstVar, FloatVariable secondVar) {
+        return new FloatVariable(firstVar.getValue() - secondVar.getValue());
     }
     @Override
-    public Variable add(FloatVariable firstVar, VectorVariable secondVar) {
-        return add(secondVar, firstVar);
+    public Variable sub(FloatVariable firstVar, VectorVariable secondVar) {
+        return sub(secondVar, firstVar);
     }
     @Override
-    public Variable add(FloatVariable firstVar, MatrixVariable secondVar) {
-        return add(secondVar, firstVar);
+    public Variable sub(FloatVariable firstVar, MatrixVariable secondVar) {
+        return sub(secondVar, firstVar);
     }
 
-    // Сложение к вектору.
+    // Вычитания от вектора.
     @Override
-    public Variable add(VectorVariable firstVar, FloatVariable secondVar) {
-        Double addValue = secondVar.getValue();
+    public Variable sub(VectorVariable firstVar, FloatVariable secondVar) {
+        Double subValue = secondVar.getValue();
         Double[] result = new Double[firstVar.getValue().length];
         System.arraycopy(firstVar.getValue(), 0, result, 0, firstVar.getValue().length);
 
         for (int i = 0; i < result.length; i++) {
-            result[i] += addValue;
+            result[i] -= subValue;
         }
 
         return new VectorVariable(result);
     }
     @Override
-    public Variable add(VectorVariable firstVar, VectorVariable secondVar) {
+    public Variable sub(VectorVariable firstVar, VectorVariable secondVar) {
         Double[] firstVector = firstVar.getValue();
         Double[] secondVector = secondVar.getValue();
 
         if (firstVector.length != secondVector.length) {
-            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.ADD_VECTORS);
+            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.SUB_VECTORS);
         }
 
         Double[] result = new Double[firstVector.length];
 
         for (int i = 0; i < result.length; i++) {
-            result[i] = firstVector[i] + secondVector[i];
+            result[i] = firstVector[i] - secondVector[i];
         }
 
         return new VectorVariable(result);
     }
 
-    // Сложение к матрице.
+    // Вычитания от матрицы.
     @Override
-    public Variable add(MatrixVariable firstVar, FloatVariable secondVar) {
-        Double addValue = secondVar.getValue();
+    public Variable sub(MatrixVariable firstVar, FloatVariable secondVar) {
+        Double subValue = secondVar.getValue();
         Double[][] matrix = firstVar.getValue();
         Double[][] result = new Double[matrix.length][matrix[0].length];
 
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[0].length; j++) {
-                result[i][j] = matrix[i][j] + addValue;
+                result[i][j] = matrix[i][j] - subValue;
             }
         }
 
         return new MatrixVariable(result);
     }
     @Override
-    public Variable add(MatrixVariable firstVar, MatrixVariable secondVar) {
+    public Variable sub(MatrixVariable firstVar, MatrixVariable secondVar) {
         Double[][] firstMatrix = firstVar.getValue();
         Double[][] secondMatrix = secondVar.getValue();
 
         if (firstMatrix.length != secondMatrix.length || firstMatrix[0].length != secondMatrix[0].length) {
-            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.ADD_MATRIX);
+            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.SUB_MATRIX);
         }
 
         Double[][] result = new Double[firstMatrix.length][firstMatrix[0].length];
 
         for (int i = 0; i < result.length; i++) {
             for (int j = 0; j < result[0].length; j++) {
-                result[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+                result[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
             }
         }
 

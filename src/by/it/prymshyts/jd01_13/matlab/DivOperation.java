@@ -1,4 +1,4 @@
-package by.it.prymshyts.matlab;
+package by.it.prymshyts.jd01_13.matlab;
 
 public class DivOperation extends Operation implements IDivOperation {
 
