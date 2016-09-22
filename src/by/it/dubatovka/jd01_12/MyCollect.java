@@ -17,7 +17,7 @@ public class MyCollect {
 
     public static <T extends Number> Set<T> getUnion(Set<T> setInt1, Set<T> setInt2) {
         setInt1.addAll(setInt2);
-        System.out.println("Объединение коллекций - getUnion= "+ setInt1);
+        System.out.println("Объединение коллекций - getUnion: "+ setInt1);
         return setInt1;
     }
 

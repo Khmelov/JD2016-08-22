@@ -19,7 +19,7 @@ public class Task_A1 {
             if (iterator.next() <= 2) iterator.remove();
         }
 
-        System.out.println("Журнал положительных оценок: "+positiveJournal);
+        System.out.println("Журнал удовлетворительных оценок: "+positiveJournal);
     }
 
 
