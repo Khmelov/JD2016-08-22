@@ -1,8 +1,5 @@
 package by.it.dubatovka.jd01_12;
 
-import by.it.akhmelev.jd01_06.Level_A.A1;
-import by.it.voronovich.JD01_06.TaskB2;
-
 /**
  * Created by Dubatovka Sergey on 21.09.2016.
  */
