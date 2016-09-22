@@ -4,6 +4,7 @@ import by.it.voronovich.MathLab.Var.VariableMatrix;
 import by.it.voronovich.MathLab.Var.VariableFloat;
 import by.it.voronovich.MathLab.Var.Variable;
 import by.it.voronovich.MathLab.Var.VariableVector;
+import by.it.voronovich.MathLab.UnsupportedException;
 
 public class Operation {
 
@@ -17,7 +18,7 @@ public class Operation {
      * @param var2 вторая переменная
      * @return сумма
      */
-    public static Variable add(Variable var1, Variable var2) {
+    public static Variable add(Variable var1, Variable var2) throws UnsupportedException{
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
             return Addition.add((VariableFloat) var1, (VariableFloat) var2);
         else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
@@ -49,7 +50,7 @@ public class Operation {
      * @param var2 вторая переменная
      * @return результат
      */
-    public static Variable sub(Variable var1, Variable var2) {
+    public static Variable sub(Variable var1, Variable var2) throws UnsupportedException{
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
             return Substruction.sub((VariableFloat) var1, (VariableFloat) var2);
         else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
@@ -80,7 +81,7 @@ public class Operation {
      * @param var2 вторая переменная
      * @return результат
      */
-    public static Variable mult(Variable var1, Variable var2) {
+    public static Variable mult(Variable var1, Variable var2) throws UnsupportedException{
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
             return Multiplication.mult((VariableFloat) var1, (VariableFloat) var2);
         else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
@@ -112,7 +113,7 @@ public class Operation {
      * @param var2 вторая переменная
      * @return результат
      */
-    public static Variable div(Variable var1, Variable var2) {
+    public static Variable div(Variable var1, Variable var2) throws UnsupportedException{
         if (var1 instanceof VariableFloat && var2 instanceof VariableFloat)
             return Division.div((VariableFloat) var1, (VariableFloat) var2);
         else if (var1 instanceof VariableFloat && var2 instanceof VariableVector)
@@ -135,5 +136,13 @@ public class Operation {
             return Division.div((VariableMatrix) var1, (VariableMatrix) var2);
         else
             return Division.div(var1, var2);
+    }
+
+    /**
+     * @param key переменная
+     * @param var значение
+     */
+    public static void setKeyParameter(String key, Variable var) {
+        KeyMapper.setParameter(key, var);
     }
 }
