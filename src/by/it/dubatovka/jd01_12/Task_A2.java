@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class Task_A2 {
 
-    public static void intersectionAB() {
+    public static void getUnionGetCrossAB() {
         System.out.println("\nA2. Определить два множества (A и B) на основе целых чисел. Создать отдельный класс MyCollect и\n" +
                               "статические методы в нем для определения пересечения множеств getCross и объединения множеств\n" +
                                "getUnion. Показать работу этих методов на примере двух множеств (A и B).\n" );
@@ -19,12 +19,8 @@ public class Task_A2 {
         System.out.println("Множество А: " + setIntA);
         System.out.println("Множество B: " + setIntB);
         MyCollect.getCross(setIntA,setIntB);
-
+        MyCollect.getUnion(setIntA,setIntB);
     }
-
-
-
-
 
     public static Set<Integer> genSetArrInt(int sizeOfSet) {
         Set<Integer> setInt = new HashSet<>(sizeOfSet);
