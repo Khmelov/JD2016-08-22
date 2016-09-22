@@ -9,19 +9,18 @@ import java.util.Set;
  */
 public class MyCollect {
 
-    public static Set<Integer> getCross(Set<Integer> setIntA, Set<Integer> setIntB) {
-        Set<Integer> setAB = new HashSet<>();
-        Iterator<Integer> iteratorSetA = setIntA.iterator();
+    public static <T extends Number> Set<T> getCross(Set<T> setA, Set<T> setB) {
+        setA.retainAll(setB);
+        System.out.println("Пересечение A и B - getCross: " + setA);
+        return setA;
 
-        while (iteratorSetA.hasNext()) {
-            if (setIntB.contains(iteratorSetA.next())) {
-                setAB.add(iteratorSetA.next());
-            }
-        }
-        System.out.println("Пересечение A и B - getCross: "+ setAB);
-        return setAB;
+
     }
 
-
+    public static <T extends Number> Set<T> getUnion(Set<T> setInt1, Set<T> setInt2) {
+        setInt1.addAll(setInt2);
+        System.out.println("Объединение коллекций - getUnion= "+ setInt1);
+        return setInt1;
+    }
 
 }

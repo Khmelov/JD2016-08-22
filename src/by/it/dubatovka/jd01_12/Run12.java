@@ -8,8 +8,9 @@ import by.it.akhmelev.jd01_06.Level_A.A1;
 public class Run12 {
     public static void main(String[] args) {
         Task_A1.positiveMarks();
-        Task_A2.intersectionAB();
-
+        Task_A2.getUnionGetCrossAB();
+        Task_A3.sortPositiveNegative();
+        Task_B1.taskb1(TextB1.jingle_Bells);
 
 
     }
