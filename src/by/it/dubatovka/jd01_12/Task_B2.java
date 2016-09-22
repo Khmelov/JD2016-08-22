@@ -13,7 +13,7 @@ public class Task_B2 {
         System.out.println("\nB2. В кругу стоят N человек, пронумерованных от 1 до N. При ведении счета по кругу вычеркивается каждый\n" +
                 "второй человек, пока не останется один. Составить два метода processArray и prоcessLinked\n" +
                 "моделирующие процесс. Первый должен использовать класс ArrayList, а второй — LinkedList. Какой из\n" +
-                "двух методов работает быстрее? Почему? Докажите.");
+                "двух методов работает быстрее? Докажите.");
         List<Integer> arrList = new ArrayList<>(N);
         List<Integer> linkedList = new LinkedList<>();
 
@@ -26,20 +26,21 @@ public class Task_B2 {
     }
 
     private static void processArray(ArrayList<Integer> arrList) {
-        prn("Удаление ArrayList: " + removeFromList(arrList));
+        System.out.println("Удаление из ArrayList: " + removeFromList(arrList));
     }
 
     private static void processLinked(LinkedList<Integer> linkedList) {
-        prn("Удаление LinkedList: " + removeFromList(linkedList));
+        System.out.println("Удаление из LinkedList: " + removeFromList(linkedList));
+        System.out.println("LinkedList при удалении быстрее.");
     }
 
     private static Double removeFromList(List<Integer> list) {
         int count = 0;
-        //prn(list);
+
         long iniTime = System.nanoTime();
 
         while (list.size() > 1) {
-        //    prn(list);
+
             count++;
             iterator = list.iterator();
             while (iterator.hasNext()) {
@@ -51,11 +52,8 @@ public class Task_B2 {
             }
         }
         Double delta = (double) (System.nanoTime() - iniTime) / 1000;
-        prn(list);
+
         return delta;
     }
 
-    private static void prn(Object o) {
-        System.out.println(o.toString());
-    }
 }
