@@ -4,9 +4,9 @@ import java.io.*;
 import java.util.*;
 
 
-public class Task12C {
+ class Task12C {
 
-    public static void c1 ( String src) {
+     static void c1 ( String src) {
 //read file from src
         File file = new File(src);
         if (file.exists()) {
@@ -50,9 +50,9 @@ public class Task12C {
         }
     }
     static void  c2 (){
-        System.out.print("Type some like this: ( ( () [] ) {} ):");
-        Scanner scanner  = new Scanner(System.in);
-        String line = scanner.nextLine();
+//        System.out.print("Type some like this: ( ( () [] ) {} ):");
+//        Scanner scanner  = new Scanner(System.in);
+//        String line = scanner.nextLine();
 
     }
 }
