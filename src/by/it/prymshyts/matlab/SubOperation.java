@@ -68,18 +68,17 @@ public class SubOperation extends Operation implements ISubOperation {
         Double[] firstVector = firstVar.getValue();
         Double[] secondVector = secondVar.getValue();
 
-        if (firstVector.length == secondVector.length) {
-            Double[] result = new Double[firstVector.length];
-
-            for (int i = 0; i < result.length; i++) {
-                result[i] = firstVector[i] - secondVector[i];
-            }
-
-            return new VectorVariable(result);
-        } else {
-            Log.print("Размеры векторов не соответствуют друг другу.");
-            return null;
+        if (firstVector.length != secondVector.length) {
+            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.SUB_VECTORS);
         }
+
+        Double[] result = new Double[firstVector.length];
+
+        for (int i = 0; i < result.length; i++) {
+            result[i] = firstVector[i] - secondVector[i];
+        }
+
+        return new VectorVariable(result);
     }
 
     // Вычитания от матрицы.
@@ -100,21 +99,20 @@ public class SubOperation extends Operation implements ISubOperation {
     @Override
     public Variable sub(MatrixVariable firstVar, MatrixVariable secondVar) {
         Double[][] firstMatrix = firstVar.getValue();
-        Double[][] secondMatrix = firstVar.getValue();
+        Double[][] secondMatrix = secondVar.getValue();
 
-        if (firstMatrix.length == secondMatrix.length && firstMatrix[0].length == secondMatrix[0].length) {
-            Double[][] result = new Double[firstMatrix.length][firstMatrix[0].length];
-
-            for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result[0].length; j++) {
-                    result[i][j] = firstVar.getValue()[i][j] - secondVar.getValue()[i][j];
-                }
-            }
-
-            return new MatrixVariable(result);
-        } else {
-            Log.print("Размер матриц не соответствуют.");
-            return null;
+        if (firstMatrix.length != secondMatrix.length || firstMatrix[0].length != secondMatrix[0].length) {
+            throw new IllegalVariableSizeException(IllegalVariableSizeExceptionState.SUB_MATRIX);
         }
+
+        Double[][] result = new Double[firstMatrix.length][firstMatrix[0].length];
+
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[0].length; j++) {
+                result[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
+            }
+        }
+
+        return new MatrixVariable(result);
     }
 }
