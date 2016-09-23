@@ -2,11 +2,7 @@ package by.it.shkantau.jd01_12;
 
 import java.util.*;
 
-
-/**
- * Created by user on 16.09.2016.
- */
-public class Task12A {
+class Task12A {
     /**
      *
      * @param studentsCount   Number of the students
@@ -15,7 +11,7 @@ public class Task12A {
 //    A1. Создать список оценок учеников с помощью ArrayList, заполнить случайными оценками. Удалить
 //    неудовлетворительные оценки из списка. Вывести на консоль оба варианта.
     public static void a1( int studentsCount, int marksSeparator){
-       List<Integer> marks = randomNumberGenerator(10,1,15);
+       List<Integer> marks = randomNumberGenerator(10,1,studentsCount);
 
         System.out.println("Marks before: " + marks + "\n");
 
@@ -56,7 +52,7 @@ public class Task12A {
                 return o2.compareTo(o1);
             }
         });
-        setOfIntegers.addAll( generateSetArray(-100,100,20));
+        setOfIntegers.addAll(generateSetArray(-100,100,20));
         System.out.println("Reverse sorted set: " + setOfIntegers);
     }
 
@@ -68,10 +64,10 @@ public class Task12A {
             return randomNumbers;
     }
 
-    public   static   List <Integer> randomNumberGenerator(int max, int min, int count) {
+    private static   List <Integer> randomNumberGenerator(int max, int min, int count) {
            List<Integer> randomNumbers = new ArrayList<>(count);
            for (int i = 0; i < count; i++) {
-               randomNumbers.add(new Integer((int) ((max - min) * Math.random() + min)));
+               randomNumbers.add(new Integer((int)((max - min) * Math.random()) + min));
            }
            return randomNumbers;
     }

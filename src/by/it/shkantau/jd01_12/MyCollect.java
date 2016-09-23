@@ -2,10 +2,8 @@ package by.it.shkantau.jd01_12;
 
 import java.util.Set;
 
-/**
- * Created by user on 16.09.2016.
- */
-public class MyCollect {
+
+ class MyCollect {
 //        A2. Определить два множества (A и B) на основе целых чисел. Создать отдельный класс MyCollect и
 //        статические методы в нем для определения пересечения множеств getCross и объединения множеств
 //        getUnion. Показать работу этих методов на примере двух множеств (A и B).
