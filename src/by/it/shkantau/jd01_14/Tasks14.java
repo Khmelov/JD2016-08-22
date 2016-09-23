@@ -1,6 +1,7 @@
 package by.it.shkantau.jd01_14;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.*;
 
 class Tasks14 {
@@ -9,7 +10,7 @@ class Tasks14 {
 
     static void taskA() throws IOException {
          int arraySize = 20;
-         String fileName = src + "jd01_14/TaskA.dat";
+         String fileName = src + "jd01_14/Tasks.dat";
          File file = new File(fileName);
 // File creation
         try(DataOutputStream dos = new DataOutputStream(new FileOutputStream(file))){
@@ -30,6 +31,7 @@ class Tasks14 {
         }catch(IOException e){
             System.out.println(e.toString());
         }
+        Charset charset;
     }
 
     static void taskB() throws FileNotFoundException {
@@ -98,4 +100,5 @@ class Tasks14 {
             }
         }
     }
+
 }
