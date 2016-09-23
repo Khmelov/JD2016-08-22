@@ -3,6 +3,7 @@ package by.it.voronovich.MathLab.Operation;
 import by.it.voronovich.MathLab.Var.Variable;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class KeyMapper {
 
@@ -26,7 +27,7 @@ public class KeyMapper {
         }
 
         public static void printVar() {
-            for (HashMap.Entry<String, Variable> pair: variable.entrySet()) {
+            for (Map.Entry<String, Variable> pair: variable.entrySet()) {
                 System.out.printf("%4s = %3.2s", pair.getKey(), pair.getValue());
                 System.out.println(" ");
             }
