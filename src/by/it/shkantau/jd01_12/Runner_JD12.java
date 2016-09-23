@@ -21,7 +21,6 @@ public class Runner_JD12 {
 
     public static void main(String[] args) {
 
-
         Task12A.a1(15, 5);
         Task12A.a2();
         Task12A.a3();
@@ -29,9 +28,7 @@ public class Runner_JD12 {
         Task12B.b1(text);
         Task12B.b2(100000);
 
-        Task12C.c1(text);
-
-
-
+        Task12C.c1(System.getProperty("user.dir")+"/src/by/it/shkantau/jd01_12/list.txt");
+//        Task12C.c2();
     }
 }

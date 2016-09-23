@@ -57,13 +57,24 @@ class Tasks14 {
     }
 
     static void taskC(){
-        String rootDir = System.getProperty("user.dir");
-        File file  = new File(rootDir);
-        System.out.println(file.getName());
-        recursiveDirectoryBuilder(file, 1);
+        String rootDir = System.getProperty("user.dir") + "/src/by/it/shkantau/";
+
+        File file  = null;
+        try {
+            file = new File(rootDir);
+        } catch (NullPointerException e) {
+            System.out.println("Path can't be empty.");
+        }
+        if (file.exists()) {
+//Print root directory
+            System.out.println(file.getName());
+            recursiveFilePrinter(file, 1);
+        }else{
+            System.out.println("Wrong source path.");
+        }
     }
 
-    private static void recursiveDirectoryBuilder(File file, int depth){
+    private static void recursiveFilePrinter(File file, int depth){
         String [] filesNameArray = file.list();
         File tmpFile;
         int tmpDepth = depth;
@@ -75,7 +86,14 @@ class Tasks14 {
                         System.out.print("\t");
                     }
                     System.out.println(fileName);
-                    recursiveDirectoryBuilder(tmpFile, ++depth);
+                    recursiveFilePrinter(tmpFile, depth+1);
+                }
+                else{
+                    for (int i = 0; i < (tmpDepth); i++) {
+                        System.out.print("\t");
+                    }
+                    System.out.println(fileName);
+
                 }
             }
         }
