@@ -13,8 +13,8 @@ public class HashMapConstructor {
             }
         };
         hashMap.put(1,"a");
-        hashMap.put(2,"a");
-        hashMap.put(3,"a");
+        hashMap.put(2,"b");
+        hashMap.put(3,"c");
         System.out.println(hashMap);
 
         hashMap.get(1);
