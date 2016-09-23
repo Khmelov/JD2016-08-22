@@ -1,5 +1,4 @@
-package by.it.dubatovka.jd01_09_mathlab;
-
+package by.it.dubatovka.jd01_09.mathlab_example;
 /**
  * Created by user on 09.09.2016.
  */

@@ -1,4 +1,4 @@
-package by.it.dubatovka.jd01_09_mathlab;
+package by.it.dubatovka.jd01_09.mathlab_example;
 
 public class Runner {
     public static void main(String[] args) {
