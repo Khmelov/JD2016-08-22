@@ -1,10 +1,13 @@
 package by.it.shkantau.jd01_15;
 
 
-import by.it.shkantau.jd01_15.commander.Commander;
-
-import java.io.*;
-import java.util.Arrays;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
  class Tasks {
@@ -12,7 +15,7 @@ import java.util.Scanner;
     private static final int MIN_VALUE = -15;
     private static final int MAX_VALUE = 15;
 
-    static void taskA()  {
+     static void taskA()  {
         StringBuilder sb = generatePrintMatrix(SQUARE_MATRIX_DIMENSION , MIN_VALUE, MAX_VALUE);
         String src = System.getProperty("user.dir") + "/src/by/it/shkantau/jd01_15/matrix.txt";
 
@@ -25,86 +28,69 @@ import java.util.Scanner;
         }
     }
 
-    static void  taskB() throws IOException {
+
+     static void taskC(String intDir) throws IOException {
+        File file = new File(intDir);
+        String readString, pathStr = intDir;
         StringBuilder sb = new StringBuilder();
-        File file = new File(System.getProperty("user.dir") +File.separator +  "src/by/it/shkantau/jd01_12/Task12A.java");
+        Scanner scanner = new Scanner(System.in);
         if (file.exists()){
-            String line;
-            try(BufferedReader br = new BufferedReader(new FileReader(file))) {
-                while ((line = br.readLine()) != null){
-                    sb.append(line);
-                    sb.append("\n");
+            System.out.println("Welcome to simple commander. To exit type \"\\q\"");
+            System.out.println(pathStr);
+            while(true){
+                readString = scanner.nextLine();
+                if(readString.equals("\\q")){
+                    break;
+                }else {
+                    readString = readString.trim();
+                    if(readString.startsWith("dir")){
+                        String [] files = file.list();
+                        File tmpFile;
+                        for (String fileName: files) {
+                            if (fileName != null){
+                                Path path = Paths.get(pathStr + "/" + fileName);
+                                if (Files.exists(path)){
+
+                                    System.out.println(fileName + "\t");
+                                }
+
+                            }
+
+                        }
+
+                    }
+
                 }
-            } catch (FileNotFoundException e) {
-                System.out.println(e.toString());
-                return;
             }
+
+
+        }else{
+            System.out.println("Wrong path");
         }
-        commentsRemover(sb.toString()); // don't work!!
 
-        String newPath = file.getPath().substring(0, file.getPath().lastIndexOf('.')) + ".txt";
-        File newFile = new File(newPath);
 
-        try(BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(new FileOutputStream(newFile))){
-            String str = sb.toString();
-            String [] strings = str.split("\n");
-            for (int i = 0; i < strings.length; i++) {
-                System.out.printf("%02d %s\n", i, Arrays.toString(strings[i].getBytes()));
-//                for (int j = 0; j < strings[i].length(); j++) {
-//                    System.out.print((int)strings[i].charAt(j));
-//                }
-//                System.out.println();
-
-                bufferedOutputStream.write(String.format("%02d",i).getBytes());
-                bufferedOutputStream.write(strings[i].getBytes());
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("No file Exception "+ newFile.getName());
-        }
-    }
-
-    static void taskC(String intDir) throws IOException {
-
-         Commander cmd = new Commander(intDir);
-         Scanner scanner = new Scanner(System.in);
-         String readString;
-
-         System.out.println("Welcome to simple commander. To exit type \"\\q\"");
-         cmd.printPath();
-         while(true) {
-             readString = scanner.nextLine();
-             if (readString.equals("\\q")) {
-                 break;
-             } else {
-                 cmd.setCommand(readString);
-             }
-         }
     }
 
     private static StringBuilder generatePrintMatrix(int dimension , int min, int max){
         int [][] matrix = new int[dimension][dimension];
         StringBuilder stringBuilder = new StringBuilder();
+        String line ;
         for (int i = 0; i < dimension; i++) {
-            String line = "";
+            line = "{";
             for (int j = 0; j < dimension; j++) {
-                matrix[i][j] = (int)((max - min) * Math.random()) + min;
-                line += String.format("%03d ", matrix[i][j]);
+                matrix[i][j] = (int)((max - min) * Math.random()) - min;
+                line += matrix[i][j];
+                if (j != dimension - 1){
+                    line += ",";
+                }
             }
-
+            line += "}";
             System.out.println(line);
-            stringBuilder.append(line);
-            stringBuilder.append("\n");
+            stringBuilder.append(line + "\n");
 
         }
         return stringBuilder;
     }
-
-    private static String commentsRemover(String string){
-        
-
-        return null;
-    }
-
 
 
 }
