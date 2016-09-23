@@ -35,13 +35,16 @@ public class Task_B2 {
         System.out.println("LinkedList при удалении быстрее.");
     }
 
+    /**
+     * calculates time the removal of every 2nd element of list
+     * @param list processed List<Integer>
+     * @return  process execution time
+     */
     private static Double removeFromList(List<Integer> list) {
         int count = 0;
-
         long iniTime = System.nanoTime();
 
         while (list.size() > 1) {
-
             count++;
             iterator = list.iterator();
             while (iterator.hasNext()) {
@@ -53,7 +56,6 @@ public class Task_B2 {
             }
         }
         Double delta = (double) (System.nanoTime() - iniTime) / 1000;
-
         return delta;
     }
 
