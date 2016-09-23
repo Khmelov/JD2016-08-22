@@ -6,10 +6,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Aliaksei on 17.09.2016.
- */
-public class Task12B {
+ class Task12B {
     private static Pattern pattern;
     private static Matcher matcher;
     private static Iterator<Integer> iterator;
@@ -44,11 +41,7 @@ public class Task12B {
     }
 
 
-
-
-
 // Private functions
-
     /**
      * Returns a time in milliseconds needed to remove every second
      * element in a while loop until the size of the collections is equal one;
@@ -71,10 +64,11 @@ public class Task12B {
         return (System.nanoTime() - taskStarted)/1000;
 
     }
+
     private static Integer[] generateArrayOfIntegers(int count){
         Integer [] array = new Integer[count];
         for (int i = 0; i < count; i++) {
-            array[i] = new Integer(1 + i);
+            array[i] = new Integer(i) + 1;
         }
         return array;
     }

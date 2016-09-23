@@ -1,0 +1,11 @@
+Always Close Streams
+Closing a stream when it's no longer needed is very important — so important that CopyBytes uses a finally block to
+guarantee that both streams will be closed even if an error occurs. This practice helps avoid serious resource leaks.
+One possible error is that CopyBytes was unable to open one or both files. When that happens, the stream variable
+corresponding to the file never changes from its initial null value. That's why CopyBytes makes sure that each stream
+variable contains an object reference before invoking close.
+When Not to Use Byte Streams
+CopyBytes seems like a normal program, but it actually represents a kind of low-level I/O that you should avoid. Since
+xanadu.txt contains character data, the best approach is to use character streams, as discussed in the next section.
+There are also streams for more complicated data types. Byte streams should only be used for the most primitive I/O.
+So why talk about byte streams? Because all other stream types are built on byte streams.
