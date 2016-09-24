@@ -41,7 +41,7 @@ class TaskA_1 {
                 Double x = Double.parseDouble(lineConsole);
                 if (0 <= x) {
                     y = y + Math.sqrt(x);
-                    System.out.println("Данное число: " + x + ", " + " Cумма корней: " + y);
+                    System.out.print("Данное число: " + x + ", " + " Cумма корней: " + y);
                 } else {
                     throw new ArithmeticException();
                 }
@@ -49,6 +49,8 @@ class TaskA_1 {
                 System.err.println("Некорректно введено число: " + lineConsole + " | " + e);
             } catch (ArithmeticException e) {
                 System.err.println("Корень из отрицательного числа: " + lineConsole + " | " + e);
+            }finally {
+                System.out.println("Введите число заново: ");
             }
         }
         Scanner scanner = new Scanner(System.in);
