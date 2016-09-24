@@ -5,6 +5,7 @@ package by.it.aborisenok.JD01_14;
  */
 public class Runner {
     public static void main(String[] args) {
-        TaskA.run();
+       // TaskA.run();
+       //  TaskB.run();
     }
 }

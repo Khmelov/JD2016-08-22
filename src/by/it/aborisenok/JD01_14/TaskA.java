@@ -11,7 +11,6 @@ public class TaskA {
     public static void run(){
         String src = System.getProperty("user.dir") + "\\src\\by\\it\\aborisenok\\";
         String ios = src + "JD01_14\\file.txt";
-//        String ios = "D:\\JavaProjects\\JD2016-08-22\\src\\by\\it\\aborisenok\\JD01_14\\file.txt";
         writeInFile(ios);
         readFromFile(ios);
     }
