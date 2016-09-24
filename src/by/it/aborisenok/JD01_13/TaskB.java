@@ -10,27 +10,33 @@ public class TaskB {
         try {
             TaskB.A();
         } catch (Exception e){
-            System.err.println("Поймали ошибку Exception в main");
+            System.err.println("Поймали ошибку Exception в main:" + e.getMessage());
         }
     }
     public static void A() throws Exception{
         System.err.println("A Start");
-        int value = 10/(int)(Math.random()*2);
         try {
             B();
+            int i = (int)(Math.random()*5);
+            int value = 10/i;
         } catch (ArithmeticException e){
-            System.err.println("Ошибка деления на ноль в методе A");
+            System.err.println("Поймана ошибка деления на ноль. Процедура А");
         }
         System.err.println("A End");
     }
 
     public static void B() throws Exception{
         System.err.println("B Start");
-        int value = 10/(int)(Math.random()*2);
         try {
             C();
+            int i = (int)(Math.random()*5);
+            if (i == 1){
+                throw new IllegalArgumentException("Method B Exeption");
+            } else {
+                int value = 10/i;
+            }
         } catch (ArithmeticException e){
-            System.err.println("Ошибка деления на ноль в методе B");
+            System.err.println("Поймана ошибка деления на ноль. Процедура В");
         }
         System.err.println("B End");
 
@@ -38,10 +44,15 @@ public class TaskB {
 
     public static void C() throws Exception{
         System.err.println("C Start");
-        int value = 10/(int)(Math.random()*2);
+        int i = (int)(Math.random()*2);
+        if (i == 1){
+            throw new IllegalArgumentException("Method A Exeption");
+        } else {
+            int value = 10 / i;
+        }
         try {
         } catch (ArithmeticException e){
-            System.err.println("Ошибка деления на ноль в методе С");
+            System.err.println("Поймана ошибка деления на ноль. Процедура С");
         }
         System.err.println("C End");
     }
