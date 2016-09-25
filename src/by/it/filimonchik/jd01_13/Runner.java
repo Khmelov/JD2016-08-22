@@ -11,21 +11,21 @@ import static java.awt.Event.END;
 public class Runner {
     public static void main(String[] args) {
         double Sum = 0;
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);            // Считываем данные с консоли
         while (true) {
-            String a = sc.nextLine();
-            if (a.equals("END")) {
+            String a = sc.nextLine();                   // Считываем данные построчно
+            if (a.equalsIgnoreCase("END")) {            // В случае ввода слова "END" - завершение выполнения программы
                 break;
             }
             try {
-                double b = Double.valueOf(a);
-                double result = +Math.sqrt(b);
+                double b = Double.valueOf(a);           //Перевод из String в double
+                double result = Math.sqrt(b);           //Сумма корней всех ранее введенных чисел
                 System.out.println(b + ": " + result);
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {         //Обработка ошибок
                 System.out.println("Введите число: ");
 
             } catch (Exception e) {
-                System.out.println("Данные введены некорректно: ");
+                    System.out.println("Данные введены некорректно: ");
             }
         }
     }
