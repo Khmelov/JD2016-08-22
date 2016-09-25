@@ -9,6 +9,8 @@ public class TaskA {
     public static void run(){
         int[][] matrix = matrixCreate();
         printMatrix(matrix);
+        printByteInFile(matrix);
+        printCharInFile(matrix);
     }
     private static int[][] matrixCreate(){
         int[][] matrix = new int[4][4];
@@ -50,10 +52,13 @@ public class TaskA {
 
         try(BufferedWriter writer = new BufferedWriter(new FileWriter(os))) {
             for (int i = 0; i < matrix.length; i++){
-                String matrixLine;
-                for (int j = 0; j < matrix[0].length; j++){
-                    
+                String matrixLine = "";
+                for (int j = 0; j < matrix[i].length; j++){
+                    matrixLine = matrixLine + matrix[i][j] + " ";
                 }
+                System.out.println(matrixLine);
+                writer.write(matrixLine);
+                writer.newLine();
             }
         } catch (IOException e) {
             System.out.println("Writing error!");
