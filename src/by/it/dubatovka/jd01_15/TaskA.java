@@ -34,7 +34,7 @@ public class TaskA {
                 System.out.println();
                 for (int j = 0; j < anArr.length; j++) {
                     System.out.printf("%4s", anArr[j]);
-                    //     printer.printf("%4s", arr[i][j].);
+                       printer.printf("%4s", arr[j]);
                 }
             }
         } catch (IOException e) {
