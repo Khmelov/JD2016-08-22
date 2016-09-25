@@ -14,7 +14,7 @@ public class Runner {
         Scanner sc = new Scanner(System.in);
         while (true) {
             String a = sc.nextLine();
-            if(a.equals("END")){
+            if (a.equals("END")) {
                 break;
             }
             try {
@@ -23,6 +23,9 @@ public class Runner {
                 System.out.println(b + ": " + result);
             } catch (NumberFormatException e) {
                 System.out.println("Введите число: ");
+
+            } catch (Exception e) {
+                System.out.println("Данные введены некорректно: ");
             }
         }
     }
