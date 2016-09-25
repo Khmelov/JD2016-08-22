@@ -30,11 +30,11 @@ public class TaskA {
         try (PrintWriter printer=
                      new PrintWriter(
                              new FileWriter(filename, true))){
-            for (String[] anArr : arr) {
+            for (String[] s : arr) {
                 System.out.println();
-                for (int j = 0; j < anArr.length; j++) {
-                    System.out.printf("%4s", anArr[j]);
-                       printer.printf("%4s", arr[j]);
+                for (String s1 : s) {
+                    System.out.printf("%4s", s1);
+                    printer.printf("%4s", s1);
                 }
             }
         } catch (IOException e) {
