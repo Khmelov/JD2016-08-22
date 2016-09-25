@@ -1,12 +1,16 @@
 package by.it.snegurskiy.jd01_15;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FilenameFilter;
 
+=======
+>>>>>>> origin/master
 /**
  * Created by snegurskiy.nn on 25.09.2016.
  */
 public class C15 {
+<<<<<<< HEAD
     public static  void C1 () {
         File f=new File(System.getProperty("user.dir")+"/src/by/it/");
         File[] files = f.listFiles();
@@ -16,4 +20,6 @@ public class C15 {
 
 
     }
+=======
+>>>>>>> origin/master
 }

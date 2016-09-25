@@ -7,8 +7,8 @@ import java.io.FileNotFoundException;
  */
 public class Runner15 {
     public static void main(String[] args) throws FileNotFoundException {
-//        A15.A1();
-//        B15.B1();
+        A15.A1();
+        B15.B1();
         C15.C1();
 
     }
