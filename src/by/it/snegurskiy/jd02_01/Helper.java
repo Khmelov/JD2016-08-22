@@ -9,11 +9,12 @@ import java.util.Map;
 public class Helper {
     static HashMap<String,Double> allGoode=new HashMap<String,Double>(){
         {
-        this.put("Масло", 1.9d);
+        this.put("Масло", 2.0d);
         this.put("Хлеб", 0.8d);
-        this.put("Молоко", 1.2d);
-        this.put("Кефир", 1.0d);
-       }
+        this.put("Масло", 2.0d);
+        this.put("Масло", 2.0d);
+        this.put("Масло", 2.0d);
+        }
 
     };
 }
