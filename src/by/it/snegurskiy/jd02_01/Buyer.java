@@ -1,7 +1,10 @@
 package by.it.snegurskiy.jd02_01;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 
+=======
+>>>>>>> origin/master
 /**
  * Created by snegurskiy.nn on 26.09.2016.
  */
@@ -35,7 +38,11 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
         @Override
         public void goToOut () {
+<<<<<<< HEAD
             System.out.println(this + " вышел из магазина");
+=======
+            System.out.println(this + " вышел в магазин");
+>>>>>>> origin/master
 
         }
 
@@ -57,6 +64,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
         @Override
         public void takeBacket () {
+<<<<<<< HEAD
             int pause=TimeHelper.random(100,200);
             try {
                 sleep(pause);
@@ -65,11 +73,14 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
             }
 
 
+=======
+>>>>>>> origin/master
             System.out.println(this + " взял корзинку");
         }
 
         @Override
         public void putGoodsToBacket () {
+<<<<<<< HEAD
 
 
             int pause=TimeHelper.random(100,200);
@@ -79,5 +90,8 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
                 e.printStackTrace();
             }System.out.println(this + " положил товар в корзинку");
             HashMap<String,Integer> Backet=new HashMap<>();
+=======
+            System.out.println(this + " положил товар в корзинку");
+>>>>>>> origin/master
         }
     }
