@@ -23,6 +23,8 @@ import java.util.Scanner;
         }catch (IOException e){
             System.out.println(e.toString());
         }
+
+        Thread thread = new Thread();
     }
 
     static void  taskB() throws IOException {
