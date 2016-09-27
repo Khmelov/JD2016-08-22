@@ -13,7 +13,7 @@ public class Helper {
         this.put("Хлеб", 0.8d);
         this.put("Молоко", 1.2d);
         this.put("Кефир", 1.0d);
-        }
+       }
 
     };
 }
