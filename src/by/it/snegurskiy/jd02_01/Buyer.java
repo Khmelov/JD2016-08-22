@@ -1,5 +1,7 @@
 package by.it.snegurskiy.jd02_01;
 
+import java.util.HashMap;
+
 /**
  * Created by snegurskiy.nn on 26.09.2016.
  */
@@ -33,7 +35,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
         @Override
         public void goToOut () {
-            System.out.println(this + " вышел в магазин");
+            System.out.println(this + " вышел из магазина");
 
         }
 
@@ -55,11 +57,27 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
         @Override
         public void takeBacket () {
+            int pause=TimeHelper.random(100,200);
+            try {
+                sleep(pause);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+
             System.out.println(this + " взял корзинку");
         }
 
         @Override
         public void putGoodsToBacket () {
-            System.out.println(this + " положил товар в корзинку");
+
+
+            int pause=TimeHelper.random(100,200);
+            try {
+                sleep(pause);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }System.out.println(this + " положил товар в корзинку");
+            HashMap<String,Integer> Backet=new HashMap<>();
         }
     }
