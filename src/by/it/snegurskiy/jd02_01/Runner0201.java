@@ -19,10 +19,5 @@ try {
     e.printStackTrace();
 }
 }
-<<<<<<< HEAD
-
-=======
-        new Buyer(1);
->>>>>>> origin/master
     }
 }
