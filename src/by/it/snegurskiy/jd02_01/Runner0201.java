@@ -19,6 +19,6 @@ try {
     e.printStackTrace();
 }
 }
-        new Buyer(1);
+
     }
 }
