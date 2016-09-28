@@ -1,8 +1,12 @@
 package by.it.akhmelev.jd02_02;
 
-public class Th2_03_with_synchro_method {
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class th2_04_with_lock_ok {
 
     //переменная баланса
+    private final static Lock lockBalance =new ReentrantLock();
     static Integer balance=new Integer(0);
 
     //это касса. Просто добавляет в баланс единицу
@@ -10,15 +14,17 @@ public class Th2_03_with_synchro_method {
         //создадим видимость расчета
         int calc(int in) {
             int j=0; for (int i = 0; i < 666; i++) {j=j+(int)((Math.sqrt(i)));}
-            balance += in;
             return in;
         }
         @Override
-        public synchronized void run() {
-            //Удивительно, но и так тоже не будет работать
-            balance += (calc(1));
-            //Почему? Потому, что синхронизатор привязан ко потоку, т.е. к this.
-            //Поэтому он другим не мешает а значит ничего не блокирует
+        public  void run() {
+            try {
+                lockBalance.lock();
+                balance += (calc(1));
+            }
+            finally {
+                lockBalance.unlock();
+            };
         }
     }
     //создадим 6666 касс. Каждая добавит по 1. Сколько всего будет?
