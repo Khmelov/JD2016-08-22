@@ -24,10 +24,10 @@ class Cashier implements Runnable {
                         break;
                     buyer = Queues.buyers.pollFirst();
                 }
-                System.out.println(buyer + " начал обслуживание. "+this);
-                Thread.sleep(1000);
+                System.out.println(buyer + "обслуживается в "+this);
+                Thread.sleep(2500);
                 //service
-                System.out.println(buyer + " завершил обслуживание. "+this);
+                System.out.println(buyer + "обслужен в "+this);
                 synchronized (buyer) {
                     buyer.notify();
                 }
