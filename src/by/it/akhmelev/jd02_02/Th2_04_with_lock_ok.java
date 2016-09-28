@@ -1,9 +1,13 @@
 package by.it.akhmelev.jd02_02;
 
-public class th2_02_volatile_ok {
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Th2_04_with_lock_ok {
 
     //переменная баланса
-    volatile static int balance=0;
+    private final static Lock lockBalance =new ReentrantLock();
+    static Integer balance=new Integer(0);
 
     //это касса. Просто добавляет в баланс единицу
     static class Cashier extends Thread {
@@ -14,10 +18,13 @@ public class th2_02_volatile_ok {
         }
         @Override
         public  void run() {
-            //так ПОЧТИ ВСЕГДА будет работать.
-            // volatile - это ГАРАНТИЯ доступности, а не гарантия целостности.
-            int delta = (calc(1));
-            balance+=delta; //но потенциально проблема есть. Тут ТРИ операции, а не одна.
+            try {
+                lockBalance.lock();
+                balance += (calc(1));
+            }
+            finally {
+                lockBalance.unlock();
+            };
         }
     }
     //создадим 6666 касс. Каждая добавит по 1. Сколько всего будет?
