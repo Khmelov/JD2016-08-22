@@ -2,8 +2,10 @@ package by.it.akhmelev.jd01_11.Collections;
 
 import java.util.ArrayList;
 public class UncheckCheckRun {
+    @SuppressWarnings("unchecked")
     public static void main(String[ ] args) {
-        ArrayList raw = new ArrayList() { // "сырая" коллекция – raw type
+        ArrayList raw;
+        raw = new ArrayList() { // "сырая" коллекция – raw type
             { // логический блок анонимного класса
                 add(new Order(231, 12.f));
                 add(new Item(23154, 120.f, "Xerox"));
