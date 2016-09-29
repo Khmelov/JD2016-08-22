@@ -3,9 +3,12 @@ package by.it.shkantau.jd02_02.market;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class RunnerMarket {
 
+    private static final Lock   lock = new ReentrantLock();
     private static final int CASH_MAX = 5;
     private final static List<Buyer> buyersList = new LinkedList<>();
     private final static List<Cashier> cashiers = new ArrayList<>();
@@ -16,7 +19,7 @@ public class RunnerMarket {
     public static void main(String[] args) throws InterruptedException {
 
 // generate Buyers
-        generateBuyers((int) (5*Math.round( Math.random() + 5)));
+        generateBuyers((int) (25*Math.round(Math.random()) + 5));
 
 // generate Cashiers and start all thread
         Cashier cashier;
@@ -60,11 +63,13 @@ public class RunnerMarket {
         return priceList;
     }
 
-    synchronized static Double getProceeds() {
-        return proceeds;
-    }
 
-    synchronized static void addProceeds(Double proceeds) {
-        RunnerMarket.proceeds += proceeds;
+    static void addProceeds(Double proceeds) {
+        try{
+            lock.lock();
+            RunnerMarket.proceeds += proceeds;
+        }finally {
+            lock.unlock();
+        }
     }
 }
