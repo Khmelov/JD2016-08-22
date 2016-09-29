@@ -1,4 +1,4 @@
-package by.it.shkantau.jd02_01;
+package by.it.shkantau.jd02_01.market;
 
 import java.util.HashMap;
 import java.util.Map;
