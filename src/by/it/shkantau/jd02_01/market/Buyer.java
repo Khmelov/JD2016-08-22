@@ -1,4 +1,4 @@
-package by.it.shkantau.jd02_01;
+package by.it.shkantau.jd02_01.market;
 
 
 import java.util.Currency;
@@ -29,11 +29,8 @@ import java.util.Locale;
     @Override
     public void run(){
         enterToMarket();
-//        takeBucket();
-//        chooseGoods();
-        waitService();
-
-
+        takeBucket();
+        chooseGoods();
         goToOut();
     }
 
@@ -57,25 +54,6 @@ import java.util.Locale;
         System.out.printf("%s leave the shop, spendMoney=%.2f %s, spendTime=%.3f seconds\n",
                 name, bucket.getTotalSum(), Currency.getInstance(new Locale("ru", "ru")), (double)timeCounter/1000);
     }
-
-     @Override
-     public void waitService() {
-         System.out.println(this + " стал в очередь.");
-         synchronized (Queues.buyers) {
-             Queues.buyers.addLast(this);
-         }
-         synchronized (this) {
-             try {
-                 System.out.println(this + "ожидает очереди.");
-                 this.wait();
-             } catch (InterruptedException e) {
-                 e.printStackTrace();
-             }finally {
-                 System.out.println(this + "вышел из очереди");
-             }
-         }
-
-     }
 
      @Override
     public String toString() {
