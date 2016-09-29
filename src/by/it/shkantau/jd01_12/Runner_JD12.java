@@ -10,7 +10,7 @@ public class Runner_JD12 {
              " List , and Map interfaces. In each case, one implementation — HashSet, ArrayList, and HashMap — is clearly the one to  \n" +
              "use for most applications, all other things being equal. Note that the SortedSet and the SortedMap interfaces do not have rows\n" +
                     " in the table. Each of those interfaces has one implementation (TreeSet and TreeMap) and is listed in the Set and the Map \n" +
-                    "rows. There are two general-purpose Queue implementations — LinkedList, which is also a List implementation, and PriorityQueue,\n" +
+                    "rows. There are two general-purpose Queues implementations — LinkedList, which is also a List implementation, and PriorityQueue,\n" +
                     " which is omitted from the table. These two implementations provide very different semantics: LinkedList provides FIFO semantics, \n" +
                     "while PriorityQueue orders its elements according to their values. Each of the general-purpose implementations \n" +
                     "provides all optional operations contained in its interface. All permit null elements, keys, and values. None are \n" +
