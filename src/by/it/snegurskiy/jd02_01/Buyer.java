@@ -1,5 +1,7 @@
 package by.it.snegurskiy.jd02_01;
 
+import sun.misc.Queue;
+
 import java.util.HashMap;
 
 /**
@@ -13,6 +15,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
         super("Покупатель №" + number.toString());
         this.number = number;
         start();
+
     }
 
         @Override
@@ -38,17 +41,30 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
             System.out.println(this + " вышел из магазина");
 
-            System.out.println(this + " вышел в магазин");
-
 
         }
 
-        @Override
+    @Override
+    public void waitService(){
+        synchronized (QueueBuyer.buyers) {
+            QueueBuyer.buyers.addLast(this);
+        }
+        synchronized (this) {
+            try {
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
         public void run () {
             enterToMarket(); //вошел в магазин (мгновенно)
-            takeBacket(); //взял корзину
+            takeBasket(); //взял корзину
             chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
-            putGoodsToBacket(); //положил выбранный товар в корзину
+            putGoodsToBasket(); //положил выбранный товар в корзину
+            waitService();// стал в очередь и ожидает обслуживания
             goToOut(); //отправился на выход(мгновенно)
 
 
@@ -60,7 +76,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
         }
 
         @Override
-        public void takeBacket () {
+        public void takeBasket () {
             int pause=TimeHelper.random(100,200);
             try {
                 sleep(pause);
@@ -72,7 +88,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
         }
 
         @Override
-        public void putGoodsToBacket () {
+        public void putGoodsToBasket () {
 
 
 
@@ -82,7 +98,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }System.out.println(this + " положил товар в корзинку");
-            //HashMap<String,Integer> Backet=new HashMap<>();
+            //HashMap<String,Integer> Basket=new HashMap<>();
             System.out.println(this + " положил товар в корзинку");
         }
     }
