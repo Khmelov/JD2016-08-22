@@ -4,7 +4,7 @@ package by.it.shkantau.jd02_02.market;
  class Helper {
 
     static int random(int from , int to){
-        return   from + Math.round((int)((double)(to - from)*Math.random()));
+        return   from + Math.round((int)((double)(to - from)*Math.random()+from));
     }
 
     static long random(double from, double to){
