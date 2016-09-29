@@ -50,7 +50,7 @@ public class Cashier implements Runnable {
             }
         }
 
-        System.out.println(this + " is closed." + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+        System.out.println(this + " is closed.");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
         System.out.println("CashProceed = "+ chashProceed);
     }
 
