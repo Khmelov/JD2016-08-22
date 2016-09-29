@@ -1,4 +1,4 @@
-package by.it.shkantau.jd02_01;
+package by.it.shkantau.jd02_02.market;
 
 
  interface IBuyer {
