@@ -8,21 +8,22 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
    private Bucket bucket;
    private String name;
-//   private PriceList priceList;
+
    private double timeCoefficient;
    private long timeCounter;
+    private boolean pensioner;
 
     Buyer(Integer number){
        name = "" + number;
-//       priceList = new PriceList();
        timeCoefficient = 1.0;
        timeCounter = 0;
+       pensioner = false;
    }
 
-    Buyer(Integer number, String nameAddition, double timeCoefficient){
-       name = "Buyer №" + number+nameAddition;
-//       priceList = new PriceList();
+    Buyer(Integer number, boolean pensioner , double timeCoefficient){
+       name = "" + number;
        this.timeCoefficient = timeCoefficient;
+       this.pensioner = pensioner;
        timeCounter = 0;
    }
 
@@ -32,20 +33,18 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
        takeBucket();
        chooseGoods();
        waitService();
-
-
        goToOut();
    }
 
    @Override
    public void enterToMarket() {
-       System.out.println(this + " enter the shop. " + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+       System.out.println(this + " enter the shop. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
    }
 
    @Override
    public void chooseGoods() {
        timeCounter += sleepRandomInterval(500, 2000);
-       System.out.println(this + " choose the goods. " + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+       System.out.println(this + " choose the goods. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
        int countChoosesGoods = Helper.random(1,4);
            for (int i = 0; i < countChoosesGoods; i++) {
                putGoodToBucket(RunnerMarket.getPriceList().getRandomGoods(), (double) Helper.random(1,5));
@@ -54,8 +53,7 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
    @Override
    public void goToOut() {
-       System.out.printf("%s leave the shop, spendMoney=%.2f %s,   %.3f\n",
-               this, bucket.getTotalSum(), Currency.getInstance(new Locale("ru", "ru")), (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+       System.out.println(this +" leave the shop");
 // kill buyer from List<Buyer>buyersList
        synchronized (RunnerMarket.getBuyersList()) {
            RunnerMarket.getBuyersList().remove(this);
@@ -64,18 +62,18 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
     @Override
     public void waitService() {
-        System.out.println(this + " became in a queue. " + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+        System.out.println(this + " became in a queue. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
         synchronized (Queues.queueOfBuyers) {
             Queues.queueOfBuyers.addLast(this);
         }
         synchronized (this) {
             try {
-                System.out.println(this + " waiting in a queue. "+ (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+                System.out.println(this + " waiting in a queue.");// "+ (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }finally {
-                System.out.println(this + " leave a queue." + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+                System.out.println(this + " leave a queue.");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
             }
         }
 
@@ -83,7 +81,11 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
     @Override
    public String toString() {
-       return  "Buyer" + name;
+       if(!this.pensioner){
+           return  "Buyer" + name;
+       }else {
+           return "Pensioner" + name;
+       }
    }
 
    @Override
@@ -91,7 +93,7 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
        timeCounter += sleepRandomInterval(100, 200);
        bucket = new Bucket();
-       System.out.println(this + " take a bucket. " + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+       System.out.println(this + " take a bucket. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
    }
 
    @Override
@@ -99,7 +101,7 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
        timeCounter += sleepRandomInterval(100,200);
        bucket.putGoods(goods, count);
-       System.out.println(this + " choose good " + goods.getName() + " in quantity " + count.toString() + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+//       System.out.println(this + " choose good " + goods.getName() + " in quantity " + count.toString() + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
 
    }
 
@@ -111,7 +113,19 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
        this.name = name;
    }
 
-   private long sleepRandomInterval(long milsFrom, long milsTo){
+    Bucket getBucket() {
+        return bucket;
+    }
+
+    public void setBucket(Bucket bucket) {
+        this.bucket = bucket;
+    }
+
+    public boolean isPensioner() {
+        return pensioner;
+    }
+
+    private long sleepRandomInterval(long milsFrom, long milsTo){
        long res = Helper.randomMilsTime((long)(timeCoefficient * (double) milsFrom), (long)(timeCoefficient * (double)milsTo));
        try {
            Thread.sleep(res);
