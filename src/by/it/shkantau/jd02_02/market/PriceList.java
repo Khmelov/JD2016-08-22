@@ -13,6 +13,8 @@ class PriceList {
        add(new Goods("Apple", 20.8));
        add(new Goods("Cheese", 71.5));
        add(new Goods("Water 1L", 15.0));
+       add(new Goods("Tea", 54.3));
+       add(new Goods("Roll", 14.3));
    }};
 
 

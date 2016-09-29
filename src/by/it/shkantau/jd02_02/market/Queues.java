@@ -4,8 +4,8 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Queue;
 
-public class Queues {
+class Queues {
 
-    public static Deque <Buyer> queueOfBuyers = new ArrayDeque<>();
+    static final Deque <Buyer> queueOfBuyers = new ArrayDeque<>();
 
 }
