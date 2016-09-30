@@ -55,7 +55,7 @@ class Buyer extends Thread implements IBuyer {
             //подготовим публичное поле iWait для определения, можно ли идти дальше
             iWait=true;
             while (iWait) try { //ожидаем notify и iWait==false от кассира.
-                wait();
+                this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
