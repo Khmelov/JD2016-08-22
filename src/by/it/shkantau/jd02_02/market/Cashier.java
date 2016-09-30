@@ -31,7 +31,7 @@ public class Cashier implements Runnable {
 //                  System.out.println(buyer + " services in " + this + " " + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
                     chashProceed += buyer.getBucket().getTotalSum();
                     RunnerMarket.addProceeds(buyer.getBucket().getTotalSum());
-                    printCheck(buyer.getBucket());
+                    printCheck(buyer.toString(), buyer.getBucket());
                     serviceStatus = true;
 //  wakeUp Buyer
                     synchronized (buyer) {
@@ -50,19 +50,20 @@ public class Cashier implements Runnable {
             }
         }
 
-        System.out.println(this + " is closed.");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
-        System.out.println("CashProceed = "+ chashProceed);
+        System.out.printf("%s is closed. CashProceed = %.2f\n",this, chashProceed);
     }
 
-    private void printCheck(Bucket buyerBucket){
-        System.out.println("Services check, " + this);
+    private void printCheck(String name ,Bucket buyerBucket){
+
+        System.out.printf("\n%s services check, %s\n", name, this);
         int indexOfGoods = 1;
         for (Map.Entry<Goods, Double> entry : buyerBucket.getGoodsInBucket().entrySet()) {
-            System.out.println("" + (indexOfGoods++)+". " + entry.getKey().getName() + "\t" + (entry.getValue()+"*" + entry.getKey().getCost()));
+            System.out.printf("%-2d%-15s%-2.2f*%-6.2f\n", indexOfGoods++, entry.getKey().getName(), entry.getValue(), entry.getKey().getCost());
+//            System.out.println("" + (indexOfGoods++)+". " + entry.getKey().getName() + "\t" + (entry.getValue()+"*" + entry.getKey().getCost()));
         }
-        System.out.printf("Total sum = %.2f %s\n",buyerBucket.getTotalSum(), Currency.getInstance(new Locale("ru", "ru")));
+        System.out.println("---------------------------");
+        System.out.printf("Total            %.2f %s\n\n",buyerBucket.getTotalSum(), Currency.getInstance(new Locale("ru", "ru")));
     }
-
 
     @Override
     public String toString() {
