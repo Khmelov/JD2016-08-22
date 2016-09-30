@@ -18,8 +18,10 @@ public class RunnerMarket {
 
     public static void main(String[] args) throws InterruptedException {
 
+        int threadCount = Thread.activeCount();
+
 // generate Buyers
-        generateBuyers((int) (25*Math.round(Math.random()) + 5));
+        generateBuyers((int) (Math.round(25.0*Math.random()) + 5));
 
 // generate Cashiers and start all thread
         Cashier cashier;
@@ -33,7 +35,11 @@ public class RunnerMarket {
             new Thread(buyer).start();
         }
 
-//        System.out.println("MAIN IS FINISHED!!!!");
+
+        while (threadCount < Thread.activeCount());
+
+        System.out.printf("Total proceed = %.2f\n", proceeds);
+        System.out.println("Market is closed");
 
     }
 

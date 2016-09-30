@@ -38,13 +38,13 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
    @Override
    public void enterToMarket() {
-       System.out.println(this + " enter the shop. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+       System.out.println(this + " enter the shop. ");
    }
 
    @Override
    public void chooseGoods() {
        timeCounter += sleepRandomInterval(500, 2000);
-       System.out.println(this + " choose the goods. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+//       System.out.println(this + " choose the goods. ");
        int countChoosesGoods = Helper.random(1,4);
            for (int i = 0; i < countChoosesGoods; i++) {
                putGoodToBucket(RunnerMarket.getPriceList().getRandomGoods(), (double) Helper.random(1,5));
@@ -62,18 +62,16 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
     @Override
     public void waitService() {
-        System.out.println(this + " became in a queue. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+//        System.out.println(this + " became in a queue. ");
         synchronized (Queues.queueOfBuyers) {
             Queues.queueOfBuyers.addLast(this);
         }
         synchronized (this) {
             try {
-                System.out.println(this + " waiting in a queue.");// "+ (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+//                System.out.println(this + " waiting in a queue.");
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }finally {
-                System.out.println(this + " leave a queue.");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
             }
         }
 
@@ -90,19 +88,16 @@ class Buyer implements Runnable, IBuyer, IUseBucket {
 
    @Override
    public void takeBucket() {
-
        timeCounter += sleepRandomInterval(100, 200);
        bucket = new Bucket();
-       System.out.println(this + " take a bucket. ");// + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
+//       System.out.println(this + " take a bucket. ");
    }
 
    @Override
    public void putGoodToBucket(Goods goods , Double count) {
-
        timeCounter += sleepRandomInterval(100,200);
        bucket.putGoods(goods, count);
 //       System.out.println(this + " choose good " + goods.getName() + " in quantity " + count.toString() + (double)(System.currentTimeMillis() - RunnerMarket.getStartMils())/1000);
-
    }
 
    public String getName() {
