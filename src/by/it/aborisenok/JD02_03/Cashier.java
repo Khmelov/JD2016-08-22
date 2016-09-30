@@ -20,27 +20,30 @@ public class Cashier implements Runnable{
     }
 
     public void buyerServise(){
+        try {
+            while (true) {
+                synchronized (Queues.buyerDeque) {
+                    if (Queues.buyerDeque.size() == 0) {
+                        break;
+                    }
+                    buyer = Queues.buyerDeque.pollFirst();
+                }
 
-        System.out.println(this+" открыл кассу");
 
-        while (!Dispatcher.finish()) {
+                System.out.println("*" + buyer + " go to " + this);
+                System.out.println(buyer + " Servising by " + this);
 
-            Buyer buyer = Queues.poll();
-            if (buyer!=null)
+                int pause = Helper.random(2000, 5000);
+                Thread.sleep(pause);
+                buyerCheck(buyer);
                 synchronized (buyer) {
-                    System.out.println(this+" обслуживает клиента: "+buyer);
-                    Helper.sleep(2000, 5000);
-                    System.out.println(this + " обслужил клиента: " + buyer);
-                    buyerCheck(buyer);
-                    Dispatcher.acountCompleteBuyers.incrementAndGet();
-                    System.out.println("*"+Dispatcher.acountCompleteBuyers);
-                    buyer.iWait=false;
                     buyer.notify();
                 }
-            else
-                Helper.sleep(1000);
-        }
-        System.out.println(this+" закрыл кассу");
+            }
+
+            System.out.println(this + " is close");
+        } catch (InterruptedException e){}
+        Runner.countCashiers--;
     }
 
     public void buyerCheck(Buyer buyer){
