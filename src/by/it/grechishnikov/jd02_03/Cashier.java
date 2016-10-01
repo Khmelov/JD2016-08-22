@@ -40,8 +40,7 @@ class Cashier implements Runnable {
             setProceeds(check.getSum()); //Считаем прибыль
             counter.incrementAndGet();
         }
-        Printer.print("Кассир " + name + " заработал за день ");
-        Printer.printDouble(proceeds);
+        Printer.println("Кассир " + name + " заработала за день $" + Printer.doubleToString(proceeds));
     }
 
     private void setProceeds(double proceeds) {
