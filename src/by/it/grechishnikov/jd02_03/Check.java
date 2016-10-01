@@ -8,7 +8,6 @@ class Check {
     private double sum;
     private CopyOnWriteArraySet<Good> goods;
     private Buyer buyer;
-    private double totalSum;
 
     Check(String cashirName, Buyer buyer, CopyOnWriteArraySet<Good> goods) {
         this.cashirName = cashirName;
@@ -21,19 +20,11 @@ class Check {
         return cashirName;
     }
 
-    void setTotalSum(double totalSum) {
-        this.totalSum = totalSum;
-    }
-
-    double getTotalSum() {
-        return totalSum;
-    }
-
     public Buyer getBuyer() {
         return buyer;
     }
 
-    CopyOnWriteArraySet<Good> getGoods() {
+    public CopyOnWriteArraySet<Good> getGoods() {
         return goods;
     }
 

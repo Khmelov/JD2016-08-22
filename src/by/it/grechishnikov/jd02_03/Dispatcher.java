@@ -1,21 +1,18 @@
 package by.it.grechishnikov.jd02_03;
 
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
-class Dispatcher extends Thread {
+ class Dispatcher extends Thread {
     //Очередь - зал на 10 человек
     static ArrayBlockingQueue<Buyer> hall = new ArrayBlockingQueue<>(10);
     //пул кассиров
     private static ExecutorService threadPool = Executors.newFixedThreadPool(5);
-    private static volatile int finalCountClient;
+     static volatile int finalCountClient;
     static volatile boolean endOfWork = false;
-    static ArrayBlockingQueue<Buyer> store = new ArrayBlockingQueue<>(40);
-    private static String tab = "                                                                   ";
 
     public void run() {
         threadPool.submit(new Cashier("Мария"));
-        threadPool.submit(new Cashier("Наталья"));
+        threadPool.submit(new Cashier("Наталия"));
         threadPool.submit(new Cashier("Анна"));
         threadPool.submit(new Cashier("Александра"));
         threadPool.submit(new Cashier("Зоя"));
@@ -29,13 +26,14 @@ class Dispatcher extends Thread {
             }
         }
 
-        Printer.println(tab + "***** Закрытие магазина! *****" +
-                "\n" + tab + "Обслужено поситителей: " + Cashier.counter +
-                "\n" + tab + "Выручка за день составила: $" + Printer.doubleToString(Cashier.getTotalProceeds()));
         endOfWork = true;
+        Printer.println("***** Закрытие магазина! *****");
+        Printer.println("Обслужено поситителей: " + Cashier.counter);
+        Printer.print("Выручка за день составила: ");
+        Printer.printDouble(Cashier.getTotalProceeds());
     }
 
-    static void setFinalCountClient(int finalCountClient) {
-        Dispatcher.finalCountClient = finalCountClient;
-    }
-}
+     public static void setFinalCountClient(int finalCountClient) {
+         Dispatcher.finalCountClient = finalCountClient;
+     }
+ }

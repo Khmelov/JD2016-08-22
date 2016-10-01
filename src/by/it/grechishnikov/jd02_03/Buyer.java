@@ -1,14 +1,12 @@
 package by.it.grechishnikov.jd02_03;
 
 import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Buyer extends Thread implements IBuyer, IUseBucket {
     CopyOnWriteArraySet<Good> bucket;
     private boolean pensioner;
-    private static CountDownLatch countDownLatch = new CountDownLatch(5);
 
     public Buyer(int id) {
         super(String.valueOf(id));
@@ -30,10 +28,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void enterToMarket() {
         try {
-            countDownLatch.countDown();
-            countDownLatch.await();
-            Dispatcher.store.put(this); //заходим в магазин
-            Dispatcher.hall.put(this); //заходим в торговый зал
+            Dispatcher.hall.put(this);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -68,23 +63,16 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void waitService() {
         Dispatcher.hall.remove(this);
-        Cashier.queue.addLast(this);
+        if(!pensioner) {
+            Cashier.queue.addLast(this);
+        } else {
+            Cashier.pensionerQueue.addLast(this);
+        }
     }
 
     @Override
     public void goToOut() {
-        while(Cashier.queue.contains(this)) {
-            try {
-                sleep(500); //ждем, пока нас расчитают на кассе и выходим
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        Dispatcher.store.remove(this);
-    }
 
-    boolean isPensioner() {
-        return pensioner;
     }
 
     void setPensioner(boolean pensioner) {
