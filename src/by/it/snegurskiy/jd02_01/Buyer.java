@@ -1,13 +1,9 @@
 package by.it.snegurskiy.jd02_01;
 
-import sun.misc.Queue;
-
-import java.util.HashMap;
-
 /**
- * Created by snegurskiy.nn on 26.09.2016.
+ * Created by snegurskiy.nn on 01.10.2016.
  */
-public class Buyer extends Thread implements IBuyer,IUseBasket {
+public class Buyer extends Thread implements IBuyer, Runnable, IUseBasket {
 
     int number;
 
@@ -18,87 +14,64 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
     }
 
-        @Override
-        public void enterToMarket () {
-
-            System.out.println(this + " зашел в магазин");
-
-        }
-
-        @Override
-        public void chooseGoods () {
-            int pause=TimeHelper.random(500,2000);
-            try {
-                sleep(pause);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            System.out.println(this + " выбрал товар");
-        }
-
-        @Override
-        public void goToOut () {
-
-            System.out.println(this + " вышел из магазина");
-
-
-        }
-
-    @Override
-    public void waitService(){
-        synchronized (QueueBuyer.buyers) {
-            QueueBuyer.buyers.addLast(this);
-        }
-        synchronized (this) {
-            try {
-                this.wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+    public void run() {
+        enterToMarket(); //вошел в магазин (мгновенно)
+        takeBacket(); //взял корзину
+        chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
+        putGoodsToBacket(); //положил выбранный товар в корзину
+        goToOut(); //отправился на выход(мгновенно)
     }
 
     @Override
-        public void run () {
-            enterToMarket(); //вошел в магазин (мгновенно)
-            takeBasket(); //взял корзину
-            chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
-            putGoodsToBasket(); //положил выбранный товар в корзину
-            waitService();// стал в очередь и ожидает обслуживания
-            goToOut(); //отправился на выход(мгновенно)
+    public void enterToMarket() {
+        System.out.println(this + " зашел в магазин");
 
-
-        }
-
-        @Override
-        public String toString () {
-            return this.getName();
-        }
-
-        @Override
-        public void takeBasket () {
-            int pause=TimeHelper.random(100,200);
-            try {
-                sleep(pause);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println(this + " взял корзинку");
-        }
-
-        @Override
-        public void putGoodsToBasket () {
-
-
-
-            int pause=TimeHelper.random(100,200);
-            try {
-                sleep(pause);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }System.out.println(this + " положил товар в корзинку");
-            //HashMap<String,Integer> Basket=new HashMap<>();
-            System.out.println(this + " положил товар в корзинку");
-        }
     }
+
+    @Override
+    public void chooseGoods() {
+        int pause=TimeHelper.random(500,2000);
+        try {
+            sleep(pause);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(this + " выбрал товар");
+
+    }
+
+    @Override
+    public void goToOut() {
+        System.out.println(this + " вышел из магазина");
+
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
+    }
+
+    @Override
+    public void takeBacket() {
+        int pause=TimeHelper.random(100,200);
+        try {
+            sleep(pause);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(this + " взял корзину");
+
+    }
+
+    @Override
+    public void putGoodsToBacket() {
+        int pause=TimeHelper.random(100,200);
+        try {
+            sleep(pause);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(this + " положил в корзину ТОВАР");
+
+    }
+}

@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd02_01;
+package by.it.snegurskiy.jd02_02;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

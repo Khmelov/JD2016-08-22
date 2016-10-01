@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd02_01;
+package by.it.snegurskiy.jd02_02;
 
 /**
  * Created by snegurskiy.nn on 28.09.2016.
