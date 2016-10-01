@@ -1,19 +1,18 @@
 package by.it.grechishnikov.jd02_03;
 
+import java.util.Queue;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.ReentrantLock;
 
 class Cashier implements Runnable {
-    static AtomicInteger counter = new AtomicInteger(0); //обслуженные поситители
+    static AtomicInteger counter = new AtomicInteger(0);
+    //обычная очередь
     static ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
-    private String name; //имя кассира
-    private double proceeds; //его выручка
-    private static volatile double totalProceeds; //выручка магазина
-    private static final ReentrantLock lock = new ReentrantLock();
-    private static final Object monitor = new Object();
-    private static volatile boolean flag = true;
-
+    //пенсионеры вне очереди
+    static ConcurrentLinkedDeque<Buyer> pensionerQueue = new ConcurrentLinkedDeque<>();
+    private String name;
+    private double proceeds;
+    private static double totalProceeds;
 
     public Cashier(String name) {
         this.name = name;
@@ -21,10 +20,15 @@ class Cashier implements Runnable {
 
     public void run() {
         while(!Dispatcher.endOfWork) {
-            if(queue.isEmpty()) {
+            if(queue.isEmpty() && pensionerQueue.isEmpty()) {
                 continue;
             }
-            Buyer buyer = getBuyer();//Получаем клиента
+            Buyer buyer;//Получаем клиента
+            if(!pensionerQueue.isEmpty()) {
+                buyer = getBuyer(pensionerQueue);
+            } else {
+                buyer = getBuyer(queue);
+            }
             try {
                 long time = ThreadLocalRandom.current().nextLong(2,5);
                 TimeUnit.SECONDS.sleep(time); //Обслуживаем клиента от 2 до 5 секунд
@@ -32,50 +36,24 @@ class Cashier implements Runnable {
                 e.printStackTrace();
             }
             Check check = new Check(name, buyer ,buyer.bucket); //Считаем сумму
-            setProceeds(check.getSum()); //Считаем прибыль
-            check.setTotalSum(getTotalProceeds());
-            lock.lock();
             Printer.printCheck(check); //Печатаем чек
-            lock.unlock();
-            counter.incrementAndGet(); //Считаем обслуженных поситителей
+            setProceeds(check.getSum()); //Считаем прибыль
+            counter.incrementAndGet();
         }
-        Printer.println("                                                                   " +
-                "Кассир " + name + " заработала за день $" + Printer.doubleToString(proceeds));
-    }
-
-    public Buyer getBuyer() {
-        synchronized (monitor) {
-            for(Buyer buyer : queue) {
-                if(buyer.isPensioner()) {
-                    queue.remove(buyer);
-                    return buyer;
-                }
-            }
-        }
-        return queue.poll();
+        Printer.print("Кассир " + name + " заработал за день ");
+        Printer.printDouble(proceeds);
     }
 
     private void setProceeds(double proceeds) {
         this.proceeds += proceeds;
-        synchronized (monitor) {
-            try {
-                while(!flag) {
-                    monitor.wait();
-                }
-                flag = false;
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            totalProceeds += proceeds;
-        }
+        totalProceeds += proceeds;
+    }
+
+    private Buyer getBuyer(Queue<Buyer> queue) {
+        return queue.poll();
     }
 
     static double getTotalProceeds() {
-        synchronized (monitor) {
-            double result = totalProceeds;
-            flag = true;
-            monitor.notify();
-            return result;
-        }
+        return totalProceeds;
     }
 }
