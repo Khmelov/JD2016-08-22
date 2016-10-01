@@ -75,6 +75,10 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
 
     }
 
+    public boolean isPensioner() {
+        return pensioner;
+    }
+
     void setPensioner(boolean pensioner) {
         this.pensioner = pensioner;
     }

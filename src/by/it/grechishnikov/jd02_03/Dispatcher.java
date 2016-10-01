@@ -11,6 +11,7 @@ import java.util.concurrent.*;
     static volatile boolean endOfWork = false;
 
     public void run() {
+        Printer.println("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
         threadPool.submit(new Cashier("Мария"));
         threadPool.submit(new Cashier("Наталия"));
         threadPool.submit(new Cashier("Анна"));
@@ -26,14 +27,13 @@ import java.util.concurrent.*;
             }
         }
 
+        Printer.println("***** Закрытие магазина! *****" +
+                "\nОбслужено поситителей: " + Cashier.counter +
+                "\nВыручка за день составила: $" + Printer.doubleToString(Cashier.getTotalProceeds()));
         endOfWork = true;
-        Printer.println("***** Закрытие магазина! *****");
-        Printer.println("Обслужено поситителей: " + Cashier.counter);
-        Printer.print("Выручка за день составила: ");
-        Printer.printDouble(Cashier.getTotalProceeds());
     }
 
-     public static void setFinalCountClient(int finalCountClient) {
+     static void setFinalCountClient(int finalCountClient) {
          Dispatcher.finalCountClient = finalCountClient;
      }
  }
