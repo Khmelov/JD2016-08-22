@@ -7,7 +7,7 @@ import java.util.Map;
 import static by.it.grechishnikov.matLab.controller.Runner.storage;
 
 
-public class ConsolePrinterImplIprintable implements IPrintable {
+public class ConsolePrinterImplIprintable extends Printer {
     public void print(Var var) {
         System.out.println(var);
     }
