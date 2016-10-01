@@ -7,11 +7,11 @@ import java.util.concurrent.*;
     static ArrayBlockingQueue<Buyer> hall = new ArrayBlockingQueue<>(10);
     //пул кассиров
     private static ExecutorService threadPool = Executors.newFixedThreadPool(5);
-     static volatile int finalCountClient;
+    private static volatile int finalCountClient;
     static volatile boolean endOfWork = false;
 
     public void run() {
-        Printer.println("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
+        Printer.println("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         threadPool.submit(new Cashier("Мария"));
         threadPool.submit(new Cashier("Наталия"));
         threadPool.submit(new Cashier("Анна"));
