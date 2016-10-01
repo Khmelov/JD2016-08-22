@@ -9,13 +9,13 @@ class Good {
     private double price;
 
     static {
-        goods.add(new Good("CHEESE", 5.99));
-        goods.add(new Good("MILK", 2.0));
-        goods.add(new Good("MEAT", 10.45));
-        goods.add(new Good("VODKA", 5.79));
-        goods.add(new Good("BREAD", 1.1));
-        goods.add(new Good("SUGAR", 2.5));
-        goods.add(new Good("POTATOES", 2.33));
+        goods.add(new Good("сыр", 5.99));
+        goods.add(new Good("молоко", 2.0));
+        goods.add(new Good("мясо", 10.45));
+        goods.add(new Good("водка", 5.79));
+        goods.add(new Good("хлеб", 1.1));
+        goods.add(new Good("сахар", 2.5));
+        goods.add(new Good("кортофель", 2.33));
     }
 
     private Good(String name, double price) {
@@ -38,6 +38,6 @@ class Good {
 
     @Override
     public String toString() {
-        return getName() + " - $" + getPrice();
+        return getName();
     }
 }
