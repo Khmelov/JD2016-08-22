@@ -10,13 +10,18 @@ public class Runner {
     private static IPrintable printer;
     private static IReadable reader;
     private static Operation operation;
+    private static String path;
 
     public static void main(String[] args) {
         init();
-        test();
+        reader.deserializeMap(path);
+//        test();
+        printer.printMap();
+        printer.serializeMap(path);
     }
 
     public static void init() {
+        path = System.getProperty("user.dir") + "/src/by/it/grechishnikov/matlab/model/vars.txt";
         printer = new ConsolePrinterImplIprintable();
         reader = new ReaderFromConsoleImplIReadable();
         operation = new Operation();

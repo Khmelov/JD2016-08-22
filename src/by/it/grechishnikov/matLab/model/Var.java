@@ -2,7 +2,9 @@ package by.it.grechishnikov.matLab.model;
 
 import by.it.grechishnikov.matLab.controller.Runner;
 
-public abstract class Var implements IData {
+import java.io.Serializable;
+
+public abstract class Var implements IData, Serializable {
     boolean alive = false;
     private String name = "";
 
@@ -18,6 +20,10 @@ public abstract class Var implements IData {
         if(alive) {
             Runner.storage.put(name, this);
         }
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

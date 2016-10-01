@@ -7,7 +7,7 @@ import java.util.Map;
 
 import static by.it.grechishnikov.matLab.controller.Runner.storage;
 
-public class StreamPrinterImplIprintable implements IPrintable {
+public class StreamPrinterImplIprintable extends Printer {
     private FileWriter writer;
 
     public StreamPrinterImplIprintable(FileWriter writer) {

@@ -53,7 +53,7 @@ public abstract class Engineer implements Worker {
         return name;
     }
 
-    protected void printCompanyName() {
+    protected void printCompanyName() { //для доступа у классов в пакете и у наследников
         System.out.println("Я работаю в " + COMPANY_NAME);
     }
 
