@@ -3,8 +3,10 @@ package by.it.grechishnikov.jd02_03;
 import java.util.Queue;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.ReentrantLock;
 
 class Cashier implements Runnable {
+    //обслуженные поситители
     static AtomicInteger counter = new AtomicInteger(0);
     //обычная очередь
     static ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
@@ -12,7 +14,7 @@ class Cashier implements Runnable {
     static ConcurrentLinkedDeque<Buyer> pensionerQueue = new ConcurrentLinkedDeque<>();
     private String name;
     private double proceeds;
-    private static double totalProceeds;
+    private static volatile double totalProceeds;
 
     public Cashier(String name) {
         this.name = name;
@@ -38,14 +40,17 @@ class Cashier implements Runnable {
             Check check = new Check(name, buyer ,buyer.bucket); //Считаем сумму
             Printer.printCheck(check); //Печатаем чек
             setProceeds(check.getSum()); //Считаем прибыль
-            counter.incrementAndGet();
+            counter.incrementAndGet(); //Считаем обслуженных поситителей
         }
-        Printer.println("Кассир " + name + " заработала за день $" + Printer.doubleToString(proceeds));
+        Printer.println("                                                                   Кассир " + name + " заработала за день $" + Printer.doubleToString(proceeds));
     }
 
     private void setProceeds(double proceeds) {
+        ReentrantLock lock = new ReentrantLock();
         this.proceeds += proceeds;
+        lock.lock();
         totalProceeds += proceeds;
+        lock.unlock();
     }
 
     private Buyer getBuyer(Queue<Buyer> queue) {

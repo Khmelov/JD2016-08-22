@@ -9,11 +9,15 @@ class Runner {
     }
 
     private static void init() {
-        Printer.println("***** Магазин открылся! Добро пожаловать! *****");
+        Printer.println("                                                  " +
+                "         ***** Магазин открылся! Добро пожаловать! *****");
 
         int countBuyers = ThreadLocalRandom.current().nextInt(5, 40);
         Dispatcher.setFinalCountClient(countBuyers);
-        Printer.println("Количество поситителей: " + countBuyers);
+        Printer.println("                                           " +
+                "                          Количество поситителей: " + countBuyers);
+        Printer.println("           Мария                         Наталия                         Анна           " +
+                "              Александра                         Зоя               Очер.   Выруч.");
         for (int i = 0; i < countBuyers; i++) {
             Buyer b = new Buyer(i);
             if (i % 4 == 0) {
