@@ -5,4 +5,5 @@ import by.it.grechishnikov.matLab.model.*;
 public interface IPrintable {
     void print(Var var);
     void printMap();
+    void serializeMap(String path);
 }
