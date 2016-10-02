@@ -34,11 +34,16 @@ public class Printer {
                 break;
         }
         String s = tab + "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
-
+        s += tab + "|       <HTP Courses>       |\n";
+        s += tab + "|                           |\n";
         s += String.format(tab + "|%27s|", "Кассир " + check.getCashirName()) + "\n";
         s += String.format(tab + "|%27s|", "Посититель " + (check.getBuyer().isPensioner() ? "(пенсионер) " : "") + "№" + check.getBuyer().getName());
-        s += addDataToString(String.format("\n" + tab + "|%27s|" , "Продажа"));
+        s += "\n" + tab + "|---------------------------|";
+        s += addDataToString(String.format("\n" + tab + "|%27s|" , "Продажа"), check.getTotalSum());
+        s += "\n" + tab + "|                           |";
         s += goodsToString(check.getGoods(), tab);
+        s += "\n" + tab + "|---------------------------|\n";
+        s += tab + "|                           |";
         s += String.format("\n" + tab + "|ИТОГО%22s|",  "$" + doubleToString(check.getSum()));
         s += "\n" + tab + "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n";
         print(s);
@@ -48,14 +53,14 @@ public class Printer {
         return String.format("%.2f", d);
     }
 
-    private static String addDataToString(String text) {
+    private static String addDataToString(String text, double totalSum) {
         int index = 172 - text.length();
         String tab = "";
         for (int i = 0; i < index - 14; i++) {
             tab += " ";
         }
-        int count = Cashier.pensionerQueue.size() + Cashier.queue.size();
-        text += tab +  count + (count < 10 ? " " : "") + "     " + doubleToString(Cashier.getTotalProceeds());
+        int count = Cashier.queue.size();
+        text += tab +  count + (count < 10 ? " " : "") + "     " + doubleToString(totalSum);
         return text;
     }
 
