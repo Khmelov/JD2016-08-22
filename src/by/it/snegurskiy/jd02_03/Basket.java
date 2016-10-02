@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd02_01;
+package by.it.snegurskiy.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Created by snegurskiy.nn on 26.09.2016.
  */
-public class Backet {
+public class Basket {
     private Map<String,Float> goods=new HashMap<>();
     void putGood(String name, float count){
         goods.put (name,count);

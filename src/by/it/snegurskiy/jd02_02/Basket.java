@@ -2,20 +2,28 @@ package by.it.snegurskiy.jd02_02;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 /**
- * Created by snegurskiy.nn on 26.09.2016.
+ * Created by snegurskiy.nn on 02.10.2016.
  */
 public class Basket {
-    private Map<String,Float> goods=new HashMap<>();
-    void putGood(String name, float count){
-        goods.put (name,count);
-    }
+    public static HashMap GoodsInBasket() {
+        HashMap<String, Double> basket = new HashMap<String, Double>();
+        basket.putAll(Helper.allGoods);
+        try {
+            for (Map.Entry<String, Double> item : basket.entrySet()) {
+                Random random = new Random();
+                if (random.nextBoolean() == true) {
+                    basket.remove(item.getKey());
+                }
 
-    public Map<String,Float> getGoods(){
-        return goods;
-    }
-    public Float getCountGoods(String name){
-        return goods.get(name);
+            }
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return basket;
     }
 }
