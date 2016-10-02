@@ -2,18 +2,22 @@ package by.it.snegurskiy.jd02_02;
 
 import by.it.snegurskiy.jd02_01.*;
 
+import java.util.HashMap;
+
 /**
  * Created by snegurskiy.nn on 02.10.2016.
  */
 public class Buyer extends Thread implements Runnable, IBuyer{
 
     int number;
-
-
+    public boolean pensioner=false;
 
     public Buyer(Integer number) {
-        super("Покупатель №" + number.toString());
+
         this.number = number;
+        if (number%4==0&number!=0) pensioner=true;
+        if (pensioner==true) this.setName("Покупатель ПЕНСИОНЕР № " + number + " ");
+        else this.setName("Покупатель № " + number + " ");
         start();
     }
 
@@ -32,10 +36,13 @@ public class Buyer extends Thread implements Runnable, IBuyer{
     }
 
     @Override
-    public void chooseGoods() {
-        int pause=TimeHelper.random(500,2000);
+    public void chooseGoods() {int pause=TimeHelper.random(500,2000);
         try {
-            sleep(pause);
+            if (pensioner==true){
+                sleep(pause*1,5);
+                System.out.println("ПЕНСИОНЕР медлит");
+            }
+            else sleep(pause);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,17 +52,39 @@ public class Buyer extends Thread implements Runnable, IBuyer{
 
     @Override
     public void goToOut() {
-        System.out.println(this + " вышел в магазин");
+        System.out.println(this + " вышел  из магазина");
     }
 
     @Override
     public void takeBasket() {
-        System.out.println(this + " взял корзинку");
+
+        int pause = TimeHelper.random(100, 200);
+        try {
+            if (pensioner == true) {
+                sleep(pause*1,5);
+                System.out.println("ПЕНСИОНЕР медлит");
+            }
+            else sleep(pause);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            System.out.println(this + " взял корзинку");
+        }
     }
 
     @Override
     public void putGoodsToBasket() {
-        System.out.println(this + " положил товар в корзинку");
+        int pause=TimeHelper.random(100,200);
+        try {
+            if (pensioner==true){
+                sleep(pause*1,5);
+                System.out.println("ПЕНСИОНЕР медлит");
+            }
+            else sleep(pause);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        HashMap a=Basket.GoodsInBasket();
+        System.out.println(this +  " положил "+ a+" в корзинку");
     }
 
     @Override
