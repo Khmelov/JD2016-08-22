@@ -1,19 +1,18 @@
 package by.it.grechishnikov.jd02_03;
 
-import java.util.Queue;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.ReentrantLock;
 
 class Cashier implements Runnable {
-    //обслуженные поситители
-    static AtomicInteger counter = new AtomicInteger(0);
-    //обычная очередь
-    static volatile ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
-    private String name;
-    private double proceeds;
-    private static volatile double totalProceeds;
+    static AtomicInteger counter = new AtomicInteger(0); //обслуженные поситители
+    static ConcurrentLinkedDeque<Buyer> queue = new ConcurrentLinkedDeque<>();
+    private String name; //имя кассира
+    private double proceeds; //его выручка
+    private static volatile double totalProceeds; //выручка магазина
     private static final ReentrantLock lock = new ReentrantLock();
+    private static final Object monitor = new Object();
+    private static volatile boolean flag = true;
 
 
     public Cashier(String name) {
@@ -45,7 +44,7 @@ class Cashier implements Runnable {
     }
 
     public Buyer getBuyer() {
-        synchronized (queue) {
+        synchronized (monitor) {
             for(Buyer buyer : queue) {
                 if(buyer.isPensioner()) {
                     queue.remove(buyer);
@@ -58,15 +57,25 @@ class Cashier implements Runnable {
 
     private void setProceeds(double proceeds) {
         this.proceeds += proceeds;
-        lock.lock();
-        totalProceeds += proceeds;
-        lock.unlock();
+        synchronized (monitor) {
+            try {
+                while(!flag) {
+                    monitor.wait();
+                }
+                flag = false;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            totalProceeds += proceeds;
+        }
     }
 
     static double getTotalProceeds() {
-        lock.lock();
-        double total = totalProceeds;
-        lock.unlock();
-        return total;
+        synchronized (monitor) {
+            double result = totalProceeds;
+            flag = true;
+            monitor.notify();
+            return result;
+        }
     }
 }
