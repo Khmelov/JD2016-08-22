@@ -21,11 +21,11 @@ class Check {
         return cashirName;
     }
 
-    public void setTotalSum(double totalSum) {
+    void setTotalSum(double totalSum) {
         this.totalSum = totalSum;
     }
 
-    public double getTotalSum() {
+    double getTotalSum() {
         return totalSum;
     }
 
@@ -33,7 +33,7 @@ class Check {
         return buyer;
     }
 
-    public CopyOnWriteArraySet<Good> getGoods() {
+    CopyOnWriteArraySet<Good> getGoods() {
         return goods;
     }
 
