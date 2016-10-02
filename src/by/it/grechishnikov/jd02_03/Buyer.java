@@ -63,11 +63,7 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void waitService() {
         Dispatcher.hall.remove(this);
-        if(!pensioner) {
-            Cashier.queue.addLast(this);
-        } else {
-            Cashier.pensionerQueue.addLast(this);
-        }
+        Cashier.queue.addLast(this);
     }
 
     @Override
