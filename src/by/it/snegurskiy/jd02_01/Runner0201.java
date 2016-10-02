@@ -6,6 +6,7 @@ package by.it.snegurskiy.jd02_01;
 public class Runner0201 {
 
     static int countBuyer = 0;
+    static int countBuyers = 0;
 
     public static void main(String[] args)  {
 
@@ -16,6 +17,7 @@ public class Runner0201 {
             for (int i = 0; i < n; i++) {
                 new Buyer(countBuyer);
                 countBuyer++;
+                countBuyers++;
             }
 
 
