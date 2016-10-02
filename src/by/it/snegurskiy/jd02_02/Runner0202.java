@@ -6,6 +6,7 @@ package by.it.snegurskiy.jd02_02;
 public class Runner0202 {
     static int countBuyer = 0;
     static int countBuyers = 0;
+    volatile static int countCashiers = 0;
 
     public static void main(String[] args)  {
 

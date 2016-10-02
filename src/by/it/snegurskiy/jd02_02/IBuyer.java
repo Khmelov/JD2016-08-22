@@ -9,4 +9,5 @@ public interface IBuyer {
     void goToOut(); //отправился на выход(мгновенно)
     void takeBasket(); //взял корзину
     void putGoodsToBasket(); //положил выбранный товар в корзину
+    void waitService();     //встал в очередь и ожидает обслуживание
 }

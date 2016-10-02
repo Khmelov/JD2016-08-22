@@ -1,8 +1,8 @@
 package by.it.snegurskiy.jd02_02;
 
-import by.it.snegurskiy.jd02_01.*;
+import java.util.*;
+import java.util.Map.Entry;
 
-import java.util.HashMap;
 
 /**
  * Created by snegurskiy.nn on 02.10.2016.
@@ -24,11 +24,34 @@ public class Buyer extends Thread implements Runnable, IBuyer{
     @Override
     public void run() {
         enterToMarket(); //вошел в магазин (мгновенно)
-        chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
-        goToOut(); //отправился на выход(мгновенно)
         takeBasket(); //взял корзину
+        chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
         putGoodsToBasket(); //положил выбранный товар в корзину
+        waitService();     //встал в очередь и ожидает обслуживание
+        goToOut(); //отправился на выход(мгновенно)
     }
+
+
+    @Override
+    public void waitService() {
+        System.out.println(this + "встал в очередь");
+        synchronized (QueueBuyer.buyers) {
+            QueueBuyer.buyers.addLast(this);
+        }
+        synchronized (this) {
+            try {
+                System.out.println(this + "ожидает в очереди");
+                this.wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            finally {
+                System.out.println(this + "закончил обслуживаться");
+            }
+        }
+
+    }
+
 
     @Override
     public void enterToMarket() {
@@ -83,9 +106,15 @@ public class Buyer extends Thread implements Runnable, IBuyer{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        HashMap a=Basket.GoodsInBasket();
-        System.out.println(this +  " положил "+ a+" в корзинку");
-    }
+        Hashtable a=Basket.GoodsInBasket();
+        double sum=0;
+        Enumeration<Double> ev=a.elements();
+        while (ev.hasMoreElements()){
+            sum=sum+ev.nextElement();
+        }
+                    System.out.println(this +  " положил "+ a+" в корзинку "+" сумма покупки "+ sum);
+        }
+
 
     @Override
     public String toString() {

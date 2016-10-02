@@ -55,8 +55,6 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
             chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
             putGoodsToBasket(); //положил выбранный товар в корзину
             goToOut(); //отправился на выход(мгновенно)
-
-
         }
 
         @Override
