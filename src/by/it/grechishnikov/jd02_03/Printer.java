@@ -20,7 +20,7 @@ public class Printer {
         String space = "                               ";
         String tab = "";
         switch (check.getCashirName()) {
-            case "Наталия" :
+            case "Наталья" :
                 tab = space;
                 break;
             case "Анна" :
