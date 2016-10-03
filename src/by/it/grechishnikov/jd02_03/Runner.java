@@ -1,18 +1,16 @@
 package by.it.grechishnikov.jd02_03;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 
 class Runner {
     public static void main(String[] args) throws Exception {
-        init(); //TODO в магазине могут быть от 5 до 40 поситителей. Всего обслужить 100
+        init();
     }
 
     private static void init() {
         Printer.println("                                                  " +
                 "         ***** Магазин открылся! Добро пожаловать! *****");
 
-        int countBuyers = ThreadLocalRandom.current().nextInt(5, 40);
+        int countBuyers = 100;
         Dispatcher.setFinalCountClient(countBuyers);
         Printer.println("                                           " +
                 "                          Количество поситителей: " + countBuyers);
