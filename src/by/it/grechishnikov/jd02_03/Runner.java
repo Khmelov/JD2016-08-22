@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 class Runner {
     public static void main(String[] args) throws Exception {
-        init();
+        init(); //TODO в магазине могут быть от 5 до 40 поситителей. Всего обслужить 100
     }
 
     private static void init() {
@@ -16,7 +16,7 @@ class Runner {
         Dispatcher.setFinalCountClient(countBuyers);
         Printer.println("                                           " +
                 "                          Количество поситителей: " + countBuyers);
-        Printer.println("           Мария                         Наталия                         Анна           " +
+        Printer.println("           Мария                         Наталья                         Анна           " +
                 "              Александра                         Зоя               Очер.   Выруч.");
         for (int i = 0; i < countBuyers; i++) {
             Buyer b = new Buyer(i);
