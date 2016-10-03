@@ -33,4 +33,23 @@ public class Helper {
         int result = from + (int)Math.round(Math.random()*(to-from));
         return result;
     }
+
+    public static void sleep(int count){
+        try {
+            Thread.sleep(count);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void sleep(int from, int to){
+        try {
+            int pause = random(from, to);
+                Thread.sleep(pause);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }

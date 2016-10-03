@@ -1,6 +1,6 @@
 package by.it.aborisenok.JD02_03;
 
-import java.util.Set;
+
 
 /**
  * Created by Лёша on 26.09.2016.
@@ -11,6 +11,7 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable{
     private String name;
     boolean pensioneer = false;
     double pensCoefficient = 1.5;
+    public boolean iWait=false;
 
 
     public Buyer(int number){
@@ -62,20 +63,23 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable{
     @Override
     public void putGoodToBacket(String name, int count) {
         backet.putGood(name, count);
-        System.out.println(this + " put goods " + name + " in count " + count);
     }
 
     @Override
     public void waitServise() {
-        synchronized (Queues.buyerDeque){
-            Queues.buyerDeque.addLast(this);
-        }
-        synchronized (this){
-            try {
+        synchronized (this) {
+
+            System.out.println(this + "встал в очередь на кассу");
+            Queues.add(this);
+
+            iWait=true;
+            while (iWait) try {
                 this.wait();
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            System.out.println(this + "закончил оплату товаров в кассе");
         }
     }
 
@@ -101,10 +105,7 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable{
 
     @Override
     public String toString() {
-        return this.getName();
+        return this.name;
     }
 
-    public String getName() {
-        return name;
-    }
 }
