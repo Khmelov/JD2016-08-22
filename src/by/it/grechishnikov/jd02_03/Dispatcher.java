@@ -13,7 +13,7 @@ class Dispatcher extends Thread {
 
     public void run() {
         threadPool.submit(new Cashier("Мария"));
-        threadPool.submit(new Cashier("Наталия"));
+        threadPool.submit(new Cashier("Наталья"));
         threadPool.submit(new Cashier("Анна"));
         threadPool.submit(new Cashier("Александра"));
         threadPool.submit(new Cashier("Зоя"));
