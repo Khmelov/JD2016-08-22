@@ -11,6 +11,7 @@ public class Buyer extends Thread implements Runnable, IBuyer{
 
     int number;
     public boolean pensioner=false;
+    ArrayList basket;
 
     public Buyer(Integer number) {
 
@@ -106,13 +107,12 @@ public class Buyer extends Thread implements Runnable, IBuyer{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        Hashtable a=Basket.GoodsInBasket();
+        this.basket=Basket.GoodsInBasket();
         double sum=0;
-        Enumeration<Double> ev=a.elements();
-        while (ev.hasMoreElements()){
-            sum=sum+ev.nextElement();
+        for (int i = 0; i <this.basket.size() ; i++) {
+            sum=sum+Helper.allGoods.get(this.basket.get(i));
         }
-                    System.out.println(this +  " положил "+ a+" в корзинку "+" сумма покупки "+ sum);
+                    System.out.println(this +  " положил "+ this.basket.toString()+" в корзинку "+" сумма покупки "+ sum);
         }
 
 
