@@ -1,6 +1,7 @@
 package by.it.grechishnikov.jd02_03;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class Dispatcher extends Thread {
     //Очередь - зал на 10 человек
@@ -9,6 +10,7 @@ class Dispatcher extends Thread {
     private static ExecutorService threadPool = Executors.newFixedThreadPool(5);
     private static volatile int finalCountClient;
     static volatile boolean endOfWork = false;
+    static ArrayBlockingQueue<Buyer> store = new ArrayBlockingQueue<>(40);
     private static String tab = "                                                                   ";
 
     public void run() {
