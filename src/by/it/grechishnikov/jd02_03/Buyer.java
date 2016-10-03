@@ -1,12 +1,14 @@
 package by.it.grechishnikov.jd02_03;
 
 import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Buyer extends Thread implements IBuyer, IUseBucket {
     CopyOnWriteArraySet<Good> bucket;
     private boolean pensioner;
+    private static CountDownLatch countDownLatch = new CountDownLatch(5);
 
     public Buyer(int id) {
         super(String.valueOf(id));
@@ -28,7 +30,10 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
     @Override
     public void enterToMarket() {
         try {
-            Dispatcher.hall.put(this);
+            countDownLatch.countDown();
+            countDownLatch.await();
+            Dispatcher.store.put(this); //заходим в магазин
+            Dispatcher.hall.put(this); //заходим в торговый зал
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -68,7 +73,14 @@ public class Buyer extends Thread implements IBuyer, IUseBucket {
 
     @Override
     public void goToOut() {
-
+        while(Cashier.queue.contains(this)) {
+            try {
+                sleep(500); //ждем, пока нас расчитают на кассе и выходим
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        Dispatcher.store.remove(this);
     }
 
     boolean isPensioner() {
