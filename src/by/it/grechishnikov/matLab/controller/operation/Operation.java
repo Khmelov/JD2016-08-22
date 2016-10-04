@@ -6,7 +6,7 @@ import by.it.grechishnikov.matLab.model.*;
 public  class Operation implements IOperationable {
 
     @Override
-    public <T extends Var> Var add(String name, T var1, T var2) {
+    public  <T extends Var> Var add(String name, T var1, T var2) {
         try {
             if (var1 instanceof Scalar && var2 instanceof Scalar)
                 return Add.add(name, (Scalar) var1, (Scalar) var2);

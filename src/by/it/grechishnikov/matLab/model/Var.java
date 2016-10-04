@@ -5,7 +5,7 @@ import by.it.grechishnikov.matLab.controller.Runner;
 import java.io.Serializable;
 
 public abstract class Var implements IData, Serializable {
-    boolean alive = false;
+    boolean alive = true;
     private String name = "";
 
     public Var() {
@@ -28,6 +28,10 @@ public abstract class Var implements IData, Serializable {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " = ";
+        if(!name.isEmpty()) {
+            return name + " = ";
+        } else {
+            return this.getClass().getSimpleName() + " = ";
+        }
     }
 }
