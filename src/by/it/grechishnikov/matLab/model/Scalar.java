@@ -32,6 +32,6 @@ public class Scalar extends Var {
 
     @Override
     public String toString() {
-        return super.toString() +  valueToString() + "\n";
+        return super.toString() +  valueToString();
     }
 }

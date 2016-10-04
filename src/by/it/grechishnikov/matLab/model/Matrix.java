@@ -39,12 +39,11 @@ public class Matrix extends Var {
             }
             result += "\n";
         }
-        return result;
+        return result.substring(0, result.length() - 2);
     }
 
     @Override
     public String toString() {
-
         return super.toString() + "\n" + valueToString();
     }
 }

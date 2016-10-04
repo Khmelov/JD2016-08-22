@@ -16,7 +16,11 @@ public class ConsolePrinterImplIprintable extends Printer {
     public void printMap() {
         for(Map.Entry<String, Var> pair : storage.entrySet()) {
             String s = pair.getValue() instanceof Matrix ? "\n" + pair.getValue().valueToString() : pair.getValue().valueToString() ;
-            System.out.println(pair.getKey() + " = " + s);
+            if(pair.getKey().isEmpty()) {
+                System.out.println(pair.getValue().getClass().getSimpleName() + " = " + s);
+            } else {
+                System.out.println(pair.getKey() + " = " + s);
+            }
         }
     }
 }
