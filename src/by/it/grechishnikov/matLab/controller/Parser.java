@@ -73,16 +73,15 @@ public class Parser {
             }
             count++;
         }
+
+        list.remove(first);//исправить 1-5.0*9.0
         count = 0;
-        iterator = list.iterator();
-//        iterator.next();
-        while (iterator.hasNext()) {
-            Var second = iterator.next();
+        for(Var second : list) {
             String s = operators[count];
             if(s == null) break;
-            if (s.equals("+")) {
+            if(s.equals("+")) {
                 first = operation.add(name, first, second);
-            } else if (s.equals("-")) {
+            } else if(s.equals("-")) {
                 first = operation.sub(name, first, second);
             }
             count++;
