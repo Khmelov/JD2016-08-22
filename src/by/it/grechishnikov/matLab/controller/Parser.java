@@ -71,15 +71,27 @@ public class Parser {
         //делаем сложение и вычитание
         while(true) {
             try {
-                return new Scalar(name, Double.parseDouble(equation));
+                if(text.contains("{") && !equation.contains("+") && !check(equation)) {
+                    return new Vector(name, parseArray(equation));
+                } else {
+                    return new Scalar(name, Double.parseDouble(equation));
+                }
             } catch (Exception e) {
-                Pattern pattern = Pattern.compile("[0-9. {},]+[-+ ][0-9. {},]++");
-                Matcher matcher = pattern.matcher(equation);
-                matcher.find();
-                String inner = matcher.group();
-                equation = equation.replace(inner, calculate(inner));
+
             }
+            Pattern pattern = Pattern.compile("[0-9. {},]+[-+ ][0-9. {},]++");
+            Matcher matcher = pattern.matcher(equation);
+            matcher.find();
+            String inner = matcher.group();
+            equation = equation.replace(inner, calculate(inner));
         }
+    }
+
+    private boolean check(String equation) {
+        Pattern pattern = Pattern.compile("[0-9. -{}]+[-][0-9. -]+");
+        Matcher matcher = pattern.matcher(equation);
+        boolean b = matcher.find();
+        return b;
     }
 
     /**
@@ -121,11 +133,23 @@ public class Parser {
         return null;
     }
 
+    /**
+     * Парсим строку в массив чисел
+     * @param first - строка
+     * @return - массив double чисел
+     */
     private double[] parseArray(String first) {
-        Pattern pattern = Pattern.compile("[0-9. ]+");
+        Pattern pattern = Pattern.compile("[0-9.]+");
         Matcher matcher = pattern.matcher(first);
-
-        return new double[0];
+        ArrayList<Double> list = new ArrayList<>();
+        while(matcher.find()) {
+            list.add(Double.parseDouble(matcher.group()));
+        }
+        double[] arr = new double[list.size()];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = list.get(i);
+        }
+        return arr;
     }
 
     /**

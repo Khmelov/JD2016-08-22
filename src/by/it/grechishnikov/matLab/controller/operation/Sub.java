@@ -34,7 +34,11 @@ class Sub extends Operation {
     }
 
     public static Var sub(String name, Vector var1, Scalar var2) throws NotSupportedException {
-        return sub(name, var2, var1);
+        double[] vector = new double[var1.getValue().length];
+        for (int i = 0; i < vector.length; i++) {
+            vector[i] = var1.getValue()[i] - var2.getValue();
+        }
+        return new Vector(name, vector);
     }
 
     public static Var sub(String name, Vector var1, Vector var2) throws NotSupportedException {

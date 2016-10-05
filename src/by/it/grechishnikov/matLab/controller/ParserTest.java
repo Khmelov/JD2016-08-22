@@ -34,13 +34,6 @@ public class ParserTest {
     }
 
     @Test
-    public void parseVector() throws Exception {
-        String text = "E={2,3}*(3)";
-        String test = new Parser().run(text);
-        assertEquals(test, "F = 27.0");
-    }
-
-    @Test
     public void test1() throws Exception {
         String text = "F=1-5.0*9.0";
         String test = new Parser().run(text);
@@ -59,5 +52,33 @@ public class ParserTest {
         String text = "F=3*3*3";
         String test = new Parser().run(text);
         assertEquals(test, "F = 27.0");
+    }
+
+    @Test
+    public void parseVectorAdd() throws Exception {
+        String text = "E={1,2,3}+3";
+        String test = new Parser().run(text);
+        assertEquals(test, "E = {4.0, 5.0, 6.0}");
+    }
+
+    @Test
+    public void parseVectorSub() throws Exception {
+        String text = "E={3,4,5}-1";
+        String test = new Parser().run(text);
+        assertEquals(test, "E = {2.0, 3.0, 4.0}");
+    }
+
+    @Test
+    public void parseVectorMul() throws Exception {
+        String text = "E={1,2,3}*2";
+        String test = new Parser().run(text);
+        assertEquals(test, "E = {2.0, 4.0, 6.0}");
+    }
+
+    @Test
+    public void parseVectorDiv() throws Exception {
+        String text = "E={9,6,3}/3";
+        String test = new Parser().run(text);
+        assertEquals(test, "E = {3.0, 2.0, 1.0}");
     }
 }
