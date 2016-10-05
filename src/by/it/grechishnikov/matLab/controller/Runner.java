@@ -16,8 +16,8 @@ public class Runner {
         init();
 //        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
 //        printer.printMap(); //выводим карту
-        parser.run(reader.readValue());
-//        test();
+//        parser.run(reader.readValue());
+        test();
 //        printer.serializeMap(path); //сохраняем переменные из карты
         printer.printMap(); //выводим карту
     }
@@ -29,7 +29,7 @@ public class Runner {
         parser.run("B2=A/2");
         parser.run("C=B+(A*2)");
         parser.run("D=((C-0.15)-20)/(7-5)");
-        parser.run("E={2,3}*{D/2}");
+//        parser.run("E={2,3}*3");
     }
 
     public static void init() {
