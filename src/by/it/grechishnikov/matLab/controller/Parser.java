@@ -1,12 +1,15 @@
 package by.it.grechishnikov.matLab.controller;
 
 
+import by.it.grechishnikov.matLab.controller.operation.*;
 import by.it.grechishnikov.matLab.model.*;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+    private Operation operation = new Operation();
     private String name = "";
 
     /**
@@ -59,7 +62,7 @@ public class Parser {
         }
         //делаем умножение и деление
         while(equation.contains("*") || equation.contains("/")) {
-            Pattern pattern = Pattern.compile("[0-9. ]+[*/ ][0-9. ]+");
+            Pattern pattern = Pattern.compile("[0-9. {},]+[*/ ][0-9. {},]+");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
@@ -70,7 +73,7 @@ public class Parser {
             try {
                 return new Scalar(name, Double.parseDouble(equation));
             } catch (Exception e) {
-                Pattern pattern = Pattern.compile("[0-9. ]+[-+ ][0-9. ]+");
+                Pattern pattern = Pattern.compile("[0-9. {},]+[-+ ][0-9. {},]++");
                 Matcher matcher = pattern.matcher(equation);
                 matcher.find();
                 String inner = matcher.group();
@@ -85,22 +88,44 @@ public class Parser {
      * @return - результат умножения(деления, суммы, разницы)
      */
     private String calculate(String inner) {
-        Pattern pattern = Pattern.compile("[0-9.]+");
+        Pattern pattern = Pattern.compile("[0-9. {},]+");
         Matcher matcher = pattern.matcher(inner);
         matcher.find();
-        double first = Double.parseDouble(matcher.group());
+        String first = matcher.group();
+        Var v1;
+        if(first.contains("{")) {
+            double[] arr = parseArray(first);
+            v1 = new Vector(name, arr);
+        } else {
+            v1 = new Scalar(name, Double.parseDouble(first));
+        }
         matcher.find();
-        double second = Double.parseDouble(matcher.group());
+        String second = matcher.group();
+        Var v2;
+        if(second.contains("{")) {
+            double[] arr = parseArray(second);
+            v2 = new Vector(name, arr);
+        } else {
+            v2 = new Scalar(Double.parseDouble(second));
+        }
+
         if(inner.contains("*")) {
-            return String.valueOf(first * second);
+            return operation.mul(name, v1, v2).valueToString();
         } else if(inner.contains("/")) {
-            return String.valueOf(first / second);
+            return operation.div(name, v1, v2).valueToString();
         } else if(inner.contains("+")) {
-            return String.valueOf(first + second);
+            return operation.add(name, v1, v2).valueToString();
         } else if(inner.contains("-")) {
-            return String.valueOf(first - second);
+            return operation.sub(name, v1, v2).valueToString();
         }
         return null;
+    }
+
+    private double[] parseArray(String first) {
+        Pattern pattern = Pattern.compile("[0-9. ]+");
+        Matcher matcher = pattern.matcher(first);
+
+        return new double[0];
     }
 
     /**

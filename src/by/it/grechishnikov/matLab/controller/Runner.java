@@ -16,20 +16,14 @@ public class Runner {
         init();
 //        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
 //        printer.printMap(); //выводим карту
-//        parser.run(reader.readValue());
-        test();
+        parser.run(reader.readValue());
+//        test();
 //        printer.serializeMap(path); //сохраняем переменные из карты
         printer.printMap(); //выводим карту
     }
 
     private static void test() {
-        parser.run("A=2+5.3");
-        parser.run("B=A*3.5");
-        parser.run("B1=B-0.55");
-        parser.run("B2=A/2");
-        parser.run("C=B+(A*2)");
-        parser.run("D=((C-0.15)-20)/(7-5)");
-//        parser.run("E={2,3}*3");
+        parser.run("E={2,3}*3");
     }
 
     public static void init() {

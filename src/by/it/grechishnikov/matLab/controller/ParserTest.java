@@ -6,28 +6,28 @@ import static org.junit.Assert.*;
 
 public class ParserTest {
     @Test
-    public void parseAdd() throws Exception {
+    public void parseScalarAdd() throws Exception {
         String text = "A=2+5.3";
         String test = new Parser().run(text);
         assertEquals(test, "A = 7.3");
     }
 
     @Test
-    public void parseMul() throws Exception {
+    public void parseScalarMul() throws Exception {
         String text = "B=A*3.5";
         String test = new Parser().run(text);
         assertEquals(test, "B = 25.55");
     }
 
     @Test
-    public void parseSub() throws Exception {
+    public void parseScalarSub() throws Exception {
         String text = "B1=B-0.55";
         String test = new Parser().run(text);
         assertEquals(test, "B1 = 25.0");
     }
 
     @Test
-    public void parseDiv() throws Exception {
+    public void parseScalarDiv() throws Exception {
         String text = "B2=A/2";
         String test = new Parser().run(text);
         assertEquals(test, "B2 = 3.65");
@@ -35,7 +35,7 @@ public class ParserTest {
 
     @Test
     public void parseVector() throws Exception {
-        String text = "E={2,3}*(D/2)";
+        String text = "E={2,3}*(3)";
         String test = new Parser().run(text);
         assertEquals(test, "F = 27.0");
     }
