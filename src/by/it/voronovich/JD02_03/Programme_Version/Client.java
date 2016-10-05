@@ -5,10 +5,13 @@ import by.it.voronovich.JD02_03.Programme_Version.Interface.IUseBasket;
 import by.it.voronovich.JD02_03.Programme_Version.Util.GoodsList;
 import by.it.voronovich.JD02_03.Programme_Version.Util.PrintCheck;
 import by.it.voronovich.JD02_03.Programme_Version.Util.RandomNum;
+
 import static by.it.voronovich.JD02_03.Programme_Version.Util.Queue.queue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -21,9 +24,11 @@ public class Client extends Thread implements IClient, IUseBasket {
 
     private double k = 1.5; // коэффициент скорости пенсионера
     private boolean retired; // переменная пенсионер
-    private static Semaphore semaphoreChooseTen = new Semaphore(10);//семафор для ограничения количества выбирающих
-    private static Semaphore semaphoreChooseTurn = new Semaphore(40);//семафор для ограничения количества стоящих в очереди
+
     public List<String> choosenGoods = new ArrayList<String>(); // список выбранных продуктов
+    private static Semaphore semaphoreChooseTen = new Semaphore(10);//семафор для ограничения количества выбирающих
+    private BlockingQueue<Client> clientSecurity = new ArrayBlockingQueue<>(40);// ограничиваем количество покупателей в магазине
+
 
     public Client(int number) {
         this.setName("Покупатель № " + number);
@@ -43,6 +48,11 @@ public class Client extends Thread implements IClient, IUseBasket {
      */
     @Override
     public void run() {
+        try{
+            clientSecurity.put(this);
+        } catch(InterruptedException e){
+            e.printStackTrace();
+        }
         enterMarket();
         //-------------------------------
         takeBasket();
@@ -58,16 +68,14 @@ public class Client extends Thread implements IClient, IUseBasket {
         //-------------------------------
         putGoodsIntoBasket();
         //-------------------------------
-        try {
-            semaphoreChooseTurn.acquire();
-            takeATurn();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            semaphoreChooseTurn.release();
-        }
+        takeATurn();
         //--------------------------------
         exitMarket();
+        try {
+            clientSecurity.take();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -136,7 +144,11 @@ public class Client extends Thread implements IClient, IUseBasket {
     @Override
     public void takeATurn() {
         System.out.println(this + " занял очередь в кассу.");
-        queue.addLast(this);
+        if(retired == true){
+            queue.offerFirst(this); // обеспечиваем обслуживание пенсионера без очереди
+        } else {
+            queue.addLast(this);
+        }
         synchronized (this) {
             try {
                 System.out.println(this + " ожидает в очереди.");

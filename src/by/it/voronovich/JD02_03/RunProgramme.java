@@ -2,7 +2,8 @@ package by.it.voronovich.JD02_03;
 
 import by.it.voronovich.JD02_03.Programme_Version.Cashier;
 import by.it.voronovich.JD02_03.Programme_Version.Client;
-import by.it.voronovich.JD02_03.Programme_Version.Util.*;
+import by.it.voronovich.JD02_03.Programme_Version.Util.Queue;
+import by.it.voronovich.JD02_03.Programme_Version.Util.RandomNum;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -16,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class RunProgramme {
 
-    public static AtomicInteger numberClient = new AtomicInteger(1); //все равно приходиться синхронизировать по монитору client
+    public static AtomicInteger numberClient = new AtomicInteger(1);
     public static AtomicInteger numberCashier = new AtomicInteger(1);
 
     public static void main(String[] args) {
