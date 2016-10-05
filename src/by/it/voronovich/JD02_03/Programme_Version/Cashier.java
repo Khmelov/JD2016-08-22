@@ -1,8 +1,8 @@
 package by.it.voronovich.JD02_03.Programme_Version;
 
-import by.it.voronovich.JD02_03.Programme_Version.Util.Queue;
-import by.it.voronovich.JD02_03.Programme_Version.Util.RandomNum;
 import by.it.voronovich.JD02_03.RunProgramme;
+import by.it.voronovich.JD02_03.Programme_Version.Util.RandomNum;
+import by.it.voronovich.JD02_03.Programme_Version.Util.Queue;
 
 /**
  * Класс реализует методы объекта "Cashier"
