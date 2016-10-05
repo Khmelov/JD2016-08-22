@@ -22,5 +22,6 @@ public class ConsolePrinterImplIprintable extends Printer {
                 System.out.println(pair.getKey() + " = " + s);
             }
         }
+        System.out.println();
     }
 }

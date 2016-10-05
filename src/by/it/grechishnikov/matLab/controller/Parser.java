@@ -1,23 +1,13 @@
 package by.it.grechishnikov.matLab.controller;
 
 
-import by.it.grechishnikov.matLab.controller.operation.*;
 import by.it.grechishnikov.matLab.model.*;
 
-import java.util.*;
-import java.util.concurrent.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-    private IReadable reader;
-    private Operation operation;
     private String name = "";
-
-    public Parser(IReadable reader) {
-        this.reader = reader;
-        this.operation = new Operation();
-    }
 
     /**
      * Запускаем парсер
@@ -40,13 +30,13 @@ public class Parser {
         if (text.isEmpty()) {
             System.out.println("Ошибка. Пустая строка.");
             return null;
-        } //TODO добавить поддержку векторов
+        }
         name = getName(text);
         //получаем уравнение
         String equation = getEquation(text);
         //раскрываем скобки
         while(equation.contains("(")) {
-            Pattern pattern = Pattern.compile("[(]{1}[0-9. +*/a-zA-Z-]+[)]{1}");
+            Pattern pattern = Pattern.compile("[(][0-9. +*/a-zA-Z-]+[)]");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
@@ -78,8 +68,7 @@ public class Parser {
         //делаем сложение и вычитание
         while(true) {
             try {
-                Var var = new Scalar(name, Double.parseDouble(equation));
-                return var;
+                return new Scalar(name, Double.parseDouble(equation));
             } catch (Exception e) {
                 Pattern pattern = Pattern.compile("[0-9. ]+[-+ ][0-9. ]+");
                 Matcher matcher = pattern.matcher(equation);
@@ -139,48 +128,5 @@ public class Parser {
             equation = equation.trim();
             return equation;
         }
-    }
-
-    /**
-     * Возвращает список переменных и чисел
-     * @param equation - уравнение
-     * @param name - имя для будущей переменной
-     * @return - список чисел и переменных
-     */
-    private List<Var> getVars(String equation, String name) {
-        String[] arg = equation.split("[-+*/ ]+");
-        List<Var> queue = new CopyOnWriteArrayList<>();
-        for (String s : arg) {
-            try {
-                double d = Double.parseDouble(s);
-                Scalar scalar = new Scalar(name, d);
-                queue.add(scalar);
-            } catch (NumberFormatException e) {
-                try {
-                    queue.add(Runner.storage.get(s));
-                } catch (NullPointerException e2) {
-                    System.out.println("Ошибка. Нет такого объекта в памяти.");
-                    return null;
-                }
-            }
-        }
-        return queue;
-    }
-
-    /**
-     * Получаем массив операторов
-     * @param equation - уравнение
-     * @return - массив операторов
-     */
-    private String[] getOperators(String equation) {
-        String[] operators = new String[100];
-        Pattern pattern = Pattern.compile("[-+*/]+");
-        Matcher matcher = pattern.matcher(equation);
-        for (int i = 0; i < operators.length; i++) {
-            if (matcher.find()) {
-                operators[i] = matcher.group();
-            } else break;
-        }
-        return operators;
     }
 }

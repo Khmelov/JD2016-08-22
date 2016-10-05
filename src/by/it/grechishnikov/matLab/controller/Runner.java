@@ -36,6 +36,6 @@ public class Runner {
         path = System.getProperty("user.dir") + "/src/by/it/grechishnikov/matlab/model/vars.txt";
         printer = new ConsolePrinterImplIprintable();
         reader = new ReaderFromConsoleImplIReadable();
-        parser = new Parser(reader);
+        parser = new Parser();
     }
 }
