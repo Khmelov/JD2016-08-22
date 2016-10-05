@@ -19,72 +19,76 @@ public class Parser {
         this.operation = new Operation();
     }
 
-    public void run() {
-        String text = reader.readValue();
-        parse(text).assign();
+    /**
+     * Запускаем парсер
+     * @param text - строка для парсинга
+     * @return - возвращаем распарсенное уравнение в виде строки
+     */
+    public String run(String text) {
+        Var var = parse(text);
+        var.assign();
         name = "";
+        return var.toString();
     }
 
-    Var parse(String text) {
+    /**
+     * Одному богу известно, что тут происходит
+     * @param text - уравнение
+     * @return - чудесным образом полученная переменная
+     */
+    private Var parse(String text) {
         if (text.isEmpty()) {
             System.out.println("Ошибка. Пустая строка.");
             return null;
-        }
+        } //TODO пофиксить метод, что бы тесты проходили и добавить поддержку векторов
         name = getName(text);
-        //получаем уравнение и раскрываем скобки
+        //получаем уравнение
         String equation = getEquation(text);
+        //раскрываем скобки
         while(equation.contains("(")) {
-            Pattern pattern = Pattern.compile("[(]{1}[0-9. +*/-]+[)]{1}");
+            Pattern pattern = Pattern.compile("[(]{1}[0-9. +*/a-zA-Z-]+[)]{1}");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
             String tmp = inner.replaceAll("[()]", "");
             Var var = parse(tmp);
             equation = equation.replace(inner, var.valueToString());
-            System.out.println(equation);
         }
         //получаем очередь чисел и переменных
         List<Var> list = getVars(equation, name);
         //получаем операторы
         String[] operators = getOperators(equation);
         Var first = list.get(0);
+        list.remove(first);
         int count = 0;
 
+        //делаем умножение и деление
         Iterator<Var> iterator = list.iterator();
         while(iterator.hasNext()) {
             String s = operators[count];
             if(s == null) break;
             if (s.equals("*")) {
-                first = iterator.next();
-                while(count != list.indexOf(first)){
-                    first = iterator.next();
-                }
-                list.remove(first);
                 Var second = iterator.next();
+                list.remove(second);
                 first = operation.mul(name, first, second);
             } else if (s.equals("/")) {
-                first = iterator.next();
-                while(count != list.indexOf(first)){
-                    first = iterator.next();
-                }
-                list.remove(first);
                 Var second = iterator.next();
+                list.remove(second);
                 first = operation.div(name, first, second);
             }
             count++;
         }
 
-        list.remove(first);//исправить 1-5.0*9.0
-        count = 0;
-        for(Var second : list) {
-            String s = operators[count];
+        //делаем сложение и вычитание
+        iterator = list.iterator();
+        for(int i=0; i<operators.length; i++) {
+            String s = operators[i];
             if(s == null) break;
             if(s.equals("+")) {
-                first = operation.add(name, first, second);
+                first = operation.add(name, first, iterator.next());
             } else if(s.equals("-")) {
-                first = operation.sub(name, first, second);
+                first = operation.sub(name, first, iterator.next());
             }
-            count++;
         }
         return first;
     }
