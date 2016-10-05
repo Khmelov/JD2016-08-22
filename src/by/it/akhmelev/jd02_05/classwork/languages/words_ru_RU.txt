@@ -1,0 +1,4 @@
+hello=Привет!
+howdoyoudo=Как дела?
+user=Хмелев Александр.
+set.language=Введите язык
