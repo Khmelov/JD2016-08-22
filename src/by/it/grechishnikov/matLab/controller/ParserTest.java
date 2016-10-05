@@ -1,7 +1,6 @@
 package by.it.grechishnikov.matLab.controller;
 
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 
@@ -35,10 +34,17 @@ public class ParserTest {
     }
 
     @Test
+    public void parseVector() throws Exception {
+        String text = "E={2,3}*(D/2)";
+        String test = new Parser(new ReaderFromConsoleImplIReadable()).run(text);
+        assertEquals(test, "F = 27.0");
+    }
+
+    @Test
     public void test1() throws Exception {
         String text = "F=1-5.0*9.0";
         String test = new Parser(new ReaderFromConsoleImplIReadable()).run(text);
-        assertEquals(test, "F = -44");
+        assertEquals(test, "F = -44.0");
     }
 
     @Test

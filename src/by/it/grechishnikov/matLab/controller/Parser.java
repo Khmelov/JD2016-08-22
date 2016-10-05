@@ -40,7 +40,7 @@ public class Parser {
         if (text.isEmpty()) {
             System.out.println("Ошибка. Пустая строка.");
             return null;
-        } //TODO пофиксить метод, что бы тесты проходили и добавить поддержку векторов
+        } //TODO добавить поддержку векторов
         name = getName(text);
         //получаем уравнение
         String equation = getEquation(text);
@@ -54,45 +54,71 @@ public class Parser {
             Var var = parse(tmp);
             equation = equation.replace(inner, var.valueToString());
         }
-        //получаем очередь чисел и переменных
-        List<Var> list = getVars(equation, name);
-        //получаем операторы
-        String[] operators = getOperators(equation);
-        Var first = list.get(0);
-        list.remove(first);
-        int count = 0;
-
+        //загружаем переменные
+        while(true) {
+            try {
+                Pattern pattern = Pattern.compile("[a-zA-Z]");
+                Matcher matcher = pattern.matcher(equation);
+                matcher.find();
+                String inner = matcher.group();
+                Var var = Runner.storage.get(inner);
+                equation = equation.replace(inner, var.valueToString());
+            } catch (Exception e) {
+                break;
+            }
+        }
         //делаем умножение и деление
-        Iterator<Var> iterator = list.iterator();
-        while(iterator.hasNext()) {
-            String s = operators[count];
-            if(s == null) break;
-            if (s.equals("*")) {
-                Var second = iterator.next();
-                list.remove(second);
-                first = operation.mul(name, first, second);
-            } else if (s.equals("/")) {
-                Var second = iterator.next();
-                list.remove(second);
-                first = operation.div(name, first, second);
-            }
-            count++;
+        while(equation.contains("*") || equation.contains("/")) {
+            Pattern pattern = Pattern.compile("[0-9. ]+[*/ ][0-9. ]+");
+            Matcher matcher = pattern.matcher(equation);
+            matcher.find();
+            String inner = matcher.group();
+            equation = equation.replace(inner, calculate(inner));
         }
-
         //делаем сложение и вычитание
-        iterator = list.iterator();
-        for(int i=0; i<operators.length; i++) {
-            String s = operators[i];
-            if(s == null) break;
-            if(s.equals("+")) {
-                first = operation.add(name, first, iterator.next());
-            } else if(s.equals("-")) {
-                first = operation.sub(name, first, iterator.next());
+        while(true) {
+            try {
+                Var var = new Scalar(name, Double.parseDouble(equation));
+                return var;
+            } catch (Exception e) {
+                Pattern pattern = Pattern.compile("[0-9. ]+[-+ ][0-9. ]+");
+                Matcher matcher = pattern.matcher(equation);
+                matcher.find();
+                String inner = matcher.group();
+                equation = equation.replace(inner, calculate(inner));
             }
         }
-        return first;
     }
 
+    /**
+     * Производим математические действия
+     * @param inner - текст для парсинга
+     * @return - результат умножения(деления, суммы, разницы)
+     */
+    private String calculate(String inner) {
+        Pattern pattern = Pattern.compile("[0-9.]+");
+        Matcher matcher = pattern.matcher(inner);
+        matcher.find();
+        double first = Double.parseDouble(matcher.group());
+        matcher.find();
+        double second = Double.parseDouble(matcher.group());
+        if(inner.contains("*")) {
+            return String.valueOf(first * second);
+        } else if(inner.contains("/")) {
+            return String.valueOf(first / second);
+        } else if(inner.contains("+")) {
+            return String.valueOf(first + second);
+        } else if(inner.contains("-")) {
+            return String.valueOf(first - second);
+        }
+        return null;
+    }
+
+    /**
+     * Находим имя переменной в уравнении
+     * @param text - уравнение
+     * @return - возвращаем имя
+     */
     private String getName(String text) {
         if(name.isEmpty()) {
             name = text.substring(0, text.indexOf("="));
