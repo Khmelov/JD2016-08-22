@@ -90,8 +90,7 @@ public class Parser {
     private boolean check(String equation) {
         Pattern pattern = Pattern.compile("[0-9. -{}]+[-][0-9. -]+");
         Matcher matcher = pattern.matcher(equation);
-        boolean b = matcher.find();
-        return b;
+        return matcher.find();
     }
 
     /**

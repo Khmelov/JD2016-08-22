@@ -1,6 +1,5 @@
 package by.it.grechishnikov.matLab.controller;
 
-import by.it.grechishnikov.matLab.controller.operation.*;
 import by.it.grechishnikov.matLab.model.*;
 import by.it.grechishnikov.matLab.view.*;
 import java.util.LinkedHashMap;
@@ -13,17 +12,12 @@ public class Runner {
     private static Parser parser;
 
     public static void main(String[] args) {
-        init();
-//        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
-//        printer.printMap(); //выводим карту
-        parser.run(reader.readValue());
-//        test();
-//        printer.serializeMap(path); //сохраняем переменные из карты
+        init(); //инициализация
+        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
         printer.printMap(); //выводим карту
-    }
-
-    private static void test() {
-        parser.run("E={2,3}*3");
+        parser.run(reader.readValue());
+        printer.serializeMap(path); //сохраняем переменные из карты
+        printer.printMap(); //выводим карту
     }
 
     public static void init() {
