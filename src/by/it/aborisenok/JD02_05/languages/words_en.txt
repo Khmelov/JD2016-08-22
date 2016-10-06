@@ -1,0 +1,4 @@
+hello=Hello1!
+howdoyoudo=How do you do1&
+user=Aliaksey Barusionak1
+set.Language=Input language1
