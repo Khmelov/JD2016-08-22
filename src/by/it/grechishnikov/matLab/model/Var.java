@@ -2,8 +2,10 @@ package by.it.grechishnikov.matLab.model;
 
 import by.it.grechishnikov.matLab.controller.Runner;
 
-public abstract class Var implements IData {
-    boolean alive = false;
+import java.io.Serializable;
+
+public abstract class Var implements IData, Serializable {
+    boolean alive = true;
     private String name = "";
 
     public Var() {
@@ -20,8 +22,16 @@ public abstract class Var implements IData {
         }
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " = ";
+        if(!name.isEmpty()) {
+            return name + " = ";
+        } else {
+            return this.getClass().getSimpleName() + " = ";
+        }
     }
 }

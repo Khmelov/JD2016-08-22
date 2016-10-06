@@ -11,10 +11,9 @@ public class Scalar extends Var {
     public Scalar(String name, double value) {
         super(name);
         this.value = value;
-        if(value <= Double.MAX_VALUE && value >= Double.MIN_VALUE) {
-            this.alive = true;
-        } else {
+        if(value > Double.MAX_VALUE && value < Double.MIN_VALUE) {
             System.out.println("Операция невозможна");
+            this.alive = false;
         }
     }
 
@@ -33,6 +32,6 @@ public class Scalar extends Var {
 
     @Override
     public String toString() {
-        return super.toString() +  valueToString() + "\n";
+        return super.toString() +  valueToString();
     }
 }

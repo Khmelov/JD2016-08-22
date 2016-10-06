@@ -30,11 +30,11 @@ public class Vector extends Var {
 
     @Override
     public String valueToString() {
-        return Arrays.toString(value) ;
+        return Arrays.toString(value).replace("[", "{").replace("]", "}");
     }
 
     @Override
     public String toString() {
-        return super.toString() + valueToString() + "\n";
+        return super.toString() + valueToString();
     }
 }

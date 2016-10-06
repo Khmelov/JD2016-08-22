@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static by.it.grechishnikov.matLab.controller.Runner.storage;
 
-public class FilePrinterImplIprintable implements IPrintable {
+public class FilePrinterImplIprintable extends Printer {
     private File path;
 
     public FilePrinterImplIprintable(File path) {
