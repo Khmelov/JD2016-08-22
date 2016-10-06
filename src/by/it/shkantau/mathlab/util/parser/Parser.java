@@ -1,20 +1,16 @@
 package by.it.shkantau.mathlab.util.parser;
 
-import by.it.shkantau.mathlab.core.Operand.Var;
-import by.it.shkantau.mathlab.core.Operand.VarF;
-import by.it.shkantau.mathlab.core.Operand.VarM;
-import by.it.shkantau.mathlab.core.Operand.VarV;
+import by.it.shkantau.mathlab.calc.Operand.Var;
+import by.it.shkantau.mathlab.calc.Operand.VarF;
+import by.it.shkantau.mathlab.calc.Operand.VarM;
+import by.it.shkantau.mathlab.calc.Operand.VarV;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by Aliaksei on 11.09.2016.
- */
 
 public class Parser {
 
