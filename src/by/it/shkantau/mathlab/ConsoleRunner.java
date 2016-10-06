@@ -1,7 +1,9 @@
 package by.it.shkantau.mathlab;
 
 
+import by.it.shkantau.mathlab.calc.Expression;
 import by.it.shkantau.mathlab.calc.Operand.Var;
+import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
 import by.it.shkantau.mathlab.util.parser.Parser;
 import by.it.shkantau.mathlab.util.parser.RegexPattrn;
 import by.it.shkantau.mathlab.util.printer.ConsolePrinter;
@@ -38,28 +40,37 @@ public class ConsoleRunner {
                 printVar(mapVariables);
                 break;
             }else {
-//                Check typed string for matches full expression
-                if(Pattern.matches(RegexPattrn.regexFullExpr , readString)){
-                    operands = parser.parseStringToVarList(readString);
-                    operators = parser.parseStringToOperatorList(readString);
-                    for (int i = 0; i < operators.size() ; i++) {
-                                switch (operators.get(i)){
-                                case "+": result = operands.get(i).add(operands.get(i+1)); break;
-                                case "-": result = operands.get(i).sub(operands.get(i+1)); break;
-                                case "*": result = operands.get(i).mul(operands.get(i+1)); break;
-                                case "/": result = operands.get(i).div(operands.get(i+1)); break;
-                                default: new Error("Wrong operator type");
-                            }
-                        operands.set(i+1, result);
-                    }
-                    if(result != null) {
-                        printerScanner.print(" = " + result);
-                    }
 
-                }else{
-                    printerScanner.print("Full typed string is dot't match MathLab requirement, please type string like \n" +
-                            " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
+                Expression expression = new Expression(readString);
+                try {
+                    expression.parse();
+                    expression.calc();
+                    printerScanner.print(expression.getResult().toString());
+                } catch (MathLabException e) {
+                    e.printStackTrace();
                 }
+//                Check typed string for matches full expression
+//                if(Pattern.matches(RegexPattrn.regexFullExpr , readString)){
+//                    operands = parser.parseStringToVarList(readString);
+//                    operators = parser.parseStringToOperatorList(readString);
+//                    for (int i = 0; i < operators.size() ; i++) {
+//                                switch (operators.get(i)){
+//                                case "+": result = operands.get(i).add(operands.get(i+1)); break;
+//                                case "-": result = operands.get(i).sub(operands.get(i+1)); break;
+//                                case "*": result = operands.get(i).mul(operands.get(i+1)); break;
+//                                case "/": result = operands.get(i).div(operands.get(i+1)); break;
+//                                default: new Error("Wrong operator type");
+//                            }
+//                        operands.set(i+1, result);
+//                    }
+//                    if(result != null) {
+//                        printerScanner.print(" = " + result);
+//                    }
+//
+//                }else{
+//                    printerScanner.print("Full typed string is dot't match MathLab requirement, please type string like \n" +
+//                            " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
+//                }
             }
         }
     }

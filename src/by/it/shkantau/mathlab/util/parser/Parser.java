@@ -4,15 +4,24 @@ import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.calc.Operand.VarF;
 import by.it.shkantau.mathlab.calc.Operand.VarM;
 import by.it.shkantau.mathlab.calc.Operand.VarV;
+import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 public class Parser {
+    public static final String[] priorityOperator = {"+", "-", "*", "/"};
+
+    public static String[] splitExpressionAndName(String expression) throws MathLabException {
+        String [] strings = expression.split("=");
+        if (strings.length > 2){
+            throw new MathLabException("too much equals");
+        }
+        return strings;
+    }
+
 
     /**
      *
@@ -21,7 +30,7 @@ public class Parser {
      * @return List of strings which matches Matcher from varPattern
      */
     public static List <String> parseToVarString(String parsedStr, Pattern varPattern){
-        List<String> varString = new ArrayList<>();
+        List<String> varString = new LinkedList<>();
         Matcher matcherStr = varPattern.matcher(parsedStr);
         while (matcherStr.find()) {
             varString.add(matcherStr.group());
@@ -38,9 +47,8 @@ public class Parser {
         return  doubles;
     }
 
-
-    public List <Var>  parseStringToVarList(String str) /*throws MathLabException*/ {
-        List <Var> varList = new ArrayList<>();
+    public static List <Var>  parseStringToVarList(String str) /*throws MathLabException*/ {
+        List <Var> varList = new LinkedList<>();
 //      parse to any operand string
         List <String> anyOperands = parseToVarString(str, Pattern.compile(RegexPattrn.regexAny));
         for (String operandStr: anyOperands) {
@@ -55,11 +63,7 @@ public class Parser {
         return varList;
     }
 
-    public List <String > parseStringToOperatorList(String str){
-        String [] operatorString  = str.split(RegexPattrn.regexAny);
-        List <String> operatorList = new ArrayList<>( Arrays.asList(operatorString));
-        operatorList.removeAll(Arrays.asList("", null));
-        return operatorList;
+    public static List <String > parseStringToOperatorList(String str){
+        return parseToVarString(str, Pattern.compile(RegexPattrn.regexOperators));
     }
-
 }
