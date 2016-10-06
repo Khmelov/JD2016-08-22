@@ -5,6 +5,8 @@ import by.it.grechishnikov.matLab.controller.operation.*;
 import by.it.grechishnikov.matLab.model.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -72,7 +74,11 @@ public class Parser {
         while(true) {
             try {
                 if(text.contains("{") && !equation.contains("+") && !check(equation)) {
-                    return new Vector(name, parseArray(equation));
+                    if(text.contains("{{")) {
+                        return new Matrix(name, parseMatrix(equation));
+                    } else {
+                        return new Vector(name, parseArray(equation));
+                    }
                 } else {
                     return new Scalar(name, Double.parseDouble(equation));
                 }
@@ -87,8 +93,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Делаем проверку
+     * @param equation - выражение
+     * @return - false - прошел проверку
+     */
     private boolean check(String equation) {
-        Pattern pattern = Pattern.compile("[0-9. -{}]+[-][0-9. -]+");
+        Pattern pattern = Pattern.compile("[0-9. }-]+[-][0-9. -]+");
         Matcher matcher = pattern.matcher(equation);
         return matcher.find();
     }
@@ -104,7 +115,10 @@ public class Parser {
         matcher.find();
         String first = matcher.group();
         Var v1;
-        if(first.contains("{")) {
+        if (first.contains("{{")) {
+            double[][] arr = parseMatrix(first);
+            v1 = new Matrix(name, arr);
+        } else if(first.contains("{")) {
             double[] arr = parseArray(first);
             v1 = new Vector(name, arr);
         } else {
@@ -113,7 +127,10 @@ public class Parser {
         matcher.find();
         String second = matcher.group();
         Var v2;
-        if(second.contains("{")) {
+        if (second.contains("{{")) {
+            double[][] arr = parseMatrix(second);
+            v2 = new Matrix(name, arr);
+        } else if(second.contains("{")) {
             double[] arr = parseArray(second);
             v2 = new Vector(name, arr);
         } else {
@@ -134,12 +151,12 @@ public class Parser {
 
     /**
      * Парсим строку в массив чисел
-     * @param first - строка
+     * @param equation - строка
      * @return - массив double чисел
      */
-    private double[] parseArray(String first) {
-        Pattern pattern = Pattern.compile("[0-9.]+");
-        Matcher matcher = pattern.matcher(first);
+    private double[] parseArray(String equation) {
+        Pattern pattern = Pattern.compile("[0-9.-]+");
+        Matcher matcher = pattern.matcher(equation);
         ArrayList<Double> list = new ArrayList<>();
         while(matcher.find()) {
             list.add(Double.parseDouble(matcher.group()));
@@ -149,6 +166,29 @@ public class Parser {
             arr[i] = list.get(i);
         }
         return arr;
+    }
+
+    /**
+     * Парсим строку в матрицу
+     * @param equation - уравнение
+     * @return - матрцица
+     */
+    private double[][] parseMatrix(String equation) {
+        Pattern pattern = Pattern.compile("[{][0-9., -]+[}}]");
+        Matcher matcher = pattern.matcher(equation);
+        int count = 0;
+        while(matcher.find()) {
+            count++;
+        }
+        matcher.reset();
+        double[][] matrix = new double[count][];
+        count = 0;
+        while(matcher.find()) {
+            double[] arr = parseArray(matcher.group());
+            matrix[count] = arr;
+            count++;
+        }
+        return matrix;
     }
 
     /**

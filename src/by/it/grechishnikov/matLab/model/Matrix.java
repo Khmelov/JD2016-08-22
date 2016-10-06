@@ -32,18 +32,23 @@ public class Matrix extends Var {
 
     @Override
     public String valueToString() {
-        String result = "";
+        String result = "{";
         for (int i = 0; i < value.length; i++) {
+            result += "{";
             for (int j = 0; j < value[i].length; j++) {
-                result += String.format("%-7.2f", value[i][j]);
+                result += String.format("%.1f!", value[i][j]);
             }
-            result += "\n";
+            result = result.substring(0, result.length() - 1);
+            result += "}!";
         }
-        return result.substring(0, result.length() - 2);
+        result = result.substring(0, result.length() - 1) + "}";
+        result = result.replace(",", ".");
+        result = result.replace("!", ",");
+        return result;
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\n" + valueToString();
+        return super.toString() + valueToString();
     }
 }

@@ -13,10 +13,10 @@ public class Runner {
 
     public static void main(String[] args) {
         init(); //инициализация
-//        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
-//        printer.printMap(); //выводим карту
+        reader.deserializeMap(path); //загружаем сохраненные переменные в карту
+        printer.printMap(); //выводим карту
         parser.run(reader.readValue());
-//        printer.serializeMap(path); //сохраняем переменные из карты
+        printer.serializeMap(path); //сохраняем переменные из карты
         printer.printMap(); //выводим карту
     }
 
