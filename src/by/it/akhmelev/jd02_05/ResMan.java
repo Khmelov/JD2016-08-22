@@ -16,4 +16,5 @@ enum ResMan {
     public String getString(String key) {
         return resourceBundle.getString(key);
     }
+
 }
