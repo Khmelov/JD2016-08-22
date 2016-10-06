@@ -1,6 +1,5 @@
 package by.it.snegurskiy.jd02_01;
 
-import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 /**
@@ -8,22 +7,20 @@ import java.util.*;
  */
 public class  Basket {
 
-    public static HashMap GoodsInBasket() {
-        HashMap<String, Double> basket = new HashMap<String, Double>();
-        basket.putAll(Helper.allGoods);
-        try {
-            for (Map.Entry<String, Double> item : basket.entrySet()) {
-                Random random = new Random();
-                if (random.nextBoolean() == true) {
-                    basket.remove(item.getKey());
-                }
+    public static ArrayList<String> GoodsInBasket() {
 
-            }
+        Set<String> goods=Helper.allGoods.keySet();
+        ArrayList<String> s= new ArrayList<>();
+        s.addAll(goods);
+        ArrayList<String> basket= new ArrayList<>();
+        for (int i = 0; i <((int)(Math.random()*4+1)) ; i++) {
+            basket.add(s.get((int)(Math.random()*4)));
 
 
-        } catch (Exception e) {
-            System.out.println(e);
         }
+
         return basket;
     }
+
+
 }

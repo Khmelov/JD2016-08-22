@@ -1,6 +1,8 @@
 package by.it.snegurskiy.jd02_01;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created by snegurskiy.nn on 26.09.2016.
@@ -9,6 +11,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
 
     int number;
     public boolean pensioner=false;
+    ArrayList<String> basket;
 
     public Buyer(Integer number) {
 
@@ -74,7 +77,8 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
                 else sleep(pause);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }System.out.println(this + " взял корзинку");
+            }
+            System.out.println(this + " взял корзинку");
         }
 
         @Override
@@ -89,7 +93,7 @@ public class Buyer extends Thread implements IBuyer,IUseBasket {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            HashMap a=Basket.GoodsInBasket();
-            System.out.println(this +  " положил "+ a+" в корзинку");
+          this.basket=Basket.GoodsInBasket();
+            System.out.println(this +  " положил "+this.basket.toString() +" в корзинку");
         }
     }
