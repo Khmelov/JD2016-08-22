@@ -1,11 +1,17 @@
-package by.it.aborisenok.matLab;
+package by.it.aborisenok.matLab.Vars;
+
+import by.it.aborisenok.matLab.Interfaces.IVar;
 
 /**
  * Created by Лёша on 09.09.2016.
  */
-public class VarF extends Var{
+public class VarF extends Var implements IVar{
 
     private double value;
+
+    public VarF(String value){
+        setFrom(value);
+    }
 
     public VarF(double value){
         this.value = value;
@@ -82,8 +88,15 @@ public class VarF extends Var{
         return v.div(this);
     }
 //************************************************
+
     @Override
     public String toString() {
         return ((Double)value).toString();
     }
+
+    @Override
+    public void setFrom(String str) {
+        value = Double.valueOf(str);
+    }
+
 }
