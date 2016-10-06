@@ -1,0 +1,4 @@
+hello=Привет!
+user=Шкантов Алексей
+helloworld=Привет Мир
+set.language=Выберите язык

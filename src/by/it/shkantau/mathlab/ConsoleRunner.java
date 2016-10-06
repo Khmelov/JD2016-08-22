@@ -1,25 +1,30 @@
 package by.it.shkantau.mathlab;
 
 
-import by.it.shkantau.mathlab.core.Operand.Var;
+import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.util.parser.Parser;
 import by.it.shkantau.mathlab.util.parser.RegexPattrn;
 import by.it.shkantau.mathlab.util.printer.ConsolePrinter;
 import by.it.shkantau.mathlab.util.printer.PrinterScanner;
 
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
-/**
- * Created by Aliaksei on 11.09.2016.
- */
 public class ConsoleRunner {
+    private static  Map<String, Var> mapVariables = new HashMap<>();
+//    private static final String[] operatorsByPriority = {"=", "+", "-", "*", "/"};
+
 
     public static void main (String [] args) /*throws MathLabException*/ {
 
         PrinterScanner printerScanner = new ConsolePrinter(System.in);
         Parser parser = new Parser();
         String readString;
+
+
 
         List<Var> operands;
         List<String> operators;
@@ -30,6 +35,7 @@ public class ConsoleRunner {
         while(true){
             readString = printerScanner.read();
             if(readString.equals("\\q")){
+                printVar(mapVariables);
                 break;
             }else {
 //                Check typed string for matches full expression
@@ -55,6 +61,12 @@ public class ConsoleRunner {
                             " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
                 }
             }
+        }
+    }
+
+    private static void printVar(Map<String, Var> map){
+        for (Map.Entry<String, Var> stringVarEntry : map.entrySet()) {
+            System.out.println(stringVarEntry);
         }
     }
 }
