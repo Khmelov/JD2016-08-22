@@ -70,11 +70,28 @@ class Sub extends Operation {
     }
 
     public static Var sub(String name, Matrix var1, Scalar var2) throws NotSupportedException {
-        return sub(name, var2, var1);
+        double[][] result = new double[var1.getRow()][var1.getCol()];
+        for (int i = 0; i < var1.getRow(); i++) {
+            for (int j = 0; j < var1.getCol(); j++) {
+                result[i][j] = var1.getValue()[i][j] - var2.getValue();
+            }
+        }
+        return new Matrix(name, result);
     }
 
     public static Var sub(String name, Matrix var1, Vector var2) throws NotSupportedException {
-        return sub(name, var2, var1);
+        if (var2.getSize() == var1.getRow()) {
+            double[][] result = new double[var1.getRow()][var1.getCol()];
+            for (int i = 0; i < var1.getCol(); i++) {
+                for (int j = 0; j < var1.getRow(); j++) {
+                    result[j][i] = var1.getValue()[j][i] - var2.getValue()[j];
+                }
+            }
+            return new Matrix(name, result);
+        }
+        else {
+            throw new NotSupportedException();
+        }
     }
 
     public static Var sub(String name, Matrix var1, Matrix var2) throws NotSupportedException {

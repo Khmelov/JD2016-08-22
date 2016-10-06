@@ -97,9 +97,65 @@ public class ParserTest {
     }
 
     @Test
-    public void parseVectorSubVector() throws Exception {
-        String text = "a={4,5,6} - {4,5,6}";
+    public void parseMatrixAddScalar() throws Exception {
+        String text = "a={{1.0,2.0,3.0},{4.0,5.0,6.0}}+10";
         String test = new Parser().run(text);
-        assertEquals(test, "a = {0.0, 0.0, 0.0}");
+        assertEquals(test, "a = {{11.0,12.0,13.0},{14.0,15.0,16.0}}");
+    }
+
+    @Test
+    public void parseMatrixSubScalar() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}} -3";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{-2.0,-1.0,0.0},{1.0,2.0,3.0}}");
+    }
+
+    @Test
+    public void parseMatrixMulScalar() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}}*3";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{3.0,6.0,9.0},{12.0,15.0,18.0}}");
+    }
+
+    @Test
+    public void parseMatrixDivScalar() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}}/2";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{0.5,1.0,1.5},{2.0,2.5,3.0}}");
+    }
+
+    @Test
+    public void parseMatrixAddVector() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}} + {1,2}";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{2.0,3.0,4.0},{6.0,7.0,8.0}}");
+    }
+
+    @Test
+    public void parseMatrixSubVector() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}} - {1,2}";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{0.0,1.0,2.0},{2.0,3.0,4.0}}");
+    }
+
+    @Test
+    public void parseMatrixAddMatrix() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}} + {{1,2,3},{4,5,6}";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{2.0,4.0,6.0},{8.0,10.0,12.0}}");
+    }
+
+    @Test
+    public void parseMatrixSubMatrix() throws Exception {
+        String text = "a={{1,2,3},{4,5,6}} - {{1,2,3},{4,5,6}";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{0.0,0.0,0.0},{0.0,0.0,0.0}}");
+    }
+
+    @Test
+    public void parseMatrixMulMatrix() throws Exception {
+        String text = "a={{1,2,3},{4,5,6},{7,8,9}} * {{1,2,3},{4,5,6},{7,8,9}}";
+        String test = new Parser().run(text);
+        assertEquals(test, "a = {{30.0,36.0,42.0},{66.0,81.0,96.0},{102.0,126.0,150.0}}");
     }
 }
