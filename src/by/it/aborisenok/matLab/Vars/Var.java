@@ -1,9 +1,14 @@
-package by.it.aborisenok.matLab;
+package by.it.aborisenok.matLab.Vars;
+
+import by.it.aborisenok.matLab.Interfaces.IOperation;
+import by.it.aborisenok.matLab.Log;
+import by.it.aborisenok.matLab.System.HashMapper;
 
 /**
  * Created by Лёша on 09.09.2016.
  */
-public abstract class Var implements IOperation{
+public abstract class Var implements IOperation {
+
 
 
     @Override
@@ -89,5 +94,10 @@ public abstract class Var implements IOperation{
     public Var div(VarM v){
         Log.print("Деление с матрицей невозможно");
         return null;
+    }
+
+    @Override
+    public void assigned(String name, Var var) {
+        HashMapper.setVeriable(name, var);
     }
 }
