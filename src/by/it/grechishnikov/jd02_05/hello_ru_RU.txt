@@ -1,0 +1,3 @@
+hello = Привет
+name = Евгений
+native2ascii -encoding utf8 /Users/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_05/hello_ru_RU.txt /Users/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_05/hello_ru_RU.properties
