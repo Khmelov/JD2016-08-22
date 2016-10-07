@@ -41,7 +41,7 @@ public class Parser {
         String equation = getEquation(text);
         //раскрываем скобки
         while(equation.contains("(")) {
-            Pattern pattern = Pattern.compile("[(][0-9. +*/a-zA-Z-]+[)]");
+            Pattern pattern = Pattern.compile("[(][{},0-9. +*/a-zA-Z-]+[)]");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
@@ -85,7 +85,7 @@ public class Parser {
             } catch (Exception e) {
 
             }
-            Pattern pattern = Pattern.compile("[0-9. {},]+[-+ ][0-9. {},]++");
+            Pattern pattern = Pattern.compile("[0-9. {},-]+[-+ ][0-9. {},]+");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
