@@ -55,6 +55,13 @@ public class ParserTest {
     }
 
     @Test
+    public void test4() throws Exception {
+        String text = "a = 1 - ((1 + 1) * 2)";
+        String test = new Parser().run(text);
+        assertEquals(test, "a  = -3.0");
+    }
+
+    @Test
     public void parseVectorAddScalar() throws Exception {
         String text = "E={1,2,3}+3";
         String test = new Parser().run(text);
