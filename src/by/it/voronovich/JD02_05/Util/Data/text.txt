@@ -1,0 +1,4 @@
+hi=Hello
+name=Dmitry Voronovich
+whatsup=How are you doing?
+inputlanguage=Choose language...
