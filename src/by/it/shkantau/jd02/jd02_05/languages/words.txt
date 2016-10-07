@@ -1,0 +1,4 @@
+hello=Hello!
+user=Shkantau Aliaksei
+helloworld=Hello World
+set.language=Set language
