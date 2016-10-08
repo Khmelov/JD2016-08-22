@@ -1,6 +1,7 @@
 package by.it.grechishnikov.matLab.view;
 
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 import java.io.File;
 import java.io.FileWriter;
@@ -24,6 +25,7 @@ public class FilePrinterImplIprintable extends Printer {
             writer.flush();
         } catch (Exception e) {
             System.out.println("Ошибка.");
+            Runner.logger.log("Ошибка");
         }
     }
 
@@ -39,6 +41,7 @@ public class FilePrinterImplIprintable extends Printer {
             writer.flush();
         } catch (Exception e) {
             System.out.println("Ошибка.");
+            Runner.logger.log("Ошибка");
         }
     }
 }

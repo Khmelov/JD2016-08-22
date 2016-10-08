@@ -6,18 +6,30 @@ import java.util.LinkedHashMap;
 
 public class Runner {
     public static LinkedHashMap<String, Var> storage = new LinkedHashMap<>();
-    private static IPrintable printer;
+    private static Printer printer;
     private static IReadable reader;
     private static String path;
     private static Parser parser;
+    public static Logger logger;
 
     public static void main(String[] args) {
         init(); //инициализация
         reader.deserializeMap(path); //загружаем сохраненные переменные в карту
-        printer.printMap(); //выводим карту
-        parser.run(reader.readValue());
+        while (true) {
+            printer.printMap(); //выводим карту
+            String line = reader.readValue();
+            if(line.equals("end")) {
+                break;
+            }
+            try {
+                parser.run(line);
+            } catch (Exception e) {
+                //если при парсинге была ошибка, то логгируем её
+                printer.printLine("Ошибка");
+                logger.log(e.getMessage());
+            }
+        }
         printer.serializeMap(path); //сохраняем переменные из карты
-        printer.printMap(); //выводим карту
     }
 
     public static void init() {
@@ -25,5 +37,6 @@ public class Runner {
         printer = new ConsolePrinterImplIprintable();
         reader = new ReaderFromConsoleImplIReadable();
         parser = new Parser();
+        logger = Logger.getInstance();
     }
 }

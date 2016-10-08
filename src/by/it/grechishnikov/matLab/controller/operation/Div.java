@@ -1,5 +1,6 @@
 package by.it.grechishnikov.matLab.controller.operation;
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 
 class Div extends Operation {
@@ -7,6 +8,7 @@ class Div extends Operation {
     @Override
     public Var div(String name, Var var1, Var var2){
         System.out.println("Операция невозможна");
+        Runner.logger.log("Операция невозможна");
         return null;
     }
 
@@ -15,10 +17,12 @@ class Div extends Operation {
     }
 
     public static Var div(String name, Scalar var1, Vector var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
     public static Var div(String name, Scalar var1, Matrix var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
@@ -32,10 +36,12 @@ class Div extends Operation {
     }
 
     public static Var div(String name, Vector var1, Vector var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
     public static Var div(String name, Vector var1, Matrix var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
@@ -50,10 +56,12 @@ class Div extends Operation {
     }
 
     public static Var div(String name, Matrix var1, Vector var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
     public static Var div(String name, Matrix var1, Matrix var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 }

@@ -6,7 +6,6 @@ import java.io.FileReader;
 public class ReaderFromStreamImplIReadable extends Reader {
     private FileReader from;
 
-
     public ReaderFromStreamImplIReadable(FileReader from) {
         this.from = from;
     }
@@ -21,6 +20,7 @@ public class ReaderFromStreamImplIReadable extends Reader {
             return result;
         } catch (Exception e) {
             System.out.println("Ошибка.");
+            Runner.logger.log(e.getMessage());
         }
         return null;
     }
