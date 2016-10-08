@@ -1,11 +1,13 @@
 package by.it.aborisenok.JD02_03;
 
 
+import java.util.Comparator;
+import java.util.TreeMap;
 
 /**
  * Created by Лёша on 26.09.2016.
  */
-public class Buyer  implements IBuyer, IUseBacket, Runnable{
+public class Buyer  implements IBuyer, IUseBacket, Runnable, Comparable<Buyer> {
 
     Backet backet;
     private String name;
@@ -107,5 +109,29 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable{
     public String toString() {
         return this.name;
     }
+
+    @Override
+    public int compareTo(Buyer o) {
+
+//        if (this.pensioneer && o.pensioneer){
+//            System.out.println(this.pensioneer +  " = " + o.pensioneer);
+//            return 0;
+//        }
+//        if (!this.pensioneer && !o.pensioneer){
+//            System.out.println(this.pensioneer +  " = " + o.pensioneer);
+//            return 0;
+//        }
+//
+//        if (this.pensioneer && !o.pensioneer) {
+//            System.out.println(this.pensioneer + " < " + o.pensioneer);
+//            return -1;
+//        }
+//        else {
+//            System.out.println(this.pensioneer +  " > " + o.pensioneer);
+//            return 1;
+//        }
+        return Boolean.compare(o.pensioneer, this.pensioneer);
+    }
+
 
 }

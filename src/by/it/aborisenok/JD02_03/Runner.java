@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.PriorityBlockingQueue;
 
 /**
  * Created by Лёша on 26.09.2016.
@@ -14,10 +15,10 @@ public class Runner {
    volatile static int countCashiers = 0;
     public static void main(String[] args) throws InterruptedException {
 //
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 5; i++){
-            executor.execute(new Buyer(i+1));
-        }
+//        ExecutorService executor = Executors.newFixedThreadPool(5);
+//        for (int i = 0; i < 5; i++){
+//            executor.execute(new Buyer(i+1));
+//        }
 
         while (!Dispatcher.planComplete()) {
             Thread.sleep(1000); //ожидание в 1 секунду
@@ -25,10 +26,21 @@ public class Runner {
             for (int i = 0; i <= count; i++) {
                 countBuyers = Dispatcher.countBuyers++;
                     new Thread(new Buyer(countBuyers)).start();
-
             }
         }
-        executor.shutdown();
+
+        Thread.sleep(4000);
+        System.out.println(Queues.queueBuyers);
+
+
+        Thread.sleep(2000);
+        System.out.println(Queues.queueBuyers);
+
+//        for (Buyer g : Queues.queueBuyers){
+//            System.out.println(g);
+//        }
+
+//        executor.shutdown();
 //        while (countSeconds++ < 59) {
 //                    System.out.println("***"+countSeconds+"***");
 //
