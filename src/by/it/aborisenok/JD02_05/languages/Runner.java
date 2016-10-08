@@ -20,7 +20,7 @@ public class Runner implements IKeys{
         System.out.println(Properties.getString(HELLO));
         System.out.println(Properties.getString(HOWDOYOUDO));
         System.out.println(Properties.getString(USER));
-        DataFormat df = DateFormat.getDateInstance(DateFormat.LONG, Properties.)
+       // DataFormat df = DateFormat.getDateInstance(DateFormat.LONG);
     }
 
 
@@ -41,7 +41,7 @@ public class Runner implements IKeys{
             if (language.equals("en")){
                 Locale locale = new Locale("en");
             }
-            Properties.setLocale(l)
+           // Properties.setLocale(l);
         }
 //немного допилить
         //если пусто локаль инглиш
