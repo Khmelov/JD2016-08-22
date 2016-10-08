@@ -1,5 +1,7 @@
 package by.it.aborisenok.matLab.Vars;
 
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableEditions;
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableException;
 import by.it.aborisenok.matLab.Interfaces.IVar;
 import by.it.aborisenok.matLab.Log;
 import by.it.aborisenok.matLab.System.Patterns;
@@ -61,8 +63,7 @@ public class VarM extends Var implements IVar{
             }
             return res;
         } else {
-            Log.print("Разные размеры матриц");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.ADD_MATRIX);
         }
     }
 //******************************************
@@ -92,8 +93,7 @@ public class VarM extends Var implements IVar{
             }
             return res;
         } else {
-            Log.print("Разные размеры матриц");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.SUB_MATRIX);
         }
     }
 //******************************************
@@ -121,8 +121,7 @@ public class VarM extends Var implements IVar{
             }
             return res;
         } else {
-            Log.print("Некорректные введённые данные");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_VECTOR_AND_MATRIX);
         }
     }
 
@@ -145,8 +144,7 @@ public class VarM extends Var implements IVar{
                 }
             return res;
         } else {
-            Log.print("Заданные неверные размеры матриц");
-            return res;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_MATRIX);
         }
     }
 //***********************************

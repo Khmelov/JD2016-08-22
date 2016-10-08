@@ -1,5 +1,7 @@
 package by.it.aborisenok.matLab.System;
 
+import by.it.aborisenok.matLab.Errors.IllegalFormatOfVariableException;
+import by.it.aborisenok.matLab.Errors.UseOfUnknownVariableException;
 import by.it.aborisenok.matLab.Vars.*;
 
 
@@ -62,7 +64,7 @@ public class Parser {
         }
         else if (strVar.matches(Patterns.exVal)) return new VarF(strVar);
         else if (strVar.matches(Patterns.stringVariable)) return HashMapper.getVeriable(strVar);
-           else   return null;
+           else   throw new UseOfUnknownVariableException("Использование несуществующей переменной.");
     }
 
     private void oneOperation(int number) { //выполняет одну операцию
@@ -93,7 +95,8 @@ public class Parser {
 
 
     public Var doCalc(String str){
-
+        if (!CheckBracketsRight.checkBrackets(str))
+            throw new IllegalFormatOfVariableException("Неверная расстановка скобок");
         String s1 = str;
         Pattern p = Pattern.compile(Patterns.expInBrackets);
         Matcher matcher = p.matcher(s1);

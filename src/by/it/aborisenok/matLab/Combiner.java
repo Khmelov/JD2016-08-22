@@ -21,7 +21,6 @@ public class Combiner {
                 System.exit(0);
             if (line.toLowerCase().equals("print")) {
                 System.out.println(HashMapper.getHashMap());
-                System.exit(0);
             }
             Var var = parser.doCalc(line);
             System.out.println(var);

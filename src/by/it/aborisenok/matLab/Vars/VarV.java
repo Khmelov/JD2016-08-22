@@ -1,5 +1,6 @@
 package by.it.aborisenok.matLab.Vars;
 
+import by.it.aborisenok.matLab.Errors.*;
 import by.it.aborisenok.matLab.Interfaces.IVar;
 import by.it.aborisenok.matLab.Log;
 import by.it.aborisenok.matLab.System.Patterns;
@@ -47,8 +48,7 @@ public class VarV extends Var implements IVar{
             return res;
         }
         else {
-            Log.print("Разные размеры векторов");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.ADD_VECTORS);
         }
     }
 //******************************************
@@ -70,8 +70,7 @@ public class VarV extends Var implements IVar{
             }
             return res;
         } else {
-            Log.print("Разные размеры векторов");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.SUB_VECTORS);
         }
     }
 //******************************************
@@ -94,8 +93,7 @@ public class VarV extends Var implements IVar{
             }
             return new VarF(res);
         } else {
-            Log.print("Некорректные введённые данные");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_VECTOR);
         }
     }
 
@@ -111,9 +109,7 @@ public class VarV extends Var implements IVar{
             }
             return res;
         } else {
-            Log.print("Матрица должна быть квадратной и число её строк должно" +
-                    "ровняться числу элементов вектора");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_MATRIX);
         }
     }
 //*******************************************************
