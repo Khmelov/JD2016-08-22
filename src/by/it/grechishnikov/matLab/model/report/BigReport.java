@@ -7,9 +7,9 @@ import java.text.DateFormat;
 import java.util.*;
 
 public class BigReport extends ReportBuilder {
-    String head;//заголовок
-    Date start;//дата начала
-    Map<String, String> operations;//запросы и результаты
+    private String head;//заголовок
+    private Date start;//дата начала
+    private Map<String, String> operations;//запросы и результаты
 
     public BigReport() {
         head = "Завершение программы...";
