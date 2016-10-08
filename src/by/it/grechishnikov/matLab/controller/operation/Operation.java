@@ -1,5 +1,6 @@
 package by.it.grechishnikov.matLab.controller.operation;
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 
 
@@ -32,6 +33,7 @@ public  class Operation implements IOperationable {
                 throw new NotSupportedException();
         } catch (NotSupportedException e) {
             System.out.println("Операция невозможна");
+            Runner.logger.log("Операция невозможна");
             return new NullObject();
         }
     }
@@ -62,6 +64,7 @@ public  class Operation implements IOperationable {
                 throw new NotSupportedException();
         } catch (NotSupportedException e) {
             System.out.println("Операция невозможна");
+            Runner.logger.log("Операция невозможна");
             return new NullObject();
         }
     }
@@ -92,6 +95,7 @@ public  class Operation implements IOperationable {
                 throw new NotSupportedException();
         } catch (NotSupportedException e) {
             System.out.println("Операция невозможна");
+            Runner.logger.log("Операция невозможна");
             return new NullObject();
         }
     }
@@ -123,6 +127,7 @@ public  class Operation implements IOperationable {
                 throw new NotSupportedException();
         } catch (NotSupportedException e) {
             System.out.println("Операция невозможна");
+            Runner.logger.log("Операция невозможна");
             return new NullObject();
         }
     }

@@ -14,6 +14,7 @@ public class ConsolePrinterImplIprintable extends Printer {
 
     @Override
     public void printMap() {
+        Printer.printLine("Доступные объекты:");
         for(Map.Entry<String, Var> pair : storage.entrySet()) {
             String s = pair.getValue().valueToString() ;
             if(pair.getKey().isEmpty()) {

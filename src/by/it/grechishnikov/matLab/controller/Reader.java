@@ -13,6 +13,7 @@ abstract class Reader implements IReadable {
             result = consoleReader.readLine();
         } catch (Exception e) {
             System.out.println("Ошибка.");
+            Runner.logger.log(e.getMessage());
         }
         return result;
     }

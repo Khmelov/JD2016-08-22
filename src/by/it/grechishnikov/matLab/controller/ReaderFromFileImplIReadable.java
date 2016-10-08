@@ -17,6 +17,7 @@ public class ReaderFromFileImplIReadable extends Reader {
             result += fileReader.readLine();
         } catch (Exception e) {
             System.out.println("Ошибка.");
+            Runner.logger.log(e.getMessage());
         }
         return result;
     }

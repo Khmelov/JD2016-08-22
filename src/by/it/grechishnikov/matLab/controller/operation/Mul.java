@@ -1,5 +1,6 @@
 package by.it.grechishnikov.matLab.controller.operation;
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 
 class Mul extends Operation {
@@ -7,6 +8,7 @@ class Mul extends Operation {
     @Override
     public Var mul(String name, Var var1, Var var2) {
         System.out.println("Операция невозможна");
+        Runner.logger.log("Операция невозможна");
         return null;
     }
 
@@ -46,11 +48,13 @@ class Mul extends Operation {
             return new Scalar(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
 
     public static Var mul(String name, Vector var1, Matrix var2) throws NotSupportedException {
+        Runner.logger.log("Операция невозможна");
         throw new NotSupportedException();
     }
 
@@ -69,6 +73,7 @@ class Mul extends Operation {
             return new Vector(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
@@ -86,6 +91,7 @@ class Mul extends Operation {
             return new Matrix(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
