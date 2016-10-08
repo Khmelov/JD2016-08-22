@@ -21,7 +21,7 @@ public class Parser {
         Var var = parse(text);
         var.assign();
         name = "";
-        return var.toString();
+        return var.valueToString();
     }
 
     /**

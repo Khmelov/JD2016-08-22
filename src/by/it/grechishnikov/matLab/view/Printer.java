@@ -22,7 +22,7 @@ public abstract class Printer implements IPrintable {
         }
     }
 
-    public static void printLine(String message) {
+    public void printLine(String message) {
         System.out.println(message);
     }
 }

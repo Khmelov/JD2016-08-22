@@ -28,5 +28,6 @@ abstract class Reader implements IReadable {
         } catch (Exception e) {
             System.out.println("Считывание из файла завершено");
         }
+        Runner.printer.printMap();
     }
 }
