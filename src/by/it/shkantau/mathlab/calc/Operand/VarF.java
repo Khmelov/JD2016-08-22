@@ -12,9 +12,12 @@ public class VarF extends Var {
     }
 
     public VarF(String str){
+        if(str.contains("(") && str.contains(")")){
+            str = str.replaceAll("[\\(\\)]", "");
+        }
         try {this.value = Double.parseDouble(str);
         }catch (NumberFormatException e){
-            new Error("NumberFormatException, can't convert str to Double");
+           throw new NumberFormatException ("Can't conver "+ str + "to Double.");
         }
     }
 
