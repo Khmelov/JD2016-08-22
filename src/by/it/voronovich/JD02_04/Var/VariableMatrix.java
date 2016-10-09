@@ -16,17 +16,17 @@ public class VariableMatrix extends Variable {
 
     private double[][] valueMatrix;
 
-    public VariableMatrix(double [][] valueM) {
-        this.valueMatrix = new double [valueM.length] [valueM.length];
-        this.valueMatrix = valueM.clone();
+    public VariableMatrix(double [][] valueMatrix) {
+        this.valueMatrix = new double [valueMatrix.length] [valueMatrix.length];
+        this.valueMatrix = valueMatrix.clone();
     }
 
     public VariableMatrix(int length) {
         this.valueMatrix = new double [length] [length];
     }
 
-    public VariableMatrix(String valueM) {
-        setValue (valueM);
+    public VariableMatrix(String valueMatrix) {
+        setValue (valueMatrix);
     }
 
     @Override
@@ -34,9 +34,9 @@ public class VariableMatrix extends Variable {
         return this.valueMatrix;
     }
 
-    public void setValue(double[][] valueM) {
-        this.valueMatrix = new double [valueM.length][valueM.length];
-        this.valueMatrix = valueM.clone();
+    public void setValue(double[][] valueMatrix) {
+        this.valueMatrix = new double [valueMatrix.length][valueMatrix.length];
+        this.valueMatrix = valueMatrix.clone();
     }
 
     @Override

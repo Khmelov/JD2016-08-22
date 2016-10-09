@@ -16,17 +16,17 @@ public class VariableVector extends Variable {
 
     private double[] valueVector;
 
-    public VariableVector(double[] valueV) {
-        this.valueVector = new double[valueV.length];
-        this.valueVector = valueV.clone();
+    public VariableVector(double[] valueVector) {
+        this.valueVector = new double[valueVector.length];
+        this.valueVector = valueVector.clone();
     }
 
     public VariableVector(int length) {
         this.valueVector = new double[length];
     }
 
-    public VariableVector(String valueV) {
-        setValue(valueV);
+    public VariableVector(String valueVector) {
+        setValue(valueVector);
     }
 
     @Override
@@ -34,9 +34,9 @@ public class VariableVector extends Variable {
         return this.valueVector;
     }
 
-    public void setValue(double[] valueV) {
-        this.valueVector = new double[valueV.length];
-        this.valueVector = valueV.clone();
+    public void setValue(double[] valueVector) {
+        this.valueVector = new double[valueVector.length];
+        this.valueVector = valueVector.clone();
     }
 
     @Override
