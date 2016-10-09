@@ -17,7 +17,7 @@ public class VarF extends Var {
         }
         try {this.value = Double.parseDouble(str);
         }catch (NumberFormatException e){
-           throw new NumberFormatException ("Can't convert "+ str + "to Double.");
+           throw new NumberFormatException ("Can't conver "+ str + "to Double.");
         }
     }
 
