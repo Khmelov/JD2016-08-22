@@ -16,63 +16,49 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class ConsoleRunner {
-    private static  Map<String, Var> mapVariables = new HashMap<>();
-//    private static final String[] operatorsByPriority = {"=", "+", "-", "*", "/"};
 
+    private static  Map<String, Var> mapVariables = new HashMap<>();
 
     public static void main (String [] args) /*throws MathLabException*/ {
 
         PrinterScanner printerScanner = new ConsolePrinter(System.in);
-//        Parser parser = new Parser();
         String readString;
 
+        String test1 = "А = 2+ 3*(-5.3)";
 
-
-//        List<Var> operands;
-//        List<String> operators;
-//        Var result = null;
 
         printerScanner.print("*********** Welcome to simple console MathLab v.0.3 ************");
 
-        while(true){
-            readString = printerScanner.read();
-            if(readString.equals("\\q")){
-                printVar(mapVariables);
-                break;
-            }else {
 
-                Expression expression = new Expression(readString);
-                try {
-                    expression.parse();
-                    expression.calc();
-                    printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
-                } catch (MathLabException e) {
-                    e.printStackTrace();
-                }
-//                Check typed string for matches full expression
-//                if(Pattern.matches(RegexPattrn.regexFullExpr , readString)){
-//                    operands = parser.parseStringToVarList(readString);
-//                    operators = parser.parseStringToOperatorList(readString);
-//                    for (int i = 0; i < operators.size() ; i++) {
-//                                switch (operators.get(i)){
-//                                case "+": result = operands.get(i).add(operands.get(i+1)); break;
-//                                case "-": result = operands.get(i).sub(operands.get(i+1)); break;
-//                                case "*": result = operands.get(i).mul(operands.get(i+1)); break;
-//                                case "/": result = operands.get(i).div(operands.get(i+1)); break;
-//                                default: new Error("Wrong operator type");
-//                            }
-//                        operands.set(i+1, result);
-//                    }
-//                    if(result != null) {
-//                        printerScanner.print(" = " + result);
-//                    }
-//
-//                }else{
-//                    printerScanner.print("Full typed string is dot't match MathLab requirement, please type string like \n" +
-//                            " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
-//                }
-            }
+        test1 = test1.replaceAll("\\s" , "");
+        Expression expression = new Expression(test1);
+        try {
+            expression.parse();
+            expression.calc();
+            printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
+            mapVariables.put(expression.getResultName(), expression.getResult());
+        } catch (MathLabException e) {
+            e.printStackTrace();
         }
+        printVar(mapVariables);
+
+//        while(true){
+//            readString = printerScanner.read();
+//            if(readString.equals("\\q")){
+//                printVar(mapVariables);
+//                break;
+//            }else {
+//
+//                Expression expression = new Expression(readString);
+//                try {
+//                    expression.parse();
+//                    expression.calc();
+//                    printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
+//                } catch (MathLabException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 
     private static void printVar(Map<String, Var> map){
