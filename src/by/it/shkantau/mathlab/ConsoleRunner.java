@@ -1,65 +1,78 @@
 package by.it.shkantau.mathlab;
 
 
-import by.it.shkantau.mathlab.calc.Equation;
 import by.it.shkantau.mathlab.calc.Expression;
 import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
-import by.it.shkantau.mathlab.util.Logger;
+import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.util.parser.RegexPattrn;
 import by.it.shkantau.mathlab.util.printer.ConsolePrinter;
 import by.it.shkantau.mathlab.util.printer.PrinterScanner;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
-
+import java.util.regex.Pattern;
 
 public class ConsoleRunner {
-
     private static  Map<String, Var> mapVariables = new HashMap<>();
+//    private static final String[] operatorsByPriority = {"=", "+", "-", "*", "/"};
 
-    public static void main (String [] args) throws MathLabException /*throws MathLabException*/ {
+
+    public static void main (String [] args) /*throws MathLabException*/ {
 
         PrinterScanner printerScanner = new ConsolePrinter(System.in);
-        String path = System.getProperty("user.dir") + "/src/by/it/shkantau/mathlab/mathLab.log";
-        Logger logger = Logger.getLogger(path);
+//        Parser parser = new Parser();
         String readString;
 
-        String test1 = "А = 2+ 3*(5.3/(4.5 -5)) - 8";
-        logger.print("Calculate: "+test1);
 
 
-        printerScanner.print("*********** Welcome to simple console MathLab v.0.4 ************");
+//        List<Var> operands;
+//        List<String> operators;
+//        Var result = null;
 
-//      remove all white spaces
-        test1 = test1.replaceAll("\\s" , "");
+        printerScanner.print("*********** Welcome to simple console MathLab v.0.3 ************");
 
-        Equation equation = new Equation(test1);
-        equation.calc();
+        while(true){
+            readString = printerScanner.read();
+            if(readString.equals("\\q")){
+                printVar(mapVariables);
+                break;
+            }else {
 
-
-        mapVariables.put(equation.getResultName(), equation.getResult());
-
-        printVar(mapVariables);
-        logger.print(mapVariables.toString());
-
-
-//        while(true){
-//            readString = printerScanner.read();
-//            if(readString.equals("\\q")){
-//                printVar(mapVariables);
-//                break;
-//            }else {
+                Expression expression = new Expression(readString);
+                try {
+                    expression.parse();
+                    expression.calc();
+                    printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
+                } catch (MathLabException e) {
+                    e.printStackTrace();
+                }
+//                Check typed string for matches full expression
+//                if(Pattern.matches(RegexPattrn.regexFullExpr , readString)){
+//                    operands = parser.parseStringToVarList(readString);
+//                    operators = parser.parseStringToOperatorList(readString);
+//                    for (int i = 0; i < operators.size() ; i++) {
+//                                switch (operators.get(i)){
+//                                case "+": result = operands.get(i).add(operands.get(i+1)); break;
+//                                case "-": result = operands.get(i).sub(operands.get(i+1)); break;
+//                                case "*": result = operands.get(i).mul(operands.get(i+1)); break;
+//                                case "/": result = operands.get(i).div(operands.get(i+1)); break;
+//                                default: new Error("Wrong operator type");
+//                            }
+//                        operands.set(i+1, result);
+//                    }
+//                    if(result != null) {
+//                        printerScanner.print(" = " + result);
+//                    }
 //
-//                Expression expression = new Expression(readString);
-//                try {
-//                    expression.parse();
-//                    expression.calc();
-//                    printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
-//                } catch (MathLabException e) {
-//                    e.printStackTrace();
+//                }else{
+//                    printerScanner.print("Full typed string is dot't match MathLab requirement, please type string like \n" +
+//                            " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
 //                }
-//            }
-//        }
+            }
+        }
     }
 
     private static void printVar(Map<String, Var> map){
