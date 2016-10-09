@@ -23,16 +23,16 @@ public class ConsoleRunner {
     public static void main (String [] args) /*throws MathLabException*/ {
 
         PrinterScanner printerScanner = new ConsolePrinter(System.in);
-        Parser parser = new Parser();
+//        Parser parser = new Parser();
         String readString;
 
 
 
-        List<Var> operands;
-        List<String> operators;
-        Var result = null;
+//        List<Var> operands;
+//        List<String> operators;
+//        Var result = null;
 
-        printerScanner.print("*********** Welcome to simple console MathLab v.0.2 ************");
+        printerScanner.print("*********** Welcome to simple console MathLab v.0.3 ************");
 
         while(true){
             readString = printerScanner.read();
@@ -45,7 +45,7 @@ public class ConsoleRunner {
                 try {
                     expression.parse();
                     expression.calc();
-                    printerScanner.print(expression.getResult().toString());
+                    printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
                 } catch (MathLabException e) {
                     e.printStackTrace();
                 }
