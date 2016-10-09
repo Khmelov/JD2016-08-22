@@ -1,37 +1,37 @@
 package by.it.shkantau.mathlab.calc;
 
 import by.it.shkantau.mathlab.calc.Operand.Var;
-import by.it.shkantau.mathlab.calc.Operand.VarF;
 import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
 import by.it.shkantau.mathlab.util.parser.Parser;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Expression {
+    private String resultName;
     private final String expression;
     private List <Var> vars;
     private List<String>operators;
-
     private Var result;
+//    private Map.Entry<String, Var> result;
 
-    Expression(String expression) throws MathLabException {
+
+    public Expression(String expression) {
         this.expression = expression;
-        parse();
-        calc();
     }
 
-    private void parse() throws MathLabException {
-        vars = Parser.parseStringToVarList(expression);
-        operators = Parser.parseStringToOperatorList(expression);
+    public void parse() throws MathLabException {
+        String[] strings = Parser.splitExpressionAndName(expression);
+        resultName = strings[0];
+        String expressionStr = strings[1];
+        vars = Parser.parseStringToVarList(expressionStr);
+        operators = Parser.parseStringToOperatorList(expressionStr);
         if(vars.size() != operators.size()+1){
             throw new MathLabException("operators count="+ operators.size() + " don't match vars count="+vars.size());
         }
     }
 
-    private void calc() throws MathLabException {
+    public void calc() throws MathLabException {
         while (operators.size() != 0){
             oneOperation(getMaxPriorityIndex());
         }
@@ -88,5 +88,9 @@ public class Expression {
 
     public Var getResult() {
         return result;
+    }
+
+    public String getResultName() {
+        return resultName;
     }
 }
