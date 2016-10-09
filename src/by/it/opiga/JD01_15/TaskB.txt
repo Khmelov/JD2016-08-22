@@ -1,0 +1,73 @@
+1 package by.it.opiga.JD01_15;
+2 
+3 import java.io.*;
+4                 
+5 import java.util.regex.Pattern;
+6 import java.util.regex.Matcher;
+7 
+8 
+9  
+10  
+11 public class TaskB {
+12     
+13     public static int numstr = 1;
+14 
+15     public static void main(String[] arg) {
+16             
+17             
+18             
+19             
+20         String src = System.getProperty("user.dir");
+21         String fileRead = src + "\\src\\by\\it\\opiga\\JD01_15\\TaskB.java";
+22         String fileWrite = src + "\\src\\by\\it\\opiga\\JD01_15\\TaskB.txt"; 
+23         Pattern p = Pattern.compile("([/][/].*)|([/][*].*[*][/])");
+24         Pattern p2 = Pattern.compile("([/][*].*)");
+25         Pattern p3 = Pattern.compile("([*].*)");
+26         Pattern p4 = Pattern.compile("([.]*[*][/])");
+27 
+28         StringBuffer strBl = new StringBuffer();
+29         
+30         try {
+31             FileInputStream rs = new FileInputStream(fileRead);
+32             FileOutputStream rw = new FileOutputStream(fileWrite);
+33 
+34             BufferedReader reader = new BufferedReader(new InputStreamReader(rs)); 
+35             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(rw));
+36 
+37             String line;
+38             while (reader.ready()) {
+39                 line = reader.readLine();
+40                 Matcher m = p.matcher(line);
+41                 String s = m.replaceAll("");
+42 
+43                 Matcher m2 = p2.matcher(s);
+44                 if (m2.find()) {
+45                     String s2 = m2.replaceAll("");
+46                     strBl.append(numstr+++" "+ s2 + "\n");
+47                     line = reader.readLine();
+48                     Matcher m3 = p3.matcher(line);
+49                     while (m3.find()) {
+50                         String s3 = m3.replaceAll("");
+51                         strBl.append(numstr+++" "+s3 + "\n");
+52                         line = reader.readLine();
+53                         m3.reset();
+54                         m3 = p3.matcher(line);
+55                     }
+56                     Matcher m4 = p4.matcher(line);
+57                     String s4 = m4.replaceAll("");
+58                     strBl.append(numstr+++" "+s4 + "\n");
+59                 } else
+60                     strBl.append(numstr+++" "+s + "\n");
+61 
+62             }
+63             writer.write(strBl.toString());
+64 
+65             System.out.println(strBl.toString());
+66             writer.flush();
+67         } catch (IOException e) {
+68             System.out.println("ошибка чтения/записи " + e.getMessage());
+69         }
+70 
+71 
+72     }
+73 }
