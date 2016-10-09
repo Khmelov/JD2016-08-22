@@ -17,7 +17,7 @@ public class VarF extends Var {
         }
         try {this.value = Double.parseDouble(str);
         }catch (NumberFormatException e){
-           throw new NumberFormatException ("Can't convert "+ str + "to Double.");
+           throw new NumberFormatException ("Can't conver "+ str + "to Double.");
         }
     }
 
@@ -31,12 +31,7 @@ public class VarF extends Var {
 
     @Override
     public String toString() {
-        if(this.value < 0){
-            return  "(" + value + ")";
-        }else {
-            return ((Double)this.value).toString();
-        }
-
+        return ((Double)this.value).toString();
     }
 
 //  Addition
