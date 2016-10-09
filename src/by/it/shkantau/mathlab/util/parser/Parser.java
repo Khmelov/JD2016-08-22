@@ -22,7 +22,6 @@ public class Parser {
         return strings;
     }
 
-
     /**
      *
      * @param parsedStr  input string which parsed to List <String>
