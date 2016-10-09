@@ -5,13 +5,15 @@ import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
 import by.it.shkantau.mathlab.util.parser.Parser;
 
 import java.util.List;
+import java.util.Map;
 
 public class Expression {
-
+    private String resultName;
     private final String expression;
     private List <Var> vars;
     private List<String>operators;
     private Var result;
+//    private Map.Entry<String, Var> result;
 
 
     public Expression(String expression) {
@@ -20,7 +22,7 @@ public class Expression {
 
     public void parse() throws MathLabException {
         String[] strings = Parser.splitExpressionAndName(expression);
-        String resultName = strings[0];
+        resultName = strings[0];
         String expressionStr = strings[1];
         vars = Parser.parseStringToVarList(expressionStr);
         operators = Parser.parseStringToOperatorList(expressionStr);
@@ -36,7 +38,7 @@ public class Expression {
         result = vars.get(0);
     }
 
-    private void oneOperation(int operatorIndex) throws MathLabException {
+    private void oneOperation(int operatorIndex) throws MathLabException, UnsupportedOperationException {
 
         String operatorStr= operators.get(operatorIndex);
         Var result;
@@ -49,7 +51,7 @@ public class Expression {
             case "-": result=one.sub(two); break;
             case "*": result=one.mul(two); break;
             case "/": result=one.div(two); break;
-            default: throw new MathLabException("unsupported operation Exception " + operatorStr);
+            default: throw new UnsupportedOperationException("unsupported operation Exception " + operatorStr);
         }
 
         if (result == null){
@@ -86,5 +88,9 @@ public class Expression {
 
     public Var getResult() {
         return result;
+    }
+
+    public String getResultName() {
+        return resultName;
     }
 }
