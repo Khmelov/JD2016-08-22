@@ -16,12 +16,12 @@ public class VariableFloat extends Variable {
         this.valueFloat = 0;
     }
 
-    public VariableFloat(double valueD) {
-        this.valueFloat = valueD;
+    public VariableFloat(double valueFloat) {
+        this.valueFloat = valueFloat;
     }
 
-    public VariableFloat(String valueD) {
-        setValue(valueD);
+    public VariableFloat(String valueFloat) {
+        setValue(valueFloat);
     }
 
     @Override
