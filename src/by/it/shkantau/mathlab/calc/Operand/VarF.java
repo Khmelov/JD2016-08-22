@@ -3,7 +3,7 @@ package by.it.shkantau.mathlab.calc.Operand;
 public class VarF extends Var {
 
     private double value;
-    public static final String regexVarF = "((-?)([0-9.])+)";
+    public static final String regexVarF = "(([0-9.])+)|(\\(-([0-9.])+\\))";
 
 // Constructors
     public VarF(double v){
