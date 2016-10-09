@@ -24,10 +24,10 @@ public class ConsoleRunner {
         PrinterScanner printerScanner = new ConsolePrinter(System.in);
         String readString;
 
-        String test1 = "А = 2+ 3*(-5.3)";
+        String test1 = "А = 2+ 3*(-5.3)/4.5 -5";
 
 
-        printerScanner.print("*********** Welcome to simple console MathLab v.0.3 ************");
+        printerScanner.print("*********** Welcome to simple console MathLab v.0.4 ************");
 
 
         test1 = test1.replaceAll("\\s" , "");
@@ -35,7 +35,6 @@ public class ConsoleRunner {
         try {
             expression.parse();
             expression.calc();
-            printerScanner.print(expression.getResultName()+"="+ expression.getResult().toString());
             mapVariables.put(expression.getResultName(), expression.getResult());
         } catch (MathLabException e) {
             e.printStackTrace();
