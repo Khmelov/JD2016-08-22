@@ -3,29 +3,33 @@ package by.it.shkantau.mathlab.util;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Date;
 
-class Logger {
+public class Logger {
 
-    private static Logger loggerInctance;
+    private static Logger loggerInstance;
 
-    private String path = System.getProperty("user.dir") + "\\src\\by\\it\\shkantau\\mathlab\\mathLab.log";
-    private File logFile = new File(path);
+    private String path ;
+    private File logFile;
 
-    private Logger() {
+    private Logger(String path) {
+        this.path = path;
+        this.logFile = new File(path);
     }
 
-    public static Logger getLogger(){
-        if (loggerInctance == null){
-            loggerInctance = new Logger();
+    public static Logger getLogger(String path){
+        if (loggerInstance == null){
+            loggerInstance = new Logger(path);
         }
-        return loggerInctance;
+        return loggerInstance;
     }
 
-    void print(String string) {
-        try (FileWriter fw = new FileWriter(logFile)){
-            fw.write(string);
+    public void print(String string) {
+        try (FileWriter fw = new FileWriter(logFile, true)){
+            fw.write(new Date() +"\t" + string+"\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
