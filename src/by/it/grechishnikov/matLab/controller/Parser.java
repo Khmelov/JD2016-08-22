@@ -21,7 +21,7 @@ public class Parser {
         Var var = parse(text);
         var.assign();
         name = "";
-        return var.toString();
+        return var.valueToString();
     }
 
     /**
@@ -39,7 +39,7 @@ public class Parser {
         String equation = getEquation(text);
         //раскрываем скобки
         while(equation.contains("(")) {
-            Pattern pattern = Pattern.compile("[(][0-9. +*/a-zA-Z-]+[)]");
+            Pattern pattern = Pattern.compile("[(][{},0-9. +*/a-zA-Z-]+[)]");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
@@ -72,14 +72,19 @@ public class Parser {
         while(true) {
             try {
                 if(text.contains("{") && !equation.contains("+") && !check(equation)) {
-                    return new Vector(name, parseArray(equation));
+                    //используем фабрику для попытки создания объекта
+                    if(text.contains("{{")) {
+                        return VarFactory.getVar(name, parseMatrix(equation));
+                    } else {
+                        return VarFactory.getVar(name, parseArray(equation));
+                    }
                 } else {
-                    return new Scalar(name, Double.parseDouble(equation));
+                    return VarFactory.getVar(name, Double.parseDouble(equation));
                 }
             } catch (Exception e) {
-
+                //если не получается, то парсим дальше
             }
-            Pattern pattern = Pattern.compile("[0-9. {},]+[-+ ][0-9. {},]++");
+            Pattern pattern = Pattern.compile("[0-9. {},-]+[-+ ][0-9. {},]+");
             Matcher matcher = pattern.matcher(equation);
             matcher.find();
             String inner = matcher.group();
@@ -87,8 +92,13 @@ public class Parser {
         }
     }
 
+    /**
+     * Делаем проверку
+     * @param equation - выражение
+     * @return - false - прошел проверку
+     */
     private boolean check(String equation) {
-        Pattern pattern = Pattern.compile("[0-9. -{}]+[-][0-9. -]+");
+        Pattern pattern = Pattern.compile("[0-9. }-]+[-][0-9. -]+");
         Matcher matcher = pattern.matcher(equation);
         return matcher.find();
     }
@@ -102,23 +112,9 @@ public class Parser {
         Pattern pattern = Pattern.compile("[0-9. {},]+");
         Matcher matcher = pattern.matcher(inner);
         matcher.find();
-        String first = matcher.group();
-        Var v1;
-        if(first.contains("{")) {
-            double[] arr = parseArray(first);
-            v1 = new Vector(name, arr);
-        } else {
-            v1 = new Scalar(name, Double.parseDouble(first));
-        }
+        Var v1 = getVar(matcher.group());
         matcher.find();
-        String second = matcher.group();
-        Var v2;
-        if(second.contains("{")) {
-            double[] arr = parseArray(second);
-            v2 = new Vector(name, arr);
-        } else {
-            v2 = new Scalar(Double.parseDouble(second));
-        }
+        Var v2 = getVar(matcher.group());
 
         if(inner.contains("*")) {
             return operation.mul(name, v1, v2).valueToString();
@@ -129,17 +125,30 @@ public class Parser {
         } else if(inner.contains("-")) {
             return operation.sub(name, v1, v2).valueToString();
         }
+        Runner.logger.log("Ошибка");
         return null;
+    }
+
+    private Var getVar(String text) {
+        if (text.contains("{{")) {
+            double[][] arr = parseMatrix(text);
+            return VarFactory.getVar(name, arr);
+        } else if(text.contains("{")) {
+            double[] arr = parseArray(text);
+            return VarFactory.getVar(name, arr);
+        } else {
+            return VarFactory.getVar(Double.parseDouble(text));
+        }
     }
 
     /**
      * Парсим строку в массив чисел
-     * @param first - строка
+     * @param equation - строка
      * @return - массив double чисел
      */
-    private double[] parseArray(String first) {
-        Pattern pattern = Pattern.compile("[0-9.]+");
-        Matcher matcher = pattern.matcher(first);
+    private double[] parseArray(String equation) {
+        Pattern pattern = Pattern.compile("[0-9.-]+");
+        Matcher matcher = pattern.matcher(equation);
         ArrayList<Double> list = new ArrayList<>();
         while(matcher.find()) {
             list.add(Double.parseDouble(matcher.group()));
@@ -152,6 +161,29 @@ public class Parser {
     }
 
     /**
+     * Парсим строку в матрицу
+     * @param equation - уравнение
+     * @return - матрцица
+     */
+    private double[][] parseMatrix(String equation) {
+        Pattern pattern = Pattern.compile("[{][0-9., -]+[}]");
+        Matcher matcher = pattern.matcher(equation);
+        int count = 0;
+        while(matcher.find()) {
+            count++;
+        }
+        matcher.reset();
+        double[][] matrix = new double[count][];
+        count = 0;
+        while(matcher.find()) {
+            double[] arr = parseArray(matcher.group());
+            matrix[count] = arr;
+            count++;
+        }
+        return matrix;
+    }
+
+    /**
      * Находим имя переменной в уравнении
      * @param text - уравнение
      * @return - возвращаем имя
@@ -159,6 +191,7 @@ public class Parser {
     private String getName(String text) {
         if(name.isEmpty()) {
             name = text.substring(0, text.indexOf("="));
+            name = name.trim();
         }
         return name;
     }

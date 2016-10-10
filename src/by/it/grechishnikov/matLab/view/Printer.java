@@ -11,13 +11,18 @@ import java.util.Map;
  */
 public abstract class Printer implements IPrintable {
     public void serializeMap(String path) {
-        System.out.println("Сериализуем карту");
         try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(path))) {
             for(Map.Entry<String, Var> pair : Runner.storage.entrySet()) {
                 out.writeObject(pair.getValue());
             }
+            System.out.println("Данные записаны");
         } catch (IOException e) {
             System.out.println("Ошибка");
+            Runner.logger.log("Ошибка");
         }
+    }
+
+    public void printLine(String message) {
+        System.out.println(message);
     }
 }

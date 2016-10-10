@@ -1,6 +1,8 @@
 package by.it.grechishnikov.matLab.model;
 
 
+import by.it.grechishnikov.matLab.controller.Runner;
+
 public class Scalar extends Var {
     private double value;
 
@@ -13,6 +15,7 @@ public class Scalar extends Var {
         this.value = value;
         if(value > Double.MAX_VALUE && value < Double.MIN_VALUE) {
             System.out.println("Операция невозможна");
+            Runner.logger.log("Операция невозможна");
             this.alive = false;
         }
     }

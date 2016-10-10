@@ -5,7 +5,7 @@ public class ReaderFromConsoleImplIReadable extends Reader{
 
     @Override
     public String readValue() {
-        System.out.println("Введите уравнение: ");
+        System.out.println("Введите уравнение или end для завершения программы: ");
         return readStringFromConsole();
     }
 }

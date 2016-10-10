@@ -1,0 +1,84 @@
+08.10.2016 13:53:18 : String index out of range: -1
+08.10.2016 13:54:49 : String index out of range: -1
+08.10.2016 16:37:43 : Операция невозможна
+08.10.2016 16:37:43 : Операция невозможна
+08.10.2016 16:37:43 : null
+08.10.2016 18:48:11 : Bad file descriptor
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null
+08.10.2016 18:52:00 : Bad file descriptor
+08.10.2016 18:52:00 : null

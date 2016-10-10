@@ -1,5 +1,6 @@
 package by.it.grechishnikov.matLab.controller.operation;
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 
 class Add extends Operation {
@@ -7,6 +8,7 @@ class Add extends Operation {
     @Override
     public Var add(String name, Var var1, Var var2){
         System.out.println("Операция невозможна");
+        Runner.logger.log("Операция невозможна");
         return null;
     }
 
@@ -46,6 +48,7 @@ class Add extends Operation {
             return new Vector(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
@@ -61,6 +64,7 @@ class Add extends Operation {
             return new Matrix(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
@@ -84,6 +88,7 @@ class Add extends Operation {
             return new Matrix(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }

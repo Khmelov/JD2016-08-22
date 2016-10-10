@@ -1,5 +1,6 @@
 package by.it.grechishnikov.matLab.controller.operation;
 
+import by.it.grechishnikov.matLab.controller.Runner;
 import by.it.grechishnikov.matLab.model.*;
 
 class Sub extends Operation {
@@ -7,6 +8,7 @@ class Sub extends Operation {
     @Override
     public Var sub(String name, Var var1, Var var2) {
         System.out.println("Операция невозможна");
+        Runner.logger.log("Операция невозможна");
         return null;
     }
 
@@ -50,6 +52,7 @@ class Sub extends Operation {
             return new Vector(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
@@ -65,16 +68,35 @@ class Sub extends Operation {
             return new Matrix(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
 
     public static Var sub(String name, Matrix var1, Scalar var2) throws NotSupportedException {
-        return sub(name, var2, var1);
+        double[][] result = new double[var1.getRow()][var1.getCol()];
+        for (int i = 0; i < var1.getRow(); i++) {
+            for (int j = 0; j < var1.getCol(); j++) {
+                result[i][j] = var1.getValue()[i][j] - var2.getValue();
+            }
+        }
+        return new Matrix(name, result);
     }
 
     public static Var sub(String name, Matrix var1, Vector var2) throws NotSupportedException {
-        return sub(name, var2, var1);
+        if (var2.getSize() == var1.getRow()) {
+            double[][] result = new double[var1.getRow()][var1.getCol()];
+            for (int i = 0; i < var1.getCol(); i++) {
+                for (int j = 0; j < var1.getRow(); j++) {
+                    result[j][i] = var1.getValue()[j][i] - var2.getValue()[j];
+                }
+            }
+            return new Matrix(name, result);
+        }
+        else {
+            Runner.logger.log("Операция невозможна");
+            throw new NotSupportedException();
+        }
     }
 
     public static Var sub(String name, Matrix var1, Matrix var2) throws NotSupportedException {
@@ -88,6 +110,7 @@ class Sub extends Operation {
             return new Matrix(name, result);
         }
         else {
+            Runner.logger.log("Операция невозможна");
             throw new NotSupportedException();
         }
     }
