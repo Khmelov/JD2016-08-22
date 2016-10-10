@@ -49,7 +49,7 @@ public class Division {
         if (valueTwo.getValue() != 0) {
             div.setValue(valueOne.getValue() / valueTwo.getValue()); }
         else {
-            throw new UnsupportedException("Division on null!");
+            throw new UnsupportedException("Деление на ноль!");
         }
         return div;
     }
