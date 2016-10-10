@@ -1,0 +1,4 @@
+hello = Привет!
+whatsup=Как дела?
+user = Евгений Кисель.
+set.language=Введите язык
