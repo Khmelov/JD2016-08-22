@@ -1,0 +1,4 @@
+hello=Привет!
+howdoyoudo=Как дела?
+user=Алексей Борисёнок
+set.Language=Введите язык

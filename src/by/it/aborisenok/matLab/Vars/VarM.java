@@ -1,14 +1,27 @@
-package by.it.aborisenok.matLab;
+package by.it.aborisenok.matLab.Vars;
+
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableEditions;
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableException;
+import by.it.aborisenok.matLab.Interfaces.IVar;
+import by.it.aborisenok.matLab.Log;
+import by.it.aborisenok.matLab.System.Patterns;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Лёша on 09.09.2016.
  */
-public class VarM extends Var {
+public class VarM extends Var implements IVar{
 
 
     public double[][] value;
+
+    public VarM(String value) {
+        setFrom(value);
+    }
+
     public VarM(double[][] value) {
         int rows=value.length;
         int cols=value[0].length;
@@ -50,8 +63,7 @@ public class VarM extends Var {
             }
             return res;
         } else {
-            Log.print("Разные размеры матриц");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.ADD_MATRIX);
         }
     }
 //******************************************
@@ -81,8 +93,7 @@ public class VarM extends Var {
             }
             return res;
         } else {
-            Log.print("Разные размеры матриц");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.SUB_MATRIX);
         }
     }
 //******************************************
@@ -110,8 +121,7 @@ public class VarM extends Var {
             }
             return res;
         } else {
-            Log.print("Некорректные введённые данные");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_VECTOR_AND_MATRIX);
         }
     }
 
@@ -134,8 +144,7 @@ public class VarM extends Var {
                 }
             return res;
         } else {
-            Log.print("Заданные неверные размеры матриц");
-            return res;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_MATRIX);
         }
     }
 //***********************************
@@ -163,5 +172,25 @@ public class VarM extends Var {
         }
         res=res+"]";
         return res;
+    }
+
+    @Override
+    public void setFrom(String str) {
+       String s = str.replaceAll("\\[","\\{");
+       String s1 = s.replaceAll("\\]","\\}");
+       String[] strLine = s1.split("\\},\\{");
+       int lines = strLine.length;
+       String[] strCol = strLine[0].split(",");
+       int columns = strCol.length;
+       value = new double[lines][columns];
+
+            for (int i = 0; i < lines; i++){
+                int j = 0;
+                Matcher m = Pattern.compile(Patterns.exVal).matcher(strLine[i]);
+                while (m.find()) {
+                    value[i][j]=Double.parseDouble(m.group());
+                    j++;
+                }
+            }
     }
 }

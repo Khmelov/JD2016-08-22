@@ -1,13 +1,24 @@
-package by.it.aborisenok.matLab;
+package by.it.aborisenok.matLab.Vars;
+
+import by.it.aborisenok.matLab.Errors.*;
+import by.it.aborisenok.matLab.Interfaces.IVar;
+import by.it.aborisenok.matLab.Log;
+import by.it.aborisenok.matLab.System.Patterns;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Лёша on 09.09.2016.
  */
-public class VarV extends Var {
+public class VarV extends Var implements IVar{
 
     private double[] value;
+
+    public VarV(String value){
+        setFrom(value);
+    }
 
     public VarV(double[] value){
         this.value = new double[value.length];
@@ -37,8 +48,7 @@ public class VarV extends Var {
             return res;
         }
         else {
-            Log.print("Разные размеры векторов");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.ADD_VECTORS);
         }
     }
 //******************************************
@@ -60,8 +70,7 @@ public class VarV extends Var {
             }
             return res;
         } else {
-            Log.print("Разные размеры векторов");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.SUB_VECTORS);
         }
     }
 //******************************************
@@ -84,8 +93,7 @@ public class VarV extends Var {
             }
             return new VarF(res);
         } else {
-            Log.print("Некорректные введённые данные");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_VECTOR);
         }
     }
 
@@ -101,9 +109,7 @@ public class VarV extends Var {
             }
             return res;
         } else {
-            Log.print("Матрица должна быть квадратной и число её строк должно" +
-                    "ровняться числу элементов вектора");
-            return null;
+            throw new WrongSizeOfVariableException(WrongSizeOfVariableEditions.MUL_MATRIX);
         }
     }
 //*******************************************************
@@ -121,5 +127,17 @@ public class VarV extends Var {
     @Override
     public String toString() {
         return Arrays.toString(value);
+    }
+
+    @Override
+    public void setFrom(String str) {
+        String[] elem = str.split(",");
+        value = new double[elem.length];
+        Matcher m = Pattern.compile(Patterns.exVal).matcher(str);
+        int i=0;
+        while (m.find()) {
+            value[i]=Double.parseDouble(m.group());
+            i++;
+        }
     }
 }
