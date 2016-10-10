@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public class MulOperation extends Operation implements  IMulOperation {
+class MulOperation extends Operation implements  IMulOperation {
 
     @Override
     public Variable mul(Variable firstVar, Variable secondVar) {

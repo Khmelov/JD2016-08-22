@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public interface IAddOperation {
+interface IAddOperation {
     Variable add(FloatVariable firstVar, FloatVariable secondVar);      // Double + Double
     Variable add(FloatVariable firstVar, VectorVariable secondVar);     // Double + Double[]
     Variable add(FloatVariable firstVar, MatrixVariable secondVar);     // Double + Double[][]

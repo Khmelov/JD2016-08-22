@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public interface ISubOperation {
+interface ISubOperation {
     Variable sub(FloatVariable firstVar, FloatVariable secondVar);      // Double - Double
     Variable sub(FloatVariable firstVar, VectorVariable secondVar);     // Double - Double[]
     Variable sub(FloatVariable firstVar, MatrixVariable secondVar);     // Double - Double[][]

@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public class SubOperation extends Operation implements ISubOperation {
+class SubOperation extends Operation implements ISubOperation {
 
     @Override
     public Variable sub(Variable firstVar, Variable secondVar) {

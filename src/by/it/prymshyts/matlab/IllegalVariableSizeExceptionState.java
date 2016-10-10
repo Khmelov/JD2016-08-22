@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public interface IllegalVariableSizeExceptionState {
+interface IllegalVariableSizeExceptionState {
     String ADD_VECTORS = "Сложение векторов разных размеров.";
     String ADD_MATRIX = "Сложение матриц разных размеров.";
 

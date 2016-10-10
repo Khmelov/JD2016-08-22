@@ -27,7 +27,7 @@ public class MatrixVariable extends Variable {
         String delimiter = "";
 
         for (Double[] element : value) {
-            result.append(delimiter + Arrays.toString(element));
+            result.append(delimiter).append(Arrays.toString(element));
             delimiter = ", ";
         }
         result.append("]");
