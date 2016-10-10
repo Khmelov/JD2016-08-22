@@ -1,0 +1,14 @@
+<!ELEMENT Persons (Person)+>
+<!ELEMENT Person (Email,Nickname,Password,Ads)>
+<!ELEMENT Email (#PCDATA)>
+<!ELEMENT Nickname (#PCDATA)>
+<!ELEMENT Password (#PCDATA)>
+<!ELEMENT Ads (Ad)+>
+<!ELEMENT Ad (Description,Address,Flat,Flats,Price,Area)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+        <!ELEMENT Flat (#PCDATA)>
+        <!ELEMENT Flats (#PCDATA)>
+        <!ELEMENT Price (#PCDATA)>
+        <!ELEMENT Area (#PCDATA)>
+
