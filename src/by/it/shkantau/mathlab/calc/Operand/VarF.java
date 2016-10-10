@@ -31,7 +31,12 @@ public class VarF extends Var {
 
     @Override
     public String toString() {
-        return ((Double)this.value).toString();
+        if(this.value < 0){
+            return  "(" + value + ")";
+        }else {
+            return ((Double)this.value).toString();
+        }
+
     }
 
 //  Addition
