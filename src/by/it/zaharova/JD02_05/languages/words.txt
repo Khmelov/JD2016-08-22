@@ -1,0 +1,4 @@
+hello = Hello!
+whatsup=whatsup?
+user = Vlada Zaharova.
+set.language=Input language
