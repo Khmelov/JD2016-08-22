@@ -3,7 +3,7 @@ package by.it.shkantau.mathlab.calc.Operand;
 public class VarF extends Var {
 
     private double value;
-    public static final String regexVarF = "((-?)([0-9.])+)";
+    public static final String regexVarF = "(([0-9.])+)|(\\(-([0-9.])+\\))";
 
 // Constructors
     public VarF(double v){
@@ -12,9 +12,12 @@ public class VarF extends Var {
     }
 
     public VarF(String str){
+        if(str.contains("(") && str.contains(")")){
+            str = str.replaceAll("[\\(\\)]", "");
+        }
         try {this.value = Double.parseDouble(str);
         }catch (NumberFormatException e){
-            new Error("NumberFormatException, can't convert str to Double");
+           throw new NumberFormatException ("Can't convert "+ str + "to Double.");
         }
     }
 

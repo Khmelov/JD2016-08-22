@@ -22,7 +22,6 @@ public class Parser {
         return strings;
     }
 
-
     /**
      *
      * @param parsedStr  input string which parsed to List <String>
@@ -64,6 +63,9 @@ public class Parser {
     }
 
     public static List <String > parseStringToOperatorList(String str){
-        return parseToVarString(str, Pattern.compile(RegexPattrn.regexOperators));
+        String [] operatorsString  = str.split(VarF.regexVarF) ;
+        List<String>operators = new ArrayList<>(Arrays.asList(operatorsString));
+        operators.removeAll(Collections.singleton(""));
+        return operators;
     }
 }
