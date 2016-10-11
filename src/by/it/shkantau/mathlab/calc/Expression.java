@@ -36,6 +36,10 @@ public class Expression {
         result = vars.get(0);
     }
 
+    public String replacePart(String part, String res){
+        return res.replace(res, part);
+    }
+
     private void oneOperation(int operatorIndex) throws MathLabException, UnsupportedOperationException {
 
         String operatorStr= operators.get(operatorIndex);
