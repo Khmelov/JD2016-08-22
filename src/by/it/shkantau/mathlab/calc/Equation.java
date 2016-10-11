@@ -24,26 +24,41 @@ public class Equation {
 
 
     private String recursiveCalc(String equation) throws MathLabException {
-        String innerExpr ;
-        while(equation.contains("(")) {
-            int index = 0;
-            innerExpr = equation;
-            if(!Pattern.matches(VarF.regexVarF, equation.substring(equation.indexOf("("),equation.indexOf(")")+1))) {
-                index = equation.indexOf("(");
-                innerExpr = equation.substring(equation.indexOf("(")+1);
-            }
-            String innerResultStr = recursiveCalc(innerExpr);
-            equation = equation.substring(0, index) + innerResultStr + equation.substring(equation.indexOf(")") + 1);
 
+        int level = 0;
+        String innerExpr;
+        while((innerExpr = replaceParenthesis(equation)) != null){
+            if ((innerExpr.indexOf('(') & innerExpr.indexOf(')')) < 0 )
+                recursiveCalc(innerExpr);
         }
-
-        String innerExpression = equation.substring(0 , equation.indexOf(")"));
-        Expression expression = new Expression(innerExpression);
-        expression.parse();
-        expression.calc();
-        return  expression.getResult().toString();
+        return null;
 
     }
+
+    private boolean isNextNegativeVar(String str){
+        return Pattern.matches(VarF.regexVarF, str.substring(str.indexOf("("),str.indexOf(")")+1));
+    }
+
+    private String replaceParenthesis(String expr){
+        int startIndex = -1, endIndex = -1, counter = 0;
+        for (int i = 0; i < expr.length(); i++) {
+            if (expr.charAt(i) == '('){
+                if (startIndex == -1){
+                    startIndex = i+1;
+                }
+                counter++;
+            }
+            if(expr.charAt(i) == ')'){
+                if (counter == 1){
+                    endIndex = i;
+                    break;
+                }
+                counter--;
+            }
+        }
+        return ((startIndex == -1)&&(endIndex == -1)) ? null : expr.substring(startIndex, endIndex);
+    }
+
 
     public String getResultName() {
         return resultName;
