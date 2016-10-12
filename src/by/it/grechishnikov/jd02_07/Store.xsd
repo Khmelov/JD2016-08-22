@@ -1,0 +1,69 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="grechishnikov.homeWork"
+    xmlns:tns="grechishnikov.homeWork"
+    elementFormDefault="qualified">
+    <element name="Store">
+        <complexType>
+            <sequence>
+                <element name="Admin"
+                         type="tns:Admin"
+                         minOccurs="1"
+                         maxOccurs="3" />
+                <element name="User"
+                         type="tns:User"
+                         minOccurs="1"
+                         maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="Admin">
+        <sequence>
+            <element name="Email" type="string"/>
+            <element name="Catalog"
+                     type="tns:Catalog"
+                     minOccurs="1"
+                     maxOccurs="1" />
+        </sequence>
+        <attribute name="nickname" type="tns:nickname" use="required" />
+        <attribute name="password" type="tns:password" use="required" />
+    </complexType>
+    <complexType name="Catalog">
+        <sequence>
+            <element name="Goods"
+                     type="tns:Goods"
+                     minOccurs="1"
+                     maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <complexType name="Goods">
+        <sequence>
+            <element name="Description" type="string"/>
+            <element name="Price" type="integer"/>
+        </sequence>
+    </complexType>
+    <complexType name="User">
+        <sequence>
+            <element name="Email" type="string"/>
+            <element name="Order"
+                     type="tns:Order"
+                     minOccurs="1"
+                     maxOccurs="unbounded" />
+        </sequence>
+        <attribute name="nickname" type="tns:nickname" use="required"/>
+        <attribute name="password" type="tns:password" use="required"/>
+    </complexType>
+    <complexType name="Order">
+        <sequence>
+            <element name="Goods"
+                     type="tns:Goods"
+                     minOccurs="1"
+                     maxOccurs="unbounded" />
+        </sequence>
+    </complexType>
+    <simpleType name="nickname">
+        <restriction base="string"/>
+    </simpleType>
+    <simpleType name="password">
+        <restriction base="string"/>
+    </simpleType>
+</schema>
