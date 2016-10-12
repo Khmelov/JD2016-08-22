@@ -11,6 +11,7 @@ public class Equation {
     private String equationStr;
     private String resultName;
     private Var result;
+    private int recurseLevel;
 
     public Equation(String string) throws MathLabException {
         String[] strings = Parser.splitExpressionAndName(string);
@@ -19,27 +20,31 @@ public class Equation {
     }
 
     public void calc() throws MathLabException {
-        recursiveCalc(equationStr);
+//        while(haveParenthesis(equationStr)) {
+            equationStr = recursiveCalc(equationStr);
+//        }
     }
-
 
     private String recursiveCalc(String equation) throws MathLabException {
-
-        int level = 0;
         String innerExpr;
-        while((innerExpr = replaceParenthesis(equation)) != null){
-            if ((innerExpr.indexOf('(') & innerExpr.indexOf(')')) < 0 )
-                recursiveCalc(innerExpr);
+        recurseLevel++;
+        if(haveParenthesis(equation)){
+            innerExpr = replaceParenthesis(equation);
+            equation = equation.replace("("+innerExpr+")",recursiveCalc(innerExpr));
         }
-        return null;
-
+        recurseLevel--;
+        if (recurseLevel==0){
+            result = new Expression(equation).getResult();
+        }
+        return calcExpressionWithoutParenthesis(equation);
     }
 
-    private boolean isNextNegativeVar(String str){
-        return Pattern.matches(VarF.regexVarF, str.substring(str.indexOf("("),str.indexOf(")")+1));
+    private String calcExpressionWithoutParenthesis(String exprStr) throws MathLabException {
+        Expression expression = new Expression(exprStr);
+        return expression.getResult().toString();
     }
 
-    private String replaceParenthesis(String expr){
+    private boolean haveParenthesis(String expr){
         int startIndex = -1, endIndex = -1, counter = 0;
         for (int i = 0; i < expr.length(); i++) {
             if (expr.charAt(i) == '('){
@@ -56,9 +61,39 @@ public class Equation {
                 counter--;
             }
         }
+        return !((startIndex == -1) && (endIndex == -1) || isNegativeVar(expr.substring(startIndex, endIndex)));
+    }
+
+    private String replaceParenthesis(String expr) throws MathLabException {
+        int startIndex = -1, endIndex = -1, counter = 0;
+        for (int i = 0; i < expr.length(); i++) {
+            if (expr.charAt(i) == '('){
+                if (startIndex == -1){
+                    startIndex = i+1;
+                }
+                counter++;
+            }
+            if(expr.charAt(i) == ')'){
+                if (counter == 1){
+                    endIndex = i;
+                    break;
+                }
+                counter--;
+            }
+        }
+
+//        if((startIndex == -1)&&(endIndex == -1)){
+//            expr = calcExpressionWithoutParenthesis(expr);
+//        }else{
+//            expr = expr.substring(startIndex, endIndex);
+//        }
+//        return  expr;
         return ((startIndex == -1)&&(endIndex == -1)) ? null : expr.substring(startIndex, endIndex);
     }
 
+    private boolean isNegativeVar(String str){
+        return Pattern.matches(VarF.regexVarF, str);
+    }
 
     public String getResultName() {
         return resultName;
