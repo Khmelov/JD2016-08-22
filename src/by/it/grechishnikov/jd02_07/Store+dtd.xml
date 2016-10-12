@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Store SYSTEM "Store.dtd" >
+<Store>
+    <Admin nickname="admin" password="admin">
+        <Email>
+            admin@mail.ru
+        </Email>
+        <Catalog>
+            <Goods>
+                <Description>
+                    Посудомоечная машина
+                </Description>
+                <Price>
+                    10000
+                </Price>
+            </Goods>
+            <Goods>
+                <Description>
+                    Мультиварка
+                </Description>
+                <Price>
+                    3000
+                </Price>
+            </Goods>
+            <Goods>
+                <Description>
+                    Телефон
+                </Description>
+                <Price>
+                    3500
+                </Price>
+            </Goods>
+        </Catalog>
+    </Admin>
+    <User nickname="Вася" password="123">
+        <Email>
+            vasya@mail.ru
+        </Email>
+        <Order>
+            <Goods>
+                <Description>
+                    Телефон
+                </Description>
+                <Price>
+                    3500
+                </Price>
+            </Goods>
+        </Order>
+    </User>
+    <User nickname="Петя" password="qwerty">
+        <Email>
+            petr@mail.ru
+        </Email>
+        <Order>
+            <Goods>
+                <Description>
+                    Посудомоечная машина
+                </Description>
+                <Price>
+                    10000
+                </Price>
+            </Goods>
+            <Goods>
+                <Description>
+                    Мультиварка
+                </Description>
+                <Price>
+                    3000
+                </Price>
+            </Goods>
+        </Order>
+    </User>
+</Store>
