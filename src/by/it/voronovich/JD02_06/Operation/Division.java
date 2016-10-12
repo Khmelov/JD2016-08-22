@@ -1,16 +1,22 @@
-package by.it.voronovich.JD02_04.Operation;
+package by.it.voronovich.JD02_06.Operation;
 
-import by.it.voronovich.JD02_04.Var.VariableFloat;
-import by.it.voronovich.JD02_04.Var.VariableMatrix;
-import by.it.voronovich.JD02_04.Var.Variable;
-import by.it.voronovich.JD02_04.Var.VariableVector;
-import by.it.voronovich.JD02_04.UnsupportedException;
+import by.it.voronovich.JD02_06.UnsupportedException;
+import by.it.voronovich.JD02_06.Var.Variable;
+import by.it.voronovich.JD02_06.Var.VariableFloat;
+import by.it.voronovich.JD02_06.Var.VariableMatrix;
+import by.it.voronovich.JD02_06.Var.VariableVector;
+import by.it.voronovich.JD02_06.VarFactory.FloatFactory;
+import by.it.voronovich.JD02_06.VarFactory.MatrixFactory;
+import by.it.voronovich.JD02_06.VarFactory.VariableFactory;
+import by.it.voronovich.JD02_06.VarFactory.VectorFactory;
 
 /**
  * @author Voronovich Dmitry
  * @version 1.1
  */
 public class Division {
+
+    private VariableFactory[] factory = {new FloatFactory(), new VectorFactory(), new MatrixFactory()};
 
     public Variable division(Variable var1, Variable var2) throws UnsupportedException {
 
@@ -44,22 +50,31 @@ public class Division {
         return null;
     }
 
-    private VariableFloat division(VariableFloat valueOne, VariableFloat valueTwo) throws UnsupportedException {
-        VariableFloat div = new VariableFloat();
-        if (valueTwo.getValue() != 0) {
-            div.setValue(valueOne.getValue() / valueTwo.getValue()); }
+    private VariableFloat division(VariableFloat value1, VariableFloat value2) throws UnsupportedException {
+        VariableFloat div = (VariableFloat)factory[0].createVariable();
+        if (value2.getValue() != 0) {
+            div.setValue(value1.getValue() / value2.getValue()); }
         else {
             throw new UnsupportedException("Деление на ноль!");
         }
         return div;
     }
 
-    private VariableMatrix division(VariableMatrix valueOne, VariableFloat valueTwo) throws UnsupportedException {
-        return (VariableMatrix)new Multiplication().multiplication(division(new VariableFloat(1), valueTwo), valueOne);
+    private VariableMatrix division(VariableMatrix value1, VariableFloat value2) throws UnsupportedException {
+        VariableMatrix div = (VariableMatrix) factory[2].createVariable(value1.toString());
+        div.setValue(value1.getValue().length);
+        for (int i = 0; i < value1.getValue().length; i++) {
+            for (int j = 0; j < value1.getValue().length; j++) {
+                div.getValue()[i][j] = value1.getValue()[i][j] / value2.getValue();
+            }
+        }
+        return div;
     }
 
-    private VariableMatrix division(VariableMatrix valueOne, VariableMatrix valueTwo) throws UnsupportedException {
-        return (VariableMatrix)new Multiplication().multiplication(valueOne, new VariableMatrix(inverseMatrix(valueTwo.getValue())));
+    private VariableMatrix division(VariableMatrix value1, VariableMatrix value2) throws UnsupportedException {
+        VariableMatrix var = (VariableMatrix)factory[2].createVariable();
+        var.setValue(inverseMatrix(value2.getValue()));
+        return (VariableMatrix) new Multiplication().multiplication(value2, var);
     }
 
     public static double[][] inverseMatrix(double[][] matrix) {
@@ -114,7 +129,7 @@ public class Division {
         return array;
     }
     private VariableVector division(VariableVector value1, VariableFloat value2) {
-        VariableVector div = new VariableVector(value1.getValue().length);
+        VariableVector div = (VariableVector)factory[1].createVariable(value1.toString());
         for (int i = 0; i < value1.getValue().length; i++) {
             div.getValue() [i] = value1.getValue()[i] / value2.getValue();
         }
