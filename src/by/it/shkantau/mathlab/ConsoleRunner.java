@@ -24,7 +24,7 @@ public class ConsoleRunner {
         Logger logger = Logger.getLogger(path);
         String readString;
 
-        String test1 = "А = 2+ 3*(5.3/(4.5 -5)) - 8";
+        String test1 = "А = 2+ 3*(5.3/(4.5 -5)) - 8*(4.34+5)";
         logger.print("Calculate: "+test1);
 
 
@@ -35,7 +35,6 @@ public class ConsoleRunner {
 
         Equation equation = new Equation(test1);
         equation.calc();
-
 
         mapVariables.put(equation.getResultName(), equation.getResult());
 
