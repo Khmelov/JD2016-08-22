@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public class DivOperation extends Operation implements IDivOperation {
+class DivOperation extends Operation implements IDivOperation {
 
     @Override
     public Variable div(Variable firstVar, Variable secondVar) {

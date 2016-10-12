@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public interface IMulOperation {
+interface IMulOperation {
     Variable mul(FloatVariable firstVar, FloatVariable secondVar);      // Double * Double
     Variable mul(FloatVariable firstVar, VectorVariable secondVar);     // Double * Double[]
     Variable mul(FloatVariable firstVar, MatrixVariable secondVar);     // Double * Double[][]

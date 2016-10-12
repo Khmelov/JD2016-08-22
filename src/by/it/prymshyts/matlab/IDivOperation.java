@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public interface IDivOperation {
+interface IDivOperation {
     Variable div(FloatVariable firstVar, FloatVariable secondVar);      // Double / Double
 
     Variable div(VectorVariable firstVar, FloatVariable secondVar);     // Double[] / Double

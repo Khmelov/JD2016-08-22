@@ -1,6 +1,6 @@
 package by.it.prymshyts.matlab;
 
-public class AddOperation extends Operation implements IAddOperation {
+class AddOperation extends Operation implements IAddOperation {
 
     @Override
     public Variable add(Variable firstVar, Variable secondVar) {
