@@ -17,11 +17,13 @@ public class Expression {
 
     private Var result;
 
-    Expression(String expression) {
+    Expression(String expression) throws MathLabException {
         this.expression = expression;
+        parse();
+        calc();
     }
 
-    public void parse() throws MathLabException {
+    private void parse() throws MathLabException {
         vars = Parser.parseStringToVarList(expression);
         operators = Parser.parseStringToOperatorList(expression);
         if(vars.size() != operators.size()+1){
@@ -29,15 +31,11 @@ public class Expression {
         }
     }
 
-    public void calc() throws MathLabException {
+    private void calc() throws MathLabException {
         while (operators.size() != 0){
             oneOperation(getMaxPriorityIndex());
         }
         result = vars.get(0);
-    }
-
-    public String replacePart(String part, String res){
-        return res.replace(res, part);
     }
 
     private void oneOperation(int operatorIndex) throws MathLabException, UnsupportedOperationException {
