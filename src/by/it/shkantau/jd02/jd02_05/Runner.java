@@ -31,9 +31,9 @@ public class Runner {
         System.out.println();
         System.out.println(Properties.getString(SET_LANGUAGE));
         String language;
-        Locale locale = Locale.getDefault();
+        Locale locale;
 
-        while (!(language = readLine()).isEmpty()) {
+        while (!(language = readLine()).isEmpty());
             switch (language) {
                 case "be":
                     locale = new Locale("be", "BY");
@@ -46,16 +46,13 @@ public class Runner {
                     break;
                 default: locale = Locale.getDefault();
             }
-            break;
-
-        }
         Properties.setLocale(locale);
         hello();
 
 
     }
 
-    static String readLine(){
+    private static String readLine(){
         return new Scanner(System.in).nextLine();
     }
     private static void hello(){

@@ -24,7 +24,6 @@ public class Equation {
             equationStr = recursiveCalc(equationStr);
 //        }
     }
-
     private String recursiveCalc(String equation) throws MathLabException {
         String innerExpr;
         recurseLevel++;
