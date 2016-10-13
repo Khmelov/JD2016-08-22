@@ -2,9 +2,8 @@
 <WebStore xmlns="http://it-academy.by/xml"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:schemaLocation="http://it-academy.by/xml Schema_WebStore.xsd">
-    <!-- Интернет-магазин. Данные были заимствованы с сайтов Onliner.by  и 1k.by 11.10.2016 -->
-    <Appliances>                            <!-- Бытовая техника   -->
-        <FridgeList>                        <!-- Холодильники      -->
+    <Appliances>
+        <FridgeList>
             <Fridge>
                 <Brand>Samsung</Brand>
                 <Model>RB33J3301SA</Model>
@@ -42,7 +41,7 @@
                 </Dimensions>
             </Fridge>
         </FridgeList>
-        <WasherList>                        <!-- Стиральные машины -->
+        <WasherList>
             <Washer>
                 <Brand>Samsung</Brand>
                 <Model>WF8590NLW9DYLP</Model>
@@ -83,7 +82,7 @@
                 </Dimensions>
             </Washer>
         </WasherList>
-        <ToasterList>                       <!-- Тостеры -->
+        <ToasterList>
             <Toaster>
                 <Brand>Bosch</Brand>
                 <Model>TAT 3A 011</Model>
@@ -104,8 +103,8 @@
             </Toaster>
         </ToasterList>
     </Appliances>
-    <Electronics>                            <!-- Электроника -->
-        <TabletList>                         <!-- Планшеты -->
+    <Electronics>
+        <TabletList>
             <Tablet>
                 <Brand>Lenovo</Brand>
                 <Model>Tab 2 A10-30L 16GB LTE Midnight Blue</Model>
@@ -149,7 +148,7 @@
                 </Dimensions>
             </Tablet>
         </TabletList>
-        <TVList>                              <!-- Телевизоры -->
+        <TVList>
             <TV>
                 <Brand>LG</Brand>
                 <Model>43UH619V</Model>
@@ -193,7 +192,7 @@
                 </Dimensions>
             </TV>
         </TVList>
-        <MobilePhoneList>                     <!-- Мобильные телефоны -->
+        <MobilePhoneList>
             <MobilePhone>
                 <Brand>Apple</Brand>
                 <Model>iPhone 7 32GB Black</Model>
@@ -241,7 +240,7 @@
             </MobilePhone>
         </MobilePhoneList>
     </Electronics>
-    <Computers>                               <!-- Компьютеры -->
+    <Computers>
         <PCList>
             <PC>
                 <Brand>HAFF</Brand>
@@ -298,7 +297,7 @@
                 </Dimensions>
             </PC>
         </PCList>
-        <LaptopList>                           <!-- Ноут-буки -->
+        <LaptopList>
             <Laptop>
                 <Brand>Lenovo</Brand>
                 <Model>G50-30</Model>
@@ -357,7 +356,7 @@
                 </Dimensions>
             </Laptop>
         </LaptopList>
-        <MonitorList>                          <!-- Мониторы -->
+        <MonitorList>
             <Monitor>
                 <Brand>LG</Brand>
                 <Model>27UD68-W</Model>
