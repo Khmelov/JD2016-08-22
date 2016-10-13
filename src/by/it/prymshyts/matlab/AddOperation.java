@@ -39,7 +39,7 @@ class AddOperation extends Operation implements IAddOperation {
     // Сложение к целому.
     @Override
     public Variable add(FloatVariable firstVar, FloatVariable secondVar) {
-        return new FloatVariable(firstVar.getValue() + secondVar.getValue());
+        return VariableFactory.getVariable(firstVar.getValue() + secondVar.getValue());
     }
     @Override
     public Variable add(FloatVariable firstVar, VectorVariable secondVar) {
@@ -61,7 +61,7 @@ class AddOperation extends Operation implements IAddOperation {
             result[i] += addValue;
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable add(VectorVariable firstVar, VectorVariable secondVar) {
@@ -78,7 +78,7 @@ class AddOperation extends Operation implements IAddOperation {
             result[i] = firstVector[i] + secondVector[i];
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
 
     // Сложение к матрице.
@@ -94,7 +94,7 @@ class AddOperation extends Operation implements IAddOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable add(MatrixVariable firstVar, MatrixVariable secondVar) {
@@ -113,6 +113,6 @@ class AddOperation extends Operation implements IAddOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
 }

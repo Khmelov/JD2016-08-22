@@ -8,7 +8,11 @@ public class Parser implements RegexPatterns {
 
     static private HashMap<String, Variable> results = new HashMap<>();
 
-    static Variable parse(String expression) {
+    static String parse(String expression) {
+        return parseResult(expression).toString();
+    }
+
+    static private Variable parseResult(String expression) {
 
         ArrayList<Variable> variables = new ArrayList<>();
         ArrayList<OperationType> operations = new ArrayList<>();
@@ -28,10 +32,11 @@ public class Parser implements RegexPatterns {
                 if (results.containsKey(matcher.group(2))) {
                     variables.add(results.get(matcher.group(2)));
                 } else {
-                    variables.add(new FloatVariable(0.0));
+                    variables.add(VariableFactory.getVariable(0.0));
                 }
             } else if (matcher.group(3) != null) {
-                variables.add(new FloatVariable(Double.parseDouble(matcher.group(3))));
+                Double value = Double.parseDouble(matcher.group(3));
+                variables.add(VariableFactory.getVariable(value));
             } else if (matcher.group(4) != null) {
                 switch (matcher.group(4)) {
                     case "+":
@@ -104,16 +109,16 @@ public class Parser implements RegexPatterns {
         Matcher matcher = patternMatrix.matcher(expression);
 
         if (matcher.find()) {
-            return new MatrixVariable(parseMatrix(matcher.group(1)));
+            return VariableFactory.getVariable(parseMatrix(matcher.group(1)));
         }
 
         matcher = patternVector.matcher(expression);
 
         if (matcher.find()) {
-            return new VectorVariable(parseVector(matcher.group(1)));
+            return VariableFactory.getVariable(parseVector(matcher.group(1)));
         }
 
-        return parse(expression);
+        return parseResult(expression);
     }
 
     static private Double[] parseVector(String expression) {
