@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.it-academy.by/xml/airport"
+        xmlns:tns="http://www.it-academy.by/xml/airport"
+        elementFormDefault="qualified">
+    <element name="airport">
+        <complexType>
+            <element name="flights">
+                <complexType>
+                  <sequence>
+                      <element name="flight"
+                               type="tns:Flight"
+                               minOccurs="1"
+                               maxOccurs="unbounded"/>
+                 </sequence>
+             </complexType>
+        </element>
+        </complexType>
+    </element>
+    <complexType name="Flight">
+        <sequence>
+            <element name="company" type="string"  />
+            <element name="plane"/>
+            <element name="departureTime" type="tns:DateTime"/>
+            <element name="arrivalTime"  type="tns:DateTime"/>
+        </sequence>
+        <attribute name="flightID" type="tns:FlightID" use="required" />
+        <attribute name="form" type="tns:PortLocation" use="optional"/>
+        <attribute name="to" type="tns:PortLocation" use="optional"/>
+    </complexType>
+    <simpleType name="FlightID">
+        <restriction base="ID">
+            <pattern value="[A-Z][A-Z0-9]\d{3}"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="DateTime">
+        <restriction base="string">
+            <pattern value="(\d{2}.\d{2}.\d{4}[\s]\d{2}:\d{2})"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="PortLocation">
+        <restriction base="string">
+            <pattern value="([A-Z]{3})"/>
+        </restriction>
+    </simpleType>
+
+</schema>
