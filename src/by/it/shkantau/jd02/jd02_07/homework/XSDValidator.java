@@ -12,10 +12,11 @@ import java.io.File;
 import java.io.IOException;
 
 public class XSDValidator {
+    public final static String  xmlFileName = "src/by/it/shkantau/jd02/jd02_07/homework/airportXSD.xml";
 
     public static void main(String[] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String xmlFileName = "src/by/it/shkantau/jd02/jd02_07/homework/airportXSD.xml";
+
 //
         String xsdFileName = "src/by/it/shkantau/jd02/jd02_07/homework/airport.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
