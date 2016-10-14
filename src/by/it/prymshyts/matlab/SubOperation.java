@@ -39,7 +39,7 @@ class SubOperation extends Operation implements ISubOperation {
     // Вычитания от целого.
     @Override
     public Variable sub(FloatVariable firstVar, FloatVariable secondVar) {
-        return new FloatVariable(firstVar.getValue() - secondVar.getValue());
+        return VariableFactory.getVariable(firstVar.getValue() - secondVar.getValue());
     }
     @Override
     public Variable sub(FloatVariable firstVar, VectorVariable secondVar) {
@@ -61,7 +61,7 @@ class SubOperation extends Operation implements ISubOperation {
             result[i] -= subValue;
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable sub(VectorVariable firstVar, VectorVariable secondVar) {
@@ -78,7 +78,7 @@ class SubOperation extends Operation implements ISubOperation {
             result[i] = firstVector[i] - secondVector[i];
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
 
     // Вычитания от матрицы.
@@ -94,7 +94,7 @@ class SubOperation extends Operation implements ISubOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable sub(MatrixVariable firstVar, MatrixVariable secondVar) {
@@ -113,6 +113,6 @@ class SubOperation extends Operation implements ISubOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
 }

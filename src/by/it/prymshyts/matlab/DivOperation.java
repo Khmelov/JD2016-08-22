@@ -30,7 +30,7 @@ class DivOperation extends Operation implements IDivOperation {
         if (secondVar.getValue() == 0) {
             throw new DivisionByZeroException(DivisionByZeroExceptionState.DIVISION_BY_ZERO);
         }
-        return new FloatVariable(firstVar.getValue() / secondVar.getValue());
+        return VariableFactory.getVariable(firstVar.getValue() / secondVar.getValue());
     }
 
     // Деление вектора.
@@ -48,7 +48,7 @@ class DivOperation extends Operation implements IDivOperation {
             result[i] /= divValue;
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
 
     // Деление матрицы.
@@ -68,6 +68,6 @@ class DivOperation extends Operation implements IDivOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
 }

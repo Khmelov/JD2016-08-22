@@ -39,7 +39,7 @@ class MulOperation extends Operation implements  IMulOperation {
     // Умножение целого.
     @Override
     public Variable mul(FloatVariable firstVar, FloatVariable secondVar) {
-        return new FloatVariable(firstVar.getValue() * secondVar.getValue());
+        return VariableFactory.getVariable(firstVar.getValue() * secondVar.getValue());
     }
     @Override
     public Variable mul(FloatVariable firstVar, VectorVariable secondVar) {
@@ -61,7 +61,7 @@ class MulOperation extends Operation implements  IMulOperation {
             result[i] *= mulValue;
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
 
     // Умножение матрицы.
@@ -77,7 +77,7 @@ class MulOperation extends Operation implements  IMulOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable mul(MatrixVariable firstVar, VectorVariable secondVar) {
@@ -100,7 +100,7 @@ class MulOperation extends Operation implements  IMulOperation {
             result[i] = rowResult;
         }
 
-        return new VectorVariable(result);
+        return VariableFactory.getVariable(result);
     }
     @Override
     public Variable mul(MatrixVariable firstVar, MatrixVariable secondVar) {
@@ -126,6 +126,6 @@ class MulOperation extends Operation implements  IMulOperation {
             }
         }
 
-        return new MatrixVariable(result);
+        return VariableFactory.getVariable(result);
     }
 }

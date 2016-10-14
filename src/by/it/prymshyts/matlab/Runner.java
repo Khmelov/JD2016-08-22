@@ -10,17 +10,48 @@ public class Runner {
 
         try {
 
-            Log.println(Parser.parse("A = 2 + 5.3"));
-            Log.println(Parser.parse("B = A * 3.5"));
-            Log.println(Parser.parse("B1 = B - 0.55"));
-            Log.println(Parser.parse("B2 = A / 2"));
-            Log.println(Parser.parse("C = B + (A * 2)"));
-            Log.println(Parser.parse("D = ((C - 0.15) - 20) / (7 - 5)"));
-            Log.println(Parser.parse("E = {2, 3} * (D / 2)"));
+            Reporter reporter = new Reporter();
+            reporter.setReportBuilder(new FullReportBuilder());
+
+            String expression = "A = 2 + 5.3";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B = A * 3.5";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B1 = B - 0.55";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B2 = A / 2";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "C = B + (A * 2)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "D = ((C - 0.15) - 20) / (7 - 5)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "E = {2, 3} * (D / 2)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+
+            reporter.printReport();
+
+            reporter.setReportBuilder(new BriefReportBuilder());
+
+            expression = "A = 2 + 5.3";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B = A * 3.5";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B1 = B - 0.55";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "B2 = A / 2";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "C = B + (A * 2)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "D = ((C - 0.15) - 20) / (7 - 5)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+            expression = "E = {2, 3} * (D / 2)";
+            reporter.saveToReport("Операция: " + expression + "\nОтвет: " + Parser.parse(expression));
+
+            reporter.printReport();
 
         } catch (IllegalVariableSizeException | IllegalOperationException | DivisionByZeroException e) {
-            Log.printWarning("Ошибка: " + e.getMessage());
-            Log.logException(e.getMessage());
+            Console.printWarning("Ошибка: " + e.getMessage());
+            Log.logException(e);
         }
     }
 }
