@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class Dispatcher {
     //сколько планируется покупателей
-    private static final int planCount = 10;
+    private static final int planCount = 50;
 
     //члены класса для начала обслуживания
     static int countBuyers = 0; //общий счетчик покупателей

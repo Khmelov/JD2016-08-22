@@ -23,9 +23,7 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable, Comparable<Buyer> {
             pensioneer = true;
             name = ("Buyer pensioneer №" + number);
         }
-
     }
-
 
     @Override
     public void run() {
@@ -68,18 +66,24 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable, Comparable<Buyer> {
     }
 
     @Override
-    public void waitServise() {
+    public void waitServise()  {
         synchronized (this) {
 
             System.out.println(this + "встал в очередь на кассу");
             Queues.add(this);
 
-            iWait=true;
-            while (iWait) try {
-                this.wait();
+            try {
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+//            iWait=true;
+//            while (iWait) try {
+//                this.wait();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 
             System.out.println(this + "закончил оплату товаров в кассе");
         }
@@ -112,26 +116,6 @@ public class Buyer  implements IBuyer, IUseBacket, Runnable, Comparable<Buyer> {
 
     @Override
     public int compareTo(Buyer o) {
-
-//        if (this.pensioneer && o.pensioneer){
-//            System.out.println(this.pensioneer +  " = " + o.pensioneer);
-//            return 0;
-//        }
-//        if (!this.pensioneer && !o.pensioneer){
-//            System.out.println(this.pensioneer +  " = " + o.pensioneer);
-//            return 0;
-//        }
-//
-//        if (this.pensioneer && !o.pensioneer) {
-//            System.out.println(this.pensioneer + " < " + o.pensioneer);
-//            return -1;
-//        }
-//        else {
-//            System.out.println(this.pensioneer +  " > " + o.pensioneer);
-//            return 1;
-//        }
         return Boolean.compare(o.pensioneer, this.pensioneer);
     }
-
-
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="ticket">
+        <complexType>
+            <sequence>
+                <element name="policlinic"/>
+                <element name="visitDate"/>
+                <element name="patient"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="policlinic">
+        <complexType>
+            <sequence>
+                <element name="city" type="string"/>
+                <element name="name" type="string"/>
+                <element name="doctor"/>
+            </sequence>
+         </complexType>
+    </element>
+    <element name="doctor">
+        <complexType>
+            <sequence>
+                <element name="post" type="string"/>
+                <element name="name" type="string"/>
+                <element name="surname" type="string"/>
+                <element name="category" type="string"/>
+                <element name="cabinet" type="positiveInteger"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="visitDate">
+        <complexType>
+            <sequence>
+                <element name="date" type="date"/>
+                <element name="time" type="time"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="patient">
+        <complexType>
+            <sequence>
+                <element name="name" type="string"/>
+                <element name="surname" type="string"/>
+                <element name="birthDay" type="date"/>
+                <element name="address"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="address">
+        <complexType>
+            <sequence>
+                <element name="city" type="string"/>
+                <element name="street" type="string"/>
+                <element name="house" type="positiveInteger"/>
+                <element name="room" type="positiveInteger"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>
