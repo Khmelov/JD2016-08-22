@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!ELEMENT Store (Admin, User)>
+<!ELEMENT Admin (Email, Catalog)>
+<!ELEMENT Email (#PCDATA)+>
+<!ELEMENT Catalog (Goods)+>
+<!ELEMENT Goods (Description, Price)+>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT Price (#PCDATA)>
+<!ELEMENT User (Email, Order)+>
+<!ELEMENT Order (Goods)+>
+<!ATTLIST Admin
+        nickname ID #REQUIRED
+        password CDATA #REQUIRED>
+<!ATTLIST User
+        nickname ID #REQUIRED
+        password CDATA #REQUIRED>
