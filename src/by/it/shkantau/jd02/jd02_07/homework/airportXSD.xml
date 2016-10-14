@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<airport acronym="MSQ"
+<airport
          xmlns = "http://www.it-academy.by/xml/airport"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.it-academy.by/xml/airport airport.xsd">
@@ -11,13 +11,9 @@
             <plane>
                 Boeing-747
             </plane>
-            <departureTime>
-                20.08.2016  05:00
-            </departureTime>
-            <arrivalTime>
-                20.08.2016  6:00
-            </arrivalTime>
-            <crew crewID = "1324" count = "4">
+            <departureTime>20.08.2016 05:00</departureTime>
+            <arrivalTime>20.08.2016      06:00</arrivalTime>
+            <crew crewID = "1234" count = "4">
                 <pilots>
                     <pilot name = "Schnittke Alfred">
                         <age>  37  </age>
@@ -49,12 +45,8 @@
             <plane>
                 Boeing-727
             </plane>
-            <departureTime>
-                20.08.2016  12:45
-            </departureTime>
-            <arrivalTime>
-                20.08.2016  14:20
-            </arrivalTime>
+            <departureTime>20.08.2016 12:45</departureTime>
+            <arrivalTime>20.08.2016 14:20 </arrivalTime>
             <crew crewID = "1325" count = "4">
                 <pilots>
                     <pilot name = "Dubovic Pavel">
@@ -62,7 +54,7 @@
                             27
                         </age>
                         <phone>
-                            14464864
+                            2314464864
                         </phone>
                     </pilot>
                     <pilot name = "Nikolai Anisimov">
@@ -95,12 +87,8 @@
             <plane>
                 Boeing 737-500
             </plane>
-            <departureTime>
-                13.10.2016  03:45
-            </departureTime>
-            <arrivalTime>
-                13.10.2016  05:45
-            </arrivalTime>
+            <departureTime>13.10.2016  03:45</departureTime>
+            <arrivalTime>13.10.2016  05:45 </arrivalTime>
             <crew crewID = "1326" count = "4">
                 <pilots>
                     <pilot name = "Politicky Pavel">
