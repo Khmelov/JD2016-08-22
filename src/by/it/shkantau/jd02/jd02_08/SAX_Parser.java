@@ -16,7 +16,7 @@ public class SAX_Parser extends DefaultHandler {
 
     public static void main(String[] args) {
 
-        String fileName = "src/by/it/akhmelev/jd02_07/04+XSD.xml";
+        String fileName = "src/by/it/shkantau/jd02/jd02_07/homework/airportXSD.xml";
         try {
             SAXParserFactory factory = SAXParserFactory.newInstance();
             SAXParser parser = factory.newSAXParser();
@@ -45,12 +45,10 @@ public class SAX_Parser extends DefaultHandler {
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         System.out.print(tab + "[" + qName);
         for (int i = 0; i < attributes.getLength(); i++) {
-            String name = attributes.getLocalName(i);
-            String value = attributes.getValue(i);
-            System.out.println(" "+name+" "+value);
+            System.out.print(" " + attributes.getLocalName(i) + "=" + attributes.getValue(i));
         }
         System.out.println("]");
-        tab = "\t" + tab;
+        tab += "\t";
         text.delete(0,text.length());
     }
 
@@ -66,7 +64,7 @@ public class SAX_Parser extends DefaultHandler {
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-        text.append(ch);
+        text.append((new String(ch, start, length)).replaceAll("[\n\r]","").trim());
     }
 }
 

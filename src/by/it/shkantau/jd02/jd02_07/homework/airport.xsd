@@ -3,42 +3,92 @@
         targetNamespace="http://www.it-academy.by/xml/airport"
         xmlns:tns="http://www.it-academy.by/xml/airport"
         elementFormDefault="qualified">
+
     <element name="airport">
         <complexType>
             <element name="flights">
                 <complexType>
-                  <sequence>
-                      <element name="flight"
-                               type="tns:Flight"
-                               minOccurs="1"
-                               maxOccurs="unbounded"/>
-                 </sequence>
-             </complexType>
-        </element>
+                    <sequence>
+                        <element name="flight"  maxOccurs="unbounded">
+                            <complexType>
+                                <sequence>
+                                    <element name="company" type="string"  />
+                                    <element name="plane"/>
+                                    <element name="departureTime" type="tns:DateTime"/>
+                                    <element name="arrivalTime"  type="tns:DateTime"/>
+                                    <element name="crew" maxOccurs="1" minOccurs="1" >
+                                        <complexType>
+                                            <all>
+                                                <element name="pilots">
+                                                    <complexType>
+                                                        <sequence>
+                                                            <element name="pilot" minOccurs="1" maxOccurs="2">
+                                                               <complexType>
+                                                                   <all>
+                                                                       <element name="age" type="tns:Age"/>
+                                                                       <element name="phone" type="tns:Phone"/>
+                                                                   </all>
+                                                                   <attribute name="name"/>
+                                                               </complexType>
+                                                            </element>
+                                                        </sequence>
+                                                    </complexType>
+                                                </element>
+                                                <element name="airHostesses">
+                                                    <complexType>
+                                                        <sequence>
+                                                            <element name="airHostess" minOccurs="1" maxOccurs="2">
+                                                                <complexType>
+                                                                    <all>
+                                                                        <element name="age" type="tns:Age"/>
+                                                                    </all>
+                                                                    <attribute name="name"/>
+                                                                </complexType>
+                                                            </element>
+                                                        </sequence>
+                                                    </complexType>
+                                                </element>
+                                            </all>
+                                            <attribute name="crewID" type="ID" use="required"/>
+                                            <attribute name="count" type="integer" use="optional"/>
+                                        </complexType>
+                                    </element>
+                                </sequence>
+                                <attribute name="flightID" type="ID" use="required" />
+                                <attribute name="form" type="tns:Acronym" use="optional"/>
+                                <attribute name="to" type="tns:Acronym" use="optional"/>
+                            </complexType>
+
+                        </element>
+                    </sequence>
+                </complexType>
+            </element>
+            <attribute name="acronym" type="tns:Acronym">
+            </attribute>
         </complexType>
     </element>
-    <complexType name="Flight">
-        <sequence>
-            <element name="company" type="string"  />
-            <element name="plane"/>
-            <element name="departureTime" type="tns:DateTime"/>
-            <element name="arrivalTime"  type="tns:DateTime"/>
-        </sequence>
-        <attribute name="flightID" type="tns:FlightID" use="required" />
-        <attribute name="form" type="tns:PortLocation" use="optional"/>
-        <attribute name="to" type="tns:PortLocation" use="optional"/>
-    </complexType>
-    <simpleType name="FlightID">
-        <restriction base="ID">
-            <pattern value="[A-Z][A-Z0-9]\d{3}"/>
+
+    <simpleType name="Age">
+        <restriction base="positiveInteger">
+            <pattern value="\d{1,2}"/>
         </restriction>
     </simpleType>
+    <simpleType name="Phone">
+        <restriction base="string">
+            <pattern value="\d{9,12}"/>
+        </restriction>
+    </simpleType>
+    <!--<simpleType name="FlightID">-->
+        <!--<restriction base="ID">-->
+            <!--<pattern value="[A-Z][A-Z0-9]\d{3}"/>-->
+        <!--</restriction>-->
+    <!--</simpleType>-->
     <simpleType name="DateTime">
         <restriction base="string">
             <pattern value="(\d{2}.\d{2}.\d{4}[\s]\d{2}:\d{2})"/>
         </restriction>
     </simpleType>
-    <simpleType name="PortLocation">
+    <simpleType name="Acronym">
         <restriction base="string">
             <pattern value="([A-Z]{3})"/>
         </restriction>
