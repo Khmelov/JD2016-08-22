@@ -1,0 +1,21 @@
+<!ELEMENT ticket (policlinic, visitDate, patient)>
+<!ELEMENT policlinic (city, name, doctor)>
+<!ELEMENT number (#PCDATA)>
+<!ELEMENT doctor (post, name, surname, category, cabinet)>
+<!ELEMENT post (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT category (#PCDATA)>
+<!ELEMENT cabinet (#PCDATA)>
+<!ELEMENT visitDate (date, time)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT time (#PCDATA)>
+<!ELEMENT patient (name, surname, birthDay, address)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT surname (#PCDATA)>
+<!ELEMENT birthDay (#PCDATA)>
+<!ELEMENT address (city, street, house, room)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT street (#PCDATA)>
+<!ELEMENT house (#PCDATA)>
+<!ELEMENT room (#PCDATA)>
