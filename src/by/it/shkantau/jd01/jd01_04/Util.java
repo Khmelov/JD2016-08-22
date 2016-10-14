@@ -41,10 +41,10 @@ public class Util {
         double[][] m = new double[size][size + 1];
         for (int i = 0; i < size; i++) {
 
-            System.arraycopy(m[i], 0 , matrix[i] , 0, size);
-//            for (int j = 0; j < size; j++) {
-//                m[i][j] = matrix[i][j];
-//            }
+//            System.arraycopy(m[i], 0 , matrix[i] , 0, size);
+            for (int j = 0; j < size; j++) {
+                m[i][j] = matrix[i][j];
+            }
         }
         for (int i = 0; i < size; i++) {
             m[i][size] = vector[i];
@@ -94,10 +94,10 @@ public class Util {
         int size = matrix.length;
         double[][] m = new double[size][size];
         for (int i = 0; i < size; i++) {
-            System.arraycopy(m[i], 0 , matrix[i] , 0, size);
-//            for (int j = 0; j < size; j++) {
-//                m[i][j] = matrix[i][j];
-//            }
+//            System.arraycopy(m[i], 0 , matrix[i] , 0, size);
+            for (int j = 0; j < size; j++) {
+                m[i][j] = matrix[i][j];
+            }
         }
         double k;
         for (int diagonal = 0; diagonal < size; diagonal++) {
@@ -117,8 +117,6 @@ public class Util {
         for(double d : arr) {
             result *= d;
         }
-
         return result;
     }
-
 }

@@ -6,6 +6,7 @@
 
     <element name="airport">
         <complexType>
+            <sequence>
             <element name="flights">
                 <complexType>
                     <sequence>
@@ -61,10 +62,12 @@
 
                         </element>
                     </sequence>
+
                 </complexType>
             </element>
-            <attribute name="acronym" type="tns:Acronym">
-            </attribute>
+            <!--<attribute name="acronym" type="tns:Acronym">-->
+            <!--</attribute>-->
+            </sequence>
         </complexType>
     </element>
 
@@ -85,7 +88,7 @@
     <!--</simpleType>-->
     <simpleType name="DateTime">
         <restriction base="string">
-            <pattern value="(\d{2}.\d{2}.\d{4}[\s]\d{2}:\d{2})"/>
+            <pattern value="(\d{2}\.\d{2}\.\d{4}\s+\d{2}:\d{2})"/>
         </restriction>
     </simpleType>
     <simpleType name="Acronym">
@@ -93,5 +96,4 @@
             <pattern value="([A-Z]{3})"/>
         </restriction>
     </simpleType>
-
 </schema>
