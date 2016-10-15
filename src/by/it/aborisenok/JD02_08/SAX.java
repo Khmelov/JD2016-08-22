@@ -19,7 +19,7 @@ public class SAX extends DefaultHandler {
 
 
     public static void main(String[] args) {
-            String filePass = "D:\\JavaProjects\\JD2016-08-22\\src\\by\\it\\aborisenok\\JD02_07\\xml_classwork\\ad+xsd.xml";
+            String filePass = "D:\\JavaProjects\\JD2016-08-22\\src\\by\\it\\aborisenok\\JD02_07\\XML+XSD.xml";
         try {
 
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
