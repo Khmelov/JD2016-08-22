@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD02_07.xml_classwork;
+package by.it.aborisenok.JD02_07;
 
 import org.xml.sax.SAXException;
 
@@ -17,8 +17,8 @@ import java.io.IOException;
 public class ValidSXD {
     public static void main(String[] args) {
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-        String fileName = "src/by/it/aborisenok/JD02_07/xml_classwork/ad+xsd.xml";
-        String schemaName = "src/by/it/aborisenok/JD02_07/xml_classwork/ad.xsd";
+        String fileName = "src/by/it/aborisenok/JD02_07/XML+XSD.xml";
+        String schemaName = "src/by/it/aborisenok/JD02_07/XSD.xsd";
         SchemaFactory factory = SchemaFactory.newInstance(language);
         File schemaLocation = new File(schemaName);
         try {
@@ -26,6 +26,7 @@ public class ValidSXD {
             Validator validator = schema.newValidator();
             Source source = new StreamSource(fileName);
             validator.validate(source);
+            System.out.println(fileName + " валиден.");
         } catch (SAXException e){
             System.err.println("Валидация " + fileName + " не выполнена: " + e.getMessage());
         } catch (IOException e){
