@@ -29,23 +29,24 @@ public class DOMparseer {
     }
 
     private static void printDOM_element(String prefix, Node node){
-        String text = node.getNodeValue();
-        if (text!=null){
-            System.out.println(prefix + text.replaceAll("\n","").trim());
-        }
-        if (node.hasAttributes()){
-            for (int i = 0; i < node.getAttributes().getLength(); i++) {
-                System.out.print(" "+ node.getAttributes().item(i));
+        if (node.getNodeType() == Node.ELEMENT_NODE) {
+            System.out.print(prefix + "<" + node.getNodeName());
+            if (node.hasAttributes()) {
+                for (int i = 0; i < node.getAttributes().getLength(); i++) {
+                    System.out.print(" " + node.getAttributes().item(i));
+                }
             }
-            System.out.println();
+            System.out.println(">");
+            NodeList children = node.getChildNodes();
+            prefix += "\t";
+            for (int i = 0; i < children.getLength(); i++) {
+                printDOM_element(prefix, children.item(i));
+            }
+            prefix = prefix.substring(1);
+            System.out.print(prefix + "</" + node.getNodeName());
+            System.out.println(">");
+        }else if(!node.getNodeValue().replaceAll("\\s+","").isEmpty()) {
+            System.out.println(prefix + node.getNodeValue());
         }
-
-        NodeList children = node.getChildNodes();
-        for (int i = 0; i < children.getLength() ; i++) {
-            printDOM_element(prefix + node.getNodeName() + ">",children.item(i));
-        }
-
-
     }
-
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.it-academy.by/xml/airport"
-        xmlns:tns="http://www.it-academy.by/xml/airport"
+        targetNamespace="http://airport.jd02_09.jd02.shkantau.it.by"
+        xmlns:tns="http://airport.jd02_09.jd02.shkantau.it.by"
         elementFormDefault="qualified">
 
     <element name="airport">
@@ -13,7 +13,7 @@
                         <element name="flight"  maxOccurs="unbounded">
                             <complexType>
                                 <sequence>
-                                    <element name="company" type="string"  />
+                                    <element name="company" type="string"/>
                                     <element name="plane"/>
                                     <element name="departureTime" type="tns:DateTime"/>
                                     <element name="arrivalTime"  type="tns:DateTime"/>
@@ -50,7 +50,7 @@
                                                     </complexType>
                                                 </element>
                                             </all>
-                                            <attribute name="crewID" type="ID" use="required"/>
+                                            <attribute name="crewID" type="positiveInteger" use="required"/>
                                             <attribute name="count" type="integer" use="optional"/>
                                         </complexType>
                                     </element>
@@ -65,8 +65,6 @@
 
                 </complexType>
             </element>
-            <!--<attribute name="acronym" type="tns:Acronym">-->
-            <!--</attribute>-->
             </sequence>
         </complexType>
     </element>
@@ -78,7 +76,7 @@
     </simpleType>
     <simpleType name="Phone">
         <restriction base="string">
-            <pattern value="\d{9,12}"/>
+            <pattern value="(\d{9,12})"/>
         </restriction>
     </simpleType>
     <!--<simpleType name="FlightID">-->
