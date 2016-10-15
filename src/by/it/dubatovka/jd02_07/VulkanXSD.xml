@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<RitzioBelarus site="http://vulcanclub.by/" name="ООО Единая призовая система Флэш-Роял">
+<RitzioBelarus xmlns="http://akhmelev.it-academy.by/xml/students"
+               xmlns:tns="http://www.w3.org/2001/XMLSchema-instance"
+               tns:schemaLocation="http://akhmelev.it-academy.by/xml/students Vulkan.xsd"
+               site="http://vulcanclub.by/" name="ООО Единая призовая система Флэш-Роял">
     <SlotClub>
         <CodeName>
             Мнс:Притыцкого

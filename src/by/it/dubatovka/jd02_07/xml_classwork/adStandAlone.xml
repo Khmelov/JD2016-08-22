@@ -14,7 +14,6 @@
         <!ELEMENT Flats (#PCDATA)>
         <!ELEMENT Price (#PCDATA)>
         <!ELEMENT Square (#PCDATA)>
-
         ]>
 
 <Persons>

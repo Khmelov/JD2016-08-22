@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE RitzioBelarus [
+        <!ELEMENT RitzioBelarus (SlotClub)+>
+        <!ATTLIST RitzioBelarus
+                site CDATA #IMPLIED
+                name CDATA #REQUIRED
+                >
+        <!ELEMENT SlotClub (CodeName, Address, NumberOfSlots, Slots)>
+        <!ELEMENT CodeName (#PCDATA)>
+        <!ELEMENT Address (City, Street)>
+        <!ELEMENT NumberOfSlots (#PCDATA)>
+        <!ELEMENT City (#PCDATA)>
+        <!ELEMENT Street (#PCDATA)>
+        <!ELEMENT Slots (Slot)+>
+        <!ELEMENT Slot (Number, Model, Denomination, GameSet)>
+        <!ATTLIST Slot
+                manufacturer CDATA #REQUIRED
+                >
+        <!ELEMENT Number (#PCDATA)>
+        <!ELEMENT Model (#PCDATA)>
+        <!ELEMENT Denomination (#PCDATA)>
+        <!ELEMENT GameSet (Game)+>
+        <!ATTLIST GameSet
+                mix CDATA #REQUIRED
+                num CDATA #IMPLIED
+                >
+        <!ELEMENT Game (#PCDATA)>
+        ]>
 <RitzioBelarus site="http://vulcanclub.by/" name="ООО Единая призовая система Флэш-Роял">
     <SlotClub>
         <CodeName>
@@ -55,7 +82,6 @@
                 <Model>
                     FV-623 CFD
                 </Model>
-
                 <Denomination>
                     10
                 </Denomination>

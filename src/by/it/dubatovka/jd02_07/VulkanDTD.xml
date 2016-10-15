@@ -1,32 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE RitzioBelarus [
-        <!ELEMENT RitzioBelarus (Site, Name,(SlotClub)+)>
-        <!ELEMENT Site (#PCDATA)>
-        <!ELEMENT Name (#PCDATA)>
-        <!ELEMENT SlotClub (CodeName, Address, Slots)>
-        <!ELEMENT CodeName (#PCDATA)>
-        <!ELEMENT Address (City, Street)>
-        <!ELEMENT City (#PCDATA)>
-        <!ELEMENT Street (#PCDATA)>
-        <!ELEMENT Slots (Slot)+>
-        <!ELEMENT Slot (Number, Model, Denomination, GameSet)>
-        <!ATTLIST Slot manufacturer CDATA #REQUIRED>
-        <!ELEMENT Number (#PCDATA)>
-        <!ELEMENT Model (#PCDATA)>
-        <!ELEMENT Denomination (#PCDATA)>
-        <!ELEMENT GameSet (Game)+>
-        <!ATTLIST GameSet  mix CDATA #REQUIRED>
-        <!ATTLIST GameSet  num CDATA #REQUIRED>
-
-        <!ELEMENT Game (#PCDATA)>
-        ]>
-<RitzioBelarus>
-    <Site>
-        http://vulcanclub.by/
-    </Site>
-    <Name>
-        <![CDATA[ООО "Единая призовая система Флэш-Роял"]]>
-    </Name>
+<!DOCTYPE RitzioBelarus SYSTEM "Vulkan.dtd">
+<RitzioBelarus site="http://vulcanclub.by/" name="ООО Единая призовая система Флэш-Роял">
     <SlotClub>
         <CodeName>
             Мнс:Притыцкого
@@ -39,6 +13,9 @@
                 Притыцкого 42А-1
             </Street>
         </Address>
+        <NumberOfSlots>
+            25
+        </NumberOfSlots>
         <Slots>
             <Slot manufacturer="NOVOMATIC">
                 <Number>
@@ -73,12 +50,13 @@
             </Slot>
 
             <Slot manufacturer="NOVOMATIC">
-                <Model>
-                    FV-629 CF2
-                </Model>
                 <Number>
                     2
                 </Number>
+                <Model>
+                    FV-623 CFD
+                </Model>
+
                 <Denomination>
                     10
                 </Denomination>
@@ -121,6 +99,9 @@
                 Долгобродская 53
             </Street>
         </Address>
+        <NumberOfSlots>
+            35
+        </NumberOfSlots>
         <Slots>
             <Slot manufacturer="EGT">
                 <Number>
@@ -161,36 +142,27 @@
             </Slot>
 
             <Slot manufacturer="NOVOMATIC">
-                <Model>
-                    FV-629 CF2
-                </Model>
                 <Number>
                     2
                 </Number>
+                <Model>
+                    FV-629 CF2
+                </Model>
                 <Denomination>
                     10
                 </Denomination>
-                <GameSet mix="Cobra" num="3">
+                <GameSet mix="SuperGaminator" num="I">
                     <Game>
-                        Diamond Trio
+                        Gonzos Quest
                     </Game>
                     <Game>
-                        Joker Jewels
+                        Incredible Hulk
                     </Game>
                     <Game>
-                        Just Jewels
+                        Book of Ra
                     </Game>
                     <Game>
-                        Ultra Hot
-                    </Game>
-                    <Game>
-                        American Poker
-                    </Game>
-                    <Game>
-                        Xtra hot
-                    </Game>
-                    <Game>
-                        Fruits for All
+                        Fruit Cocktail
                     </Game>
                 </GameSet>
             </Slot>
@@ -209,6 +181,9 @@
                 Советская 11а
             </Street>
         </Address>
+        <NumberOfSlots>
+            38
+        </NumberOfSlots>
         <Slots>
             <Slot manufacturer="NOVOMATIC">
                 <Number>
@@ -248,37 +223,31 @@
                 </GameSet>
             </Slot>
 
-            <Slot manufacturer="NOVOMATIC">
-                <Model>
-                    FV-629 CF2
-                </Model>
+            <Slot manufacturer="IGROSOFT">
                 <Number>
-                    2
+                    17
                 </Number>
+                <Model>
+                    Ice-Machine
+                </Model>
                 <Denomination>
-                    10
+                    50
                 </Denomination>
-                <GameSet mix="Cobra" num="3">
+                <GameSet mix="ICE" num="1">
                     <Game>
-                        Diamond Trio
+                        Resident
                     </Game>
                     <Game>
-                        Joker Jewels
+                        Crazy Monkey
                     </Game>
                     <Game>
-                        Just Jewels
+                        Gladiator
                     </Game>
                     <Game>
-                        Ultra Hot
+                        Big Bad Wolf
                     </Game>
                     <Game>
-                        American Poker
-                    </Game>
-                    <Game>
-                        Xtra hot
-                    </Game>
-                    <Game>
-                        Fruits for All
+                        Filven Princess
                     </Game>
                 </GameSet>
             </Slot>

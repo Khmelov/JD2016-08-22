@@ -13,7 +13,7 @@ class Properties {
 
     static ResourceBundle setLocale(Locale locale) {
         Properties.locale = locale;
-        resourceBundle = ResourceBundle.getBundle("by\\it\\dubatovka\\jd02_05\\languages\\words", locale);
+        resourceBundle = ResourceBundle.getBundle("by.it.dubatovka.jd02_05.languages.words", locale);
         return resourceBundle;
     }
 
