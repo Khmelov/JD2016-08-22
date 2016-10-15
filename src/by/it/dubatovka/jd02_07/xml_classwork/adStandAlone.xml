@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"  standalone="yes" ?>
+
+<!DOCTYPE Persons [
+        <!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Email, Nickname, Password, Ads)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Ads (Ad+)>
+        <!ELEMENT Ad (Description, Address, Flat, Flats,Price, Square)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT Address (#PCDATA)>
+        <!ELEMENT Flat (#PCDATA)>
+        <!ELEMENT Flats (#PCDATA)>
+        <!ELEMENT Price (#PCDATA)>
+        <!ELEMENT Square (#PCDATA)>
+
+        ]>
+
+<Persons>
+    <Person>
+        <Email>
+            dorohov@mail.ru
+        </Email>
+        <Nickname>
+            Dorohov
+        </Nickname>
+        <Password>
+            qwerty
+        </Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    Теплая уютная квартира в самом центре
+                </Description>
+                <Address>
+                    Минск , ул.Гикало, 12 кв.13
+                </Address>
+                <Flat>4</Flat>
+                <Flats>5</Flats>
+                <Price>55555</Price>
+                <Square>48</Square>
+            </Ad>
+            <Ad>
+                <Description>
+                    Теплая уютная квартира в самом центре
+                </Description>
+                <Address>
+                    Минск , ул.Уручская , 11 кв.11
+                </Address>
+                <Flat>4</Flat>
+                <Flats>5</Flats>
+                <Price>55555</Price>
+                <Square>78</Square>
+            </Ad>
+        </Ads>
+    </Person>
+</Persons>

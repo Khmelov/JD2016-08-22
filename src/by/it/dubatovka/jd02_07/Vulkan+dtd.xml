@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE RitzioBelarus [
+        <!ELEMENT RitzioBelarus (Site, Name,(SlotClub)+)>
+        <!ELEMENT Site (#PCDATA)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT SlotClub (CodeName, Address, Slots)>
+        <!ELEMENT CodeName (#PCDATA)>
+        <!ELEMENT Address (City, Street)>
+        <!ELEMENT City (#PCDATA)>
+        <!ELEMENT Street (#PCDATA)>
+        <!ELEMENT Slots (Slot)+>
+        <!ELEMENT Slot (Number, Model, Denomination, GameSet)>
+        <!ATTLIST Slot manufacturer CDATA #REQUIRED>
+        <!ELEMENT Number (#PCDATA)>
+        <!ELEMENT Model (#PCDATA)>
+        <!ELEMENT Denomination (#PCDATA)>
+        <!ELEMENT GameSet (Game)+>
+        <!ATTLIST GameSet  mix CDATA #REQUIRED>
+        <!ATTLIST GameSet  num CDATA #REQUIRED>
+
+        <!ELEMENT Game (#PCDATA)>
+        ]>
+<RitzioBelarus>
+    <Site>
+        http://vulcanclub.by/
+    </Site>
+    <Name>
+        <![CDATA[ООО "Единая призовая система Флэш-Роял"]]>
+    </Name>
+    <SlotClub>
+        <CodeName>
+            Мнс:Притыцкого
+        </CodeName>
+        <Address>
+            <City>
+                Минск
+            </City>
+            <Street>
+                Притыцкого 42А-1
+            </Street>
+        </Address>
+        <Slots>
+            <Slot manufacturer="NOVOMATIC">
+                <Number>
+                    1
+                </Number>
+                <Model>
+                    FV-623 CFD
+                </Model>
+                <Denomination>
+                    20
+                </Denomination>
+                <GameSet mix="Cobra" num="1">
+                    <Game>
+                        Book of Ra
+                    </Game>
+                    <Game>
+                        Dolphins Pearl
+                    </Game>
+                    <Game>
+                        Just Jewels
+                    </Game>
+                    <Game>
+                        Lucky Ladys Charm
+                    </Game>
+                    <Game>
+                        Sizzling Hot
+                    </Game>
+                    <Game>
+                        Ultra hot
+                    </Game>
+                </GameSet>
+            </Slot>
+
+            <Slot manufacturer="NOVOMATIC">
+                <Model>
+                    FV-629 CF2
+                </Model>
+                <Number>
+                    2
+                </Number>
+                <Denomination>
+                    10
+                </Denomination>
+                <GameSet mix="Cobra" num="3">
+                    <Game>
+                        Diamond Trio
+                    </Game>
+                    <Game>
+                        Joker Jewels
+                    </Game>
+                    <Game>
+                        Just Jewels
+                    </Game>
+                    <Game>
+                        Ultra Hot
+                    </Game>
+                    <Game>
+                        American Poker
+                    </Game>
+                    <Game>
+                        Xtra hot
+                    </Game>
+                    <Game>
+                        Fruits for All
+                    </Game>
+                </GameSet>
+            </Slot>
+        </Slots>
+    </SlotClub>
+
+    <SlotClub>
+        <CodeName>
+            Мнс:Турист
+        </CodeName>
+        <Address>
+            <City>
+                Минск
+            </City>
+            <Street>
+                Долгобродская 53
+            </Street>
+        </Address>
+        <Slots>
+            <Slot manufacturer="EGT">
+                <Number>
+                    19
+                </Number>
+                <Model>
+                    P-42V
+                </Model>
+                <Denomination>
+                    100
+                </Denomination>
+                <GameSet mix="Green Collection" num="2">
+                    <Game>
+                        20 Super Hot
+                    </Game>
+                    <Game>
+                        Burning Hot
+                    </Game>
+                    <Game>
+                        Age of Troy
+                    </Game>
+                    <Game>
+                        Almighty Ramses II
+                    </Game>
+                    <Game>
+                        Amazons Battle
+                    </Game>
+                    <Game>
+                        TForest Tale
+                    </Game>
+                    <Game>
+                        Like A Diamond
+                    </Game>
+                    <Game>
+                        Olympus Glory
+                    </Game>
+                </GameSet>
+            </Slot>
+
+            <Slot manufacturer="NOVOMATIC">
+                <Model>
+                    FV-629 CF2
+                </Model>
+                <Number>
+                    2
+                </Number>
+                <Denomination>
+                    10
+                </Denomination>
+                <GameSet mix="Cobra" num="3">
+                    <Game>
+                        Diamond Trio
+                    </Game>
+                    <Game>
+                        Joker Jewels
+                    </Game>
+                    <Game>
+                        Just Jewels
+                    </Game>
+                    <Game>
+                        Ultra Hot
+                    </Game>
+                    <Game>
+                        American Poker
+                    </Game>
+                    <Game>
+                        Xtra hot
+                    </Game>
+                    <Game>
+                        Fruits for All
+                    </Game>
+                </GameSet>
+            </Slot>
+        </Slots>
+    </SlotClub>
+
+    <SlotClub>
+        <CodeName>
+            Лид:Советская
+        </CodeName>
+        <Address>
+            <City>
+                Лида
+            </City>
+            <Street>
+                Советская 11а
+            </Street>
+        </Address>
+        <Slots>
+            <Slot manufacturer="NOVOMATIC">
+                <Number>
+                    1
+                </Number>
+                <Model>
+                    FV-623 CFD
+                </Model>
+                <Denomination>
+                    20
+                </Denomination>
+                <GameSet mix="Cobra" num="2">
+                    <Game>
+                        Book of Ra
+                    </Game>
+                    <Game>
+                        Pharaons Gold
+                    </Game>
+                    <Game>
+                        Sizzling Hot
+                    </Game>
+                    <Game>
+                        King of Kards
+                    </Game>
+                    <Game>
+                        American poker
+                    </Game>
+                    <Game>
+                        The Money Game
+                    </Game>
+                    <Game>
+                        Lucky Ladys Charm
+                    </Game>
+                    <Game>
+                        Dolphins Pearl
+                    </Game>
+                </GameSet>
+            </Slot>
+
+            <Slot manufacturer="NOVOMATIC">
+                <Model>
+                    FV-629 CF2
+                </Model>
+                <Number>
+                    2
+                </Number>
+                <Denomination>
+                    10
+                </Denomination>
+                <GameSet mix="Cobra" num="3">
+                    <Game>
+                        Diamond Trio
+                    </Game>
+                    <Game>
+                        Joker Jewels
+                    </Game>
+                    <Game>
+                        Just Jewels
+                    </Game>
+                    <Game>
+                        Ultra Hot
+                    </Game>
+                    <Game>
+                        American Poker
+                    </Game>
+                    <Game>
+                        Xtra hot
+                    </Game>
+                    <Game>
+                        Fruits for All
+                    </Game>
+                </GameSet>
+            </Slot>
+        </Slots>
+    </SlotClub>
+</RitzioBelarus>

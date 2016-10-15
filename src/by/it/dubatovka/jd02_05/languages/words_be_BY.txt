@@ -1,0 +1,4 @@
+hello=Прывiтанне!
+howdoyoudo=Як справы?
+user=Дубатоyка Сяргей
+set.language=увядзiте мову
