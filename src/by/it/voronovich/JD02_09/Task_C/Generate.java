@@ -14,8 +14,8 @@ public class Generate {
             Unmarshaller u = jc.createUnmarshaller();
             FileReader reader = new FileReader("src/by/it/voronovich/jd02_09/Task_C/WebStore.xml");
             System.out.println("XML-файл прочитан:");
-            WebStore hotel = (WebStore) u.unmarshal(reader);
-            System.out.println(hotel);
+            WebStore webStore = (WebStore) u.unmarshal(reader);
+            System.out.println(webStore);
 
         } catch (JAXBException e) {
             e.printStackTrace();
