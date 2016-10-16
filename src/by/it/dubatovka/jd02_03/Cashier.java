@@ -21,14 +21,14 @@ class Cashier implements Runnable {
             if (buyer != null) {
                 synchronized (buyer) {
                     System.out.println(this + ": Обслуживает клиента: " + buyer);
-                    Rnd.fromTo(2000, 5000);
+                    Manager.sleep(Rnd.fromTo(2000,5000));
                     System.out.println(this + ": Обслужил клиента: " + buyer);
                     Manager.countCompleteBuyers.addAndGet(1);
                     buyer.iWait = false;
                     buyer.notify();
                 }
             } else {
-                Rnd.fromTo(1000, 1000);
+                Manager.sleep(1000);
             }
         }
         System.out.println("Кассир " + num + " закрыл кассу");

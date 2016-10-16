@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
  class Manager {
     protected static int countBuyers = 0;
-    protected static int limitBuyers = 100;
+    protected static int limitBuyers = 10;
     protected static int countCashier = 0;
     protected static int limitCashier = 5;
 
