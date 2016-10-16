@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<webStore>
+    <clients>
+        <client>
+            <name>Derek</name>
+            <lastName>Serx</lastName>
+        </client>
+        <client>
+            <name>Stan</name>
+            <lastName>Marshal</lastName>
+        </client>
+        <client>
+            <name>Coni</name>
+            <lastName>Demiko</lastName>
+        </client>
+    </clients>
+</webStore>
