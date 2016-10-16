@@ -21,5 +21,6 @@
     </orderEntry>
     <orderEntry type="library" name="com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="gson-2.7" level="project" />
+    <orderEntry type="library" name="org.codehaus.jackson:jackson-jaxrs:1.9.10" level="project" />
   </component>
 </module>
