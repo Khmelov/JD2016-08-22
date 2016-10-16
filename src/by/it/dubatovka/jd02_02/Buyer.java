@@ -12,7 +12,7 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
 //        this.pensioneer = pensioneer;
 //    }
 
-     Buyer(int number, boolean pensioneer) {
+    Buyer(int number, boolean pensioneer) {
         this.number = number;
         this.pensioneer = pensioneer;
         this.setName(pensioneer ? "Пенсионер " + number + " " : "Покупатель " + number + " ");
@@ -78,20 +78,22 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
             System.out.println("Некорректное завершение ожидания при выборе товара");
         }
     }
-    public void waitToService (){
+
+    private void waitToService() {
         System.out.println(this + " встал в очередь");
-        synchronized (Queues.buyers){
+        synchronized (Queues.buyers) {
             Queues.buyers.addLast(this);
+        }
+        synchronized (this) {
             try {
-                System.out.println(this+ "ожидает в очереди");
+                System.out.println(this + "ожидает в очереди");
                 this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 System.out.println(" ошибка добавления в очередь " + this);
-            }finally {
+            } finally {
                 System.out.println(this + " закончил обслуживаться");
             }
         }
-
     }
 }

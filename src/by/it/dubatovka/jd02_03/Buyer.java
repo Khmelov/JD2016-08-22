@@ -7,7 +7,7 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
     private int number;
     public List<Good> basket;
     private boolean pensioneer;
-    public boolean iWait=false;
+    boolean iWait=false;
 
         Buyer(int number, boolean pensioneer) {
         this.number = number;
@@ -77,11 +77,11 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
         }
     }
 
-    public void waitToService() {
+    private void waitToService() {
         System.out.println(this + " встал в очередь");
         synchronized (this) {
             QueueBuyers.add(this);
-            boolean iWait=true;
+             iWait=true;
             while (iWait){
                 try {
                     System.out.println(this + "ожидает в очереди");

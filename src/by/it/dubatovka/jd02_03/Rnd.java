@@ -4,8 +4,11 @@ import java.util.Random;
 
 
 class Rnd {
-   static int fromTo(int from, int to) {
-        Random random = new Random();
+
+    private static final long init = System.currentTimeMillis();
+    private static final Random random = new Random(init);
+
+    static int fromTo(int from, int to) {
         return (random.nextInt(to - from) + from + 1);
     }
 }

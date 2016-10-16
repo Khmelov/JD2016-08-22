@@ -27,6 +27,7 @@ public class Runner {
                     }
                 }
             }
-        }executor.shutdown();
+        }
+        executor.shutdown();
     }
 }
