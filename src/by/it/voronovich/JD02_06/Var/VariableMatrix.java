@@ -43,6 +43,10 @@ public class VariableMatrix extends Variable {
         this.valueMatrix = valueMatrix.clone();
     }
 
+    public void setValue(int length) {
+        this.valueMatrix = new double[length][length];
+    }
+
     @Override
     public boolean saveVar(String name) {
         Map<String, Variable> nameVariables = KeyMapper.getVariable();

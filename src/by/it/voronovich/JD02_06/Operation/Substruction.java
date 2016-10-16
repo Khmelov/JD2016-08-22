@@ -5,12 +5,18 @@ import by.it.voronovich.JD02_06.Var.Variable;
 import by.it.voronovich.JD02_06.Var.VariableFloat;
 import by.it.voronovich.JD02_06.Var.VariableMatrix;
 import by.it.voronovich.JD02_06.Var.VariableVector;
+import by.it.voronovich.JD02_06.VarFactory.FloatFactory;
+import by.it.voronovich.JD02_06.VarFactory.MatrixFactory;
+import by.it.voronovich.JD02_06.VarFactory.VariableFactory;
+import by.it.voronovich.JD02_06.VarFactory.VectorFactory;
 
 /**
  * @author Voronovich Dmitry
  * @version 1.1
  */
 public class Substruction {
+
+    private VariableFactory[] factory = {new FloatFactory(), new VectorFactory(), new MatrixFactory()};
 
     public Variable substraction(Variable var1, Variable var2) throws UnsupportedException {
         if (var1 instanceof VariableFloat) {
@@ -44,11 +50,13 @@ public class Substruction {
     }
 
     private VariableFloat substraction(VariableFloat value1, VariableFloat value2) {
+        VariableFloat sub = (VariableFloat)factory[0].createVariable();
         return new VariableFloat(value1.getValue() - value2.getValue());
     }
 
     private VariableMatrix substraction(VariableMatrix value1, VariableFloat value2) {
-        VariableMatrix sub = new VariableMatrix(value1.getValue().length);
+        VariableMatrix sub = (VariableMatrix)factory[2].createVariable();
+                sub.setValue(value1.getValue().length);
         for (int i = 0; i < value1.getValue().length; i++) {
             for (int j = 0; j < value1.getValue().length; j++) {
                 sub.getValue()[i][j] = value1.getValue()[i][j] - value2.getValue();
@@ -57,11 +65,14 @@ public class Substruction {
         return sub;
     }
     private VariableMatrix substraction(VariableFloat value1, VariableMatrix value2) throws UnsupportedException {
-        return (VariableMatrix)new Addition().addition(value1, new Multiplication().multiplication(new VariableFloat(-1), value2));
+        VariableFloat sub = (VariableFloat)factory[2].createVariable();
+        sub.setValue(-1);
+        return (VariableMatrix)new Addition().addition(value1, new Multiplication().multiplication(sub, value2));
     }
 
     private VariableVector substraction(VariableVector value1, VariableFloat value2) {
-        VariableVector sub = new VariableVector(value1.getValue().length);
+        VariableVector sub = (VariableVector)factory[1].createVariable();
+                sub.setValue(value1.getValue().length);
         for (int i = 0; i < value1.getValue().length; i++) {
             sub.getValue()[i] = value1.getValue()[i] - value2.getValue();
         }
@@ -69,11 +80,14 @@ public class Substruction {
     }
 
     private VariableVector substraction(VariableFloat value1, VariableVector value2) throws UnsupportedException {
-        return (VariableVector)new Addition().addition(value1, new Multiplication().multiplication(new VariableFloat(-1), value2));
+        VariableFloat sub = (VariableFloat)factory[1].createVariable();
+        sub.setValue(-1);
+        return (VariableVector)new Addition().addition(value1, new Multiplication().multiplication(sub, value2));
     }
 
     private VariableVector substraction(VariableVector value1, VariableVector value2) throws UnsupportedException {
-        VariableVector sub = new VariableVector(value1.getValue().length);
+        VariableVector sub = (VariableVector)factory[1].createVariable();
+       sub.setValue(value1.getValue().length);
         if (value1.getValue().length == value2.getValue().length) {
             for (int i = 0; i < value1.getValue().length; i++) {
                 sub.getValue()[i] = value1.getValue()[i] - value2.getValue()[i];
@@ -84,7 +98,8 @@ public class Substruction {
     }
 
     private VariableMatrix substraction(VariableMatrix value1, VariableMatrix value2) throws UnsupportedException {
-        VariableMatrix sub = new VariableMatrix(value1.getValue().length);
+        VariableMatrix sub = (VariableMatrix)factory[2].createVariable();
+        sub.setValue(value1.getValue().length);
         if (value1.getValue().length == value2.getValue().length && value1.getValue()[0].length == value2.getValue()[0].length) {
             for (int i = 0; i < value1.getValue().length; i++) {
                 for (int j = 0; j < value1.getValue().length; j++) {

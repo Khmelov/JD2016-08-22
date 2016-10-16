@@ -61,7 +61,7 @@ public class Division {
     }
 
     private VariableMatrix division(VariableMatrix value1, VariableFloat value2) throws UnsupportedException {
-        VariableMatrix div = (VariableMatrix) factory[2].createVariable(value1.toString());
+        VariableMatrix div = (VariableMatrix) factory[2].createVariable();
         div.setValue(value1.getValue().length);
         for (int i = 0; i < value1.getValue().length; i++) {
             for (int j = 0; j < value1.getValue().length; j++) {
@@ -129,7 +129,8 @@ public class Division {
         return array;
     }
     private VariableVector division(VariableVector value1, VariableFloat value2) {
-        VariableVector div = (VariableVector)factory[1].createVariable(value1.toString());
+        VariableVector div = (VariableVector)factory[1].createVariable();
+        div.setValue(value1.getValue().length);
         for (int i = 0; i < value1.getValue().length; i++) {
             div.getValue() [i] = value1.getValue()[i] / value2.getValue();
         }
