@@ -43,6 +43,10 @@ public class VariableVector extends Variable {
         this.valueVector = valueVector.clone();
     }
 
+    public void setValue(int length) {
+        this.valueVector = new double[length];;
+    }
+
     @Override
     public boolean saveVar(String name) {
         Map<String, Variable> nameVariables = KeyMapper.getVariable();

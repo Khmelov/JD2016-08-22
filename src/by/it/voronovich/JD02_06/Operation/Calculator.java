@@ -1,5 +1,7 @@
 package by.it.voronovich.JD02_06.Operation;
 
+import by.it.voronovich.JD02_06.BuilderReport.Builder;
+import by.it.voronovich.JD02_06.BuilderReport.Report;
 import by.it.voronovich.JD02_06.Parser;
 import by.it.voronovich.JD02_06.UnsupportedException;
 import by.it.voronovich.JD02_06.Var.Variable;
@@ -122,6 +124,8 @@ public class Calculator {
      * @return результат
      */
     private Variable chooseOperation(Variable var1, Variable var2, String operation) throws UnsupportedException {
+        Builder builder = new Builder();
+        builder.setBuilderReport(new Report());
         Addition add = new Addition();
         Substruction sub = new Substruction();
         Multiplication mult= new Multiplication();
@@ -130,18 +134,42 @@ public class Calculator {
         switch (operation) {
             case " + ": {
                 result = add.addition(var1, var2);
+                String line = "Cложениe " + var1.toString() + ", " + var2.toString();
+                if (result!=null) {
+                    line = line + ". Результат " + result.toString();
+                }
+                else {line = line  + ". Операция невозможна.";}
+                builder.builder("..: ", line);
                 break;
             }
             case " - ": {
                 result = sub.substraction(var1, var2);
+                String line = "Вычитание " + var1.toString() + ", " + var2.toString();
+                if (result!=null) {
+                    line = line + ". Результат " + result.toString();
+                }
+                else {line = line  + ". Операция невозможна.";}
+                builder.builder("..: ", line);
                 break;
             }
             case " * ": {
                 result = mult.multiplication(var1, var2);
+                String line = "Умножение " + var1.toString() + ", " + var2.toString();
+                if (result!=null) {
+                    line = line + ". Результат " + result.toString();
+                }
+                else {line = line  + ". Операция невозможна.";}
+                builder.builder("..: ", line);
                 break;
             }
             case " / ": {
                 result = div.division(var1, var2);
+                String line = "Деление " + var1.toString() + ", " + var2.toString();
+                if (result!=null) {
+                    line = line + ". Результат " + result.toString();
+                }
+                else {line = line  + ". Операция невозможна.";}
+                builder.builder("..: ", line);
                 break;
             }
         }
