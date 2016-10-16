@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE orders SYSTEM "orders.dtd" >
+<orders>
+    <order>
+        <client>
+            <FIO>
+                Ivanov I.I.
+            </FIO>
+            <passport>
+                MP 25895668
+            </passport>
+            <adress>
+                Gikalo, 14
+            </adress>
+            <phone>
+                80298745898
+            </phone>
+        </client>
+        <discription>
+            <category>
+                lux
+            </category>
+            <arrive>
+                2016-03-23
+            </arrive>
+            <leave>
+                2016-03-23
+            </leave>
+            <payment>
+                cash
+            </payment>
+        </discription>
+    </order>
+</orders>
