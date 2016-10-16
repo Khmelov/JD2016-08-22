@@ -14,7 +14,6 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
         this.pensioneer = pensioneer;
         this.setName(pensioneer ? "Пенсионер " + number + " " : "Покупатель " + number + " ");
         start();
-
     }
 
     @Override
@@ -43,7 +42,7 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
             pause();
             putGoodsToBasket();
         }
-        System.out.println(this + " закончил выбирать товар");
+        System.out.println(this + "закончил выбирать товар");
     }
 
     @Override
@@ -78,7 +77,7 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
     }
 
     private void waitToService() {
-        System.out.println(this + " встал в очередь");
+        System.out.println(this + "встал в очередь");
         synchronized (this) {
             QueueBuyers.add(this);
              iWait=true;
@@ -90,10 +89,9 @@ class Buyer extends Thread implements IBuyer, IUseBascket {
                     e.printStackTrace();
                     System.out.println(" ошибка добавления в очередь " + this);
                 } finally {
-                    System.out.println(this + " закончил обслуживаться");
+                    System.out.println(this + "закончил обслуживаться");
                 }
             }
         }
-
     }
 }
