@@ -1,6 +1,8 @@
 package by.it.aborisenok.JD02_03;
 
 
+import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -9,7 +11,9 @@ import java.util.concurrent.PriorityBlockingQueue;
  */
 public class Queues {
 
-    public final static PriorityBlockingQueue<Buyer> queueBuyers = new PriorityBlockingQueue<>();
+    public final static PriorityBlockingQueue<Buyer> queueBuyers = new PriorityBlockingQueue<>(40);
+
+//    public final static Queue<Buyer> queueBuyers = new ArrayBlockingQueue<Buyer>(40);
 
 
     public static boolean add(Buyer buyer) {

@@ -2,3 +2,5 @@ hello=Hello!
 howdoyoudo=How do you do?
 user=Alexey Barusionak
 set.Language=Input language
+language=Selected English language
+time=Current time
