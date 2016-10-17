@@ -1,7 +1,7 @@
 package by.it.shkantau.mathlab.calc.Operand;
 
-import by.it.shkantau.mathlab.calc.exceptions.Error;
-import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
+import by.it.shkantau.mathlab.util.Parser;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +23,7 @@ public class VarM extends Var {
         }
     }
 
-    public VarM(String str){
+    public VarM(String str) throws MathLabException {
 //  Check string for matches VarM expression
         if (Pattern.matches(regexVarM, str)) {
             List<String> listOfStringRow = Parser.parseToVarString(str, Pattern.compile(VarV.regexVarV));
@@ -39,7 +39,7 @@ public class VarM extends Var {
             rows = matrix.length;
             cols = matrix[0].length;
         } else {
-            new Error("String \"" + str + "\" don't matches \"" + regexVarM + "\" pattern");
+            throw  new MathLabException("String \"" + str + "\" don't matches \"" + regexVarM + "\" pattern");
         }
     }
 
@@ -70,7 +70,7 @@ public class VarM extends Var {
         return res;
     }
 
-//  Addition
+    //  Addition
     @Override
     public Var add(Var v) {
         if(v instanceof VarF){
@@ -119,7 +119,7 @@ public class VarM extends Var {
                 return resVarM;
             }
         }
-        if (null != resVarM){
+        if (resVarM != null){ ///////!!!!!!!!!! Warning:(122, 13) Condition 'resVarM != null' is always 'true'
             return resVarM;
         }
         return v.sub(v);

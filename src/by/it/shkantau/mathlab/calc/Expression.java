@@ -2,41 +2,39 @@ package by.it.shkantau.mathlab.calc;
 
 import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
-import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.util.Parser;
 
 import java.util.List;
 
-public class Expression {
-
+class Expression {
     private final String expression;
     private List <Var> vars;
     private List<String>operators;
+
     private Var result;
 
-
-    public Expression(String expression) {
+    Expression(String expression) throws MathLabException {
         this.expression = expression;
+        parse();
+        calc();
     }
 
-    public void parse() throws MathLabException {
-        String[] strings = Parser.splitExpressionAndName(expression);
-        String resultName = strings[0];
-        String expressionStr = strings[1];
-        vars = Parser.parseStringToVarList(expressionStr);
-        operators = Parser.parseStringToOperatorList(expressionStr);
+    private void parse() throws MathLabException {
+        vars = Parser.parseStringToVarList(expression);
+        operators = Parser.parseStringToOperatorList(expression);
         if(vars.size() != operators.size()+1){
             throw new MathLabException("operators count="+ operators.size() + " don't match vars count="+vars.size());
         }
     }
 
-    public void calc() throws MathLabException {
+    private void calc() throws MathLabException {
         while (operators.size() != 0){
             oneOperation(getMaxPriorityIndex());
         }
         result = vars.get(0);
     }
 
-    private void oneOperation(int operatorIndex) throws MathLabException {
+    private void oneOperation(int operatorIndex) throws MathLabException, UnsupportedOperationException {
 
         String operatorStr= operators.get(operatorIndex);
         Var result;
@@ -49,7 +47,7 @@ public class Expression {
             case "-": result=one.sub(two); break;
             case "*": result=one.mul(two); break;
             case "/": result=one.div(two); break;
-            default: throw new MathLabException("unsupported operation Exception " + operatorStr);
+            default: throw new UnsupportedOperationException("unsupported operation Exception " + operatorStr);
         }
 
         if (result == null){

@@ -1,79 +1,100 @@
 package by.it.shkantau.mathlab;
 
 
-import by.it.shkantau.mathlab.calc.Expression;
+import by.it.shkantau.mathlab.calc.Equation;
 import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
-import by.it.shkantau.mathlab.util.parser.Parser;
-import by.it.shkantau.mathlab.util.parser.RegexPattrn;
-import by.it.shkantau.mathlab.util.printer.ConsolePrinter;
-import by.it.shkantau.mathlab.util.printer.PrinterScanner;
+import by.it.shkantau.mathlab.util.Logger;
+import by.it.shkantau.mathlab.util.ResultLoaderSaver;
 
+import java.io.*;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
+import java.util.Scanner;
+
 
 public class ConsoleRunner {
+    private static String porjectDir = System.getProperty("user.dir") + "/src/by/it/shkantau/mathlab/";
     private static  Map<String, Var> mapVariables = new HashMap<>();
-//    private static final String[] operatorsByPriority = {"=", "+", "-", "*", "/"};
-
+    private static String resultFileName = porjectDir + "variableStorage.dat";
 
     public static void main (String [] args) /*throws MathLabException*/ {
 
-        PrinterScanner printerScanner = new ConsolePrinter(System.in);
-        Parser parser = new Parser();
+        Scanner scanner = new Scanner(System.in);
+        String path = porjectDir +"mathLab.log";
+        Logger logger = Logger.getLogger(path);
         String readString;
 
+//        String test1 = "A = 2+ 3*(5.3/(4.5 -5)) - 8*(4.34+5)";
+//        String test2 = "B = 2+ 3*({3,5,6.4})";
+
+        try {
+            mapVariables = ResultLoaderSaver.load(resultFileName);
+        } catch (IOException | MathLabException e) {
+            logger.print(e.toString());
+            e.printStackTrace();
+        }
+
+        System.out.println("*********** Welcome to simple console MathLab v.0.9 ************");
+        System.out.println("\\q - Exit MathLab, \\v - print local variables");
+        System.out.println("Type equation:");
+
+        label:
+        while (true) {
+            readString = scanner.nextLine();
+            switch (readString) {
+                case "\\q":
+                    try {
+                        ResultLoaderSaver.save(mapVariables, resultFileName);
+                    } catch (IOException e) {
+                        logger.print("Calculate: " + readString);
+                        e.printStackTrace();
+                    }
+
+                    break label;
+                case "\\v":
+                    printVar(mapVariables);
+                    break;
+                default:
+                    if (readString.equals("")) {
+                        System.out.println("Wrong equation");
+                    } else {
+                        //remove all white spaces
+                        logger.print("Calculate: " + readString);
+                        readString = readString.replaceAll("\\s", "");
+
+                        Equation equation;
+                        try {
+
+                            equation = new Equation(readString);
+                            equation.calc();
+                            System.out.println(equation.getResultName() + " = " + equation.getResult());
+                            mapVariables.put(equation.getResultName(), equation.getResult());
+                            logger.print(mapVariables.toString());
+                        } catch (MathLabException e) {
+                            logger.print(e.toString());
+//                        e.printStackTrace();
+                        }
 
 
-        List<Var> operands;
-        List<String> operators;
-        Var result = null;
-
-        printerScanner.print("*********** Welcome to simple console MathLab v.0.2 ************");
-
-        while(true){
-            readString = printerScanner.read();
-            if(readString.equals("\\q")){
-                printVar(mapVariables);
-                break;
-            }else {
-
-                Expression expression = new Expression(readString);
-                try {
-                    expression.parse();
-                    expression.calc();
-                    printerScanner.print(expression.getResult().toString());
-                } catch (MathLabException e) {
-                    e.printStackTrace();
-                }
-//                Check typed string for matches full expression
-//                if(Pattern.matches(RegexPattrn.regexFullExpr , readString)){
-//                    operands = parser.parseStringToVarList(readString);
-//                    operators = parser.parseStringToOperatorList(readString);
-//                    for (int i = 0; i < operators.size() ; i++) {
-//                                switch (operators.get(i)){
-//                                case "+": result = operands.get(i).add(operands.get(i+1)); break;
-//                                case "-": result = operands.get(i).sub(operands.get(i+1)); break;
-//                                case "*": result = operands.get(i).mul(operands.get(i+1)); break;
-//                                case "/": result = operands.get(i).div(operands.get(i+1)); break;
-//                                default: new Error("Wrong operator type");
-//                            }
-//                        operands.set(i+1, result);
-//                    }
-//                    if(result != null) {
-//                        printerScanner.print(" = " + result);
-//                    }
-//
-//                }else{
-//                    printerScanner.print("Full typed string is dot't match MathLab requirement, please type string like \n" +
-//                            " \"{{1,2},{8,3}}-2\" or \"{{1,2},{8,3}}*{1,2}\" or  \"{{1,2},{8,3}}* {{1,2},{8,3}}\" or \"{{1,2},{8,3}}+{{1,2},{8,3}}\"");
-//                }
+                    }
+                    break;
             }
         }
     }
+
+//    public static Var getVarFromMapVariables(String varName){
+//        return mapVariables.get(varName);
+//    }
+
+    public static String replaceAllLiteralVariables(String equation){
+        for (String key : mapVariables.keySet()) {
+            equation = equation.replaceAll(key,mapVariables.get(key).toString());
+        }
+        return equation;
+    }
+
+
 
     private static void printVar(Map<String, Var> map){
         for (Map.Entry<String, Var> stringVarEntry : map.entrySet()) {

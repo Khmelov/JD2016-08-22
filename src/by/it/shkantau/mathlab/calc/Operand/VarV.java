@@ -1,7 +1,7 @@
 package by.it.shkantau.mathlab.calc.Operand;
 
-import by.it.shkantau.mathlab.calc.exceptions.Error;
-import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
+import by.it.shkantau.mathlab.util.Parser;
 
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -16,18 +16,25 @@ public class VarV extends Var {
         System.arraycopy(vector,0,this.vector,0,vector.length);
     }
 
-    public VarV (String str) {
+    public VarV (String str) throws MathLabException {
 //  Check string for matches VarV expression
         if (Pattern.matches(regexVarV, str)) {
             vector = Parser.getDoublesArrayFromStr(str);
         } else {
-            new Error("String \"" + str + "\" don't matches \"" + regexVarV + "\" pattern");
+            throw  new MathLabException("String \"" + str + "\" don't matches \"" + regexVarV + "\" pattern");
         }
     }
 
     @Override
     public String toString() {
-        return Arrays.toString(vector);
+        StringBuilder sb = new StringBuilder(10);
+        sb.append("{");
+        for (double aVector : vector) {
+            sb.append(aVector).append(",");
+        }
+        sb.delete(sb.length()-1,sb.length());
+        sb.append("}");
+        return sb.toString();
     }
 
     public double[] getVector() {
