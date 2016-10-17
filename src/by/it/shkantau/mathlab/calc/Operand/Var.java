@@ -11,26 +11,25 @@ public abstract class Var implements IVariable, IAdd, ISub, IMul, IDiv {
 
     @Override
     public Var add (Var v) {
-        new Error("Addition is impossible!");
+//        new Error("Addition is impossible!");
         return null;
     }
 
     @Override
     public Var sub(Var v) {
-        new Error("Subtraction is impossible!");
+//        new Error("Subtraction is impossible!");
         return null;
     }
 
     @Override
     public Var mul(Var v) {
-        new Error("Multiplication is impossible!");
+//        new Error("Multiplication is impossible!");
         return null;
     }
 
     @Override
     public Var div(Var v) {
-        new Error("Division is impossible!");
+//        new Error("Division is impossible!");
         return null;
     }
-
 }

@@ -1,4 +1,4 @@
-package by.it.shkantau.mathlab.util.parser;
+package by.it.shkantau.mathlab.util;
 
 import by.it.shkantau.mathlab.calc.Operand.Var;
 import by.it.shkantau.mathlab.calc.Operand.VarF;
@@ -16,8 +16,8 @@ public class Parser {
 
     public static String[] splitExpressionAndName(String expression) throws MathLabException {
         String [] strings = expression.split("=");
-        if (strings.length > 2){
-            throw new MathLabException("too much equals");
+        if (strings.length != 2 ){
+            throw new MathLabException("Wrong equation");
         }
         return strings;
     }
@@ -46,7 +46,7 @@ public class Parser {
         return  doubles;
     }
 
-    public static List <Var>  parseStringToVarList(String str) /*throws MathLabException*/ {
+    public static List <Var>  parseStringToVarList(String str) throws MathLabException /*throws MathLabException*/ {
         List <Var> varList = new LinkedList<>();
 //      parse to any operand string
         List <String> anyOperands = parseToVarString(str, Pattern.compile(RegexPattrn.regexAny));
@@ -62,9 +62,17 @@ public class Parser {
         return varList;
     }
 
+    public static boolean  isVar(String operandStr){
+        operandStr = operandStr.replaceAll("[()]","");
+        return (Pattern.matches(VarF.regexVarF, operandStr)) || (Pattern.matches(VarV.regexVarV, operandStr)) || (Pattern.matches(VarM.regexVarM,operandStr));
+    }
+
     public static List <String > parseStringToOperatorList(String str){
-        String [] operatorsString  = str.split(VarF.regexVarF) ;
+        String [] operatorsString  = str.split(RegexPattrn.regexAny) ;
         List<String>operators = new ArrayList<>(Arrays.asList(operatorsString));
+        for (int i = 0; i <operators.size() ; i++) {
+            operators.set(i, operators.get(i).replaceAll("[()]",""));
+        }
         operators.removeAll(Collections.singleton(""));
         return operators;
     }

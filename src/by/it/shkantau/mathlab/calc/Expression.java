@@ -1,16 +1,12 @@
 package by.it.shkantau.mathlab.calc;
 
 import by.it.shkantau.mathlab.calc.Operand.Var;
-import by.it.shkantau.mathlab.calc.Operand.VarF;
 import by.it.shkantau.mathlab.calc.exceptions.MathLabException;
-import by.it.shkantau.mathlab.util.parser.Parser;
+import by.it.shkantau.mathlab.util.Parser;
 
 import java.util.List;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class Expression {
+class Expression {
     private final String expression;
     private List <Var> vars;
     private List<String>operators;

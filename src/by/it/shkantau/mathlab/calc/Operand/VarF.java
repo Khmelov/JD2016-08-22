@@ -39,7 +39,7 @@ public class VarF extends Var {
 
     }
 
-//  Addition
+    //  Addition
     @Override
     public Var add(Var v) {
         if (v instanceof VarF) {

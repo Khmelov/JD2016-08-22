@@ -1,5 +1,7 @@
 package by.it.shkantau.jd01.jd01_02;
 
+import by.it.shkantau.mathlab.util.Parser;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -12,7 +14,7 @@ class Task_JD01_02A {
     public static void a(){
 //A1    Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.
         System.out.print("Type the numbers via white spaces: ");
-        List<String> stringList =  by.it.shkantau.mathlab.util.parser.Parser.parseToVarString(sc.nextLine(), Pattern.compile(Task_JD01_02A.regexVar));
+        List<String> stringList =  Parser.parseToVarString(sc.nextLine(), Pattern.compile(Task_JD01_02A.regexVar));
         List <Integer> listOfIntegers = getIntegersArray(stringList);
         TreeSet<Integer> setDoubles = new TreeSet<>(listOfIntegers);
 
