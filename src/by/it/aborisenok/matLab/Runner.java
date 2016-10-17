@@ -3,6 +3,12 @@ package by.it.aborisenok.matLab;
 /**
  * Created by Лёша on 09.09.2016.
  */
+
+import by.it.aborisenok.matLab.Builder.*;
+import by.it.aborisenok.matLab.System.WorkInformation;
+
+import java.sql.Time;
+
 /**
  * Программа MathLab представляет собой консольную версию калькулятора.
  * В ней доступны следующие операции:
@@ -57,5 +63,22 @@ public class Runner {
 
        Combiner.start();
 
+        // Добавим вывод отчётов, созданных с помошью паттерна Builder
+
+        ReportDirector reportDirector = new ReportDirector();
+
+        ReportBuilder reportBuilder = new ShortReportBuilder();
+        reportDirector.setReportBuilder(reportBuilder);
+        reportDirector.constructReport();
+        Report report = reportDirector.getReport();
+        report.printReport();
+        System.out.println("*************************");
+
+        ReportDirector reportDirector2 = new ReportDirector();
+        ReportBuilder reportBuilder2 = new FullReportBuilder();
+        reportDirector2.setReportBuilder(reportBuilder2);
+        reportDirector2.constructReport();
+        Report report2 = reportDirector2.getReport();
+        report2.printReport();
     }
 }

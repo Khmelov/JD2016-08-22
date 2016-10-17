@@ -5,7 +5,7 @@ import by.it.aborisenok.matLab.Interfaces.IVar;
 /**
  * Created by Лёша on 09.09.2016.
  */
-public class VarF extends Var implements IVar{
+public class VarF extends Var implements IVar {
 
     private double value;
 
