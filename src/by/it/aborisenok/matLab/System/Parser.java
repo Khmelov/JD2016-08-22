@@ -58,13 +58,7 @@ public class Parser {
     }
 
     private Var parseOneVar(String strVar) { //находит одну переменную
-        if (strVar.matches(Patterns.exMat)) return new VarM(strVar);
-        else if (strVar.matches(Patterns.exVec)){
-            return new VarV(strVar);
-        }
-        else if (strVar.matches(Patterns.exVal)) return new VarF(strVar);
-        else if (strVar.matches(Patterns.stringVariable)) return HashMapper.getVeriable(strVar);
-           else   throw new UseOfUnknownVariableException("Использование несуществующей переменной.");
+        return VarFactory.getVar(strVar);
     }
 
     private void oneOperation(int number) { //выполняет одну операцию
@@ -115,6 +109,8 @@ public class Parser {
     public String calc(String str) {
         //временная замена минусов на свой вариант
         //A=6*-4
+
+        String oper = str;
         str = str.replaceAll("\\+-", "+MINUS");
         str = str.replaceAll("\\*-", "*MINUS");
         str = str.replaceAll("--", "-MINUS");
@@ -149,6 +145,8 @@ public class Parser {
            // debug();
                 oneOperation(i); //выполнили ее
         }
+
+        WorkInformation.setFullOperation("Typing expressions " + oper + " = " + strVar.get(0));
 
         return strVar.get(0);
     }

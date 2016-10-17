@@ -1,8 +1,8 @@
 package by.it.aborisenok.matLab.Vars;
 
-import by.it.aborisenok.matLab.Errors.*;
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableEditions;
+import by.it.aborisenok.matLab.Errors.WrongSizeOfVariableException;
 import by.it.aborisenok.matLab.Interfaces.IVar;
-import by.it.aborisenok.matLab.Log;
 import by.it.aborisenok.matLab.System.Patterns;
 
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  * Created by Лёша on 09.09.2016.
  */
-public class VarV extends Var implements IVar{
+public class VarV extends Var implements IVar {
 
     private double[] value;
 

@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class ValueCash {
 
-    private static String src = System.getProperty("user.dir") + "\\src\\by\\it\\aborisenok\\matLab\\ValueCash.txt";
+    private static String src = System.getProperty("user.dir") + "\\src\\by\\it\\aborisenok\\matLab\\valueCash.txt";
 
     public static void writeCashInFile(HashMap<String, Var> hashMap){
         try( BufferedWriter writer = new BufferedWriter(new FileWriter(src, true))) {

@@ -7,11 +7,11 @@ public class Patterns {
     //регулярки
 
     static public String exVal="-?[0-9.]+"; //числа
-    static String exVec = "(\\[.+])|(\\{.+})";           //вектора
-    static String exMat = "\\{\\{.+}}|\\[\\[.+]]";       //матрицы
-    static String exOperation = "[-+*/=]";     //операция
-    static String stringVariable = "[a-zA-Z]+";  // буквенная переменная
-    static String expInBrackets = "\\([0-9a-zA-Z.,\\{\\}\\[\\]*\\/+\\-]+\\)";
+    static public String exVec = "(\\[.+])|(\\{.+})";           //вектора
+    static public String exMat = "\\{\\{.+}}|\\[\\[.+]]";       //матрицы
+    static public String exOperation = "[-+*/=]";     //операция
+    static public String stringVariable = "[a-zA-Z]+";  // буквенная переменная
+    static public String expInBrackets = "\\([0-9a-zA-Z.,\\{\\}\\[\\]*\\/+\\-]+\\)";
 
 
 }

@@ -3,6 +3,7 @@ package by.it.aborisenok.matLab;
 import by.it.aborisenok.matLab.System.HashMapper;
 import by.it.aborisenok.matLab.System.Parser;
 import by.it.aborisenok.matLab.System.ValueCash;
+import by.it.aborisenok.matLab.System.WorkInformation;
 import by.it.aborisenok.matLab.Vars.Var;
 
 import java.util.Scanner;
@@ -12,13 +13,14 @@ import java.util.Scanner;
  */
 public class Combiner {
     public static void start(){
+        WorkInformation.setStartTime();
         Scanner scanner=new Scanner(System.in);
         String line;
         Parser parser=new Parser();
         ValueCash.readCashFromFile();
         while ((line=scanner.nextLine())!=null) {
             if (line.toLowerCase().equals("exit"))
-                System.exit(0);
+                break;
             if (line.toLowerCase().equals("print")) {
                 System.out.println(HashMapper.getHashMap());
             }
@@ -26,5 +28,6 @@ public class Combiner {
             System.out.println(var);
             ValueCash.writeCashInFile(HashMapper.getHashMap());
         }
+        WorkInformation.setEndTime();
     }
 }
