@@ -19,7 +19,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="com.google.code.gson:gson:2.7" level="project" />
     <orderEntry type="library" name="gson-2.7" level="project" />
+    <orderEntry type="library" name="mysql-connector-java" level="project" />
   </component>
 </module>
