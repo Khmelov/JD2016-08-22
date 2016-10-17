@@ -1,6 +1,6 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-    targetNamespace="grechishnikov.homeWork"
-    xmlns:tns="grechishnikov.homeWork"
+    targetNamespace="http://taskC.jd02_09.grechishnikov.it.by/"
+    xmlns:tns="http://taskC.jd02_09.grechishnikov.it.by/"
     elementFormDefault="qualified">
     <element name="Store">
         <complexType>

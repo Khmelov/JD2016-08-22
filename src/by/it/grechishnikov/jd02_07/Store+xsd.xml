@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Store xmlns="grechishnikov.homeWork"
+<Store xmlns="http://taskC.jd02_09.grechishnikov.it.by/"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="grechishnikov.homeWork">
+       xsi:schemaLocation="http://taskC.jd02_09.grechishnikov.it.by/">
     <Admin nickname="admin" password="admin">
         <Email>
             admin@mail.ru
