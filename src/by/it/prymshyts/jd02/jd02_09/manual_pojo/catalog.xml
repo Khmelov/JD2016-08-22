@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<catalog xmlns:ns2="http://jd02_09.jd02.prymshyts.it.by">
+    <genre ns2:name="Horror">
+        <book>
+            <title>The Tomb</title>
+            <authors>
+                <author>Howard Phillips Lovecraft</author>
+            </authors>
+            <year>1917</year>
+            <count>13</count>
+        </book>
+    </genre>
+</catalog>
