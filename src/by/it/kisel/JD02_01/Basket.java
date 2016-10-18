@@ -15,7 +15,4 @@ public class Basket {
         return goods;
     }
 
-    public Float getCountGood(String name){
-        return goods.get(name);
-    }
 }

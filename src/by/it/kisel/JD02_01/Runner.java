@@ -1,26 +1,33 @@
 package by.it.kisel.JD02_01;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Runner {
-    static int countSeconds = 0;
-    static int countBuyers = 0;
     protected volatile static int countCashiers = 0;
     public static void main(String[] args){
 
+        //открываем и "по-новому" запускаем пул из 2 касс (но сам пул рассчитан на 5)
+        ExecutorService executor= Executors.newFixedThreadPool(5);
+        executor.execute(new Cashier()); //это класс, реализующий Runnable
+        executor.execute(new Cashier()); //это класс, реализующий Runnable
+        executor.execute(new Cashier()); //это класс, реализующий Runnable
 
-        while (countSeconds++ < 10) {
-            try {
-                Thread.sleep(1000);
-                int n = Helper.random(0,2);
-                for (int i = 0; i < n; i++) {
-                    new Buyer(++countBuyers);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+
+        //теперь "по старинке" запускаем покупателей
+        while (!Dispatcher.planComplete()) {
+            Helper.sleep(1000); //ожидание в 1 секунду
+            int count= Helper.fromTo(0, 2); //сколько приходит покупателей: 0 1 2
+            for (int i = 0; i <= count; i++) {
+                new Buyer();
+                if (Dispatcher.planComplete())
+                    break;
             }
-
-
         }
+        //завершениe сервиса касс (нельзя будет добавить новые)
+        //однако сами кассы продолжают работу, т.к. они уже выполняются
+        executor.shutdown();
+
     }
 
 }
