@@ -27,14 +27,7 @@ public class VarV extends Var {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(10);
-        sb.append("{");
-        for (double aVector : vector) {
-            sb.append(aVector).append(",");
-        }
-        sb.delete(sb.length()-1,sb.length());
-        sb.append("}");
-        return sb.toString();
+        return "{"+Arrays.toString(vector).substring(1,Arrays.toString(vector).length()-1)+"}";
     }
 
     public double[] getVector() {
@@ -88,7 +81,7 @@ public class VarV extends Var {
             if (vector.length == vec.vector.length) {
                 resVector = new VarV(new double[vec.vector.length]);
                 for (int i = 0; i < vec.vector.length; i++) {
-                    resVector.vector[i] = vec.vector[i] - this.vector[i];
+                    resVector.vector[i] = this.vector[i]-vec.vector[i];
                 }
                 return resVector;
             }

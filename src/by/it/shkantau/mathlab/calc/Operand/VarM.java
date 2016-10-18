@@ -62,8 +62,11 @@ public class VarM extends Var {
     public String toString() {
         String res="{";
         String delimiter="";
+        String line;
         for (double[] v : matrix) {
-            res=res+delimiter+ Arrays.toString(v);
+            line = "{"+Arrays.toString(v).substring(1,Arrays.toString(v).length()-1)+"}";
+
+            res=res+delimiter+line ;//Arrays.toString(v);
             delimiter=",";
         }
         res=res+"}";
