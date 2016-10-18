@@ -5,14 +5,11 @@ package by.it.filimonchik.jd01_15;
         import java.util.regex.Pattern;
 
 public class Task_B {
-    public static void B1() throws FileNotFoundException {
+    public static void B() throws FileNotFoundException {
         String src = System.getProperty( "user.dir" ) + "/src/by/it/filimonchik/";
 
         String one = src + "jd01_15/Task_B.java";
         String two = src + "jd01_15/Task_B.txt";
-
-        File f1 = new File( one );
-        File f2 = new File( two );
 
         String line;
         StringBuilder s = new StringBuilder(one);
@@ -23,7 +20,7 @@ public class Task_B {
 
             }
 
-            StringBuilder tmp = new StringBuilder( s );
+            StringBuilder tmp = new StringBuilder( s );         //Test
             Pattern p = Pattern.compile( "/{2}.+" );
             Matcher m = p.matcher( tmp );
             int pos = 0; 
@@ -34,17 +31,20 @@ public class Task_B {
                 pos = m.start();
 
             }
-            
-            Pattern p1 = Pattern.compile( ".+\n" );
+//            Test
+//            StringBuilder tmp1 = new StringBuilder( s );
+
+            Pattern p1 = Pattern.compile( ".+"+ "\n" );
             Matcher m1 = p1.matcher( tmp );
             int col = 1;
+            System.out.println("Task B.");
             while (m1.find()) {
                 System.out.printf( "%02d   %s", col, m1.group() );
                 col++;
-
             }
-            try (BufferedWriter rb = new BufferedWriter(new FileWriter(two))) {
-                rb.write(tmp.toString());
+            try (PrintWriter rb = new PrintWriter(new FileWriter(two))) {
+                rb.println("Task B.");
+                rb.write( tmp.toString() );
             }
         } catch (IOException e) {
             e.printStackTrace();
