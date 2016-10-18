@@ -1,0 +1,9 @@
+Mon Oct 17 08:54:01 EET 2016 : java.lang.NullPointerException
+Mon Oct 17 08:54:02 EET 2016 : com.sun.javafx.geom.IllegalPathStateException
+Mon Oct 17 08:54:02 EET 2016 : java.io.IOException
+Mon Oct 17 08:54:09 EET 2016 : java.lang.NullPointerException
+Mon Oct 17 08:54:10 EET 2016 : com.sun.javafx.geom.IllegalPathStateException
+Mon Oct 17 08:54:11 EET 2016 : java.io.IOException
+Mon Oct 17 08:54:23 EET 2016 : java.lang.NullPointerException
+Mon Oct 17 08:54:23 EET 2016 : com.sun.javafx.geom.IllegalPathStateException
+Mon Oct 17 08:54:24 EET 2016 : java.io.IOException
