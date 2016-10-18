@@ -127,13 +127,13 @@ CREATE TABLE IF NOT EXISTS `airportDB`.`flights` (
   CONSTRAINT `fromFK`
     FOREIGN KEY (`from`)
     REFERENCES `airportDB`.`airports` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `crewFK`
     FOREIGN KEY (`crew`)
     REFERENCES `airportDB`.`crews` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -161,8 +161,8 @@ CREATE TABLE IF NOT EXISTS `airportDB`.`users` (
   CONSTRAINT `roleFK`
     FOREIGN KEY (`role`)
     REFERENCES `airportDB`.`roles` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
