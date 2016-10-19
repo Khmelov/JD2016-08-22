@@ -57,7 +57,8 @@ public class CreateTable {
                     "FOREIGN KEY (`FK_Users`) REFERENCES `voronovich_project`.`users`(`idUsers`)," +
                     "FOREIGN KEY (`FK_Catalog`) REFERENCES `voronovich_project`.`catalog`(`idCatalog`)" +
                     ") ENGINE = InnoDB CHARACTER set UTF8 COLLATE UTF8_general_ci;");
-
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

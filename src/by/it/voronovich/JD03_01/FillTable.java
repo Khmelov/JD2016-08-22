@@ -50,6 +50,8 @@ public class FillTable {
                     " VALUES (3, 1);");
             statement.execute("INSERT INTO shoppingcart (`FK_Users`,`FK_Catalog`) " +
                     " VALUES (4, 2);");
+            statement.close();
+            connection.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
