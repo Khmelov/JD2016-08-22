@@ -1,0 +1,3 @@
+Hello = Hello, Nikolay!
+Howdoyoudo = How do you do?
+set.Language=Input language english

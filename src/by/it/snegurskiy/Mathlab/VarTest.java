@@ -17,4 +17,5 @@ public class VarTest {
         assertTrue(res.toString().equals("5.2"));
     }
 
+
 }

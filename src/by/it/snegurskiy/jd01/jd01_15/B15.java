@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd01_15;
+package by.it.snegurskiy.jd01.jd01_15;
 
 import java.io.*;
 import java.util.regex.Matcher;
