@@ -57,7 +57,7 @@ public class Addition {
     }
 
     private VariableMatrix addition(VariableFloat value1, VariableMatrix value2) {
-        VariableMatrix add = (VariableMatrix)factory[2].createVariable(value2.toString());
+        VariableMatrix add = (VariableMatrix)factory[2].createVariable();
         add.setValue(value2.getValue().length);
         for (int i = 0; i < value2.getValue().length; i++) {
             for (int j = 0; j < value2.getValue().length; j++) {
@@ -72,7 +72,7 @@ public class Addition {
     }
 
     private VariableVector addition(VariableFloat value1, VariableVector value2) {
-        VariableVector add = (VariableVector)factory[1].createVariable(value2.toString());
+        VariableVector add = (VariableVector)factory[1].createVariable();
         add.setValue(value2.getValue().length);
         for (int i = 0; i < value2.getValue().length; i++) {
             add.getValue()[i] = value1.getValue() + value2.getValue()[i];
@@ -85,7 +85,7 @@ public class Addition {
     }
 
     private VariableVector addition(VariableVector value1, VariableVector value2) throws UnsupportedException {
-        VariableVector add = (VariableVector)factory[1].createVariable(value1.toString());
+        VariableVector add = (VariableVector)factory[1].createVariable();
         add.setValue(value1.getValue().length);
         if (value1.getValue().length == value2.getValue().length){
             for (int i = 0; i < value1.getValue().length; i++) {
@@ -98,7 +98,7 @@ public class Addition {
     }
 
     private VariableMatrix addition(VariableMatrix value1, VariableMatrix value2) throws UnsupportedException {
-        VariableMatrix add = (VariableMatrix)factory[2].createVariable(value1.toString());
+        VariableMatrix add = (VariableMatrix)factory[2].createVariable();
         add.setValue(value1.getValue().length);
         if (value1.getValue().length == value2.getValue().length && value1.getValue()[0].length == value2.getValue()[0].length) {
             for (int i = 0; i < value1.getValue().length; i++) {

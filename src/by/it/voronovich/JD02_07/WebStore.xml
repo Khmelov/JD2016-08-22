@@ -17,7 +17,7 @@
             </Fridge>
             <Fridge>
                 <Brand>Atlant</Brand>
-                <Model>ХМ 4012-022</Model>
+                <Model>XM 4012-022</Model>
                 <Prise currency="BYN">652</Prise>
                 <NoiseLevel unit="dB">39</NoiseLevel>
                 <Weight unit="kg">61.0</Weight>
