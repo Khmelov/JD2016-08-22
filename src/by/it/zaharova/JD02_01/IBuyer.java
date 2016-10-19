@@ -1,8 +1,8 @@
 package by.it.zaharova.JD02_01;
 
 public interface IBuyer {
-    void enterToMarket();
-    void chooseGoods();
-    void waitService(); // стал в очередь. ожидпает обслуживание
-    void goToOut();
+    void enterToMarket();   //вошел в магазин
+    void chooseGoods();     //выбрал товары
+    void goToQueue();       //отправился в очередь на кассу
+    void goToOut();         //отправился на выход
 }

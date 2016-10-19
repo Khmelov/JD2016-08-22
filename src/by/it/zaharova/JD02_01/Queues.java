@@ -1,20 +1,29 @@
 package by.it.zaharova.JD02_01;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Queues {
 
-    static final Deque<Buyer> buyers = new ArrayDeque<Buyer>() {
-        @Override
-        public void addLast(Buyer buyer) {
-            synchronized (buyers) { //мы не знаем из какого потока будет вызвано добавление
-                super.addLast(buyer);
-                if (Runner.countCashiers < 5 && Queues.buyers.size()>Runner.countCashiers*2) {
-                    Cashier cashier = new Cashier(++Runner.countCashiers);
-                    new Thread(cashier).start();
-                }
-            }
+    //этот класс нужен, чтобы очередь была
+    // а) отдельной сущностью в программе, с возможностью модификации
+    // б) была видна из прочих классов
+    // в) имела только те методы из классов Core, которые нужны приложению
+
+    //экземпляр очереди. Приватный т.к. очередь одна-единственная
+    private final static ConcurrentLinkedQueue queueBuyers=new ConcurrentLinkedQueue();
+
+    //замена статического метода на экземплярный из ConcurrentLinkedQueue;
+    public static boolean add(Buyer buyer) {
+        return queueBuyers.add(buyer);
+    }
+
+    //замена статического метода на экземплярный из ConcurrentLinkedQueue;
+    public static Buyer poll() {
+        if (queueBuyers.isEmpty()) {
+            return null;
+        } else {
+            return (Buyer) queueBuyers.poll();
         }
-    };
+    }
 }
+
