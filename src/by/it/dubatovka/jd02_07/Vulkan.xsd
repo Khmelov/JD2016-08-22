@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://it-academy.by/xml/students"
+        xmlns:tns="http://it-academy.by/xml/students"
+        elementFormDefault="qualified">
+    <element name="RitzioBelarus">
+        <complexType>
+            <sequence>
+                <element name="SlotClub" type="tns:SlotClub" minOccurs="1" maxOccurs="unbounded"/>
+            </sequence>
+            <attribute name="site" type="string" use="optional"/>
+            <attribute name="name" type="string" use="required"/>
+        </complexType>
+    </element>
+    <complexType name="SlotClub">
+        <sequence>
+            <element name="CodeName" type="string"/>
+            <element name="Address" type="tns:Address"/>
+            <element name="NumberOfSlots" type="positiveInteger"/>
+            <element name="Slots" type="tns:Slots"/>
+        </sequence>
+    </complexType>
+    <complexType name="Address">
+        <sequence>
+            <element name="City" type="string"/>
+            <element name="Street" type="string"/>
+        </sequence>
+    </complexType>
+    <complexType name="Slots">
+        <sequence>
+            <element name="Slot" type="tns:Slot" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+    <complexType name="Slot">
+        <sequence>
+            <element name="Number" type="positiveInteger"/>
+            <element name="Model" type="string"/>
+            <element name="Denomination" type="positiveInteger"/>
+            <element name="GameSet" type="tns:GameSet"/>
+        </sequence>
+        <attribute name="manufacturer" type="string" use="required">
+        </attribute>
+    </complexType>
+    <complexType name="GameSet">
+        <sequence>
+            <element name="Game" type="string" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+        <attribute name="mix" type="string" use="required"/>
+        <attribute name="num" type="string" use="optional"/>
+    </complexType>
+</schema>

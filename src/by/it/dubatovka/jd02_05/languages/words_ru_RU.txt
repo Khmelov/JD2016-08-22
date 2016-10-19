@@ -1,0 +1,4 @@
+hello=Привет!
+howdoyoudo=Как дела?
+user=Дубатовка Сергей
+set.language=введите язык
