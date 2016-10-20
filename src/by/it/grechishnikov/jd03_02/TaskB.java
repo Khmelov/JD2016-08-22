@@ -1,5 +1,7 @@
 package by.it.grechishnikov.jd03_02;
 
+import by.it.grechishnikov.jd03_02.crud.Users;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
