@@ -20,7 +20,7 @@ public class TaskC {
         dropOldDB();
         createNewDB();
         createTables();
-        initializeTables();
+        inicializeTables();
     }
 
     public static void dropOldDB() {
@@ -68,7 +68,7 @@ public class TaskC {
         }
     }
 
-    public static void initializeTables() {
+    public static void inicializeTables() {
         try {
             statement.executeUpdate("insert into roles (name) values('admin')");
             statement.executeUpdate("insert into roles (name) values('user')");
