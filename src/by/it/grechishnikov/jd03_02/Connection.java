@@ -10,7 +10,7 @@ public class Connection {
 
     static {
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/GeneratedStore" +
+            connection = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/Store" +
                             "?useUnicode=true&amp;characterEncoding=UTF-8",
                     "root", "");
             statement = connection.createStatement();
