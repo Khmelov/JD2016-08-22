@@ -1,0 +1,11 @@
+        <!ELEMENT Dillers (Diller)+>
+        <!ELEMENT Diller (Email, Nickname, Password, Ads)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Ads (Ad)+>
+        <!ELEMENT Ad (Car_body, Color, Model, Price)>
+                <!ELEMENT Car_body (#PCDATA)>
+                <!ELEMENT Color (#PCDATA)>
+                <!ELEMENT Model (#PCDATA)>
+                <!ELEMENT Price (#PCDATA)>
