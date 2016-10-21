@@ -38,7 +38,7 @@ public class CRUDUsers {
     public static User update(User user) {
         try {
             String sql = String.format("update users set login = '%s', password = '%s'," +
-                            "email = '%s', FK_Roles = '%d' where users.id = '%d'", user.getLogin(), user.getPassword(), user.getEmail(),
+                            "email = '%s', FK_Roles = '%d' where users.id = %d", user.getLogin(), user.getPassword(), user.getEmail(),
                     user.getRole(), user.getId());
             if(statement.executeUpdate(sql) == 1) {
                 return user;
