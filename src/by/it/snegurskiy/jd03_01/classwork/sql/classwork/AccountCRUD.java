@@ -1,6 +1,4 @@
-package by.it.snegurskiy.jd03_01.classwork.sql.classwork.sql;
-
-import by.it.snegurskiy.jd03_01.classwork.sql.classwork.ConnectionCreator;
+package by.it.snegurskiy.jd03_01.classwork.sql.classwork;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,14 +9,14 @@ import java.util.Locale;
 /**
  * Created by Acer on 19.10.2016.
  */
-public class UsersCRUD {
+public class AccountCRUD {
 
-    public Users create(Users user) throws SQLException {
-        user.setID(0);
+    public Account create(Account account) throws SQLException {
+        account.setID(0);
         //формирование строки createUserSQL по данным bean user
-        String createUserSQL = String.format(Locale.ENGLISH,
-                "insert into users(Surname, Name, Login,Password,Email,FK_Role) values('%s','%s','%s','%s','%s',%d);",
-                user.getSurname(),user.getName(),user.getLogin(), user.getPassword(), user.getFK_Role()
+        String createAccountSQL = String.format(Locale.ENGLISH,
+                "insert into account(Account, Balance, Status,FK_users) values('%s','%d','%d',%d);",
+                account.getBalance(),account.getStatus(), account.getFK_users()
         );
         try (
                 //создаем соединение и объект для запросов к базе
@@ -28,68 +26,66 @@ public class UsersCRUD {
         ) {
             //выполняем добавление в базу, должна быть добавлена одна запись. Проверим это.
             //create(insert) update delete - это executeUpdate, а select это executeQuery
-            if (statement.executeUpdate(createUserSQL) == 1)
+            if (statement.executeUpdate(createAccountSQL) == 1)
             {
                 //если все добавлено то узнаем последний ID
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 //извлекаем из resultSet последний ID
                 if (resultSet.next())
-                    user.setID(resultSet.getInt(1));
+                    account.setID(resultSet.getInt(1));
             }
         } catch (SQLException e) {
             throw e;
         }
-        return user;
+        return account;
     }
 
-    public Users read(int id) throws SQLException {
-        Users userResult = null;
-        String readUserSQL = "SELECT * FROM users where ID=" + id;
+    public Account read(int id) throws SQLException {
+        Account accountResult = null;
+        String readAccountSQL = "SELECT * FROM users where ID=" + id;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();
         ) {
-            final ResultSet resultSet = statement.executeQuery(readUserSQL);
+            final ResultSet resultSet = statement.executeQuery(readAccountSQL);
             if (resultSet.next()) {
-                userResult = new Users(
+                accountResult = new Account(
                         resultSet.getInt("ID"),
-                        resultSet.getString("Surname"),
-                        resultSet.getString("Name"),
-                        resultSet.getString("Login"),
-                        resultSet.getString("Password"),
-                        resultSet.getInt("FK_Role"));
+                        resultSet.getInt("Balance"),
+                        resultSet.getInt("Status"),
+                        resultSet.getInt("FK_users"));
             }
         } catch (SQLException e) {
             throw e;
         }
-        return userResult;
+        return accountResult;
     }
 
-    public Users update(Users user) throws SQLException {
-        Users userResult = null;
-        String updateUserSQL = String.format(
-                "UPDATE users SET Surname = '%s',Name = '%s',Login = '%s', Password = '%s', FK_Role=%d WHERE users.ID = %d",
-                user.getSurname(),user.getName(),user.getLogin(), user.getPassword(), user.getFK_Role(), user.getID()
+    public Account update(Account account) throws SQLException {
+        Account accountResult = null;
+        String updateAccountSQL = String.format(
+                "UPDATE users SET Balance = '%d',Status = '%d', FK_users=%d WHERE account.ID = %d",
+                account.getBalance(),account.getStatus(), account.getFK_users(), account.getID()
         );
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();
         ) {
-            if (statement.executeUpdate(updateUserSQL) == 1)
-                userResult = user;
+            if (statement.executeUpdate(updateAccountSQL) == 1)
+                accountResult = account;
         } catch (SQLException e) {
             throw e;
         }
-        return userResult;
+        return accountResult;
     }
 
-    public boolean delete(Users user) throws SQLException {
-        String deleteUserSQL = String.format("DELETE FROM users WHERE users.ID = %d", user.getID());
+    public boolean delete(Account account) throws SQLException {
+        String deleteAccountSQL = String.format("DELETE FROM account WHERE account.ID = %d", account.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();
         ) {
-            return (statement.executeUpdate(deleteUserSQL) == 1);
+            return (statement.executeUpdate(deleteAccountSQL) == 1);
         } catch (SQLException e) {
             throw e;
         }
