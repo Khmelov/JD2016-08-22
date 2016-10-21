@@ -4,14 +4,14 @@ import java.util.Set;
 
 public class Buyer extends Thread implements IBuyer, IUseBasket {
 
-    // int number;
-
-    String keyGood;
+    int num;                    //номер покупателя
+    public boolean iWait=false; //флаг того, что покупатель в ожидании
     Basket basket;
 
-    public Buyer(Integer number) {
-        super("Покупатель №" + number.toString());
-        //this.number = number;
+    //конструктор покупателя с его номером
+    public Buyer() {
+        num=++Dispatcher.countBuyers;
+        this.setName("Покупатель № "+ num +" ");
         start();
     }
 
@@ -20,8 +20,14 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         enterToMarket();
         takeBasket();
         chooseGoods();
-        waitService();
+        goToQueue();
         goToOut();
+    }
+
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 
     @Override
@@ -35,11 +41,11 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
         int count = Helper.random(1, 4);
         try {
             for (int i = 0; i < count; i++) {
-                int pause = Helper.random(100, 200);
+                int pause = Helper.fromTo(100, 200);
                 Set<String> keyGoods = Helper.allPriceForGoods.keySet();
                 int numberGood = Helper.random(0, keyGoods.size() - 1);
                 String keyGood = (String) keyGoods.toArray()[numberGood];
-                putGoodsToBasket(keyGood, (float) Math.random() + 10);
+                putGoodsToBasket(keyGood, (float) Math.random()+10);
                 sleep(pause);
             }
 
@@ -51,21 +57,25 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
-    public void waitService() {
-        System.out.println(this+" стал в очередь");
-        synchronized (Queues.buyers) {  //одновреммено не зайдёт // синхронизируется на очереди попкупателей
-            Queues.buyers.addLast(this);
-        }
-
-        synchronized (this) {
-            try {
-                System.out.println(this + " ожидает в очереди");
-                this.wait();   //покупатель ожидает(так как дальше его обсл др поток, в нашем случае кассир)//выводит из стопа другой поток
+    public void goToQueue() {
+        synchronized (this) { //Специально явно сделана блокировка по покупателю
+            //если бы synchronized был указан в методе, то он работает именно так
+            //при "отпускании" этого потока
+            //кассир - отправитель команды для продолжения этого потока
+            //должен будет тоже заблокировать этого же покупателя
+            //и оправить ему notify.
+            System.out.println(this + "встал в очередь на кассу");
+            Queues.add(this);
+            //в этой точке поток должен остановиться, поэтому
+            //подготовим публичное поле iWait для определения, можно ли идти дальше
+            iWait=true;
+            while (iWait) try { //ожидаем notify и iWait==false от кассира.
+                this.wait();
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            } finally {
-                System.out.println(this + " закончил обслуживаться");
             }
+            //ожидание окончено, тут прилетел notify от кассира
+            System.out.println(this + "закончил оплату товаров в кассе");
         }
     }
 
@@ -73,11 +83,6 @@ public class Buyer extends Thread implements IBuyer, IUseBasket {
     public void goToOut() {
         System.out.println(this + " вышел из магазина");
 
-    }
-
-    @Override
-    public String toString() {
-        return this.getName();
     }
 
     @Override
