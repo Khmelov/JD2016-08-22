@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/shkantau" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/shkantau/mathlab" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
