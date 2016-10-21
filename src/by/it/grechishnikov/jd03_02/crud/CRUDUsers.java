@@ -4,7 +4,7 @@ import java.sql.*;
 
 import static by.it.grechishnikov.jd03_02.Connection.statement;
 
-public class Users {
+public class CRUDUsers {
     public static void create(User user) {
         try {
             statement.executeUpdate(String.format("insert into users(login,password,email,FK_Roles) values('%s','%s','%s',%d)", user.getLogin(),
@@ -40,7 +40,6 @@ public class Users {
             String sql = String.format("update users set login = '%s', password = '%s'," +
                             "email = '%s', FK_Roles = '%d' where users.id = '%d'", user.getLogin(), user.getPassword(), user.getEmail(),
                     user.getRole(), user.getId());
-            System.out.println(sql);
             if(statement.executeUpdate(sql) == 1) {
                 return user;
             }
@@ -52,7 +51,7 @@ public class Users {
 
     public static boolean delete(int id) {
         try {
-            return (statement.executeUpdate(String.format("delete from users where id = '%d'", id)) == 1);
+            return statement.executeUpdate(String.format("delete from users where id = %d", id)) == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         }

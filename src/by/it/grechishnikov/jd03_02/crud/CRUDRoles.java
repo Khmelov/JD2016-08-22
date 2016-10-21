@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import static by.it.grechishnikov.jd03_02.Connection.statement;
 
-public class Roles {
+public class CRUDRoles {
     public static String readRoleByid (int id) {
         try {
             ResultSet set = statement.executeQuery(String.format("select name from roles where id = '%d'", id));
