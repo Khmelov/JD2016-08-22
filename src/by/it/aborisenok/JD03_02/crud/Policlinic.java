@@ -10,16 +10,6 @@ public class Policlinic {
     private String Street;
     private int House;
 
-    public Policlinic (){}
-
-    public Policlinic(int ID, String Name, String City, String Street, int House) {
-        this.ID = ID;
-        this.Name = Name;
-        this.City = City;
-        this.Street = Street;
-        this.House = House;
-    }
-
     public int getID() {
         return ID;
     }
@@ -32,32 +22,32 @@ public class Policlinic {
         return Name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        Name = name;
     }
 
     public String getCity() {
         return City;
     }
 
-    public void setCity(String City) {
-        this.City = City;
+    public void setCity(String city) {
+        City = city;
     }
 
     public String getStreet() {
         return Street;
     }
 
-    public void setStreet(String Street) {
-        this.Street = Street;
+    public void setStreet(String street) {
+        Street = street;
     }
 
     public int getHouse() {
         return House;
     }
 
-    public void setHouse(int House) {
-        this.House = House;
+    public void setHouse(int house) {
+        House = house;
     }
 
     @Override
