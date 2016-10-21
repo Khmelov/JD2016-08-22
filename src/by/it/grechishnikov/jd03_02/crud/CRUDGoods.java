@@ -37,7 +37,7 @@ public class CRUDGoods {
     public static Goods update(Goods goods) {
         try {
             String sql = String.format("update catalog set name = '%s', description = '%s'," +
-                            "price = '%d' where catalog.id = '%d'", goods.getName(), goods.getDescription(),
+                            "price = '%d' where catalog.id = %d", goods.getName(), goods.getDescription(),
                     goods.getPrice(), goods.getId());
             if(statement.executeUpdate(sql) == 1) {
                 return goods;
