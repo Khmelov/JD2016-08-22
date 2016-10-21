@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://snegurskiy.it-academy.by/jd02_07/xml_class"
+    xmlns:tns="http://snegurskiy.it-academy.by/jd02_07/xml_class"
+    elementFormDefault="qualified">
+
+    <element name="Persons">
+        <complexType>
+            <sequence>
+                <element name="Person" type="tns:Person" maxOccurs="unbounded"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Person">
+        <sequence>
+            <element name="Email" type="string"></element>
+            <element name="Nickname" type="string"></element>
+            <element name="Password" type="string"></element>
+            <element name="Ads" type="tns:Ads"></element>
+        </sequence>
+    </complexType>
+    <complexType name="Ads">
+        <sequence><element name="Ad" type="tns:Ad" maxOccurs="unbounded"></element>
+        </sequence>
+    </complexType>
+    <complexType name="Ad">
+        <all>
+            <element name="Description" type="string"></element>
+            <element name="Addres" type="string"></element>
+            <element name="Flat" type="positiveInteger"></element>
+            <element name="Flats" type="positiveInteger"></element>
+            <element name="Price" type="decimal"></element>
+            <element name="Area" type="double"></element>
+
+        </all>
+    </complexType>
+
+</schema>

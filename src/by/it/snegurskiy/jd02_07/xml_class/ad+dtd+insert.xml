@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE Persons [
+        <!ELEMENT Persons (Person)+>
+        <!ELEMENT Person (Email, Nickname, Password, Ads)>
+        <!ELEMENT Email (#PCDATA)>
+        <!ELEMENT Nickname (#PCDATA)>
+        <!ELEMENT Password (#PCDATA)>
+        <!ELEMENT Ads (Ad)+>
+        <!ELEMENT Ad (Description, Addres, Flat, Flats, Price, Area)>
+        <!ELEMENT Description (#PCDATA)>
+        <!ELEMENT Addres (#PCDATA)>
+        <!ELEMENT Flat (#PCDATA)>
+        <!ELEMENT Flats (#PCDATA)>
+        <!ELEMENT Price (#PCDATA)>
+        <!ELEMENT Area (#PCDATA)>
+        ]>
+<Persons>
+    <Person>
+        <Email>
+            privet@mail.ru
+        </Email>
+        <Nickname>
+            Dorohov
+        </Nickname>
+        <Password>
+            qwerty
+        </Password>
+        <Ads>
+            <Ad>
+                <Description>
+                    квартира
+                </Description>
+                <Addres>
+                    Минск, ул. Гикало, 12
+                </Addres>
+                <Flat>4</Flat>
+                <Flats>5</Flats>
+                <Price>50000</Price>
+                <Area>50</Area>
+            </Ad>
+            <Ad>
+                <Description>
+                    квартира
+                </Description>
+                <Addres>
+                    Минск, ул. Платонова, 12
+                </Addres>
+                <Flat>4</Flat>
+                <Flats>5</Flats>
+                <Price>55000</Price>
+                <Area>50</Area>
+            </Ad>
+
+        </Ads>
+
+
+
+
+    </Person>
+
+
+
+
+</Persons>
