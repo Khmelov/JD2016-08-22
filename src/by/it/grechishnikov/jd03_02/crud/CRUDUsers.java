@@ -22,13 +22,12 @@ public class CRUDUsers {
         try {
             ResultSet set = statement.executeQuery(String.format("select * from users where id = '%d'", id));
             set.next();
-            User user = new User();
-            user.setLogin(set.getString("login"));
-            user.setPassword(set.getString("password"));
-            user.setEmail(set.getString("email"));
-            user.setRole(set.getInt("FK_Roles"));
-            user.setId(set.getInt("id"));
-            return user;
+            return new User(
+                    set.getInt("id"),
+                    set.getString("login"),
+                    set.getString("password"),
+                    set.getString("email"),
+                    set.getInt("FK_Roles"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

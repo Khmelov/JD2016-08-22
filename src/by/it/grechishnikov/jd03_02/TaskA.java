@@ -1,17 +1,11 @@
 package by.it.grechishnikov.jd03_02;
 
-import by.it.grechishnikov.jd03_02.crud.CRUDRoles;
-import by.it.grechishnikov.jd03_02.crud.CRUDUsers;
-import by.it.grechishnikov.jd03_02.crud.User;
+import by.it.grechishnikov.jd03_02.crud.*;
 
 public class TaskA {
     public static void main(String[] args) {
         //Запуск CRUD User
-        User user = new User();
-        user.setLogin("zhenya");
-        user.setPassword("333");
-        user.setEmail("123@123");
-        user.setRole(2);
+        User user = new User("zhenya", "333", "123@123", 2);
         CRUDUsers.create(user);
         System.out.println("Пользователь создан:\n" + user);
 
@@ -23,6 +17,20 @@ public class TaskA {
         System.out.println("Пользователь обновлен:\n" + newUser);
 
         System.out.println("Пользователь удален:\n" + CRUDUsers.delete(user.getId()));
+
+        //Запуск CRUD Goods (Catalog)
+        Goods goods = new Goods("fen", "good fen", 200);
+        CRUDGoods.create(goods);
+        System.out.println("Товар создан:\n" + goods);
+
+        goods = CRUDGoods.read(goods.getId());
+        System.out.println("Товар прочитан:\n" + goods);
+
+        goods.setName("newFen");
+        Goods newGoods = CRUDGoods.update(goods);
+        System.out.println("Товар обновлен:\n" + goods);
+
+        System.out.println("Товар удален:\n" + CRUDGoods.delete(goods.getId()));
 
         //Запуск read для role
         System.out.println("Роль с индексом 2: " + CRUDRoles.readRoleByid(2));
