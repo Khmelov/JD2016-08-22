@@ -2,13 +2,13 @@ package by.it.grechishnikov.jd03_02;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import static by.it.grechishnikov.jd03_02.Connection.statement;
+import java.sql.Statement;
 
 public class TaskB {
     public static void main(String[] args) {
         //Выводим список всех пользователей на консоль с текстовыми ролями, общим числом пользователей и ролей
         try {
+            Statement statement = Connection.startConnection();
             ResultSet set = statement.executeQuery(String.format("select * from users inner join " +
                     "roles on users.FK_Roles=roles.id"));
             while (set.next()) {
@@ -28,6 +28,8 @@ public class TaskB {
             System.out.println(lastLine);
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            Connection.closeConnection();
         }
     }
 }
