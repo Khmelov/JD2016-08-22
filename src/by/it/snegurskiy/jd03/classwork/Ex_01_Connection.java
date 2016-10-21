@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd03_01.classwork.sql.classwork;
+package by.it.snegurskiy.jd03.classwork;
 
 import by.it.akhmelev.jd03_01.CN;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;

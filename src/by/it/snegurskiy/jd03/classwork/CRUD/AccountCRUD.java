@@ -1,4 +1,7 @@
-package by.it.snegurskiy.jd03_01.classwork.sql.classwork;
+package by.it.snegurskiy.jd03.classwork.CRUD;
+
+import by.it.snegurskiy.jd03.classwork.Account;
+import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -20,7 +23,7 @@ public class AccountCRUD {
         );
         try (
                 //создаем соединение и объект для запросов к базе
-                Connection connection=ConnectionCreator.getConnection();
+                Connection connection= ConnectionCreator.getConnection();
 //                Connection connection = ConnectionCreator.getConnection(); //создаем соединение с базой
                 Statement statement = connection.createStatement(); //создаем объект для обращения к базе
         ) {
