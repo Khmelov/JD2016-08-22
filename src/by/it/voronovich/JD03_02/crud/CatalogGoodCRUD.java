@@ -7,13 +7,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Locale;
 
 public class CatalogGoodCRUD {
 
     public CatalogGood create(CatalogGood cg) throws SQLException {
         cg.setIdCatalog(0);
         //формирование строки createUserSQL по данным bean user
-        String createCatalogGoodSQL = String.format(
+        String createCatalogGoodSQL = String.format(Locale.ENGLISH,
                 "insert into catalog(Brand, Model, Price, ReleaseDate, Weight) values('%s','%s',%f,'%s','%s');",
                 cg.getBrand(), cg.getModel(), cg.getPrice(), cg.getReleaseDate(), cg.getWeight()
         );
@@ -63,7 +64,7 @@ public class CatalogGoodCRUD {
 
     public CatalogGood update(CatalogGood cg) throws SQLException {
         CatalogGood cgResult = null;
-        String updateCatalogGoodSQL = String.format(
+        String updateCatalogGoodSQL = String.format(Locale.ENGLISH,
                 "UPDATE catalog SET Brand = '%s', Model = '%s', Price = %f, ReleaseDate = '%s', Weight = '%s' WHERE catalog.idCatalog = %d",
                 cg.getBrand(), cg.getModel(), cg.getPrice(), cg.getReleaseDate(), cg.getWeight(), cg.getIdCatalog()
         );
