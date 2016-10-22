@@ -1,6 +1,6 @@
 package by.it.grechishnikov.jd03_02.crud;
 
-public class Goods {
+public class Goods implements Entity {
     private int id;
     private String name;
     private String description;

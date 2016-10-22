@@ -1,6 +1,6 @@
 package by.it.grechishnikov.jd03_02.crud;
 
-public class User {
+public class User implements Entity {
     private int id;
     private String login;
     private String password;

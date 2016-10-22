@@ -1,6 +1,6 @@
 package by.it.grechishnikov.jd03_02.crud;
 
-public class Order {
+public class Order implements Entity {
     private int id;
     private int user;
     private int goods;
