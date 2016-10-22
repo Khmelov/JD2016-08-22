@@ -7,8 +7,8 @@ public class CRUDUsers {
     public static void create(User user) {
         try {
             Statement statement = Connection.startConnection();
-            statement.executeUpdate(String.format("insert into users(login,password,email,FK_Roles) values('%s','%s','%s',%d)", user.getLogin(),
-                    user.getPassword(), user.getEmail(), user.getRole()));
+            statement.executeUpdate(String.format("insert into users(login,password,email,FK_Roles) values('%s','%s','%s',%d)",
+                    user.getLogin(), user.getPassword(), user.getEmail(), user.getRole()));
             ResultSet set = statement.executeQuery(String.format("select id from users where login = '%s'", user.getLogin()));
             if (set.next()) {
                 user.setId(set.getInt("id"));
@@ -25,13 +25,12 @@ public class CRUDUsers {
             Statement statement = Connection.startConnection();
             ResultSet set = statement.executeQuery(String.format("select * from users where id = '%d'", id));
             set.next();
-            User user = new User();
-            user.setLogin(set.getString("login"));
-            user.setPassword(set.getString("password"));
-            user.setEmail(set.getString("email"));
-            user.setRole(set.getInt("FK_Roles"));
-            user.setId(set.getInt("id"));
-            return user;
+            return new User(
+                    set.getInt("id"),
+                    set.getString("login"),
+                    set.getString("password"),
+                    set.getString("email"),
+                    set.getInt("FK_Roles"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -44,8 +43,8 @@ public class CRUDUsers {
         try {
             Statement statement = Connection.startConnection();
             String sql = String.format("update users set login = '%s', password = '%s'," +
-                            "email = '%s', FK_Roles = '%d' where users.id = %d", user.getLogin(), user.getPassword(), user.getEmail(),
-                    user.getRole(), user.getId());
+                            "email = '%s', FK_Roles = '%d' where users.id = %d",
+                    user.getLogin(), user.getPassword(), user.getEmail(), user.getRole(), user.getId());
             if(statement.executeUpdate(sql) == 1) {
                 return user;
             }

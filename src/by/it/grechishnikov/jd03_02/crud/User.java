@@ -1,13 +1,28 @@
 package by.it.grechishnikov.jd03_02.crud;
 
 public class User {
+    private int id;
     private String login;
     private String password;
     private String email;
     private int role;
-    private int id;
 
     public User() {
+    }
+
+    public User(String login, String password, String email, int role) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User(int id, String login, String password, String email, int role) {
+        this.id = id;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.role = role;
     }
 
     public String getLogin() {
