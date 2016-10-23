@@ -33,7 +33,7 @@ public class SAX extends DefaultHandler {
 
     @Override
     public void endDocument() throws SAXException {
-        System.out.println( "Конец обработки" );
+        System.out.println( "Конец обработки" +"\n");
     }
 
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
