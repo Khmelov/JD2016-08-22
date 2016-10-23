@@ -11,7 +11,6 @@ import java.sql.*;
 public class Runner_jd03_02 {
 
     public static void main(String[] args) {
-
             taskA();
             taskB();
             taskC();
@@ -63,8 +62,8 @@ public class Runner_jd03_02 {
 
     private static void taskA() {
 
-//        System.out.println("role_id by roleName: user - " +getIdByName(statement, "roles" , "user"));
-//        testRussianLiterals(statement);
+        System.out.println("role_id by roleName: user - " +getIdByName("roles" , "user"));
+        testRussianLiterals();
 
         UserCRUD userCRUD = new UserCRUD();
         UserBean userBean = new UserBean("newUser","email@email.com","*****",3);
@@ -79,20 +78,30 @@ public class Runner_jd03_02 {
         System.out.println("Deleted user_id ="+userCRUD.delete(userBean));
     }
 
-    private static int getIdByName(Statement  statement, String tableName, String columnName) throws SQLException {
-        ResultSet resultSet = statement.executeQuery("SELECT role_id FROM "+tableName +" WHERE name='"+columnName+"';");
-        while (resultSet.next()){
-            return resultSet.getInt(1);
+    private static int getIdByName(String tableName, String columnName) {
+        int result = -1;
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT role_id FROM " + tableName + " WHERE name='" + columnName + "';");
+            resultSet.next();
+            result = resultSet.getInt(1);
+        }catch (SQLException | FileNotFoundException e){
+            e.printStackTrace();
         }
-        throw new SQLException("Can't find role with name="+columnName+".");
+        return  result;
     }
 
-    private static void testRussianLiterals(Statement statement) throws SQLException {
+    private static void testRussianLiterals(){
         // test russian language at the DB
-        statement.executeUpdate("INSERT INTO users(email,login,pass,role) VALUES('test@gmail.com','русишШвайнэ', '123',3)");
-        ResultSet resultSet = statement.executeQuery("SELECT user_id, email, login, role FROM users WHERE email='"+"test@gmail.com"+"';");
-        resultSet.next();
-        System.out.println("ID="+resultSet.getString(1)+", email="+resultSet.getString(2)+", login="+resultSet.getString(3)+", role="+resultSet.getString(4));
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()) {
+            statement.executeUpdate("INSERT INTO users(email,login,pass,role) VALUES('test@gmail.com','русишШвайнэ', '123',3)");
+            ResultSet resultSet = statement.executeQuery("SELECT user_id, email, login, role FROM users WHERE email='" + "test@gmail.com" + "';");
+            resultSet.next();
+            System.out.println("ID=" + resultSet.getString(1) + ", email=" + resultSet.getString(2) + ", login=" + resultSet.getString(3) + ", role=" + resultSet.getString(4));
+        }catch (SQLException | FileNotFoundException e){
+            e.printStackTrace();
+        }
     }
 
     private static int getIntFormSQL(Statement statement, String sql) throws SQLException {
