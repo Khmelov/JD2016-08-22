@@ -13,10 +13,8 @@ public class Runner_jd03_01 {
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()){
 
-            String [] tables = {"flights","users","cmd","roles","crews","airHostesses","airports","pilots","planes"};
-
-            DbManager.clearTables(statement, tables);
-            DbManager.removeTables(statement, tables);
+            DbManager.clearTables(statement);
+            DbManager.removeTables(statement);
 
             DbManager.createTables(statement);
             DbManager.fillTables(statement);

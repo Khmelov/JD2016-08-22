@@ -3,21 +3,24 @@ package by.it.shkantau.jd03.jd03_01;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-class DbManager {
+public class DbManager {
 
-    static void removeTables(Statement statement, String[] tables) throws SQLException {
+    private static final String [] tables = {"flights","users","cmd","roles","crews","airHostesses","airports","pilots","planes"};
+
+
+    public static void removeTables(Statement statement) throws SQLException {
         for (String tableName: tables) {
             statement.executeUpdate("DROP TABLE IF EXISTS " + tableName);
         }
     }
 
-    static void clearTables(Statement statement, String [] tables) throws SQLException {
+    public static void clearTables(Statement statement) throws SQLException {
         for (String tableName: tables) {
             statement.executeUpdate("DELETE FROM "+ tableName);
         }
     }
 
-    static void createTables(Statement statement) throws SQLException {
+    public static void createTables(Statement statement) throws SQLException {
 
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS `planes` (`plane_id` INT NOT NULL AUTO_INCREMENT," +
                 " `planeName` VARCHAR(45) NOT NULL,  PRIMARY KEY (`plane_id`))ENGINE = InnoDB;");
@@ -113,6 +116,10 @@ class DbManager {
         statement.executeUpdate("INSERT INTO planes (planeName) VALUES ('Boeing-747'),('Boeing-727'),('Boeing 737-500'),('Airbus A320'),('Gulfstream 650'),('Embraer EMB190');");
         statement.executeUpdate("INSERT INTO airports (acronim, name) VALUES ('MSQ', 'Minsk-2'),('VIE', 'Vienna'),('TGD', 'Golubovichi'),('SVO', 'Sheremetyevo'),('BKA', 'Bukovo');");
         statement.executeUpdate("INSERT INTO roles (name) VALUES ('administrator'),('dispatcher'),('user');");
-
+        statement.executeUpdate("INSERT INTO users (login, pass, role, email)" +
+                " VALUES ('admin', 'admin', 1, 'admin@gmail.com')," +
+                "('dispatcher', 'dispatcher', 2, 'dispatcher@gmail.com')," +
+                "('user', 'user123', 3, 'user123@gmail.com')," +
+                "('user1', 'user1', 3, 'blabla@gmail.com')");
     }
 }
