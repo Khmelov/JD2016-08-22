@@ -76,9 +76,7 @@ public class ResetDB {
             User user = new User(0, "Derek", "Nicolson", "der", "der111" , "der@gmail.com", 1);
             UserCRUD userCRUD = new UserCRUD();
             userCRUD.create(user);
-            user = new User(0, "Emmy", "Toren", "emm", "emm111" , "emm@gmail.com", 1);
-            userCRUD.create(user);
-            user = new User(0, "Tony", "Demico", "ton", "ton111" , "ton@gmail.com", 2);
+            user = new User(0, "Emmy", "Toren", "emm", "emm111" , "emm@gmail.com", 2);
             userCRUD.create(user);
             user = new User(0, "Tony", "Demico", "ton", "ton111" , "ton@gmail.com", 2);
             userCRUD.create(user);
