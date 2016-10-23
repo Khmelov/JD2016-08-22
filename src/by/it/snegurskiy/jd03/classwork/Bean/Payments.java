@@ -1,14 +1,14 @@
-package by.it.snegurskiy.jd03.classwork;
+package by.it.snegurskiy.jd03.classwork.Bean;
 
-/**
- * Created by Acer on 21.10.2016.
- */
+import java.sql.Timestamp;
+import java.util.Calendar;
+
 public class Payments {
 
     private int ID;
-    private int Data;
+    private Timestamp Data;
     private String Type;
-    private double Sum;
+    private int Amount;
     private int Source;
     private int FK_account;
 
@@ -20,12 +20,14 @@ public class Payments {
         this.ID = ID;
     }
 
-    public int getData() {
+    public Timestamp getData() {
         return Data;
     }
 
-    public void setData(int data) {
-        Data = data;
+    public void setData(Timestamp data) {
+        Calendar calendar = Calendar.getInstance();
+        Timestamp timestamp = new Timestamp(calendar.getTimeInMillis());
+        Data = timestamp;
     }
 
     public String getType() {
@@ -36,12 +38,12 @@ public class Payments {
         Type = type;
     }
 
-    public double getSum() {
-        return Sum;
+    public int getAmount() {
+        return Amount;
     }
 
-    public void setSum(double sum) {
-        Sum = sum;
+    public void setAmount(int amount) {
+        Amount = amount;
     }
 
     public int getSource() {
@@ -70,8 +72,8 @@ public class Payments {
         if (FK_account != payment.FK_account) return false;
         if (ID != payment.ID) return false;
         if (Data != payment.Data) return false;
-        if (!Type.equals(payment.Data)) return false;
-        if (Sum != payment.Sum) return false;
+        if (!Type.equals(payment.Type)) return false;
+        if (Amount != payment.Amount) return false;
         if (Source != payment.Source) return false;
 
         return true;
@@ -80,9 +82,9 @@ public class Payments {
     @Override
     public int hashCode() {
         int result = ID;
-        result = 31 * result + Data;
+//        result = 31 * result + (int)Data;
         result = 31 * result + Type.hashCode();
-        result = 31 * result + (int)Sum;
+        result = 31 * result + Amount;
         result = 31 * result + Source;
         result = 31 * result + FK_account;
         return result;
@@ -91,11 +93,11 @@ public class Payments {
     public Payments() {
     }
 
-    public Payments(int ID, int data, String type, double sum, int source, int FK_account) {
+    public Payments(int ID, Timestamp data, String type, int amount, int source, int FK_account) {
         this.ID = ID;
         Data = data;
         Type = type;
-        Sum = sum;
+        Amount = amount;
         Source = source;
         this.FK_account = FK_account;
     }
@@ -106,8 +108,8 @@ public class Payments {
                 "ID=" + ID +
                 ", Data='" + Data + '\'' +
                 ", Type='" + Type + '\'' +
-                ", Sum='" + Sum + '\'' +
-                ", Source='" + Source + '\'' +
+                ", Amount=" + Amount +
+                ", Source=" + Source +
                 ", FK_account=" + FK_account +
                 "}\n";
     }

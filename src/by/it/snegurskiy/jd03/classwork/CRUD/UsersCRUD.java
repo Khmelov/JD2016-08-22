@@ -1,7 +1,7 @@
 package by.it.snegurskiy.jd03.classwork.CRUD;
 
 import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
-import by.it.snegurskiy.jd03.classwork.Users;
+import by.it.snegurskiy.jd03.classwork.Bean.Users;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ public class UsersCRUD {
         user.setID(0);
         //формирование строки createUserSQL по данным bean user
         String createUserSQL = String.format(Locale.ENGLISH,
-                "insert into users(Surname, Name, Login,Password,Email,FK_Role) values('%s','%s','%s','%s','%s',%d);",
+                "insert into users(Surname, Name, Login,Password,FK_Role) values('%s','%s','%s','%s',%d);",
                 user.getSurname(),user.getName(),user.getLogin(), user.getPassword(), user.getFK_Role()
         );
         try (
@@ -95,4 +95,6 @@ public class UsersCRUD {
             throw e;
         }
     }
+
+
 }
