@@ -41,7 +41,7 @@ public class UniversalDAO<Type extends Entity> {
         return null;
     }
 
-    public Entity update(Object obj) {
+    public Entity update(Entity obj) {
         if(type instanceof Goods) {
             return new GoodsDAO().update((Goods) type);
         } else if(type instanceof Order) {

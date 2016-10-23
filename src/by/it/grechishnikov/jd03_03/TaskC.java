@@ -3,9 +3,6 @@ package by.it.grechishnikov.jd03_03;
 import by.it.grechishnikov.jd03_02.crud.*;
 import by.it.grechishnikov.jd03_03.dao.UniversalDAO;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class TaskC {
     public static void main(String[] args) {
         User user = new User("zhenya", "qwerty", "zhenya93@mail.ru", 2);

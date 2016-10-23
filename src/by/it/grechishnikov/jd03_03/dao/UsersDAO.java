@@ -9,9 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Evgeniy on 21.10.16.
- */
 public class UsersDAO implements InterfaceDAO<User> {
     @Override
     public void create(User obj) {

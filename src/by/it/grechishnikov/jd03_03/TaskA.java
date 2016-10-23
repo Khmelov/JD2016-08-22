@@ -12,5 +12,19 @@ public class TaskA {
         for (User user : list) {
             System.out.println(user);
         }
+        System.out.println();
+        User user = new User("new user", "123", "newuser@mail.ru", 2);
+        dao.create(user);
+        System.out.println(dao.read(user.getId()));
+        user.setLogin("updated");
+        dao.update(user);
+        System.out.println(dao.read(user.getId()));
+        dao.delete(user.getId());
+        System.out.println();
+
+        list = dao.getAll();
+        for (User u : list) {
+            System.out.println(u);
+        }
     }
 }

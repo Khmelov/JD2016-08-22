@@ -24,5 +24,7 @@
     <orderEntry type="library" name="gson-2.7" level="project" />
     <orderEntry type="library" name="mysql-connector-java" level="project" />
     <orderEntry type="library" name="com.google.code.gson:gson:2.71" level="project" />
+    <orderEntry type="library" name="com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="mysql:mysql-connector-java:5.1.38" level="project" />
   </component>
 </module>
