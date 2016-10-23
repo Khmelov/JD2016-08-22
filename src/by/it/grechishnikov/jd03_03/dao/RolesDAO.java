@@ -1,7 +1,7 @@
 package by.it.grechishnikov.jd03_03.dao;
 
+import by.it.grechishnikov.jd03_02.ConnectionToServer;
 import by.it.grechishnikov.jd03_02.crud.Role;
-import by.it.grechishnikov.jd03_02.Connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,7 +13,7 @@ public class RolesDAO implements InterfaceDAO<Role> {
     @Override
     public void create(Role obj) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             statement.executeUpdate(String.format("insert into roles(name) values('%s')", obj.getName()));
             ResultSet set = statement.executeQuery(String.format("select id from roles where name = '%s'", obj.getName()));
             if (set.next()) {
@@ -22,21 +22,21 @@ public class RolesDAO implements InterfaceDAO<Role> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
     }
 
     @Override
     public Role read(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             ResultSet set = statement.executeQuery(String.format("select * from roles where id = %d", id));
             set.next();
             return new Role(set.getInt("id"), set.getString("name"));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }
@@ -44,14 +44,14 @@ public class RolesDAO implements InterfaceDAO<Role> {
     @Override
     public Role update(Role obj) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             statement.executeUpdate(String.format("update roles set name = '%s' where roles.id = %d",
                     obj.getName(), obj.getId()));
             return obj;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }
@@ -59,12 +59,12 @@ public class RolesDAO implements InterfaceDAO<Role> {
     @Override
     public boolean delete(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             return statement.executeUpdate(String.format("delete from roles where id = %d", id)) == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return false;
     }
@@ -72,7 +72,7 @@ public class RolesDAO implements InterfaceDAO<Role> {
     @Override
     public List<Role> getAll() {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             ResultSet set = statement.executeQuery(String.format("select * from roles"));
             List<Role> list = new ArrayList<>();
             while (set.next()) {
@@ -82,7 +82,7 @@ public class RolesDAO implements InterfaceDAO<Role> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }

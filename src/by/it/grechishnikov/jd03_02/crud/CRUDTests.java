@@ -63,17 +63,6 @@ public class CRUDTests {
         assertEquals(role.toString(), CRUDRoles.read(role.getId()).toString());
     }
 
-    @Test
-    public void test08() {
-        //delete role
-        try {
-            CRUDRoles.delete(role.getId());
-            assertNotEquals(role.toString(), CRUDUsers.read(role.getId()).toString());
-        } catch (NullPointerException e) {
-            System.out.println("Объект удален");
-        }
-    }
-
     public static Goods goods = new Goods("phone", "android", 200);
 
     @Test

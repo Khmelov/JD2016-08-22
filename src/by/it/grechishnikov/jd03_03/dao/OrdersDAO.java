@@ -1,8 +1,9 @@
 package by.it.grechishnikov.jd03_03.dao;
 
-import by.it.grechishnikov.jd03_02.Connection;
+import by.it.grechishnikov.jd03_02.ConnectionToServer;
 import by.it.grechishnikov.jd03_02.crud.Order;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ public class OrdersDAO implements InterfaceDAO<Order> {
     @Override
     public void create(Order obj) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             statement.executeUpdate(String.format("insert into orderList(FK_User,FK_Goods) values('%d','%d')",
                     obj.getUser(), obj.getGoods()));
             ResultSet set = statement.executeQuery(String.format("select id from orderList where FK_User = '%d' and " +
@@ -24,14 +25,14 @@ public class OrdersDAO implements InterfaceDAO<Order> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
     }
 
     @Override
     public Order read(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             ResultSet set = statement.executeQuery(String.format("select * from orderList where id = '%d'", id));
             set.next();
             return new Order(
@@ -41,7 +42,7 @@ public class OrdersDAO implements InterfaceDAO<Order> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }
@@ -54,12 +55,12 @@ public class OrdersDAO implements InterfaceDAO<Order> {
     @Override
     public boolean delete(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             return statement.executeUpdate(String.format("delete from orderList where id = %d", id)) == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return false;
     }
@@ -67,7 +68,7 @@ public class OrdersDAO implements InterfaceDAO<Order> {
     @Override
     public List<Order> getAll() {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             ResultSet set = statement.executeQuery(String.format("select * from orderList"));
             List<Order> list = new ArrayList<>();
             while (set.next()) {
@@ -80,7 +81,7 @@ public class OrdersDAO implements InterfaceDAO<Order> {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }

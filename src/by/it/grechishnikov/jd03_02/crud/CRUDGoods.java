@@ -1,6 +1,6 @@
 package by.it.grechishnikov.jd03_02.crud;
 
-import by.it.grechishnikov.jd03_02.Connection;
+import by.it.grechishnikov.jd03_02.ConnectionToServer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import java.sql.Statement;
 public class CRUDGoods {
     public static void create(Goods goods) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             statement.executeUpdate(String.format("insert into catalog(name,description,price) values('%s','%s', %d)",
                     goods.getName(), goods.getDescription(), goods.getPrice()));
             ResultSet set = statement.executeQuery(String.format("select id from catalog where name = '%s'", goods.getName()));
@@ -19,13 +19,13 @@ public class CRUDGoods {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
     }
 
     public static Goods read(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             ResultSet set = statement.executeQuery(String.format("select * from catalog where id = '%d'", id));
             set.next();
             return new Goods(
@@ -36,14 +36,14 @@ public class CRUDGoods {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }
 
     public static Goods update(Goods goods) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             String sql = String.format("update catalog set name = '%s', description = '%s'," +
                             "price = '%d' where catalog.id = %d", goods.getName(), goods.getDescription(),
                     goods.getPrice(), goods.getId());
@@ -53,19 +53,19 @@ public class CRUDGoods {
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return null;
     }
 
     public static boolean delete(int id) {
         try {
-            Statement statement = Connection.startConnection();
+            Statement statement = ConnectionToServer.getInstance().createStatement();
             return statement.executeUpdate(String.format("delete from catalog where id = %d", id)) == 1;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            Connection.closeConnection();
+            ConnectionToServer.closeConnection();
         }
         return false;
     }

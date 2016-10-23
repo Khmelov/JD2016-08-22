@@ -33,18 +33,16 @@ public class TaskA {
         System.out.println("Товар удален:\n" + CRUDGoods.delete(goods.getId()));
 
         //CRUD для roles
-        Role role = new Role("admin");
+        Role role = new Role("user");
         CRUDRoles.create(role);
         System.out.println("Роль создана:\n" + role);
 
         role = CRUDRoles.read(role.getId());
         System.out.println("Роль прочитана:\n" + role);
 
-        role.setName("user");
+        role.setName("newUser");
         role = CRUDRoles.update(role);
         System.out.println("Роль обновлена:\n" + role);
-
-        System.out.println("Роль удалена:\n" + CRUDRoles.delete(role.getId()));
 
         System.out.println("Роль с индексом 2: " + CRUDRoles.read(2));
         System.out.println("Индекс администратора: " + CRUDRoles.read("admin"));
