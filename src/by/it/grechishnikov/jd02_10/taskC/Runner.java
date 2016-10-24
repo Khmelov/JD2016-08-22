@@ -4,7 +4,7 @@ import java.io.File;
 
 public class Runner {
     public static void main(String[] args) {
-        String fileName = "/Users/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_10/taskC/test.json";
+        String fileName = "/CRUDUsers/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_10/taskC/test.json";
         //Из файла (для .json создается такой же файл с разрешение .xml и наоборот)
         Direction direction = null;
         if(fileName.endsWith(".xml")) {
