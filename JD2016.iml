@@ -22,5 +22,6 @@
     </orderEntry>
     <orderEntry type="library" name="gson-2.7" level="project" />
     <orderEntry type="library" name="mysql-connector-java" level="project" />
+    <orderEntry type="library" name="servlet-api" level="project" />
   </component>
 </module>
