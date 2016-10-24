@@ -1,7 +1,5 @@
-package by.it.snegurskiy.jd02_07.xml_class;
+package by.it.snegurskiy.jd02_08;
 
-import by.it.opiga.JD_08.SAX_Parser;
-import com.sun.xml.internal.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -19,7 +17,7 @@ class SAX extends DefaultHandler{
     public static void main(String[] args) {
 
         try {
-            String filename ="src/by/it/snegurskiy/jd02_07/xml_class/ad.xml";
+            String filename ="src/by/it/snegurskiy/jd02_08/user+xsd.xml";
             SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
             SAXParser saxParser = saxParserFactory.newSAXParser();
             SAX myImplementationSax =new SAX();

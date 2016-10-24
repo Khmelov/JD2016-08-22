@@ -1,6 +1,6 @@
 package by.it.snegurskiy.jd03.classwork.CRUD;
 
-import by.it.snegurskiy.jd03.classwork.Account;
+import by.it.snegurskiy.jd03.classwork.Bean.Account;
 import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
 
 import java.sql.Connection;
@@ -18,8 +18,8 @@ public class AccountCRUD {
         account.setID(0);
         //формирование строки createUserSQL по данным bean user
         String createAccountSQL = String.format(Locale.ENGLISH,
-                "insert into account(Account, Balance, Status,FK_users) values('%s','%d','%d',%d);",
-                account.getBalance(),account.getStatus(), account.getFK_users()
+                "insert into account(Balance, Status,FK_users, FK_roleaccount) values(%d,%d,%d,%d);",
+                account.getBalance(),account.getStatus(), account.getFK_users(), account.getFK_roleaccount()
         );
         try (
                 //создаем соединение и объект для запросов к базе
@@ -45,7 +45,7 @@ public class AccountCRUD {
 
     public Account read(int id) throws SQLException {
         Account accountResult = null;
-        String readAccountSQL = "SELECT * FROM users where ID=" + id;
+        String readAccountSQL = "SELECT * FROM account where ID=" + id;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();
@@ -56,7 +56,8 @@ public class AccountCRUD {
                         resultSet.getInt("ID"),
                         resultSet.getInt("Balance"),
                         resultSet.getInt("Status"),
-                        resultSet.getInt("FK_users"));
+                        resultSet.getInt("FK_users"),
+                        resultSet.getInt("FK_roleaccount"));
             }
         } catch (SQLException e) {
             throw e;
@@ -67,8 +68,8 @@ public class AccountCRUD {
     public Account update(Account account) throws SQLException {
         Account accountResult = null;
         String updateAccountSQL = String.format(
-                "UPDATE users SET Balance = '%d',Status = '%d', FK_users=%d WHERE account.ID = %d",
-                account.getBalance(),account.getStatus(), account.getFK_users(), account.getID()
+                "UPDATE account SET Balance = %d,Status = %d, FK_users=%d, FK_roleaccount=%d WHERE account.ID=%d",
+                account.getBalance(),account.getStatus(), account.getFK_users(), account.getFK_roleaccount(), account.getID()
         );
         try (
                 Connection connection = ConnectionCreator.getConnection();

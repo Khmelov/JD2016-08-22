@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd02_07.xml_class;
+package by.it.snegurskiy.jd02_08;
 
 
 import javax.xml.stream.XMLInputFactory;
@@ -12,7 +12,7 @@ public class STAX {
     static String tab="";
     public static void main(String[] args) {
         try {
-            String filename ="src/by/it/snegurskiy/jd02_07/xml_class/ad+xsd.xml";
+            String filename ="src/by/it/snegurskiy/jd02_08/user+xsd.xml";
             FileInputStream inputStream  = new FileInputStream(filename);
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
             XMLStreamReader reader       = inputFactory.createXMLStreamReader(inputStream);

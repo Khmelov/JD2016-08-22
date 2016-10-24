@@ -1,8 +1,5 @@
-package by.it.snegurskiy.jd03.classwork;
+package by.it.snegurskiy.jd03.classwork.Bean;
 
-/**
- * Created by Acer on 19.10.2016.
- */
 public class Account {
 
 
@@ -10,6 +7,7 @@ public class Account {
     private int Balance;
     private int Status;
     private int FK_users;
+    private int FK_roleaccount;
 
     public int getID() {
         return ID;
@@ -43,6 +41,14 @@ public class Account {
         this.FK_users = FK_users;
     }
 
+    public int getFK_roleaccount() {
+        return FK_roleaccount;
+    }
+
+    public void setFK_roleaccount(int FK_roleaccount) {
+        this.FK_roleaccount = FK_roleaccount;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,6 +57,7 @@ public class Account {
         Account account = (Account) o;
 
         if (FK_users != account.FK_users) return false;
+        if (FK_roleaccount != account.FK_roleaccount) return false;
         if (ID != account.ID) return false;
         if (Balance != account.Balance) return false;
         if (Status != account.Status) return false;
@@ -64,26 +71,31 @@ public class Account {
         result = 31 * result + Balance;
         result = 31 * result + Status;
         result = 31 * result + FK_users;
+        result = 31 * result + FK_roleaccount;
         return result;
     }
 
     public Account() {
     }
 
-    public Account(int ID, int balance, int status, int FK_users) {
+    public Account(int ID, int balance, int status, int FK_users, int FK_roleaccount) {
         this.ID = ID;
         Balance = balance;
         Status = status;
         this.FK_users = FK_users;
+        this.FK_roleaccount = FK_roleaccount;
     }
 
     @Override
     public String toString() {
-        return "Account{" +
+        return "Account(" +
                 "ID=" + ID +
-                ", balance='" + Balance + '\'' +
-                ", status='" + Status + '\'' +
+                ", balance=" + Balance +
+                ", status=" + Status +
                 ", FK_users=" + FK_users +
-                "}\n";
+                ", FK_roleaccount=" + FK_roleaccount +
+                ")\n";
     }
+
+
 }

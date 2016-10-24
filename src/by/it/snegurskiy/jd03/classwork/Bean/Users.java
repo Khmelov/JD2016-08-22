@@ -1,4 +1,4 @@
-package by.it.snegurskiy.jd03.classwork;
+package by.it.snegurskiy.jd03.classwork.Bean;
 
 /**
  * Created by Acer on 19.10.2016.
