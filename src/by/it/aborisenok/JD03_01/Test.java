@@ -22,7 +22,7 @@ public class Test {
             DriverManager.registerDriver(driver);
             connection= DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
             Statement statement = connection.createStatement();
-           // statement.executeUpdate("CREATE DATABASE JD03");
+            statement.executeUpdate("CREATE DATABASE JD03");
         }
         catch (Exception e){
             e.printStackTrace();
