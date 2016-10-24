@@ -1,14 +1,25 @@
 package by.it.aborisenok.JD03_02.crud;
 
-import by.it.akhmelev.jd01_06.Level_A.Data;
+
+import java.sql.Timestamp;
 
 /**
  * Created by Лёша on 21.10.2016.
  */
-public class Date {
+public class VisitDate {
     private int ID;
-    private Data data;
+    private Timestamp visitTime;
     private int FK_Doctor;
+
+    public VisitDate(){
+
+    }
+
+    public VisitDate(int ID, Timestamp visitTime, int FK_Doctor){
+        this.ID = ID;
+        this.visitTime = visitTime;
+        this.FK_Doctor = FK_Doctor;
+    }
 
     public int getID() {
         return ID;
@@ -18,12 +29,12 @@ public class Date {
         this.ID = ID;
     }
 
-    public Data getData() {
-        return data;
+    public Timestamp getVisitTime() {
+        return visitTime;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setVisitTime(Timestamp visitTime) {
+        this.visitTime = visitTime;
     }
 
     public int getFK_Doctor() {
@@ -36,9 +47,9 @@ public class Date {
 
     @Override
     public String toString() {
-        return "Date{" +
+        return "VisitDate{" +
                 "ID=" + ID +
-                ", data=" + data +
+                ", visitTime=" + visitTime +
                 ", FK_Doctor=" + FK_Doctor +
                 '}';
     }
