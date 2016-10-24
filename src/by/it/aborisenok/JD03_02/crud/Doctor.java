@@ -12,8 +12,20 @@ public class Doctor {
     private int Cabinet;
     private int FK_Policlinic;
 
+    public Doctor(){}
+
     public int getID() {
         return ID;
+    }
+
+    public Doctor(int ID, String Name, String Surname, String Specialization, String Category, int Cabinet, int FK_Policlinic) {
+        this.ID = ID;
+        this.Name = Name;
+        this.Surname = Surname;
+        this.Specialization = Specialization;
+        this.Category = Category;
+        this.Cabinet = Cabinet;
+        this.FK_Policlinic = FK_Policlinic;
     }
 
     public void setID(int ID) {
@@ -24,40 +36,40 @@ public class Doctor {
         return Name;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public String getSurname() {
         return Surname;
     }
 
-    public void setSurname(String surname) {
-        Surname = surname;
+    public void setSurname(String Surname) {
+        this.Surname = Surname;
     }
 
     public String getSpecialization() {
         return Specialization;
     }
 
-    public void setSpecialization(String specialization) {
-        Specialization = specialization;
+    public void setSpecialization(String Specialization) {
+        this.Specialization = Specialization;
     }
 
     public String getCategory() {
         return Category;
     }
 
-    public void setCategory(String category) {
-        Category = category;
+    public void setCategory(String Category) {
+        this.Category = Category;
     }
 
     public int getCabinet() {
         return Cabinet;
     }
 
-    public void setCabinet(int cabinet) {
-        Cabinet = cabinet;
+    public void setCabinet(int Cabinet) {
+        this.Cabinet = Cabinet;
     }
 
     public int getFK_Policlinic() {
