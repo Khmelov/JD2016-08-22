@@ -4,9 +4,7 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 
-public class Insert_Rooms {
-
-
+public class Status {
     public static void main(String[] args) {
         try {
             Driver driver = new FabricMySQLDriver();
@@ -17,22 +15,24 @@ public class Insert_Rooms {
         try (Connection connection =
                      DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
-
-             Statement statement = connection.createStatement()) {
-
-            //вставляем комнаты
+             Statement statement = connection.createStatement();) {
+            //статус
             statement.executeUpdate(
-                    "INSERT INTO rooms (RoomCount, Quality, PriceForDay, Conditioner, Description)" +
-                            "VALUES (3, 8, 180, 'Yes', 'Good room');");
+                    "insert into status(OrderStatus,FK_orders)" +
+                            "values('свободна', 1);"
+            );
             statement.executeUpdate(
-                    "INSERT INTO rooms (RoomCount, Quality, PriceForDay, Conditioner, Description)" +
-                            "VALUES (4, 10, 300, 'Yes', 'Elite room');");
+                    "insert into status(OrderStatus,FK_orders)" +
+                            "values('свободна', 2);"
+            );
             statement.executeUpdate(
-                    "INSERT INTO rooms (RoomCount, Quality, PriceForDay, Conditioner, Description)" +
-                            "VALUES (3, 7, 100, 'No', 'Normal room');");
+                    "insert into status(OrderStatus,FK_orders)" +
+                            "values('свободна', 3);"
+            );
         } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 }
+
