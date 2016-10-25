@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+    <Dillers>
+            <Diller Name="DazAuto" course='it.jd.02'>
+                <Name>DazAuto</Name>
+                <Email>Dazauto@gmail.com</Email>
+                <Nickname>autodilleraudi</Nickname>
+                <Password>password1</Password>
+                    <Ad>
+                        <Model>Audi</Model>
+                        <Car_body>Coupe</Car_body>
+                        <Color>Blue</Color>
+                        <Price>5000</Price>
+                    </Ad>
+                </Diller>
+
+            <Diller Name="ProAuto" course='it.jd.02'>
+                <Name>ProAuto</Name>
+                <Email>Proauto@gmail.com</Email>
+                <Nickname>autodillerferrari</Nickname>
+                <Password>password2</Password>
+                    <Ad>
+                        <Model>Ferrari</Model>
+                        <Car_body>Estate</Car_body>
+                        <Color>Red</Color>
+                        <Price>10000</Price>
+                    </Ad>
+            </Diller>
+    </Dillers>
