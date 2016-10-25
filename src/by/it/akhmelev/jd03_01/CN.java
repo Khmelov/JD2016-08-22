@@ -6,7 +6,7 @@ public class CN {
     //а сам конфиг в этом случае - bean с инициализацией из XML
     //ТАК ЧТО ЭТО ЛИШЬ ПРИМЕР, ТАК НИКОГДА (!) НЕ ДЕЛАЮТ !
     public static final String URL_DB = "jdbc:mysql://127.0.0.1:2016/it_academy"+
-                                        "?useUnicode=true&amp;characterEncoding=UTF-8";
+                                        "?useUnicode=true&characterEncoding=UTF-8";
     public static final String USER_DB = "root";
     public static final String PASSWORD_DB = "";
 }
