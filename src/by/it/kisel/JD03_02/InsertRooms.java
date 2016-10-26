@@ -1,26 +1,16 @@
-package by.it.kisel.JD03_01;
+package by.it.kisel.JD03_02;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
+import java.sql.Connection;
+import java.sql.Statement;
 
-import java.sql.*;
-
-public class Insert_Rooms {
+public class InsertRooms {
 
 
-    public static void main(String[] args) {
-        try {
-            Driver driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        try (Connection connection =
-                     DriverManager.getConnection
-                             (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
+    public static void main(String[ ] args) {
+        try (Connection connection= ConnectionCreator.getConnection();
+             Statement statement=connection.createStatement();) {
 
-             Statement statement = connection.createStatement()) {
-
-            //вставляем комнаты
+            //вставляем объявления
             statement.executeUpdate(
                     "INSERT INTO rooms (RoomCount, Quality, PriceForDay, Conditioner, Description)" +
                             "VALUES (3, 8, 180, 'Yes', 'Good room');");
@@ -30,7 +20,8 @@ public class Insert_Rooms {
             statement.executeUpdate(
                     "INSERT INTO rooms (RoomCount, Quality, PriceForDay, Conditioner, Description)" +
                             "VALUES (3, 7, 100, 'No', 'Normal room');");
-        } catch (Exception e) {
+        }
+        catch (Exception e){
             e.printStackTrace();
         }
 
