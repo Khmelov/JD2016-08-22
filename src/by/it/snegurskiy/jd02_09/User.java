@@ -79,7 +79,7 @@ public class User {
 
     public String toString() {
         return "\nSurname: " + surname + "\nName: " + name + "\nLogin: " + login
-                + "\nPassword: " + password   + "\nAccount: " + account + account.toString();
+                + "\nPassword: " + password   +  account.toString();
     }
 
     @XmlRootElement
@@ -102,7 +102,7 @@ public class User {
         }
 
         public String toString() {
-            return "\nAccount:" + "\n\tBalance: " + balance + "\n";
+            return "\nAccount:" + "  \tBalance: " + balance + "\n";
         }
     }
 }
