@@ -10,7 +10,7 @@ import java.util.List;
 
 public class V1_CustomRunner {
 
-    static void showUsers(){
+    private static void showUsers(){
         //покажем все, что есть в таблице пользователей
         System.out.println("\nТаблица пользователей:");
         List<User> users=new UserDAO().getAll("");
