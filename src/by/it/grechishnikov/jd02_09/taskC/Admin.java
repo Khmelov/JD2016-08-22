@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="Email" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="Catalog" type="{http://taskC.jd02_09.grechishnikov.it.by/}Catalog"/>
+ *         &lt;element name="CATALOG" type="{http://taskC.jd02_09.grechishnikov.it.by/}CATALOG"/>
  *       &lt;/sequence>
  *       &lt;attribute name="nickname" use="required" type="{http://taskC.jd02_09.grechishnikov.it.by/}nickname" />
  *       &lt;attribute name="password" use="required" type="{http://taskC.jd02_09.grechishnikov.it.by/}password" />
@@ -46,7 +46,7 @@ public class Admin {
 
     @XmlElement(name = "Email", required = true)
     protected String email;
-    @XmlElement(name = "Catalog", required = true)
+    @XmlElement(name = "CATALOG", required = true)
     protected Catalog catalog;
     @XmlAttribute(name = "nickname", required = true)
     protected String nickname;
