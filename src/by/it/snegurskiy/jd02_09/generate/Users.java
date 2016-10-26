@@ -19,7 +19,7 @@ public class Users {
     }
     @Override
     public String toString() {
-        return "Students [list=" + list + "]";
+        return "Users [list=" + list + "]";
     }
 }
 
