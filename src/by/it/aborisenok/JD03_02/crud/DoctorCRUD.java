@@ -12,8 +12,9 @@ import java.sql.Statement;
  */
 public class DoctorCRUD {
     public Doctor create(Doctor doctor){
+        doctor.setID(0);
         String createDoctorSQL = String.format(
-                "INSERT INTO doctor(Name, Surname, Specialization, Category, Cabinet, FK_Policlinic) " +
+                "INSERT INTO `" + ConnectionCreator.getBdName() + "`.`doctor`(Name, Surname, Specialization, Category, Cabinet, FK_Policlinic) " +
                         "values('%s','%s','%s','%s','%d','%d');",
                 doctor.getName(),
                 doctor.getSurname(),
@@ -40,7 +41,7 @@ public class DoctorCRUD {
 
     public Doctor read(int id){
         Doctor doctorResult = null;
-        String readDoctorSQL = "SELECT * FROM doctor where ID=" + id;
+        String readDoctorSQL = "SELECT * FROM `" + ConnectionCreator.getBdName() + "`.`doctor` where ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement())
         {
@@ -64,7 +65,7 @@ public class DoctorCRUD {
     public Doctor update(Doctor doctor){
         Doctor doctorResult = null;
         String updateDoctorSQL = String.format(
-                "UPDATE doctor SET Name = '%s', " +
+                "UPDATE `" + ConnectionCreator.getBdName() + "`.`doctor` SET Name = '%s', " +
                         "Surname = '%s', " +
                         "Specialization = '%s', " +
                         "Category = '%s', " +
@@ -93,7 +94,7 @@ public class DoctorCRUD {
 
     public boolean delete(Doctor doctor){
         boolean result = false;
-        String deleteDoctorSQL = String.format("DELETE FROM doctor WHERE doctor.ID = %d", doctor.getID());
+        String deleteDoctorSQL = String.format("DELETE FROM `" + ConnectionCreator.getBdName() + "`.`doctor` WHERE doctor.ID = %d", doctor.getID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(deleteDoctorSQL) == 1;

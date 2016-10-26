@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD03_02;
+package by.it.aborisenok.JD03_03.connection;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import java.util.ResourceBundle;
 
 /**
@@ -14,7 +13,7 @@ import java.util.ResourceBundle;
  */
 public class ConnectionCreator {
 
-    private static String bdName;
+    private static String bdName = "borisenok";
 
     static {
         Driver driver = null;
@@ -30,7 +29,7 @@ public class ConnectionCreator {
     private static volatile Connection connection = null;
 
     public static Connection getConnection() throws SQLException {
-        ResourceBundle resource = ResourceBundle.getBundle("by.it.aborisenok.JD03_02.config");
+        ResourceBundle resource = ResourceBundle.getBundle("by.it.aborisenok.JD03_03.connection.config");
         String url = resource.getString("db.url");
         String user = resource.getString("db.user");
         String password = resource.getString("db.password");
