@@ -2,11 +2,10 @@ package by.it.akhmelev.project.java;
 
 import by.it.akhmelev.project.java.beans.User;
 import by.it.akhmelev.project.java.dao.DAO;
-import by.it.akhmelev.project.java.dao.UserDAO;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CommandSignUp implements ActionCommand {
+class CommandSignUp implements ActionCommand {
 
 
     @Override

@@ -2,8 +2,8 @@ package by.it.akhmelev.project.java;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ActionFactory {
-    public ActionCommand defineCommand(HttpServletRequest request) {
+class ActionFactory {
+    ActionCommand defineCommand(HttpServletRequest request) {
         ActionCommand current = new CommandError();
         // извлечение имени команды из запроса ?command=action_name
         String action = request.getParameter("command");
