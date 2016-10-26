@@ -1,64 +1,75 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!DOCTYPE Persons [
-        <!ELEMENT Persons (Person)+>
-        <!ELEMENT Person (Email, Nickname, Password, Ads)>
-        <!ELEMENT Email (#PCDATA)>
-        <!ELEMENT Nickname (#PCDATA)>
+<!DOCTYPE Users [
+        <!ELEMENT Users (User)+>
+        <!ELEMENT User (Surname, Name, Login, Password, Account)>
+        <!ELEMENT Surname (#PCDATA)>
+        <!ELEMENT Name (#PCDATA)>
+        <!ELEMENT Login (#PCDATA)>
         <!ELEMENT Password (#PCDATA)>
-        <!ELEMENT Ads (Ad)+>
-        <!ELEMENT Ad (Description, Addres, Flat, Flats, Price, Area)>
-        <!ELEMENT Description (#PCDATA)>
-        <!ELEMENT Addres (#PCDATA)>
-        <!ELEMENT Flat (#PCDATA)>
-        <!ELEMENT Flats (#PCDATA)>
-        <!ELEMENT Price (#PCDATA)>
-        <!ELEMENT Area (#PCDATA)>
+        <!ELEMENT Account (Balance)>
+        <!ELEMENT Balance (#PCDATA)>
         ]>
-<Persons>
-    <Person>
-        <Email>
-            privet@mail.ru
-        </Email>
-        <Nickname>
-            Dorohov
-        </Nickname>
+<Users>
+
+    <User>
+
+        <Surname>
+            Ivanov
+        </Surname>
+
+        <Name>
+            Ivan
+        </Name>
+
+        <Login>
+            Ivan
+        </Login>
+
         <Password>
-            qwerty
+            Ivan1
         </Password>
-        <Ads>
-            <Ad>
-                <Description>
-                    квартира
-                </Description>
-                <Addres>
-                    Минск, ул. Гикало, 12
-                </Addres>
-                <Flat>4</Flat>
-                <Flats>5</Flats>
-                <Price>50000</Price>
-                <Area>50</Area>
-            </Ad>
-            <Ad>
-                <Description>
-                    квартира
-                </Description>
-                <Addres>
-                    Минск, ул. Платонова, 12
-                </Addres>
-                <Flat>4</Flat>
-                <Flats>5</Flats>
-                <Price>55000</Price>
-                <Area>50</Area>
-            </Ad>
 
-        </Ads>
+        <Account>
+
+            <Balance>
+                1000
+            </Balance>
 
 
+        </Account>
 
 
-    </Person>
+    </User>
+
+    <User>
+
+        <Surname>
+            Petrov
+        </Surname>
+
+        <Name>
+            Petya
+        </Name>
+
+        <Login>
+            Petya
+        </Login>
+
+        <Password>
+            Petya1
+        </Password>
+
+        <Account>
+
+            <Balance>
+                2000
+            </Balance>
 
 
+        </Account>
 
 
-</Persons>
+    </User>
+
+
+</Users>

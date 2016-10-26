@@ -18,9 +18,9 @@ public class CountAndPrintUsers {
             //получаем пользователей. Если неизвестно число полей, то нужно получить метаданные
             ResultSet resultSet = statement.executeQuery("SELECT * FROM users INNER JOIN role ON users.FK_Role=role.idRole");
             while (resultSet.next()) {
-                ResultSetMetaData resultSetMetaData=resultSet.getMetaData();
-                int columnCount=resultSetMetaData.getColumnCount();
-                for (int i = 1; i < columnCount+1; i++) {
+                ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+                int columnCount = resultSetMetaData.getColumnCount();
+                for (int i = 1; i < columnCount + 1; i++) {
                     System.out.print(
                             resultSetMetaData.getColumnLabel(i) + "=" +
                                     resultSet.getString(i) + "\t"

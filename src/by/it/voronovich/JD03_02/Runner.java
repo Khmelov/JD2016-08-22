@@ -69,14 +69,14 @@ public class Runner {
         try {
             //создаем товар
             cg = cgCRUD.create(cg);
-            //читаем данные пользователя
+            //читаем данные товара
             cg = cgCRUD.read(cg.getIdCatalog());
             System.out.println(cg);
-            //обновляем данные пользователя
+            //обновляем данные товара
             cg.setBrand("Horizont");
             cg = cgCRUD.update(cg);
             System.out.println(cg);
-            //удаляем пользователя
+            //удаляем товара
             if (cgCRUD.delete(cg))
                 System.out.println("Удален №"+cg.getIdCatalog());
         } catch (SQLException e) {
@@ -92,16 +92,15 @@ public class Runner {
             //читаем заказ
             order = orderCRUD.read(order.getIdShoppingCart());
             System.out.println(order);
-            //обновляем данные пользователя
+            //обновляем данные заказа
             order.setFK_Catalog(1);
             order = orderCRUD.update(order);
             System.out.println(order);
-            //удаляем пользователя
+            //удаляем заказ
             if (orderCRUD.delete(order))
                 System.out.println("Удален №"+order.getIdShoppingCart());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println("");
     }
 }

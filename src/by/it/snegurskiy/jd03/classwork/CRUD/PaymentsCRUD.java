@@ -1,7 +1,7 @@
 package by.it.snegurskiy.jd03.classwork.CRUD;
 
 import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
-import by.it.snegurskiy.jd03.classwork.Payments;
+import by.it.snegurskiy.jd03.classwork.Bean.Payments;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -13,9 +13,9 @@ public class PaymentsCRUD {
     public Payments create(Payments payment) throws SQLException {
         payment.setID(0);
         //формирование строки createUserSQL по данным bean user
-        String createPaymentsSQL = String.format(Locale.ENGLISH,
-                "insert into payment(Data, Type, Sum, Source, FK_account) values(%d,'%s',%d,%d,%d);",
-                payment.getData(),payment.getType(),payment.getSum(), payment.getSource(), payment.getFK_account()
+        String createPaymentSQL = String.format(Locale.ENGLISH,
+                "insert into payments (Data, Type, Amount, Source, FK_account) values(%tF,'%s',%d,%d,%d);",
+                payment.getData(),payment.getType(),payment.getAmount(), payment.getSource(), payment.getFK_account()
         );
         try (
                 //создаем соединение и объект для запросов к базе
@@ -25,7 +25,7 @@ public class PaymentsCRUD {
         ) {
             //выполняем добавление в базу, должна быть добавлена одна запись. Проверим это.
             //create(insert) update delete - это executeUpdate, а select это executeQuery
-            if (statement.executeUpdate(createPaymentsSQL) == 1)
+            if (statement.executeUpdate(createPaymentSQL) == 1)
             {
                 //если все добавлено то узнаем последний ID
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
@@ -50,9 +50,9 @@ public class PaymentsCRUD {
             if (resultSet.next()) {
                 paymentResult = new Payments(
                         resultSet.getInt("ID"),
-                        resultSet.getInt("Data"),
+                        resultSet.getTimestamp("Data"),
                         resultSet.getString("Type"),
-                        resultSet.getDouble("Sum"),
+                        resultSet.getInt("Amount"),
                         resultSet.getInt("Source"),
                         resultSet.getInt("FK_account"));
             }
@@ -62,22 +62,22 @@ public class PaymentsCRUD {
         return paymentResult;
     }
 
-    public Payments update(Payments payment) throws SQLException {
-        Payments paymentResult = null;
+    public Payments update(Payments payments) throws SQLException {
+        Payments paymentsResult = null;
         String updatePaymentsSQL = String.format(
-                "UPDATE payments SET Data = %d, Type = '%s',Sum = %d, Source = %d, FK_account=%d WHERE payments.ID = %d",
-                payment.getData(),payment.getType(),payment.getSum(), payment.getSource(), payment.getFK_account(), payment.getID()
+                "UPDATE payments SET Data = '%tF', Type = '%s', Amount = %d, Source = %d, FK_account=%d WHERE payments.ID = %d",
+                payments.getData(),payments.getType(),payments.getAmount(), payments.getSource(), payments.getFK_account(), payments.getID()
         );
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();
         ) {
             if (statement.executeUpdate(updatePaymentsSQL) == 1)
-                paymentResult = payment;
+                paymentsResult = payments;
         } catch (SQLException e) {
             throw e;
         }
-        return paymentResult;
+        return paymentsResult;
     }
 
     public boolean delete(Payments payment) throws SQLException {

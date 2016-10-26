@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Users SYSTEM "C:\Users\Lenovo\IdeaProjects\JD2016-08-22-v2\src\by\it\snegurskiy\jd02_07\user.dtd">
+
+<Users>
+
+    <User login="Ivan">
+
+        <Surname>
+            Ivanov
+        </Surname>
+
+        <Name>
+            Ivan
+        </Name>
+
+        <Login>
+            Ivan
+        </Login>
+
+        <Password>
+            Ivan1
+        </Password>
+
+        <Account>
+
+            <Balance>
+                1000
+            </Balance>
+
+
+        </Account>
+
+
+    </User>
+
+    <User login="Petya">
+
+        <Surname>
+            Petrov
+        </Surname>
+
+        <Name>
+            Petya
+        </Name>
+
+        <Login>
+            Petya
+        </Login>
+
+        <Password>
+            Petya1
+        </Password>
+
+        <Account>
+
+            <Balance>
+                2000
+            </Balance>
+
+
+        </Account>
+
+
+    </User>
+
+
+</Users>
