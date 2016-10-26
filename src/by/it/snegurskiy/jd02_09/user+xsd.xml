@@ -1,57 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Users xmlns="http://snegurskiy.it-academy.by/jd02_07/xml_class"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://snegurskiy.it-academy.by/jd02_07/user.xsd">
-
-        <User>
-            <Surname>
-                Ivanov
-            </Surname>
-            <Name>
-                Ivan
-            </Name>
-            <Login>
-                Ivan
-            </Login>
-            <Password>
-                Ivan1
-            </Password>
-            <Account>
-
-                    <Balance>
-                        1000
-                    </Balance>
-
-
-            </Account>
-
-
-        </User>
-
-    <User>
-        <Surname>
-            Petrov
-        </Surname>
-        <Name>
-            Petya
-        </Name>
-        <Login>
-            Petya
-        </Login>
-        <Password>
-            Petya1
-        </Password>
-        <Account>
-
-            <Balance>
-                2000
-            </Balance>
-
-
-        </Account>
-
-
-    </User>
-
-
-    </Users>
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<users>
+        <user login="Ivan">
+            <surname>Ivanov</surname>
+            <name>Ivan</name>
+            <login>Ivan</login>
+            <password>Ivan1</password>
+            <account>
+                    <balance>1000</balance>
+            </account>
+        </user>
+        <user login="Petya">
+        <surname>Petrov</surname>
+        <name>Petya</name>
+        <login>Petya</login>
+        <password>Petya1</password>
+        <account>
+            <balance>2000</balance>
+        </account>
+        </user>
+</users>
