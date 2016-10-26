@@ -12,10 +12,11 @@ public abstract class AbstractDAO{
         int result = -1;
         lastSQL="executeUpdate:"+sql;
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()) {
-            result = statement.executeUpdate(sql);
+            Statement statement = connection.createStatement()) {
+            result = statement.executeUpdate(sql,Statement.RETURN_GENERATED_KEYS);
+            //если это была вставка вернем ключ, а иначе вернем число записей
             if (sql.trim().toUpperCase().startsWith("INSERT")) {
-                ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
+                ResultSet resultSet = statement.getGeneratedKeys();
                 if (resultSet.next()) result = resultSet.getInt(1);
             }
         } catch (Exception e) {
