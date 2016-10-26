@@ -1,4 +1,4 @@
-package by.it.aborisenok.JD03_02.crud;
+package by.it.aborisenok.JD03_03.beans;
 
 /**
  * Created by Лёша on 21.10.2016.

@@ -12,8 +12,9 @@ import java.sql.Statement;
  */
 public class PoliclinicCRUD {
     public Policlinic create(Policlinic policlinic){
+        policlinic.setID(0);
         String createPoliclinicSQL = String.format(
-                "INSERT INTO policlinic(Name, City, Street, House) " +
+                "INSERT INTO `" + ConnectionCreator.getBdName() + "`.`policlinic`(Name, City, Street, House) " +
                         "values('%s','%s','%s','%d');",
                 policlinic.getName(),
                 policlinic.getCity(),
@@ -38,7 +39,7 @@ public class PoliclinicCRUD {
 
     public Policlinic read(int id){
         Policlinic policlinicResult = null;
-        String readPoliclinicSQL = "SELECT * FROM policlinic where ID=" + id;
+        String readPoliclinicSQL = "SELECT * FROM `" + ConnectionCreator.getBdName() + "`.`policlinic` where ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement())
         {
@@ -61,7 +62,8 @@ public class PoliclinicCRUD {
     public Policlinic update(Policlinic policlinic){
         Policlinic policlinicResult = null;
         String updateDoctorSQL = String.format(
-                "UPDATE policlinic SET Name = '%s', " +
+                "UPDATE `" + ConnectionCreator.getBdName() + "`.`policlinic` " +
+                        "SET Name = '%s', " +
                         "City = '%s', " +
                         "Street = '%s', " +
                         "House = '%d'" +
@@ -86,7 +88,7 @@ public class PoliclinicCRUD {
 
     public boolean delete(Policlinic policlinic){
         boolean result = false;
-        String deletePoliclinicSQL = String.format("DELETE FROM policlinic WHERE policlinic.ID = %d", policlinic.getID());
+        String deletePoliclinicSQL = String.format("DELETE FROM `" + ConnectionCreator.getBdName() + "`.`policlinic` WHERE policlinic.ID = %d", policlinic.getID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(deletePoliclinicSQL) == 1;

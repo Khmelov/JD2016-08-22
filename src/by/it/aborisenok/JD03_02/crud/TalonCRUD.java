@@ -12,11 +12,12 @@ import java.sql.Statement;
  */
 public class TalonCRUD {
     public Talon create(Talon talon){
+        talon.setID(0);
         String createTalonSQL = String.format(
-                "INSERT INTO talon(FK_Policlinic, FK_Pacient, FK_Doctor, FK_VisitDate) " +
+                "INSERT INTO `" + ConnectionCreator.getBdName() + "`.`talon` (FK_Policlinic, FK_User, FK_Doctor, FK_VisitDate) " +
                         "values('%d','%d','%d','%d');",
                 talon.getFK_Policlinic(),
-                talon.getFK_Pacient(),
+                talon.getFK_User(),
                 talon.getFK_Doctor(),
                 talon.getFK_VisitDate());
         try {
@@ -38,7 +39,7 @@ public class TalonCRUD {
 
     public Talon read(int id){
         Talon talonResult = null;
-        String readTalonSQL = "SELECT * FROM talon where ID=" + id;
+        String readTalonSQL = "SELECT * FROM `" + ConnectionCreator.getBdName() + "`.`talon` where ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement())
         {
@@ -46,7 +47,7 @@ public class TalonCRUD {
             if (resultSet.next()) {
                 talonResult = new Talon(resultSet.getInt("ID"),
                         resultSet.getInt("FK_Policlinic"),
-                        resultSet.getInt("FK_Pacient"),
+                        resultSet.getInt("FK_User"),
                         resultSet.getInt("FK_Doctor"),
                         resultSet.getInt("FK_VisitDate")
                 );
@@ -61,13 +62,13 @@ public class TalonCRUD {
     public Talon update(Talon talon){
         Talon talonResult = null;
         String updateTalonSQL = String.format(
-                "UPDATE talon SET FK_Policlinic = '%d', " +
-                        "FK_Pacient = '%d', " +
+                "UPDATE `" + ConnectionCreator.getBdName() + "`.`talon` SET FK_Policlinic = '%d', " +
+                        "FK_User = '%d', " +
                         "FK_Doctor = '%d', " +
                         "FK_VisitDate = '%d'" +
                         " WHERE talon.ID = %d",
                 talon.getFK_Policlinic(),
-                talon.getFK_Pacient(),
+                talon.getFK_User(),
                 talon.getFK_VisitDate(),
                 talon.getFK_VisitDate(),
                 talon.getID()
@@ -86,7 +87,7 @@ public class TalonCRUD {
 
     public boolean delete(Talon talon){
         boolean result = false;
-        String deleteTalonSQL = String.format("DELETE FROM talon WHERE talon.ID = %d", talon.getID());
+        String deleteTalonSQL = String.format("DELETE FROM `" + ConnectionCreator.getBdName() + "`.`talon` WHERE talon.ID = %d", talon.getID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(deleteTalonSQL) == 1;

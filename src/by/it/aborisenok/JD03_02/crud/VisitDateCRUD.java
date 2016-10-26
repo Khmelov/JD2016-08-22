@@ -15,8 +15,9 @@ import java.sql.Statement;
  */
 public class VisitDateCRUD {
     public VisitDate create(VisitDate date){
+        date.setID(0);
         String createDateSQL = String.format(
-                "INSERT INTO visitdate(Time,FK_Doctor) values('"+ date.getVisitTime() +"','%d');",
+                "INSERT INTO `" + ConnectionCreator.getBdName() + "`.`visitdate` (Time,FK_Doctor) values('"+ date.getVisitTime() +"','%d');",
                  date.getFK_Doctor());
         try {
 
@@ -37,7 +38,7 @@ public class VisitDateCRUD {
 
     public VisitDate read(int id){
         VisitDate dateResult = null;
-        String readDateSQL = "SELECT * FROM visitdate where ID=" + id;
+        String readDateSQL = "SELECT * FROM `" + ConnectionCreator.getBdName() + "`.`visitdate` where ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement())
         {
@@ -56,7 +57,7 @@ public class VisitDateCRUD {
     public VisitDate update(VisitDate date){
         VisitDate dateResult = null;
         String updateDateSQL = String.format(
-                "UPDATE visitdate SET Time = '"+ date.getVisitTime() +"', FK_Doctor='%d' WHERE visitdate.ID = %d",
+                "UPDATE `" + ConnectionCreator.getBdName() + "`.`visitdate` SET Time = '"+ date.getVisitTime() +"', FK_Doctor='%d' WHERE visitdate.ID = %d",
                 date.getFK_Doctor(), date.getID()
         );
         try (
@@ -73,7 +74,7 @@ public class VisitDateCRUD {
 
     public boolean delete(VisitDate date){
         boolean result = false;
-        String deleteDateSQL = String.format("DELETE FROM visitdate WHERE visitdate.ID = %d", date.getID());
+        String deleteDateSQL = String.format("DELETE FROM `" + ConnectionCreator.getBdName() + "`.`visitdate` WHERE visitdate.ID = %d", date.getID());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             result = statement.executeUpdate(deleteDateSQL) == 1;
