@@ -76,102 +76,13 @@
         <delete dir="${build.dir}"/>
     </target>
 
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
-    <!-- поиск tomcat т.е. ставим флаг has.tomcat -->
-    <target name="07if-has-tomcat" depends="06finalize">
-        <property environment="env"/>
-        <condition property="has.tomcat">
-            <available file="${tomcat.home.dir}"/>
-        </condition>
-    </target>
-
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
-    <!-- проверка, есть ли старый вариант приложения в tomcat
-    и если есть то приготовим среду для выполнения команд томката
-    из ant -->
-    <target name="08check-if-deployed" depends="07if-has-tomcat" if="has.tomcat">
-        <condition property="is.webapp.olddeployed">
-            <http url="${tomcat.base.url}/${web.root}" />
-        </condition>
-
-        <!--<condition property="is.webapp.ok.deployed">-->
-        <!--<http url="${tomcat.base.url}/${web.root}" />-->
-        <!--</condition>-->
-
-        <path id="tomcat.classpath">
-            <!-- We need the Catalina jars for Tomcat -->
-            <fileset dir="${tomcat.home.dir}/lib">
-                <include name="catalina-ant.jar"/>
-                <include name="tomcat-coyote.jar"/>
-                <include name="tomcat-util.jar"/>
-            </fileset>
-            <fileset dir="${tomcat.home.dir}/bin">
-                <include name="tomcat-juli.jar"/>
-            </fileset>
-        </path>
-
-        <!-- Configure the custom Ant tasks for the Manager application -->
-        <taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask" classpathref="tomcat.classpath"/>
-        <taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask" classpathref="tomcat.classpath"/>
-        <!-- другие возможные команды для tomcat, они закомментированы, т.к. не требуются
-        <taskdef name="list"      classname="org.apache.catalina.ant.ListTask" classpathref="tomcat.classpath"/>
-        <taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask" classpathref="tomcat.classpath"/>
-        <taskdef name="findleaks" classname="org.apache.catalina.ant.FindLeaksTask" classpathref="tomcat.classpath"/>
-        <taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="tomcat.classpath"/>
-        <taskdef name="start"     classname="org.apache.catalina.ant.StartTask" classpathref="tomcat.classpath"/>
-        <taskdef name="stop"      classname="org.apache.catalina.ant.StopTask" classpathref="tomcat.classpath"/>
-        -->
-    </target>
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
-    <!-- дальнейшие корманды выполняются томкатом.
-    Удаляем старое приложение. Аналог кнопки undeploy в
-    http://localhost:28080/manager/html/list
-    -->
-    <target name="09undeploy" depends="07if-has-tomcat, 08check-if-deployed" if="is.webapp.olddeployed">
-        <!-- TOMCAT undeploy-->
-        <echo>url=${tomcat.manager.url} login=${tomcat.user.name} password="${tomcat.user.password}" path="/${web.root}"</echo>
-        <undeploy
-                url="${tomcat.manager.url}"
-                username="${tomcat.user.name}"
-                password="${tomcat.user.password}"
-                path="/${web.root}"
-        />
-    </target>
-
-    <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
-    <!-- аварийный вариант удаления. Нужен если ant не завершается нормально
-    Вручную удаляем старое приложение. Аналог кнопки undeploy в
-    -->
-    <target name="10-Manual-Undeploy" depends="08check-if-deployed">
-        <!-- TOMCAT undeploy-->
-        <echo>Back bad deploy</echo>
-        <undeploy
-                url="${tomcat.manager.url}"
-                username="${tomcat.user.name}"
-                password="${tomcat.user.password}"
-                path="/${web.root}"
-        />
-    </target>
-
-
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
     <!-- ставим новое приложение. Аналог кнопки deploy в
     http://localhost:28080/manager/html/list -->
-    <target name="10deploy" depends="09undeploy" if="has.tomcat">
-        <echo>Deploy ${war.fullpath}</echo>
-        <deploy
-                url="${tomcat.manager.url}"
-                username="${tomcat.user.name}"
-                password="${tomcat.user.password}"
-                path="/${web.root}"
-                war="${war.fullpath}"
-        />
-        <condition property="is.webapp.ok.deployed">
-            <http url="${tomcat.base.url}/${web.root}" />
-        </condition>
+    <target name="DeployToTomcat" depends="06finalize">
+        <copy todir="${tomcat.home.dir}/webapps">
+            <fileset file="${dist.dir}/${web.root}.war"/>
+        </copy>
     </target>
 
 
