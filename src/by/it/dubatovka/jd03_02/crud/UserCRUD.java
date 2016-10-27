@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class UserCRUD {
 
     public User create(User user) throws SQLException {
-        user.setIdUser(0);
+        user.setID(0);
         String createUserSQL = String.format("insert into users(login,password,email,fk_role) values('%s','%s','%s','%d');",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role());
         try (Connection connection = ConnectionCreator.getConnection();
@@ -17,7 +17,7 @@ public class UserCRUD {
             if (statement.executeUpdate(createUserSQL) == 1) {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() FROM users;");
                 if (resultSet.next())
-                    user.setIdUser(resultSet.getInt(1));
+                    user.setID(resultSet.getInt(1));
             }
         } catch (SQLException e) {
             throw e;
@@ -27,14 +27,14 @@ public class UserCRUD {
 
     public User read(int id) throws SQLException {
         User userResult = null;
-        String readUserSQL = "SELECT * FROM users where users.idUser=" + id;
+        String readUserSQL = "SELECT * FROM users where users.ID=" + id;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {
             final ResultSet resultSet = statement.executeQuery(readUserSQL);
             if (resultSet.next()) {
                 userResult = new User(
-                        resultSet.getInt("idUser"),
+                        resultSet.getInt("ID"),
                         resultSet.getString("login"),
                         resultSet.getString("password"),
                         resultSet.getString("email"),
@@ -48,8 +48,8 @@ public class UserCRUD {
 
     public User update(User user) throws SQLException {
         User userResult = null;
-        String updateUserSQL = String.format("UPDATE users SET login = '%s',password ='%s', email='%s', fk_role='%d' WHERE users.idUser='%d'",
-                user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role(), user.getIdUser());
+        String updateUserSQL = String.format("UPDATE users SET login = '%s',password ='%s', email='%s', fk_role='%d' WHERE users.ID='%d'",
+                user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role(), user.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {
@@ -62,7 +62,7 @@ public class UserCRUD {
     }
 
     public boolean delete(User user) throws SQLException {
-        String deleteUserSQL = String.format("DELETE FROM users Where users.idUser = '%d'", user.getIdUser());
+        String deleteUserSQL = String.format("DELETE FROM users Where users.ID = '%d'", user.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {

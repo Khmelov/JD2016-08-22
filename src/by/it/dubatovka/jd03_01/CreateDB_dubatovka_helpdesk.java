@@ -14,82 +14,82 @@ public class CreateDB_dubatovka_helpdesk {
     private static String dropUsers = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`users`");
 
     private static String createUsers = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`users` (" +
-            "`idUser` INT NOT NULL AUTO_INCREMENT,  `login` VARCHAR(45) NOT NULL,  `password` VARCHAR(20) NOT NULL," +
+            "`ID` INT NOT NULL AUTO_INCREMENT,  `login` VARCHAR(45) NOT NULL,  `password` VARCHAR(20) NOT NULL," +
             "  `email` VARCHAR(45) NULL," +
             "  `fk_role` INT NOT NULL," +
-            "  PRIMARY KEY (`idUser`)," +
+            "  PRIMARY KEY (`ID`)," +
             "  INDEX `role_idx` (`fk_role` ASC)," +
-            "  UNIQUE INDEX `idUser_UNIQUE` (`idUser` ASC)," +
+            "  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)," +
             "  UNIQUE INDEX `login_UNIQUE` (`login` ASC)," +
             "  UNIQUE INDEX `email_UNIQUE` (`email` ASC)," +
             "  CONSTRAINT `fk_role`" +
             "    FOREIGN KEY (`fk_role`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`role` (`idRole`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`role` (`ID`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION)" +
             "ENGINE = InnoDB;");
 
     private static String createRole = String.format("CREATE TABLE role ("
-            + "idRole INT NOT NULL AUTO_INCREMENT,"
+            + "ID INT NOT NULL AUTO_INCREMENT,"
             + " roleName VARCHAR(20) NOT NULL,"
-            + "PRIMARY KEY (idRole));");
+            + "PRIMARY KEY (ID));");
 
     private static String createObjects = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`objects` (" +
-            "  `idObject` INT NOT NULL AUTO_INCREMENT," +
+            "  `ID` INT NOT NULL AUTO_INCREMENT," +
             "  `zia` VARCHAR(45) NOT NULL," +
-            "  PRIMARY KEY (`idObject`)," +
-            "  UNIQUE INDEX `idObject_UNIQUE` (`idObject` ASC)," +
+            "  PRIMARY KEY (`ID`)," +
+            "  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)," +
             "  UNIQUE INDEX `zia_UNIQUE` (`zia` ASC))" +
             "ENGINE = InnoDB;");
 
     private static String createStatus = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`status` (" +
-            "  `idStatus` INT NOT NULL AUTO_INCREMENT," +
+            "  `ID` INT NOT NULL AUTO_INCREMENT," +
             "  `statusName` VARCHAR(20) NOT NULL," +
-            "  PRIMARY KEY (`idStatus`)," +
-            "  UNIQUE INDEX `idStatus_UNIQUE` (`idStatus` ASC)," +
+            "  PRIMARY KEY (`ID`)," +
+            "  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)," +
             "  UNIQUE INDEX `statuscol_UNIQUE` (`statusName` ASC))" +
             "ENGINE = InnoDB;");
 
     private static String createPriority = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`priority` (" +
-            "  `idPriority` INT NOT NULL AUTO_INCREMENT," +
+            "  `ID` INT NOT NULL AUTO_INCREMENT," +
             "  `priorityName` VARCHAR(10) NOT NULL," +
-            "  PRIMARY KEY (`idPriority`)," +
-            "  UNIQUE INDEX `idPriority_UNIQUE` (`idPriority` ASC)," +
+            "  PRIMARY KEY (`ID`)," +
+            "  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)," +
             "  UNIQUE INDEX `priorityName_UNIQUE` (`priorityName` ASC))" +
             "ENGINE = InnoDB;");
 
     private static String createAd = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`ad` (" +
-            "  `idAd` INT NOT NULL AUTO_INCREMENT," +
+            "  `ID` INT NOT NULL AUTO_INCREMENT," +
             "  `subject` VARCHAR(45) NOT NULL," +
             "  `description` VARCHAR(300) NULL," +
             "  `fk_zia` INT NOT NULL," +
             "  `fk_user` INT NOT NULL," +
             "  `fk_status` INT NOT NULL," +
             "  `fk_priority` INT NOT NULL," +
-            "  PRIMARY KEY (`idAd`)," +
+            "  PRIMARY KEY (`ID`)," +
             "  INDEX `fk_user_idx` (`fk_user` ASC)," +
             "  INDEX `fk_zia_idx` (`fk_zia` ASC)," +
             "  INDEX `fk_status_idx` (`fk_status` ASC)," +
-            "  UNIQUE INDEX `idAd_UNIQUE` (`idAd` ASC)," +
+            "  UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)," +
             "  INDEX `fk_priority_idx` (`fk_priority` ASC)," +
             "  CONSTRAINT `fk_user`" +
             "    FOREIGN KEY (`fk_user`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`users` (`idUser`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`users` (`ID`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION," +
             "  CONSTRAINT `fk_zia`" +
             "    FOREIGN KEY (`fk_zia`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`objects` (`idObject`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`objects` (`ID`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION," +
             "  CONSTRAINT `fk_status`" +
             "    FOREIGN KEY (`fk_status`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`status` (`idStatus`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`status` (`ID`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION," +
             "  CONSTRAINT `fk_priority`" +
             "    FOREIGN KEY (`fk_priority`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`priority` (`idPriority`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`priority` (`ID`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION)" +
             "ENGINE = InnoDB;");

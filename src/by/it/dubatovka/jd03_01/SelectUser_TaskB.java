@@ -7,7 +7,7 @@ public class SelectUser_TaskB {
         try {
             Connection connection = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS INNER JOIN role ON users.fk_role=role.idRole");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS INNER JOIN role ON users.fk_role=role.ID");
             while (resultSet.next()) {
                 //  System.out.println(resultSet.getString("idUser") + ". " + resultSet.getString("login") + ", role: " + resultSet.getString("fk_role"));
                 ResultSetMetaData resultSetMetaData = resultSet.getMetaData();

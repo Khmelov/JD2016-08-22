@@ -16,7 +16,7 @@ public class TaskA {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM USERS WHERE users.login='dubatovka'");
             while (resultSet.next()) {
-                 System.out.println(resultSet.getString("idUser") + ". Login: " + resultSet.getString("login") + ", role: " + resultSet.getString("fk_role"));
+                 System.out.println(resultSet.getString("ID") + ". Login: " + resultSet.getString("login") + ", role: " + resultSet.getString("fk_role"));
 
                 System.out.println();
             }
@@ -28,12 +28,12 @@ public class TaskA {
         UserCRUD userCRUD = new UserCRUD();
         userCRUD.create(user);
         System.out.println("Пользователь добавлен: " + '\n' +
-                userCRUD.read(user.getIdUser())
+                userCRUD.read(user.getID())
         );
         user.setPassword("testUpdatePass");
         User newUser = userCRUD.update(user);
         System.out.println("Пользователь обновлен: " + '\n' +
-                userCRUD.read(newUser.getIdUser())
+                userCRUD.read(newUser.getID())
         );
         System.out.println("Пользователь удален: " + '\n' +
                 userCRUD.delete(user));
