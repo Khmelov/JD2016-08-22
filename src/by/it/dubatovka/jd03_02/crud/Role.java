@@ -29,6 +29,10 @@ public class Role {
         return idRole;
     }
 
+    public void setIdRole(int idRole) {
+        this.idRole = idRole;
+    }
+
     @Override
     public String toString() {
         return "Role{" +

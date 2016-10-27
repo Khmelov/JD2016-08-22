@@ -3,37 +3,41 @@ package by.it.dubatovka.jd03_02.crud;
 public class Status {
 
     private int idStatus;
-    private String status;
+    private String statusName;
 
     public Status() {
     }
 
-    public Status(int idStatus, String status) {
+    public Status(int idStatus, String statusName) {
         this.idStatus = idStatus;
-        this.status = status;
+        this.statusName = statusName;
     }
 
-    public Status(String status) {
-        this.status = status;
+    public Status(String statusName) {
+        this.statusName = statusName;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatusName() {
+        return statusName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 
     public int getIdStatus() {
         return idStatus;
     }
 
+    public void setIdStatus(int idStatus) {
+        this.idStatus = idStatus;
+    }
+
     @Override
     public String toString() {
         return "Status{" +
                 "idStatus=" + idStatus +
-                ", status='" + status + '\'' +
+                ", statusName='" + statusName + '\'' +
                 '}';
     }
 

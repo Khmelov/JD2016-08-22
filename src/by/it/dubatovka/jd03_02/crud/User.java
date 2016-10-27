@@ -1,8 +1,5 @@
 package by.it.dubatovka.jd03_02.crud;
 
-import java.lang.*;
-import java.lang.Object;
-
 public class User {
     private int idUser;
     private String login;

@@ -28,6 +28,10 @@ public class Priority {
         return idPriority;
     }
 
+    public void setIdPriority(int idPriority) {
+        this.idPriority = idPriority;
+    }
+
     @Override
     public String toString() {
         return "Priority{" +
