@@ -16,10 +16,10 @@ public class FillTable {
         try (Connection connection = DriverManager.getConnection(CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB);) {
             Statement statement = connection.createStatement();
 
-            statement.executeUpdate("insert into object (zia)" + "values('Мнс:Притыцкого')");
-            statement.executeUpdate("insert into object (zia)" + "values('Мнс:Турист')");
-            statement.executeUpdate("insert into object (zia)" + "values('Грд:Клецкова')");
-            statement.executeUpdate("insert into object (zia)" + "values('Лид:Советская')");
+            statement.executeUpdate("insert into objects (zia)" + "values('Мнс:Притыцкого')");
+            statement.executeUpdate("insert into objects (zia)" + "values('Мнс:Турист')");
+            statement.executeUpdate("insert into objects (zia)" + "values('Грд:Клецкова')");
+            statement.executeUpdate("insert into objects (zia)" + "values('Лид:Советская')");
             System.out.println("Заполнение таблицы OBJECTS завершено");
 
             statement.executeUpdate("insert into role (roleName)" + "values('Manager')");
