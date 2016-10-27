@@ -95,7 +95,7 @@ public class Ad {
     @Override
     public String toString() {
         return "Ad{" +
-                "id=" + id +
+                "ID=" + id +
                 ", subject=" + subject + '\'' +
                 ", description=" + description + '\'' +
                 ", fk_zia=" + fk_zia +

@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class PriorityCRUD {
     public Priority create(Priority priority) throws SQLException {
-        priority.setIdPriority(0);
+        priority.setID(0);
         String createPrioritySQL = String.format("insert into priority(priorityName) values ('%s')", priority.getPriorityName());
 
         try (Connection connection = ConnectionCreator.getConnection();
@@ -15,7 +15,7 @@ public class PriorityCRUD {
             if (statement.executeUpdate(createPrioritySQL) == 1) {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 if (resultSet.next()) {
-                    priority.setIdPriority(resultSet.getInt(1));
+                    priority.setID(resultSet.getInt(1));
                 }
             }
         } catch (SQLException sqle) {
@@ -24,16 +24,16 @@ public class PriorityCRUD {
         return priority;
     }
 
-    public Priority read(int idPriority) throws SQLException {
+    public Priority read(int ID) throws SQLException {
         Priority priorityResult = null;
-        String readPrioritySQL = "SELECT * FROM priority WHERE priority.idPriority=" + idPriority;
+        String readPrioritySQL = "SELECT * FROM priority WHERE priority.ID=" + ID;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {
             final ResultSet resultSet = statement.executeQuery(readPrioritySQL);
             if (resultSet.next()) {
                 priorityResult = new Priority(
-                        resultSet.getInt("idPriority"),
+                        resultSet.getInt("ID"),
                         resultSet.getString("priorityName"));
             }
         } catch (SQLException e) {
@@ -44,8 +44,8 @@ public class PriorityCRUD {
 
     public Priority update(Priority priority) throws SQLException {
         Priority priorityResult = null;
-        String updatePrioritySQL = String.format("UPDATE priority SET priorityName = '%s' WHERE priority.idPriority='%d'",
-                priority.getPriorityName(), priority.getIdPriority());
+        String updatePrioritySQL = String.format("UPDATE priority SET priorityName = '%s' WHERE priority.ID='%d'",
+                priority.getPriorityName(), priority.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {
@@ -58,7 +58,7 @@ public class PriorityCRUD {
     }
 
     public boolean delete(Priority priority) throws SQLException {
-        String deletePrioritySQL = String.format("DELETE FROM priority Where priority.idPriority = '%d'", priority.getIdPriority());
+        String deletePrioritySQL = String.format("DELETE FROM priority Where priority.ID = '%d'", priority.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {

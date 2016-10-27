@@ -2,14 +2,14 @@ package by.it.dubatovka.jd03_02.crud;
 
 public class Status {
 
-    private int idStatus;
+    private int ID;
     private String statusName;
 
     public Status() {
     }
 
-    public Status(int idStatus, String statusName) {
-        this.idStatus = idStatus;
+    public Status(int ID, String statusName) {
+        this.ID = ID;
         this.statusName = statusName;
     }
 
@@ -25,18 +25,18 @@ public class Status {
         this.statusName = statusName;
     }
 
-    public int getIdStatus() {
-        return idStatus;
+    public int getID() {
+        return ID;
     }
 
-    public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     @Override
     public String toString() {
         return "Status{" +
-                "idStatus=" + idStatus +
+                "ID=" + ID +
                 ", statusName='" + statusName + '\'' +
                 '}';
     }

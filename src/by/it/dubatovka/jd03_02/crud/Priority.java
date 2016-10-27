@@ -1,14 +1,14 @@
 package by.it.dubatovka.jd03_02.crud;
 
 public class Priority {
-    private int idPriority;
+    private int ID;
     private String priorityName;
 
     public Priority() {
     }
 
-    public Priority(int idPriority, String priorityName) {
-        this.idPriority = idPriority;
+    public Priority(int ID, String priorityName) {
+        this.ID = ID;
         this.priorityName = priorityName;
     }
 
@@ -24,18 +24,18 @@ public class Priority {
         this.priorityName = priorityName;
     }
 
-    public int getIdPriority() {
-        return idPriority;
+    public int getID() {
+        return ID;
     }
 
-    public void setIdPriority(int idPriority) {
-        this.idPriority = idPriority;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     @Override
     public String toString() {
         return "Priority{" +
-                "idPriority=" + idPriority +
+                "ID=" + ID +
                 ", priorityName='" + priorityName + '\'' +
                 '}';
     }

@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class ObjectsCRUD {
     public Objects create(Objects objects) throws SQLException {
-        objects.setIdObject(0);
+        objects.setID(0);
         String createObjectsSQL = String.format("insert into objects(zia) values ('%s')", objects.getZia());
 
         try (Connection connection = ConnectionCreator.getConnection();
@@ -15,7 +15,7 @@ public class ObjectsCRUD {
             if (statement.executeUpdate(createObjectsSQL) == 1) {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 if (resultSet.next()) {
-                    objects.setIdObject(resultSet.getInt(1));
+                    objects.setID(resultSet.getInt(1));
                 }
             }
         } catch (SQLException sqle) {
@@ -24,16 +24,16 @@ public class ObjectsCRUD {
         return objects;
     }
 
-    public Objects read(int idObject) throws SQLException {
+    public Objects read(int ID) throws SQLException {
         Objects objectsResult = null;
-        String readObjectsSQL = "SELECT * FROM objects WHERE objects.idObject=" + idObject;
+        String readObjectsSQL = "SELECT * FROM objects WHERE objects.ID=" + ID;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {
             final ResultSet resultSet = statement.executeQuery(readObjectsSQL);
             if (resultSet.next()) {
                 objectsResult = new Objects(
-                        resultSet.getInt("idObject"),
+                        resultSet.getInt("ID"),
                         resultSet.getString("zia"));
             }
         } catch (SQLException e) {
@@ -44,8 +44,8 @@ public class ObjectsCRUD {
 
     public Objects update(Objects object) throws SQLException {
         Objects objectResult = null;
-        String updateObjectSQL = String.format("UPDATE objects SET zia = '%s' WHERE objects.idObject='%d'",
-                object.getZia(), object.getIdObject());
+        String updateObjectSQL = String.format("UPDATE objects SET zia = '%s' WHERE objects.ID='%d'",
+                object.getZia(), object.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {
@@ -58,7 +58,7 @@ public class ObjectsCRUD {
     }
 
     public boolean delete(Objects object) throws SQLException {
-        String deleteObjectSQL = String.format("DELETE FROM objects Where objects.idObject = '%d'", object.getIdObject());
+        String deleteObjectSQL = String.format("DELETE FROM objects Where objects.ID = '%d'", object.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {

@@ -1,18 +1,18 @@
 package by.it.dubatovka.jd03_02.crud;
 
 public class User {
-    private int idUser;
+    private int ID;
     private String login;
     private String password;
     private String email;
     private int fk_role;
 
-    public int getIdUser() {
-        return idUser;
+    public int getID() {
+        return ID;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getLogin() {
@@ -51,7 +51,7 @@ public class User {
     }
 
     public User(int ID, String login, String password, String email, int fk_role) {
-        this.idUser = ID;
+        this.ID = ID;
         this.login = login;
         this.password = password;
         this.email = email;
@@ -72,7 +72,7 @@ public class User {
 
         User user = (User) o;
 
-        if (idUser != user.idUser) return false;
+        if (ID != user.ID) return false;
         if (fk_role != user.fk_role) return false;
         if (!login.equals(user.login)) return false;
         if (!password.equals(user.password)) return false;
@@ -83,7 +83,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        int result = idUser;
+        int result = ID;
         result = 31 * result + login.hashCode();
         result = 31 * result + password.hashCode();
         result = 31 * result + email.hashCode();
@@ -94,7 +94,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "idUser=" + idUser +
+                "ID=" + ID +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +

@@ -8,7 +8,7 @@ import java.sql.Statement;
 
 public class StatusCRUD {
     public Status create(Status status) throws SQLException {
-        status.setIdStatus(0);
+        status.setID(0);
         String createStatusSQL = String.format("insert into status(statusName) values ('%s')", status.getStatusName());
 
         try (Connection connection = ConnectionCreator.getConnection();
@@ -16,7 +16,7 @@ public class StatusCRUD {
             if (statement.executeUpdate(createStatusSQL) == 1) {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 if (resultSet.next()) {
-                    status.setIdStatus(resultSet.getInt(1));
+                    status.setID(resultSet.getInt(1));
                 }
             }
         } catch (SQLException sqle) {
@@ -25,16 +25,16 @@ public class StatusCRUD {
         return status;
     }
 
-    public Status read(int idStatus) throws SQLException {
+    public Status read(int ID) throws SQLException {
         Status statusResult = null;
-        String readStatusSQL = "SELECT * FROM status WHERE status.idStatus=" + idStatus;
+        String readStatusSQL = "SELECT * FROM status WHERE status.ID=" + ID;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {
             final ResultSet resultSet = statement.executeQuery(readStatusSQL);
             if (resultSet.next()) {
                 statusResult = new Status(
-                        resultSet.getInt("idStatus"),
+                        resultSet.getInt("ID"),
                         resultSet.getString("statusName"));
             }
         } catch (SQLException e) {
@@ -45,8 +45,8 @@ public class StatusCRUD {
 
     public Status update(Status status) throws SQLException {
         Status statusResult = null;
-        String updateStatusSQL = String.format("UPDATE status SET statusName = '%s' WHERE status.idStatus='%d'",
-                status.getStatusName(), status.getIdStatus());
+        String updateStatusSQL = String.format("UPDATE status SET statusName = '%s' WHERE status.ID='%d'",
+                status.getStatusName(), status.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {
@@ -59,7 +59,7 @@ public class StatusCRUD {
     }
 
     public boolean delete(Status status) throws SQLException {
-        String deleteStatusSQL = String.format("DELETE FROM status Where status.idStatus = '%d'", status.getIdStatus());
+        String deleteStatusSQL = String.format("DELETE FROM status Where status.ID = '%d'", status.getID());
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement()) {

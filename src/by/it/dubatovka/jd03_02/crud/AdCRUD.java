@@ -46,12 +46,12 @@ public class AdCRUD {
 
     public Ad read(int id) throws SQLException {
         Ad adResult = null;
-        String readAdSQL = "SELECT * FROM ad where ad.idAd=" + id;
+        String readAdSQL = "SELECT * FROM ad where ad.ID=" + id;
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement();) {
             final ResultSet resultSet = statement.executeQuery(readAdSQL);
             if (resultSet.next()) {
-                adResult = new Ad(resultSet.getInt("idAd"),
+                adResult = new Ad(resultSet.getInt("ID"),
                         resultSet.getString("subject"),
                         resultSet.getString("description"),
                         resultSet.getInt("fk_zia"),
@@ -74,7 +74,7 @@ public class AdCRUD {
                         " fk_status = '%d'," +
                         " fk_user = '%d'," +
                         " fk_priority = 'd'" +
-                        " WHERE ad.idAd='%d'",
+                        " WHERE ad.ID='%d'",
                 ad.getSubject(),
                 ad.getDescription(),
                 ad.getFk_zia(),
@@ -94,7 +94,7 @@ public class AdCRUD {
     }
 
     public boolean delete(Ad ad) throws SQLException {
-        String deleteAdSQL = String.format("DELETE FROM ad WHERE ad.idAd='%d'", ad.getId());
+        String deleteAdSQL = String.format("DELETE FROM ad WHERE ad.ID='%d'", ad.getId());
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement();
         ) {
