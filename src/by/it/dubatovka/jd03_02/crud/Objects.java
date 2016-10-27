@@ -1,19 +1,19 @@
 package by.it.dubatovka.jd03_02.crud;
 
 
-public class Object {
+public class Objects {
     private int idObject;
     private String zia;
 
-    public Object() {
+    public Objects() {
     }
 
-    public Object(int idObject, String zia) {
+    public Objects(int idObject, String zia) {
         this.idObject = idObject;
         this.zia = zia;
     }
 
-    public Object(String zia) {
+    public Objects(String zia) {
         this.zia = zia;
     }
 
@@ -29,9 +29,13 @@ public class Object {
         return idObject;
     }
 
+    public void setIdObject(int idObject) {
+        this.idObject = idObject;
+    }
+
     @Override
     public String toString() {
-        return "Object{" +
+        return "Objects{" +
                 "idObject=" + idObject +
                 ", zia='" + zia + '\'' +
                 '}';

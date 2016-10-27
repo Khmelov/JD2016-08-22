@@ -12,7 +12,7 @@ public class UserCRUD {
         String createUserSQL = String.format("insert into users(login,password,email,fk_role) values('%s','%s','%s','%d');",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role());
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement();
+             Statement statement = connection.createStatement()
         ) {
             if (statement.executeUpdate(createUserSQL) == 1) {
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID() FROM users;");
@@ -27,7 +27,7 @@ public class UserCRUD {
 
     public User read(int id) throws SQLException {
         User userResult = null;
-        String readUserSQL = "SELECT * FROM users where idUser=" + id;
+        String readUserSQL = "SELECT * FROM users where users.idUser=" + id;
         try (
                 Connection connection = ConnectionCreator.getConnection();
                 Statement statement = connection.createStatement();) {
@@ -48,11 +48,11 @@ public class UserCRUD {
 
     public User update(User user) throws SQLException {
         User userResult = null;
-        String updateUserSQL = String.format("UPDATE users SET login = '%s',password ='%s', email='%s', fk_role='%d' WHERE users.idUser=%d",
+        String updateUserSQL = String.format("UPDATE users SET login = '%s',password ='%s', email='%s', fk_role='%d' WHERE users.idUser='%d'",
                 user.getLogin(), user.getPassword(), user.getEmail(), user.getFk_role(), user.getIdUser());
         try (
                 Connection connection = ConnectionCreator.getConnection();
-                Statement statement = connection.createStatement();) {
+                Statement statement = connection.createStatement()) {
             if (statement.executeUpdate(updateUserSQL) == 1)
                 userResult = user;
         } catch (SQLException e) {

@@ -10,7 +10,7 @@ public class CreateDB_dubatovka_helpdesk {
     private static String dropRole = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`role`");
     private static String dropStatus = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`status`");
     private static String dropPriority = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`priority`");
-    private static String dropObject = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`object`");
+    private static String dropObjects = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`objects`");
     private static String dropUsers = String.format("DROP TABLE IF EXISTS `dubatovka_helpDesk`.`users`");
 
     private static String createUsers = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`users` (" +
@@ -34,7 +34,7 @@ public class CreateDB_dubatovka_helpdesk {
             + " roleName VARCHAR(20) NOT NULL,"
             + "PRIMARY KEY (idRole));");
 
-    private static String createObject = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`object` (" +
+    private static String createObjects = String.format("CREATE TABLE IF NOT EXISTS `dubatovka_helpDesk`.`objects` (" +
             "  `idObject` INT NOT NULL AUTO_INCREMENT," +
             "  `zia` VARCHAR(45) NOT NULL," +
             "  PRIMARY KEY (`idObject`)," +
@@ -79,7 +79,7 @@ public class CreateDB_dubatovka_helpdesk {
             "    ON UPDATE NO ACTION," +
             "  CONSTRAINT `fk_zia`" +
             "    FOREIGN KEY (`fk_zia`)" +
-            "    REFERENCES `dubatovka_helpDesk`.`object` (`idObject`)" +
+            "    REFERENCES `dubatovka_helpDesk`.`objects` (`idObject`)" +
             "    ON DELETE NO ACTION" +
             "    ON UPDATE NO ACTION," +
             "  CONSTRAINT `fk_status`" +
@@ -116,16 +116,16 @@ public class CreateDB_dubatovka_helpdesk {
                 System.out.println("dropStatus");
                 statement.executeUpdate(dropPriority);
                 System.out.println("dropPriority");
-                statement.executeUpdate(dropObject);
-                System.out.println("dropObject");
+                statement.executeUpdate(dropObjects);
+                System.out.println("dropObjects");
 
 //создаем таблицы
                 statement.executeUpdate(createPriority);
                 System.out.println("CreatePriority");
                 statement.executeUpdate(createRole);
                 System.out.println("CreateRole");
-                statement.executeUpdate(createObject);
-                System.out.println("CreateObject");
+                statement.executeUpdate(createObjects);
+                System.out.println("CreateObjects");
                 statement.executeUpdate(createStatus);
                 System.out.println("CreateStatus");
 
