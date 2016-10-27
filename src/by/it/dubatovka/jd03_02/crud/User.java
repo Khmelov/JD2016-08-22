@@ -1,5 +1,8 @@
 package by.it.dubatovka.jd03_02.crud;
 
+import java.lang.*;
+import java.lang.Object;
+
 public class User {
     private int idUser;
     private String login;
@@ -66,6 +69,22 @@ public class User {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+
+        if (idUser != user.idUser) return false;
+        if (fk_role != user.fk_role) return false;
+        if (!login.equals(user.login)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!email.equals(user.email)) return false;
+        return true;
+
+    }
+
+    @Override
     public int hashCode() {
         int result = idUser;
         result = 31 * result + login.hashCode();
@@ -73,21 +92,6 @@ public class User {
         result = 31 * result + email.hashCode();
         result = 31 * result + fk_role;
         return result;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof User)) return false;
-
-        User user = (User) obj;
-        if (fk_role != user.fk_role) return false;
-        if (idUser != user.idUser) return false;
-        if (!email.equals(user.email)) return false;
-        if (!login.equals(user.login)) return false;
-        if (!password.equals(user.password)) return false;
-
-        return true;
     }
 
     @Override
