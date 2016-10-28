@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Админка</title>
+    <title>Моя страница</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -36,6 +36,5 @@
       </div>
     </div>
     <br><br><br><br>
-    <h1>Неизвестная ошибка</h1><br>
-    <a href="/grechishnikov/index.jsp">Перейти на главную</a>
+    <h1>Здесь будут мои данные и заказы. Страница будет видна залогиневшись</h1>
 </body>

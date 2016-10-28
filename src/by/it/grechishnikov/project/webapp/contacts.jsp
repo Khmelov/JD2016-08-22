@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Contacts</title>
+    <title>Контакты</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

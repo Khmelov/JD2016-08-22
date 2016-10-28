@@ -2,8 +2,9 @@ package by.it.grechishnikov.project.webapp.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class IndexCommand implements Command {
+public class AdminCommand implements Command {
+    @Override
     public String execute(HttpServletRequest req) {
-        return "/index.jsp";
+        return "/admin.jsp";
     }
 }

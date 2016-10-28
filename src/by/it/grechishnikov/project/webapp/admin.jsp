@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Catalog</title>
+    <title>Админка</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
@@ -36,5 +36,5 @@
       </div>
     </div>
     <br><br><br><br>
-    <h1>Здесь будет админка</h1>
+    <h1>Здесь будет админка. Будет видна только администратору</h1>
 </body>

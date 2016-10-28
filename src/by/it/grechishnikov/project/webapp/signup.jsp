@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up</title>
+    <title>Регистрация</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
         <script src="js/bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
