@@ -1,4 +1,4 @@
-package by.it.akhmelev.project.java;
+package by.it.akhmelev.project.java.old_demo;
 
 import by.it.akhmelev.project.java.beans.User;
 import by.it.akhmelev.project.java.dao.DAO;

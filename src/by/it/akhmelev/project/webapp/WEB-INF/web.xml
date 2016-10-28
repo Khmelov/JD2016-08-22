@@ -11,11 +11,11 @@
     и имя сервлета в них было одинаковым!!! Здесь это имя Controller
     -->
     <servlet>
-        <servlet-name>Controller</servlet-name>
-        <servlet-class>by.it.akhmelev.project.java.Controller</servlet-class>
+        <servlet-name>FrontController</servlet-name>
+        <servlet-class>by.it.akhmelev.project.java.controller.FrontController</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
+        <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
 </web-app>
