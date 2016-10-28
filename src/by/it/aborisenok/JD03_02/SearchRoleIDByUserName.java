@@ -12,12 +12,12 @@ import java.sql.Statement;
  */
 public class SearchRoleIDByUserName {
     public static void main(String[] args) {
-        ConnectionCreator.setBdName("aborisenoktask02");
+        ConnectionCreator.setBdName("aborisenok");
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
 
             //получаем пользователей. Если неизвестно число полей, то нужно получить метаданные
-//            CreateConnection.setBdName("aborisenokTask02");
+//
             ResultSet resultSet = statement.executeQuery("SELECT user.ID, user.Name, user.Surname, role.ID, role.Role FROM `" + ConnectionCreator.getBdName() + "`.`user` " +
                     "INNER JOIN `" + ConnectionCreator.getBdName() + "`.`role` ON user.FK_Role=role.ID");
             while (resultSet.next()) {
@@ -33,7 +33,7 @@ public class SearchRoleIDByUserName {
                 System.out.println();
             }
             //общее число записей (для примера, правильнее сделать свой счетчик в предыдущем запросе)
-            resultSet=statement.executeQuery("SELECT COUNT(*) FROM user INNER JOIN role ON user.FK_Role=role.ID");
+            resultSet=statement.executeQuery("SELECT COUNT(*) FROM `" + ConnectionCreator.getBdName() + "`.`user` INNER JOIN role ON user.FK_Role=role.ID");
             if (resultSet.next())
                 System.out.println("Всего записей: "+resultSet.getInt(1));
 

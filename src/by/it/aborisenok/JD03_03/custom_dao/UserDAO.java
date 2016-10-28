@@ -26,7 +26,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User>{
     @Override
     public boolean create(User user) {
         String sql = String.format(
-                "INSERT INTO `" + ConnectionCreator.getBdName() + "`.`user`(Login, Password, Name, Surname, BirthDay, City, Street, House, Flat, FK_Role) " +
+                "INSERT INTO `user`(Login, Password, Name, Surname, BirthDay, City, Street, House, Flat, FK_Role) " +
                         "values('%s','%s', '%s', '%s','" + user.getBirthDay() + "','%s','%s','%d','%d', '%d');",
                 user.getLogin(),
                 user.getPassword(),
@@ -44,7 +44,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User>{
     @Override
     public boolean update(User user) {
         String sql = String.format(
-                "UPDATE `" + ConnectionCreator.getBdName() + "`.`user` SET Login = '%s'," +
+                "UPDATE `user` SET Login = '%s'," +
                         "Password = '%s'," +
                         "Name = '%s', " +
                         "Surname = '%s', " +
@@ -71,7 +71,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User>{
     @Override
     public boolean delete(User user) {
         String sql = String.format(
-                "DELETE FROM `" + ConnectionCreator.getBdName() + "`.`user` WHERE `user`.`ID` = %d;", user.getID()
+                "DELETE FROM `user` WHERE `user`.`ID` = %d;", user.getID()
         );
         return (0 < executeUpdate(sql));
     }
@@ -79,7 +79,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User>{
     @Override
     public List<User> getAll(String WHERE) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM `" + ConnectionCreator.getBdName() + "`.`user` " + WHERE + " ;";
+        String sql = "SELECT * FROM user " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()
         ) {

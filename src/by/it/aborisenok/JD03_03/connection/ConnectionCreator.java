@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
  */
 public class ConnectionCreator {
 
-    private static String bdName = "borisenok";
+    private static String bdName = "aborisenok";
 
     static {
         Driver driver = null;
