@@ -24,7 +24,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/akhmelev">Главная</a>
+            <a class="navbar-brand" href=".">Главная</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -33,7 +33,6 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
-              <li><a href="do?command=SignUp2">Зарегистрироваться2</a></li>
               <li><a href="do?command=Login">Войти</a></li>
               <li><a href="do?command=Logout">Выйти</a></li>
               <li><a href="/manager/html/list">Tomcat</a></li>
