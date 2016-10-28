@@ -18,13 +18,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="http://localhost:8080/grechishnikov/index.jsp">Империя обоев</a>
+          <a class="navbar-brand" href="/grechishnikov/index.jsp">Империя обоев</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-                      <li><a href="http://localhost:8080/grechishnikov/index.jsp">Главная</a></li>
-                      <li class="active"><a href="http://localhost:8080/grechishnikov/controller/?command=catalog">Каталог</a></li>
-                      <li><a href="http://localhost:8080/grechishnikov/contacts.jsp">Контакты</a></li>
+                      <li><a href="/grechishnikov/index.jsp">Главная</a></li>
+                      <li class="active"><a href="/grechishnikov/controller/?command=catalog">Каталог</a></li>
+                      <li><a href="/grechishnikov/contacts.jsp">Контакты</a></li>
                     </ul>
           <form class="navbar-form navbar-right" role="form" action="signup.jsp">
             <button type="submit" class="btn btn-danger">Зарегистрироваться</button>
