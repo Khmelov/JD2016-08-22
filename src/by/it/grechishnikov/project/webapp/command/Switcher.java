@@ -11,8 +11,8 @@ public class Switcher {
             return new IndexCommand().execute(req);
         } else if(command == Commands.CONTACTS) {
             return new ContactsCommand().execute(req);
-        } else if(command == Commands.ME) {
-            return new MeCommand().execute(req);
+        } else if(command == Commands.MY) {
+            return new MyCommand().execute(req);
         } else if(command == Commands.CATALOG) {
             return new CatalogCommand().execute(req);
         } else if(command == Commands.ADMIN) {
@@ -38,8 +38,8 @@ public class Switcher {
                     return getJsp(Commands.INDEX, req);
                 case "contacts" :
                     return getJsp(Commands.CONTACTS, req);
-                case "me" :
-                    return getJsp(Commands.ME, req);
+                case "my" :
+                    return getJsp(Commands.MY, req);
                 case "catalog":
                     return getJsp(Commands.CATALOG, req);
                 case "search":

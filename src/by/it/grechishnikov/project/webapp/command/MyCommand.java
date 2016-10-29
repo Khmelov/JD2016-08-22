@@ -2,9 +2,9 @@ package by.it.grechishnikov.project.webapp.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class MeCommand implements Command {
+public class MyCommand implements Command {
     @Override
     public String execute(HttpServletRequest req) {
-        return "/me.jsp";
+        return "/my.jsp";
     }
 }
