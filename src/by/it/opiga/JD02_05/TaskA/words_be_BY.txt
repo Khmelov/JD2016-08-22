@@ -1,0 +1,4 @@
+hello=прывітанне!
+user=Пига Оля
+howdoyoudo=Як справы?
+setLanguage=выберите мову

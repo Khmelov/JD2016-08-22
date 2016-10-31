@@ -1,0 +1,4 @@
+hello=привет!
+user=Пига Оля
+howdoyoudo=Как дела?
+setLanguage=выберите язык
