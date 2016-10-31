@@ -18,7 +18,7 @@ public class TaskA {
 
         System.out.println("Пользователь удален:\n" + CRUDUsers.delete(user.getId()));
 
-        //Запуск CRUD Goods (Catalog)
+        //Запуск CRUD Goods (CATALOG)
         Goods goods = new Goods("fen", "good fen", 200);
         CRUDGoods.create(goods);
         System.out.println("Товар создан:\n" + goods);

@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlType(name = "Catalog")
+@XmlType(name = "CATALOG")
 public class Catalog {
     private List<Goods> goods = new ArrayList<>();
 
