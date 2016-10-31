@@ -15,16 +15,11 @@ protected Action action=null;
 static Action defineFrom(HttpServletRequest req){
     Action result;
     String cmdName = req.getParameter("command").toUpperCase();
-    if (!cmdName.isEmpty()){
     try {
         result=Actions.valueOf(cmdName).action;
     }
     catch (IllegalArgumentException e) {
         result=Actions.ERROR.action;
-    }}
-    else
-    {
-        result=Actions.INDEX.action.execute(req);
     }
     return result;
 }
