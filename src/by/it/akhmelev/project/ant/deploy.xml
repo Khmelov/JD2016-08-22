@@ -36,7 +36,7 @@
     <!-- компиляция файлов проекта -->
     <target name="03compile" depends="02init">
         <echo>Compile the source files</echo>
-        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes">
+        <javac srcdir="${src.dir}" destdir="${build.dir}/WEB-INF/classes" debug="true">
             <classpath  refid="classpath" />
         </javac>
     </target>
@@ -82,7 +82,8 @@
     <target name="07if-has-tomcat" depends="06finalize">
         <property environment="env"/>
         <condition property="has.tomcat">
-            <available file="${tomcat.home.dir}"/>
+            <!--<available file="${tomcat.home.dir}"/>-->
+            <http url="${tomcat.base.url}" />
         </condition>
     </target>
 
@@ -96,33 +97,29 @@
             <http url="${tomcat.base.url}/${web.root}" />
         </condition>
 
-        <!--<condition property="is.webapp.ok.deployed">-->
-            <!--<http url="${tomcat.base.url}/${web.root}" />-->
-        <!--</condition>-->
-
         <path id="tomcat.classpath">
-            <!-- We need the Catalina jars for Tomcat -->
-            <fileset dir="${tomcat.home.dir}/lib">
-                <include name="catalina-ant.jar"/>
-                <include name="tomcat-coyote.jar"/>
-                <include name="tomcat-util.jar"/>
+            <fileset dir="${global.lib.dir}">
+                <include name="khmelov_tomcat_lib.jar"/>
             </fileset>
-            <fileset dir="${tomcat.home.dir}/bin">
-                <include name="tomcat-juli.jar"/>
-            </fileset>
+            <!--<fileset dir="ant/lib_tomcat">-->
+                <!--<include name="catalina-ant.jar"/>-->
+                <!--<include name="tomcat-coyote.jar"/>-->
+                <!--<include name="tomcat-util.jar"/>-->
+            <!--</fileset>-->
+            <!--<fileset dir="ant/lib_tomcat">-->
+                <!--<include name="tomcat-juli.jar"/>-->
+            <!--</fileset>-->
         </path>
 
         <!-- Configure the custom Ant tasks for the Manager application -->
         <taskdef name="deploy"    classname="org.apache.catalina.ant.DeployTask" classpathref="tomcat.classpath"/>
         <taskdef name="undeploy"  classname="org.apache.catalina.ant.UndeployTask" classpathref="tomcat.classpath"/>
-        <!-- другие возможные команды для tomcat, они закомментированы, т.к. не требуются
         <taskdef name="list"      classname="org.apache.catalina.ant.ListTask" classpathref="tomcat.classpath"/>
         <taskdef name="reload"    classname="org.apache.catalina.ant.ReloadTask" classpathref="tomcat.classpath"/>
         <taskdef name="findleaks" classname="org.apache.catalina.ant.FindLeaksTask" classpathref="tomcat.classpath"/>
         <taskdef name="resources" classname="org.apache.catalina.ant.ResourcesTask" classpathref="tomcat.classpath"/>
         <taskdef name="start"     classname="org.apache.catalina.ant.StartTask" classpathref="tomcat.classpath"/>
         <taskdef name="stop"      classname="org.apache.catalina.ant.StopTask" classpathref="tomcat.classpath"/>
-        -->
     </target>
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -  -->
@@ -173,6 +170,4 @@
             <http url="${tomcat.base.url}/${web.root}" />
         </condition>
     </target>
-
-
 </project>
