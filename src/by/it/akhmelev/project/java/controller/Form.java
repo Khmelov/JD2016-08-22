@@ -14,4 +14,10 @@ public class Form {
             throw new ParseException("Incorrect String: "+parameter,0);
     }
 
+    static boolean isPost(HttpServletRequest req){
+        String method=req.getMethod();
+        return method!=null && method.equalsIgnoreCase("post");
+    }
+
+
 }
