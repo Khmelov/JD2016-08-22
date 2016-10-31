@@ -1,4 +1,4 @@
-package by.it.grechishnikov.project.webapp;
+package by.it.grechishnikov.project.webapp.java;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

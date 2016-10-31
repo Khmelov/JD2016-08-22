@@ -1,6 +1,6 @@
 package by.it.grechishnikov.project.webapp.dao;
 
-import by.it.grechishnikov.project.webapp.ConnectionToServer;
+import by.it.grechishnikov.project.webapp.java.ConnectionToServer;
 import by.it.grechishnikov.project.webapp.bean.Goods;
 
 import java.sql.ResultSet;

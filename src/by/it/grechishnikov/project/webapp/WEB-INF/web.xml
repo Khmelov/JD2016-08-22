@@ -13,4 +13,17 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/controller/</url-pattern>
     </servlet-mapping>
+    
+    <filter>
+        <filter-name>EncodingUTF8</filter-name>
+        <filter-class>by.it.grechishnikov.project.webapp.java.UTF8</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingUTF8</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

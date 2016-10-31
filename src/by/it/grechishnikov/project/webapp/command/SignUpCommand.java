@@ -5,13 +5,14 @@ import by.it.grechishnikov.project.webapp.bean.User;
 import by.it.grechishnikov.project.webapp.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.logging.Level;
 
 public class SignUpCommand implements Command {
     private static UsersDAO dao = DAO.getInstance().getUsersDAO();
 
-    public String execute(HttpServletRequest req) {
+    public String execute(HttpServletRequest req, HttpServletResponse resp) {
         String login = req.getParameter("Login");
         String password = req.getParameter("Password");
         String email = req.getParameter("Email");
@@ -24,11 +25,11 @@ public class SignUpCommand implements Command {
                 User user = new User(login, password, email, 2);
                 ServletController.logger.log(Level.INFO, "\n****CREATE USER: " + user.toString() + "****\n");
                 dao.create(user);
-                return "goToLogin";
+                return Commands.GO_TO_LOGIN.message;
             }
 
         }
-        return "goToSignUp";
+        return Commands.GO_TO_SIGN_UP.message;
     }
 
     private static boolean checkUserExist(String login, String email) {
