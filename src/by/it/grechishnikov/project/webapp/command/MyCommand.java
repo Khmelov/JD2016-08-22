@@ -25,13 +25,9 @@ public class MyCommand implements Command {
         }
         HttpSession session = req.getSession(true);
         try {
-            String out = req.getParameter("logout");
-            if(out.equals("yes")) {
-                session.invalidate();
-                return Commands.INDEX.message;
-            }
             User user = (User) session.getAttribute("user");
-            if(!user.getLogin().isEmpty()) {
+            session.setAttribute("jsp_message", user.toString());
+            if(user != null) {
                 return "/test.html";
             }
             List<Order> list = DAO.getInstance().getOrdersDAO().getAll();
@@ -46,6 +42,7 @@ public class MyCommand implements Command {
             req.setAttribute("ordersList", orders);
         } catch (Exception e) {
             e.printStackTrace();
+            session.setAttribute("jsp_error", "ошибка логина");
         }
         return Commands.MY.message;
     }
