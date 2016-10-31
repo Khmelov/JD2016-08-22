@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/akhmelev/jd02_04" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/filimonchik" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/opiga" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -24,5 +25,6 @@
     <orderEntry type="library" name="gson-2.7" level="project" />
     <orderEntry type="library" name="mysql-connector-java" level="project" />
     <orderEntry type="library" name="servlet-api" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

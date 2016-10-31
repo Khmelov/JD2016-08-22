@@ -2,10 +2,12 @@ package by.it.akhmelev.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-public enum Actions {
+enum Actions {
+INDEX {{this.action=new CmdIndex();}},
+SHOWUSERS {{this.action=new CmdShowUsers();}},
 SIGNUP {{this.action=new CmdSignup();}},
 LOGIN {{this.action=new CmdLogin();}},
-LOGOUT {{this.action=new CmdLogout();}},
+PROFILE {{this.action=new CmdProfile();}},
 ERROR  {{this.action=new CmdError();}};
 
 protected Action action=null;
