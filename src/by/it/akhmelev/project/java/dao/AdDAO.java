@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-class AdDAO extends AbstractDAO implements InterfaceDAO<Ad> {
+public class AdDAO extends AbstractDAO implements InterfaceDAO<Ad> {
     @Override
     public Ad read(int id) {
         List<Ad> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");

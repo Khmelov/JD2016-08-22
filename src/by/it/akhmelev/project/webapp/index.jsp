@@ -32,7 +32,7 @@
         <div class="col-md-2">Автор</div>
       </div>
 
-
+      ${ads}
 
 
 <%@ include file="include/end-html.jsp" %>
