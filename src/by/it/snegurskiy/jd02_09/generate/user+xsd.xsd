@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://generate.jd02_09.snegurskiy.it.by/"
+        xmlns:tns="http://generate.jd02_09.snegurskiy.it.by/"
+    elementFormDefault="qualified">
+
+    <element name="users">
+        <complexType>
+            <sequence>
+                <element name="user" type="tns:user" maxOccurs="unbounded"></element>
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="user">
+        <sequence>
+            <element name="surname" type="string"></element>
+            <element name="name" type="string"></element>
+            <element name="login" type="string"></element>
+            <element name="password" type="string"></element>
+            <element name="account" type="tns:account"></element>
+
+        </sequence>
+    </complexType>
+
+    <complexType name="account">
+        <all>
+            <element name="balance" type="int"></element>
+
+        </all>
+    </complexType>
+
+</schema>

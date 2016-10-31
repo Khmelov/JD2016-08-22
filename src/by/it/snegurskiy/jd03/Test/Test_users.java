@@ -1,9 +1,7 @@
 package by.it.snegurskiy.jd03.Test;
 
 import by.it.snegurskiy.jd03.classwork.Bean.Users;
-import by.it.snegurskiy.jd03.classwork.CN;
 import by.it.snegurskiy.jd03.classwork.CRUD.UsersCRUD;
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 import java.sql.*;
 

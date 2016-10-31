@@ -1,6 +1,6 @@
 package by.it.snegurskiy.jd03.classwork.DAO;
 
-import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
+import by.it.snegurskiy.jd03.classwork.project.java.DAO.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
