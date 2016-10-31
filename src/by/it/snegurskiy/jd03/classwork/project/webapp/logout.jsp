@@ -1,5 +1,5 @@
 <%@ include file="include/begin-html.jsp" %>
 
-<p>Cmd Login: ${message}</p>
+<p>Cmd Logout: ${message}</p>
 
 <%@ include file="include/end-html.jsp" %>

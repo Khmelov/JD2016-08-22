@@ -1,6 +1,6 @@
 package by.it.snegurskiy.jd03.classwork.CRUD;
 
-import by.it.snegurskiy.jd03.classwork.ConnectionCreator;
+import by.it.snegurskiy.jd03.classwork.project.java.DAO.ConnectionCreator;
 import by.it.snegurskiy.jd03.classwork.Bean.Users;
 
 import java.sql.Connection;

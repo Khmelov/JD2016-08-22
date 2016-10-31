@@ -7,21 +7,10 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/akhmelev/jd02_04" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/dubatovka" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/filimonchik" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/grechishnikov" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/karpov" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/kisel" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/opiga" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/prymshyts" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/shkantau" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/snegurskiy" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/voronovich" />
-      <excludeFolder url="file://$MODULE_DIR$/src/by/it/zaharova" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="JUnit4">
         <CLASSES>
           <root url="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/" />
@@ -31,9 +20,8 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="gson-2.7" level="project" />
-    <orderEntry type="library" name="mysql-connector-java" level="project" />
-    <orderEntry type="library" name="servlet-api" level="project" />
-    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.7" level="project" />
+    <orderEntry type="library" exported="" name="mysql-connector-java" level="project" />
+    <orderEntry type="library" exported="" name="servlet-api" level="project" />
   </component>
 </module>
