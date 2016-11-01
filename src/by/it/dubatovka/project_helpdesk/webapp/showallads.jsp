@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <p>Список пользователей. </p>
-<table width="75%" border="1" cellpadding="1" cellspacing="1">
+<table width="100%" border="1" cellpadding="1" cellspacing="1">
     <tr>
         <td align="center"><b>ID</b></td>
         <td align="center"> <b>Subject</b></td>
@@ -16,13 +16,13 @@
     </tr>
     <c:forEach items="${adsList}" var="ad">
         <tr>
-            <td align="left"> ${ad.id}</td>
+            <td align="center"> ${ad.id}</td>
             <td align="left">${ad.subject}</td>
             <td align="left">${ad.description}</td>
-            <td align="left">${ad.fk_zia}</td>
-            <td align="left">${ad.fk_status}</td>
-            <td align="left">${ad.fk_user}</td>
-            <td align="left">${ad.fk_priority}</td>
+            <td align="center">${ad.fk_zia}</td>
+            <td align="center">${ad.fk_status}</td>
+            <td align="center">${ad.fk_user}</td>
+            <td align="center">${ad.fk_priority}</td>
         </tr>
     </c:forEach>
 </table>

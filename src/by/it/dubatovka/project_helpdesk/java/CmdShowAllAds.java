@@ -1,9 +1,9 @@
 package by.it.dubatovka.project_helpdesk.java;
 
-import javax.servlet.http.HttpServletRequest;
+import by.it.dubatovka.project_helpdesk.java.beans.Ad;
 import by.it.dubatovka.project_helpdesk.java.dao.DAO;
-import by.it.dubatovka.project_helpdesk.java.beans.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 

@@ -1,8 +1,10 @@
 package by.it.dubatovka.project_helpdesk.java;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
+    PROFILE{{this.action=new CmdProfile();}},
     SHOWALLADS{{this.action=new CmdShowAllAds();}},
     CREATEAD {{this.action=new CmdCreateAd();}},
     SHOWUSERS {{this.action=new CmdShowUsers();}},
@@ -15,7 +17,9 @@ protected Action action=null;
 
 static Action defineFrom(HttpServletRequest req){
     Action result;
+
     String cmdName = req.getParameter("command").toUpperCase();
+
     try {
         result=Actions.valueOf(cmdName).action;
     }

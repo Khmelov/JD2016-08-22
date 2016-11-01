@@ -43,7 +43,7 @@ public class UserDAO extends AbstractDAO implements InterfaceDAO<User> {
     @Override
     public List<User> getAll(String Where) {
         List<User> users = new ArrayList<>();
-        String sql = "SELECT * FROM users " + Where + " ;";
+        String sql = "SELECT * FROM `dubatovka_helpdesk`.`users` " + Where + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(sql);

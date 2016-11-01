@@ -26,8 +26,13 @@ public class ConnectionCreator {
 
     private static volatile Connection connection = null;
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException{
         if (connection == null || connection.isClosed()) {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
             synchronized (URL_DB) {
                 if (connection == null || connection.isClosed())
                     connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
