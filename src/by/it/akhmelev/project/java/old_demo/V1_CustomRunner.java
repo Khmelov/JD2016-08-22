@@ -1,7 +1,9 @@
 package by.it.akhmelev.project.java.old_demo;
 
+import by.it.akhmelev.project.java.beans.Ad;
 import by.it.akhmelev.project.java.beans.Role;
 import by.it.akhmelev.project.java.beans.User;
+import by.it.akhmelev.project.java.dao.AdDAO;
 import by.it.akhmelev.project.java.dao.DAO;
 import by.it.akhmelev.project.java.dao.UserDAO;
 
@@ -14,6 +16,8 @@ public class V1_CustomRunner {
         //покажем все, что есть в таблице пользователей
         System.out.println("\nТаблица пользователей:");
         List<User> users=new UserDAO().getAll("");
+        List<Ad> ads=new AdDAO().getAll("");
+        System.out.println(ads.size());
         for (User each:users) System.out.println(each);
     }
 
