@@ -18,6 +18,10 @@
         <servlet-name>FrontController</servlet-name>
         <url-pattern>/do</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FrontController</servlet-name>
+        <url-pattern/>
+    </servlet-mapping>
 
     <filter>
         <filter-name>FilterUTF8</filter-name>

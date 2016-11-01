@@ -20,7 +20,8 @@ class CmdShowUsers extends Action{
     @Override
     Action execute(HttpServletRequest req) {
         DAO dao=DAO.getDAO();
-        req.setAttribute("users","<hr>"+debugOut(dao.user.getAll(""))+"<hr>");
+        req.setAttribute("users",dao.user.getAll(""));
+        req.setAttribute("roles",dao.role.getAll(""));
         return null;
     }
 }
