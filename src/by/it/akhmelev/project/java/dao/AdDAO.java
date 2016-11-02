@@ -21,6 +21,19 @@ public class AdDAO extends AbstractDAO implements InterfaceDAO<Ad> {
             return null;
     }
 
+    public List<Ad> findWithUserID(int FK_USER) {
+        return getAll(
+                String.format("WHERE FK_USER=%d",FK_USER)
+        );
+    }
+
+    public List<Ad> findWithUserID(int FK_USER, int startLimit, int stopLimit) {
+        return getAll(
+                String.format("WHERE FK_USER=%d  LIMIT %d,%d",FK_USER,startLimit,stopLimit)
+        );
+    }
+
+
     @Override
     public boolean create(Ad ad) {
         //локаль нужна,т.к. есть дробные числа. Их нужно указывать через точку
