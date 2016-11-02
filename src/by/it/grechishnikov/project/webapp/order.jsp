@@ -3,6 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <br><br><br><br>
-<h1>Выполнено успешно</h1>
+<h1><c:out value="${message}"/></h1>
 
 <%@ include file="include/footer.jsp" %>

@@ -41,6 +41,7 @@ class OrderCommand implements Command {
             req.getSession().setAttribute("message", "Войдите в систему, что бы сделать покупку.");
             return Commands.ERROR.message;
         }
+        req.getSession().setAttribute("message", "Товар добавлен в корзину");
         return Commands.ORDER.message;
     }
 
@@ -49,6 +50,7 @@ class OrderCommand implements Command {
         int goodsId = Integer.parseInt(req.getParameter("id"));
         //Удаляем заказ
         DAO.getInstance().getOrdersDAO().delete(goodsId);
+        req.getSession().setAttribute("message", "Товар удален из корзины");
         return Commands.ORDER.message;
     }
 
@@ -65,6 +67,7 @@ class OrderCommand implements Command {
                 dao.delete(o.getId());
             }
         }
+        req.getSession().setAttribute("message", "Спасибо за покупку. В ближайшее время с вами свяжется оператор.");
         return Commands.ORDER.message;
     }
 }
