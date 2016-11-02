@@ -28,7 +28,7 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="do?command=CreateAd">Создать объявление</a></li>
+              <li ${command=="CreateAd":"class='active'"}><a href="do?command=CreateAd">Создать объявление</a></li>
               <li><a href="do?command=ShowUsers">Список пользователей</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
