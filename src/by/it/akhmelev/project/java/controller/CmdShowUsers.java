@@ -5,6 +5,7 @@ import by.it.akhmelev.project.java.beans.User;
 import by.it.akhmelev.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
 import java.util.List;
 
 class CmdShowUsers extends Action{
@@ -19,7 +20,38 @@ class CmdShowUsers extends Action{
 
     @Override
     Action execute(HttpServletRequest req) {
+
+
         DAO dao=DAO.getDAO();
+        if (Form.isPost(req)){
+            User user=new User();
+            try {
+                user.setId(Form.getInt(req,"ID"));
+                user.setLogin(Form.getString(req, "Login", Patterns.LOGIN));
+                user.setPassword(Form.getString(req, "Password", Patterns.PASSWORD));
+                user.setEmail(Form.getString(req, "Email", Patterns.EMAIL));
+                user.setFk_Role(Form.getInt(req,"fk_Role"));
+                req.setAttribute(Messages.msgMessage,user);
+                if (user.getId()>0){
+                    dao.user.update(user);
+                }
+                if (user.getId()<0){
+                    user.setId(user.getId()*(-1));
+                    dao.user.delete(user);
+                }
+                if (user.getId()==0){
+                    dao.user.create(user);
+                }
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+                req.setAttribute(Messages.msgMessage,"Ошибка!!");
+            }
+        }
+
+
+
+
         req.setAttribute("users",dao.user.getAll(""));
         req.setAttribute("roles",dao.role.getAll(""));
         return null;
