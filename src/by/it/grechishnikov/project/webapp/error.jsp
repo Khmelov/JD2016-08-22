@@ -3,7 +3,7 @@
 <<%@ include file="include/header.jsp" %>
 
     <br><br><br><br>
-    <h1>Неизвестная ошибка</h1><br>
+    <h1><c:out value="${message}"/></h1><br>
     <a href="/grechishnikov/index.jsp">Перейти на главную</a>
 
 <%@ include file="include/footer.jsp" %>

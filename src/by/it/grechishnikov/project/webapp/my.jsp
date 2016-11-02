@@ -27,8 +27,9 @@
     </c:forEach>
     </table>
     <form action="controller/?command=order&type=buy" method="post">
-    <div class="col-md-9 col-md-offset-10">
+    <div>
         <input name="all" value="all" type="hidden">
+        <h3>Всего к оплате: <c:out value="${count}"/>$</h3>
         <button type="submit" class="btn btn-info">Подтвердить заказ</button>
     </div>
     </form>

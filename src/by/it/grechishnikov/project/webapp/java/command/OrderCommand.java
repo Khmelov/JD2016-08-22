@@ -18,7 +18,9 @@ class OrderCommand implements Command {
             case "sub" : return subCommand(req);
             case "buy" : return buyCommand(req);
             case "logout": return logoutCommand(req);
-            default    : return Commands.ERROR.message;
+            default    :
+                req.getSession().setAttribute("message", "Неправильная команда");
+                return Commands.ERROR.message;
         }
     }
 
@@ -28,12 +30,17 @@ class OrderCommand implements Command {
     }
 
     private static String addCommand(HttpServletRequest req) {
-        //получаем товар
-        int goodsId = Integer.parseInt(req.getParameter("id")) - 1;
-        //достаем пользователя
-        User user = (User) req.getSession().getAttribute("user");
-        //Добавляем заказ
-        DAO.getInstance().getOrdersDAO().create(new Order(user.getId(), ++goodsId));
+        try {
+            //получаем товар
+            int goodsId = Integer.parseInt(req.getParameter("id")) - 1;
+            //достаем пользователя
+            User user = (User) req.getSession().getAttribute("user");
+            //Добавляем заказ
+            DAO.getInstance().getOrdersDAO().create(new Order(user.getId(), ++goodsId));
+        } catch (Exception e) {
+            req.getSession().setAttribute("message", "Войдите в систему, что бы сделать покупку.");
+            return Commands.ERROR.message;
+        }
         return Commands.ORDER.message;
     }
 

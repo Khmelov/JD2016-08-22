@@ -38,10 +38,10 @@
           </ul>
           <c:if test="${user == null}">
           <form class="navbar-form navbar-right" role="form" action="signup.jsp">
-            <button type="submit" class="btn btn-danger">Зарегистрироваться</button>
+            <button type="submit" class="btn btn-success">Зарегистрироваться</button>
           </form>
           <form class="navbar-form navbar-right" role="form" action="login.jsp">
-            <button type="submit" class="btn btn-success">Войти</button>
+            <button type="submit" class="btn btn-info">Войти</button>
           </form>
           </c:if>
           <c:if test="${user != null}">
@@ -49,7 +49,7 @@
             <button type="submit" class="btn btn-danger">Выйти</button>
           </form>
           <form class="navbar-form navbar-right" role="form" action="controller/?command=my" method="post">
-            <button type="submit" class="btn btn-info">Моя страница</button>
+            <button type="submit" class="btn btn-info"><c:out value="${user.getLogin()}"/></button>
           </form>
           </c:if>
         </div><!--/.navbar-collapse -->

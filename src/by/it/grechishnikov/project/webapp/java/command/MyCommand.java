@@ -20,12 +20,17 @@ class MyCommand implements Command {
             //Добавляем в сессию список товаров пользователя
             List<Order> list = DAO.getInstance().getOrdersDAO().getAll();
             List<Order> orders = new ArrayList<>();
+            int count = 0;
             for(Order o : list) {
                 if(o.getUser() == user.getId()) {
                     orders.add(o);
+                    int id = o.getGoods();
+                    Goods goods = DAO.getInstance().getGoodsDAO().read(id);
+                    count += goods.getPrice();
                 }
             }
             req.getSession().setAttribute("ordersList", orders);
+            req.getSession().setAttribute("count", count);
 
             List<Goods> catalog = DAO.getInstance().getGoodsDAO().getAll();
             req.getSession().setAttribute("catalog", catalog);

@@ -1,12 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<div class="container">
-            <p>Сообщение сервера: ${jsp_message}</p>
-            <p>ERROR LOG: <b>
-                            <font color="red">
-                            ${jsp_error}
-                            </font>
-                          </b></p>
-          </div>
+
       <footer class="col-md-5 col-md-offset-5">
         <p>&copy; Империя обоев, 2016</p>
       </footer>
