@@ -7,7 +7,7 @@
                             </font>
                           </b></p>
           </div>
-      <footer class="col-md-9 col-md-offset-10">
+      <footer class="col-md-5 col-md-offset-5">
         <p>&copy; Империя обоев, 2016</p>
       </footer>
     </div> <!-- /container -->

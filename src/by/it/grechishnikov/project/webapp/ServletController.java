@@ -7,7 +7,6 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 public class ServletController extends HttpServlet {
-    //TODO разобраться с сессией и куками, сделать динамичную верхнюю полосу
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         processRequest(req, resp);

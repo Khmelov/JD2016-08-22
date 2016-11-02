@@ -36,7 +36,7 @@
                       <li><a href="/grechishnikov/controller/?command=catalog">Каталог</a></li>
                       <li><a href="/grechishnikov/contacts.jsp">Контакты</a></li>
           </ul>
-          <c:if test="${10 > 9}">
+          <c:if test="${user == null}">
           <form class="navbar-form navbar-right" role="form" action="signup.jsp">
             <button type="submit" class="btn btn-danger">Зарегистрироваться</button>
           </form>
@@ -44,8 +44,11 @@
             <button type="submit" class="btn btn-success">Войти</button>
           </form>
           </c:if>
-          <c:if test="${10 < 9}">
-          <form class="navbar-form navbar-right" role="form" action="my.jsp">
+          <c:if test="${user != null}">
+          <form class="navbar-form navbar-right" role="form" action="controller/?command=order&type=logout" method="post">
+            <button type="submit" class="btn btn-danger">Выйти</button>
+          </form>
+          <form class="navbar-form navbar-right" role="form" action="controller/?command=my" method="post">
             <button type="submit" class="btn btn-info">Моя страница</button>
           </form>
           </c:if>

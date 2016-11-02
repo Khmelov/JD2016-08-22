@@ -39,7 +39,7 @@ class LoginCommand implements Command {
                 check = true;
                 //Создаем сессию
                 HttpSession session = req.getSession(true);
-                session.setAttribute(user.getLogin(), user);
+                session.setAttribute("user", user);
                 //Добавляем в куки логин и пароль
                 Cookie cookie = new Cookie("login", login);
                 cookie.setMaxAge(30);

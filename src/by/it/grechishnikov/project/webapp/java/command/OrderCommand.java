@@ -17,25 +17,21 @@ class OrderCommand implements Command {
             case "add" : return addCommand(req);
             case "sub" : return subCommand(req);
             case "buy" : return buyCommand(req);
+            case "logout": return logoutCommand(req);
             default    : return Commands.ERROR.message;
         }
+    }
+
+    private String logoutCommand(HttpServletRequest req) {
+        req.getSession().invalidate();
+        return Commands.INDEX.message;
     }
 
     private static String addCommand(HttpServletRequest req) {
         //получаем товар
         int goodsId = Integer.parseInt(req.getParameter("id")) - 1;
         //достаем пользователя
-        Cookie[] cookies = req.getCookies();
-        String login = "";
-        for(Cookie c : cookies) {
-            if(c.getName().equalsIgnoreCase("login")) {
-                login = c.getValue();
-            }
-        }
-        if(login.isEmpty()) {
-            return Commands.ERROR.message;
-        }
-        User user = (User) req.getSession().getAttribute(login);
+        User user = (User) req.getSession().getAttribute("user");
         //Добавляем заказ
         DAO.getInstance().getOrdersDAO().create(new Order(user.getId(), ++goodsId));
         return Commands.ORDER.message;
@@ -51,16 +47,8 @@ class OrderCommand implements Command {
 
     private static String buyCommand(HttpServletRequest req) {
         //находим id пользователя
-        Cookie[] cookies = req.getCookies();
-        int id = -1;
-        for(Cookie c : cookies) {
-            if(c.getName().equalsIgnoreCase("id")) {
-                id = Integer.parseInt(c.getValue());
-            }
-        }
-        if(id == -1) {
-            return Commands.ERROR.message;
-        }
+        User user = (User) req.getSession().getAttribute("user");
+        int id = user.getId();
         //находим заказы пользователя
         List<Order> list = DAO.getInstance().getOrdersDAO().getAll();
         OrdersDAO dao = DAO.getInstance().getOrdersDAO();
