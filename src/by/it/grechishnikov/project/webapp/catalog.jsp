@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<%@ include file="include/author.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<<%@ include file="include/header.jsp" %>
 
     <br><br><br><br>
     <div class="navbar-collapse collapse">
 
     <form class="navbar-form navbar-right" role="form" action="controller/?command=search" method="post">
        <div class="form-group">
-        <input type="search" placeholder="Немецкие обои" class="form-control">
+        <input id="search" name="search" type="search" placeholder="Немецкие обои" class="form-control">
        </div>
        <button type="submit" class="btn btn-success">Поиск</button>
     </form>
@@ -21,27 +22,18 @@
         <th>Цена</th>
         <th>Заказать</th>
       </tr>
+     <c:forEach var="goods" items="${catalog}">
+      <form action="controller/?command=order&type=add" method="post">
+      <input name="id" value="${goods.getId()}" type="hidden">
       <tr>
-        <td>1</td>
-        <td>Первые обои</td>
-        <td>Немецкие обои</td>
-        <td>100</td>
-        <td class="col-md-2"><button type="button" class="btn btn-success">Оформить заказ</button></td>
+        <td><c:out value="${goods.getId()}"/></td>
+        <td><c:out value="${goods.getName()}"/></td>
+        <td><c:out value="${goods.getDescription()}"/></td>
+        <td><c:out value="${goods.getPrice()}"/></td>
+        <td class="col-md-2"><button type="submit" class="btn btn-success">Оформить заказ</button></td>
       </tr>
-      <tr>
-        <td>2</td>
-        <td>Вторые обои</td>
-        <td>Итальянские обои</td>
-        <td>200</td>
-        <td class="col-md-2"><button type="button" class="btn btn-success">Оформить заказ</button></td>
-        </tr>
-      <tr>
-        <td>3</td>
-        <td>Третьи обои</td>
-        <td>Российские обои</td>
-        <td>300</td>
-        <td class="col-md-2"><button type="button" class="btn btn-success">Оформить заказ</button></td>
-      </tr>
+      </form>
+      </c:forEach>
     </table>
 
 <%@ include file="include/footer.jsp" %>
