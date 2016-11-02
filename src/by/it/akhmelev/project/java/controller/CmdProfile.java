@@ -17,7 +17,7 @@ class CmdProfile extends Action {
         else
         {
             User user=(User)req.getSession().getAttribute("user");
-            List<Ad> ads= DAO.getDAO().ad.getAll("");
+            List<Ad> ads= DAO.getDAO().ad.getAll("where FK_Users="+user.getId());
             req.setAttribute("ads",ads);
         }
         return null;
