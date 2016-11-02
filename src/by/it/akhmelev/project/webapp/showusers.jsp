@@ -33,7 +33,7 @@
    <!-- Коллекцию listUser мы получаем по get из команды сервлета UserForm -->
    <c:forEach items="${users}" var="user">
         <div class="row">
-        <form class="form-user-${user.id}" action="do?command=AllUsers" method=POST>
+        <form class="form-user-${user.id}" action="do?command=ShowUsers" method=POST>
             <div class=col-md-1>
                 <input id="user_id_${user.id}" name="ID" type="text"
                 value="${user.id}" class="form-control input-md">
@@ -68,7 +68,8 @@
             </div>
 
             <div class=col-md-1>
-                <button id="singlebutton" name="singlebutton" class="btn btn-danger"
+                <button id="singlebutton" name="singlebutton"
+                class="btn btn-danger"
                 onclick="document.getElementById('user_id_${user.id}').value=-document.getElementById('user_id_${user.id}').value;"
                 >
                     Удалить
