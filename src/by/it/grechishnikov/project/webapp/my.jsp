@@ -7,7 +7,7 @@
 
     <table class="table table-hover table-bordered">
         <tr>
-          <th>#</th>
+          <th>№ заказа</th>
           <th>Название</th>
           <th>Описание</th>
           <th>Цена</th>

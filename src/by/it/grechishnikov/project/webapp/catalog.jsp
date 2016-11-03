@@ -16,7 +16,7 @@
 
     <table class="table table-hover table-bordered">
       <tr>
-        <th>#</th>
+        <th>№</th>
         <th>Название</th>
         <th>Описание</th>
         <th>Цена</th>
@@ -30,7 +30,7 @@
         <td><c:out value="${goods.getName()}"/></td>
         <td><c:out value="${goods.getDescription()}"/></td>
         <td><c:out value="${goods.getPrice()}"/></td>
-        <td class="col-md-2"><button type="submit" class="btn btn-success">Оформить заказ</button></td>
+        <td class="col-md-2"><button type="submit" class="btn btn-success">В корзину</button></td>
       </tr>
       </form>
       </c:forEach>

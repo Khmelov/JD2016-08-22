@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-      <footer class="col-md-5 col-md-offset-5">
+      <footer class="col-md-5 col-md-offset-5 navbar-fixed-bottom">
         <p>&copy; Империя обоев, 2016</p>
       </footer>
-    </div> <!-- /container -->
 
 
     <!-- Bootstrap core JavaScript

@@ -28,7 +28,7 @@
         <div class="col-md-4">
           <h2>Акции</h2>
           <p>Скидки, акции и специальные предложения вы можете просмотреть в нашем каталоге.</p>
-          <p><a class="btn btn-default" href="/grechishnikov/controller/?command=catalog" role="button">Узнать больше &raquo;</a></p>
+          <p><a class="btn btn-default" href="/grechishnikov/akcii.jsp" role="button">Узнать больше &raquo;</a></p>
         </div>
       </div>
 

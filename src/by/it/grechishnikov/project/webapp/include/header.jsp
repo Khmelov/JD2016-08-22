@@ -32,8 +32,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-                      <li class="active"><a href="/grechishnikov/index.jsp">Главная</a></li>
                       <li><a href="/grechishnikov/controller/?command=catalog">Каталог</a></li>
+                      <li><a href="/grechishnikov/akcii.jsp">Акции</a></li>
                       <li><a href="/grechishnikov/contacts.jsp">Контакты</a></li>
           </ul>
           <c:if test="${user == null}">
