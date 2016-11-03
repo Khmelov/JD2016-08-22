@@ -5,9 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by Лёша on 01.11.2016.
  */
-public class CmdMyTalon implements ActionCommand {
+public class CmdMyTalon extends Action {
     @Override
-    public String execute(HttpServletRequest request) {
+    public Action execute(HttpServletRequest request) {
         return null;
     }
 }

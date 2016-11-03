@@ -12,13 +12,13 @@ enum Action {
         {
             this.command = new CommandLogin();
             this.inPage="/login.jsp";
-            this.okPage ="/main.jsp";
+            this.okPage ="/signin.jsp";
         }
     },
     LOGOUT {
         {
             this.command = new CommandLogout();
-            this.inPage="/logout.jsp";
+            this.inPage="/signout.jsp";
             this.okPage ="/login.jsp";
         }
     },

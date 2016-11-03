@@ -33,7 +33,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li><a href="do?command=SIGNUP">Зарегистрироваться</a></li>
               <li><a href="do?command=SIGNIN">Войти</a></li>
-              <li><a href="do?command=EXIT">Выйти</a></li>
+              <li><a href="do?command=SIGNOUT">Выйти</a></li>
 			  <li><a href="do?command=MYTALON">Мои талоны</a></li>
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>

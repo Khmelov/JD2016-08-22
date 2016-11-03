@@ -4,125 +4,52 @@ import javax.servlet.http.HttpServletRequest;
 
 public enum Actions {
 
-SIGNIN {
-    {
-        this.command = new CmdSignin();
-        this.inPage = "/index.jsp";
-        this.okPage = "/index.jsp";
+    INDEX {{
+        this.action = new CmdIndex();
+    }},
+    SIGNIN {{
+        this.action = new CmdSignin();
+    }},
+    SIGNUP {{
+        this.action = new CmdSignup();
+    }},
+    SIGNOUT {{
+        this.action = new CmdSignout();
+    }},
+    BOOKINGSTEP1 {{
+        this.action = new CmdBookingStep1();
+    }},
+    BOOKINGSTEP2 {{
+        this.action = new CmdBookingStep2();
+    }},
+    BOOKINGSTEP3 {{
+        this.action = new CmdBookingStep3();
+    }},
+    GETTALON {{
+        this.action = new CmdGetTalon();
+    }},
+    DOWNLOAD {{
+        this.action = new CmdDownload();
+    }},
+    DELETE {{
+        this.action = new CmdDelete();
+    }},
+    ERROR {{
+        this.action = new CmdError();
+    }};
+
+    protected Action action = null;
+
+    static Action defineFrom(HttpServletRequest req) {
+        Action result = null;
+        String cmdName = req.getParameter("command");
+        if (cmdName!=null && !cmdName.isEmpty())
+            try {
+                result = Actions.valueOf(cmdName.toUpperCase()).action;
+            } catch (IllegalArgumentException e) {
+                result = Actions.ERROR.action;
+            }
+        return result;
     }
-},
-
-SIGNUP {
-    {
-        this.command = new CmdSignup();
-        this.inPage="/index.jsp";
-        this.okPage ="/signup.jsp";
-    }
-},
-
-ADUSER {
-    {
-        this.command = new CmdAdUser();
-        this.inPage = "/signup.jsp";
-        this.okPage = "/main.jsp";
-    }
-},
-
-EXIT {
-    {
-        this.command = new CmdExit();
-        this.inPage = "/index.jsp";
-        this.okPage = "/logout.jsp";
-    }
-},
-
-MYTALON {
-    {
-      this.command = new CmdMyTalon();
-      this.inPage = "/index.jsp";
-      this.okPage = "/mytalon.jsp";
-    }
-},
-
-BOOKINGSTEP1 {
-    {
-        this.command = new CmdBookingStep1();
-        this.inPage = "/main.jsp";
-        this.okPage = "/bookingstep1.jsp";
-    }
-},
-
-BOOKINGSTEP2 {
-    {
-        this.command = new CmdBookingStep2();
-        this.inPage = "/bookingstep1.jsp";
-        this.okPage = "/bookingstep2.jsp";
-    }
-},
-
-BOOKINGSTEP3 {
-    {
-        this.command = new CmdBookingStep3();
-        this.inPage = "/bookingstep2.jsp";
-        this.okPage = "/bookingstep3.jsp";
-    }
-},
-
-GETTALON {
-    {
-        this.command = new CmdGetTalon();
-        this.inPage = "/bookingstep3.jsp";
-        this.okPage = "/gettalon.jsp";
-    }
-},
-
-DOWNLOAD {
-    {
-        this.command = new CmdDownload();
-        this.inPage = "/gettalon.jsp";
-        this.okPage = "/gettalon.jsp";
-    }
-},
-
-DELETE {
-    {
-        this.command = new CmdDelete();
-        this.inPage = "/bookingstep1.jsp";
-        this.okPage = "/bookingstep3.jsp";
-    }
-},
-
-LOGIN {
-    {
-        this.command = new CmdLogin();
-        this.inPage = "/index.jsp";
-        this.okPage = "/main.jsp";
-    }
-},
-
-LOGOUT {
-    {
-        this.command = new CmdLogout();
-        this.inPage = "/logout.jsp";
-        this.okPage = "/index.jsp";
-    }
-},
-ERROR  {
-    {
-        this.command = new CmdError();
-    }
-};
-
-    public String inPage="/error.jsp";
-    public String okPage ="/error.jsp";
-    public ActionCommand command;
-
-    public ActionCommand getCurrentCommand() {
-        return command;
-    }
-
-    public static final String msgError="msg_error";
-    public static final String msgMessage="message";
-
 
 }

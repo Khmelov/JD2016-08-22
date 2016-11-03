@@ -34,7 +34,7 @@ public class CustomRunner {
         if (dao.user.create(user)) System.out.println("\nДобавлен:" + user);
         showUsers();
 
-        //извлечем и обновим пользователя с email siivanov@mail.ru
+        
         user = dao.user.getAll("WHERE ID=1").get(0);
         user.setLogin("up_siivanov");
         if (dao.user.update(user)) System.out.println("\nИзменен:" + user);

@@ -1,38 +1,17 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
-
+<form class="form-horizontal" action="do?command=BOOKINGSTEP1" method="GET">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Вход на сайт</legend>
+<legend></legend>
 
-<!-- Text input-->
+<!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinput">Логин</label>  
+  <label class="col-md-4 control-label" for="singlebutton"></label>
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="login" class="form-control input-md">
-  <span class="help-block">Введите ваш логин</span>  
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">Пароль</label>
-  <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md">
-    <span class="help-block">Введите пароль</span>
-  </div>
-</div>
-
-<!-- Button (Double) -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-  <form class="form-horizontal">
-    <button id="button1id" name="button1id" class="btn btn-success" formaction="do?command=LOGIN" method="POST">Войти</button>
-    <button id="button2id" name="button2id" class="btn btn-success" formaction="do?command=SIGNUP" method="GET">Зарегистрироваться</button>
+    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Заказать талон</button>
   </div>
 </div>
 

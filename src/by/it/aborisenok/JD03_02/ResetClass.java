@@ -34,8 +34,8 @@ public class ResetClass {
 
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("CREATE DATABASE aborisenokTask02");
-            ConnectionCreator.setBdName("aborisenokTask02");
+            statement.executeUpdate("CREATE DATABASE aborisenok");
+            ConnectionCreator.setBdName("aborisenok");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,7 +45,7 @@ public class ResetClass {
     public static void BDDelete(Connection connection) {
         try {
             Statement statement = connection.createStatement();
-            statement.executeUpdate("DROP DATABASE IF EXISTS aborisenokTask02");
+            statement.executeUpdate("DROP DATABASE IF EXISTS aborisenok");
 
         } catch (SQLException e) {
             e.printStackTrace();

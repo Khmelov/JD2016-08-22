@@ -28,7 +28,7 @@ public class Test {
         System.out.print(talonCRUD.read(talon.getID()));
 
         talon.setFK_Doctor(2);
-        talon.setFK_Pacient(2);
+        talon.setFK_User(2);
         talon = talonCRUD.update(talon);
         System.out.println(talon.getID());
 
