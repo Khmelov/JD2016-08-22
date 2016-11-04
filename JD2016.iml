@@ -7,8 +7,18 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/out" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/akhmelev/jd02_04" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/akhmelev/jd02_10" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/dubatovka" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/filimonchik" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/grechishnikov" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/karpov" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/kisel" />
       <excludeFolder url="file://$MODULE_DIR$/src/by/it/opiga" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/prymshyts" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/shkantau" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/snegurskiy" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/voronovich" />
+      <excludeFolder url="file://$MODULE_DIR$/src/by/it/zaharova" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

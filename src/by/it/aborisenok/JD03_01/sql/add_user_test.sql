@@ -1,2 +1,3 @@
-insert into users(Login, Password, Email, FK_Role)
-values ('Petua','243','fsdf@mail.ru', 1)
+
+INSERT INTO `user` (`ID`, `Name`, `Surname`, `BirthDay`, `City`, `FK_Role`)
+ VALUES (NULL, 'Pitter', 'Pen', '1992-10-24 01:00:00', 'Minsk', '1');
