@@ -26,6 +26,17 @@ class Form {
         }
         throw new ParseException("Incorrect String: "+parameter,0);
     }
+
+    static double getDouble(HttpServletRequest req,
+                      String parameter) throws ParseException {
+        String value=req.getParameter(parameter);
+        if (value != null) {
+            if (value.matches("[.,0-9-]+"))
+            {return (Double.parseDouble(value));}
+        }
+        throw new ParseException("Incorrect String: "+parameter,0);
+    }
+
     static boolean isPost(HttpServletRequest req) {
         return (req.getMethod()!=null && req.getMethod().equalsIgnoreCase("post"));
         }

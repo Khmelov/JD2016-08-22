@@ -1,9 +1,9 @@
 package by.it.akhmelev.project.java.dao;
 
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
-
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
-import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -30,12 +30,29 @@ public class ConnectionCreator {
     //аналог синглтона на случай множественного обращения
     private static volatile Connection connection = null;
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection2() throws SQLException {
         if (connection == null || connection.isClosed()) {
                 synchronized (URL_DB) {
                     if (connection == null || connection.isClosed())
                         connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
                 }
+        }
+        return connection;
+    }
+
+
+    //получение соединения из пула
+    //смотрите файлы context.xml
+    //и web.xml
+    public static Connection getConnection() {
+
+        try {
+            InitialContext ic = new InitialContext();
+            DataSource ds = (DataSource) ic.lookup("java:/comp/env/jdbc/my_sql_akhmelev");
+            connection=ds.getConnection();
+            return connection;
+        } catch (SQLException | NamingException e) {
+            e.printStackTrace();
         }
         return connection;
     }

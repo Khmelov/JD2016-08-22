@@ -89,14 +89,31 @@ public class AdDAO extends AbstractDAO implements InterfaceDAO<Ad> {
         return (0 < executeUpdate(sql));
     }
 
+    public int getCount(String WHERE){
+        int res=0;
+        String sql = "SELECT Count(*) FROM ad " + WHERE + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement()
+        ) {
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                res=(rs.getInt(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
+
     @Override
     public List<Ad> getAll(String WHERE) {
         List<Ad> ads = new ArrayList<>();
         String sql = "SELECT * FROM ad " + WHERE + " ;";
         try (Connection connection = ConnectionCreator.getConnection();
-             Statement statement = connection.createStatement()
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)
         ) {
-            ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
                 Ad ad = new Ad();
                 ad.setID(rs.getInt("ID"));

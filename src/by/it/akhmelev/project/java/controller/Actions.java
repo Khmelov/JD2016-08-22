@@ -6,6 +6,9 @@ enum Actions {
     INDEX {{
         this.action = new CmdIndex();
     }},
+    CREATEAD {{
+        this.action = new CmdCreateAd();
+    }},
     SHOWUSERS {{
         this.action = new CmdShowUsers();
     }},

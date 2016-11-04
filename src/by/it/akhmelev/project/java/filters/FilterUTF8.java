@@ -45,7 +45,7 @@ public class FilterUTF8 implements Filter {
 
         //получение сессии
         HttpSession session=req.getSession(true);
-        session.setAttribute(Messages.msgMessage,"Это сообщение из фильтра");
+        //session.setAttribute(Messages.msgMessage,"Это сообщение из фильтра");
         //обработка прочих фильтров сервлетов и jsp
         chain.doFilter(request, response);
 

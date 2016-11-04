@@ -3,6 +3,7 @@ package by.it.akhmelev.project.java.beans;
 public class Ad {
 
     private int ID;
+    private int viewNumber;
     private int RoomCount;
     private double Price;
     private double Area;
@@ -35,6 +36,14 @@ public class Ad {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public int getViewNumber() {
+        return viewNumber;
+    }
+
+    public void setViewNumber(int viewNumber) {
+        this.viewNumber = viewNumber;
     }
 
     public int getRoomCount() {

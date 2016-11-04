@@ -1,6 +1,5 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <form class="form-horizontal" action="do?command=PROFILE" method="POST">
 
@@ -8,11 +7,10 @@
 
         <!-- Form Name -->
         <legend>Объявления ${user.login}</legend>
-          <% Integer i=0; %>
           <c:forEach items="${ads}" var="ad">
              <br />
              <div class="row">
-               <div class="col-md-1"><% out.print(++i); %></div>
+               <div class="col-md-1">${ad.viewNumber}</div>
                <div class="col-md-1">${ad.price} </div>
                <div class="col-md-3">${ad.address}</div>
                <div class="col-md-3">${ad.description}</div>
@@ -22,6 +20,8 @@
                <div class="col-md-1">${ad.floors}</div>
              </div>
           </c:forEach>
+        <br><br>
+        <t:paginator step="5" count="${adCount}" urlprefix="?command=PROFILE&startNumber="/>
 
         <!-- Button -->
         <br><br><br>
