@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
       <!-- Основное содержимое -->
       <div class="page-header">
@@ -20,11 +19,10 @@
                <div class="col-md-1">Этажность</div>
 
              </div>
-          <% Integer i=0; %>
           <c:forEach items="${ads}" var="ad">
              <br />
              <div class="row">
-               <div class="col-md-1"><% out.print(++i); %></div>
+               <div class="col-md-1">${ad.viewNumber}</div>
                <div class="col-md-1">${ad.price} </div>
                <div class="col-md-3">${ad.address}</div>
                <div class="col-md-3">${ad.description}</div>
@@ -64,7 +62,7 @@
 
      -->
 
-
-
+    <br><br>
+    <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
 <%@ include file="include/end-html.jsp" %>

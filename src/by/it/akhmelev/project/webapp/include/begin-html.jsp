@@ -1,3 +1,6 @@
+<%@ taglib tagdir="/WEB-INF/tags/menu" prefix="menu" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="t" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
@@ -26,24 +29,20 @@
             </button>
             <a class="navbar-brand" href=".">Главная</a>
           </div>
+
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="do?command=CreateAd">Создать объявление</a></li>
-              <li><a href="do?command=ShowUsers">Список пользователей</a></li>
+              <menu:li command="CreateAd" text="Создать объявление"/>
+              <menu:li command="ShowUsers" text="Список пользователей"/>
             </ul>
+
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="do?command=SignUp">Зарегистрироваться</a></li>
-              <!--
-              <li><a href='do?command=Login'>Войти</a></li>
-              <li><a href='do?command=Profile'>Профиль</a></li>
-              Эти две команды можно показать как одну вот так:
-              -->
-              ${user==null?
-                "<li><a href='do?command=Login'>Войти</a></li>"
-                    :
-                "<li><a href='do?command=Profile'>Профиль</a></li>"
-              }
-              <li><a href="/manager/html/list">Tomcat</a></li>
+              <menu:li command="SignUp" text="Зарегистрироваться"/>
+             <c:choose>
+                <c:when test="${user==null}"><menu:li command="Login" text="Войти"/></c:when>
+                <c:otherwise><menu:li command="Profile" text="Профиль"/></c:otherwise>
+             </c:choose>
+             <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
