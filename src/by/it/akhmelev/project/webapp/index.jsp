@@ -62,7 +62,7 @@
 
      -->
 
-    <br><br>
+    <br><br>(${adCount})
     <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
 <%@ include file="include/end-html.jsp" %>

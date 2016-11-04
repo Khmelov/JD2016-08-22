@@ -1,10 +1,10 @@
 package by.it.akhmelev.project.java.controller;
 
-import by.it.akhmelev.project.java.beans.Ad;
 import by.it.akhmelev.project.java.beans.User;
 import by.it.akhmelev.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.List;
 
@@ -21,7 +21,13 @@ class CmdShowUsers extends Action{
     @Override
     Action execute(HttpServletRequest req) {
 
-
+        HttpSession session=req.getSession();
+        User amd=(User)session.getAttribute("user");
+        if (amd==null)
+            return Actions.INDEX.action;
+        int idRole=amd.getFk_Role();
+        if (idRole!=1)
+            return Actions.PROFILE.action;
         DAO dao=DAO.getDAO();
         if (Form.isPost(req)){
             User user=new User();
