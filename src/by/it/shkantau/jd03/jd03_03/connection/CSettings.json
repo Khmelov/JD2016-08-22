@@ -1,0 +1,5 @@
+{
+  "URL_DB":"jdbc:mysql://185.143.172.95:3306/airportdb",
+  "USER_DB":"root",
+  "PASSWORD_DB":"measurer"
+}
