@@ -16,6 +16,9 @@
         font-size: 180%;
         font-style: italic;
     }
+    .align {
+        text-align: center;
+    }
     </style>
 </head>
 <body>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<%@ include file="include/header.jsp" %>
+<%@ include file="include/header.jsp" %>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
@@ -31,5 +31,3 @@
           <p><a class="btn btn-default" href="/grechishnikov/akcii.jsp" role="button">Узнать больше &raquo;</a></p>
         </div>
       </div>
-
-<%@ include file="include/footer.jsp" %>

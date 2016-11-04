@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<<%@ include file="include/header.jsp" %>
+<%@ include file="include/header.jsp" %>
 
     <br><br><br><br>
     <div class="navbar-collapse collapse">
@@ -14,13 +14,13 @@
     <h1>Каталог обоев:<br><small>Выберите понравившиеся вам обои и нажмите "Оформить заказ".</small></h1>
     </div>
 
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered align">
       <tr>
-        <th>№</th>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Цена</th>
-        <th>Заказать</th>
+        <th class="align">№</th>
+        <th class="align">Название</th>
+        <th class="align">Описание</th>
+        <th class="align">Цена($)</th>
+        <th class="align">Заказать</th>
       </tr>
      <c:forEach var="goods" items="${catalog}">
       <form action="controller/?command=order&type=add" method="post">
@@ -35,5 +35,3 @@
       </form>
       </c:forEach>
     </table>
-
-<%@ include file="include/footer.jsp" %>

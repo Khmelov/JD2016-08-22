@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<%@ include file="include/header.jsp" %>
+<%@ include file="include/header.jsp" %>
 
     <br><br><br><br><br>
     <div class="navbar-collapse collapse">
@@ -13,5 +13,3 @@
        Приезжайте к нам, мы всегда рады видеть вас в нашем магазине :)
     </h3>
     </div>
-
-<%@ include file="include/footer.jsp" %>

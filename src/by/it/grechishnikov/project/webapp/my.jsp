@@ -1,17 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<%@ include file="include/header.jsp" %>
+<%@ include file="include/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <br><br><br><br>
     <h1>Здесь будут мои данные и заказы. Страница будет видна залогиневшись</h1><br>
 
-    <table class="table table-hover table-bordered">
+    <table class="table table-hover table-bordered align">
         <tr>
-          <th>№ заказа</th>
-          <th>Название</th>
-          <th>Описание</th>
-          <th>Цена</th>
-          <th>Удалить</th>
+          <th class="align">№ заказа</th>
+          <th class="align">Название</th>
+          <th class="align">Описание</th>
+          <th class="align">Цена($)</th>
+          <th class="align">Удалить</th>
         </tr>
     <c:forEach var="list" items="${ordersList}">
     <form action="controller/?command=order&type=sub" method="post">
@@ -34,5 +34,3 @@
     </div>
     </form>
     <br>
-
-<%@ include file="include/footer.jsp" %>

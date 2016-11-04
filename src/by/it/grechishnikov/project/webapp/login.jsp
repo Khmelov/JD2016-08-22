@@ -12,11 +12,11 @@
     <fieldset>
 
     <!-- Form Name -->
-    <legend>Sign in</legend>
+    <legend>Вход в систему</legend>
 
     <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Login">Login</label>
+      <label class="col-md-4 control-label" for="Login">Логин</label>
       <div class="col-md-4">
       <input autofocus id="Login" name="Login" type="Login" placeholder="Masha" class="form-control input-md">
 
@@ -25,7 +25,7 @@
 
     <!-- Password input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Password">Password</label>
+      <label class="col-md-4 control-label" for="Password">Пароль</label>
       <div class="col-md-4">
         <input id="Password" name="Password" type="Password" placeholder="123" class="form-control input-md">
 
