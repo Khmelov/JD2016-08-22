@@ -11,24 +11,26 @@
        </div>
        <button type="submit" class="btn btn-success">Поиск</button>
     </form>
-    <h1>Результаты поиска:<br><small>Выберите понравившиеся вам обои и нажмите "Оформить заказ".</small></h1>
+    <h1>Результаты поиска:<br><small>Выберите понравившиеся вам обои и добавьте их в корзину.</small></h1>
     </div>
 
     <table class="table table-hover table-bordered">
       <tr>
-        <th>#</th>
-        <th>Название</th>
-        <th>Описание</th>
-        <th>Цена</th>
-        <th>Заказать</th>
+        <th class="align">№</th>
+        <th class="align">Название</th>
+        <th class="align">Описание</th>
+        <th class="align">Цена($)</th>
+        <th class="align">Заказать</th>
       </tr>
      <c:forEach var="goods" items="${result}">
+      <form action="controller/?command=order&type=add" method="post">
+      <input name="id" value="${goods.getId()}" type="hidden">
       <tr>
         <td><c:out value="${goods.getId()}"/></td>
         <td><c:out value="${goods.getName()}"/></td>
         <td><c:out value="${goods.getDescription()}"/></td>
         <td><c:out value="${goods.getPrice()}"/></td>
-        <td class="col-md-2"><button type="button" class="btn btn-success">Оформить заказ</button></td>
+        <td class="col-md-2"><button type="submit" class="btn btn-success">В корзину</button></td>
       </tr>
       </c:forEach>
     </table>

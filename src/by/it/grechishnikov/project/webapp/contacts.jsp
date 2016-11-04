@@ -3,7 +3,7 @@
 
     <br><br><br><br><br>
     <div class="navbar-collapse collapse">
-      <h1>Наши контакты<br><small>Свяжитесь с нами для консультации или приобретения обоев</small></h1>
+      <h1>Наши контакты:<br><small>Свяжитесь с нами для консультации или приобретения обоев</small></h1>
     </div>
     <br><br>
     <div class="container">

@@ -11,7 +11,7 @@
        </div>
        <button type="submit" class="btn btn-success">Поиск</button>
     </form>
-    <h1>Каталог обоев:<br><small>Выберите понравившиеся вам обои и нажмите "Оформить заказ".</small></h1>
+    <h1>Каталог обоев:<br><small>Выберите понравившиеся вам обои и добавьте их в корзину.</small></h1>
     </div>
 
     <table class="table table-hover table-bordered align">
