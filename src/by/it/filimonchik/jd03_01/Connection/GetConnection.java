@@ -1,4 +1,4 @@
-package by.it.akhmelev.jd03_01;
+package by.it.filimonchik.jd03_01.Connection;
 
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -7,7 +7,7 @@ import java.sql.Driver;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Ex_01_Connection {
+public class GetConnection {
 
 
     public static void main(String[ ] args) {
