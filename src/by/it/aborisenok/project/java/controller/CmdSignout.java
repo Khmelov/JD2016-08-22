@@ -7,7 +7,14 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class CmdSignout extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
-        return null;
+    public Action execute(HttpServletRequest req) {
+        if (Form.isPost(req)){
+        req.getSession().invalidate();
+        return Actions.SIGNIN.action;
+    }
+    else {
+
+    }
+    return Actions.SIGNOUT.action;
     }
 }

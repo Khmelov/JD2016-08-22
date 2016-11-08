@@ -28,13 +28,28 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><a href="do?command=BOOKINGSTEP1">Заказать талон</a></li>
+              <li><a href="do?command=INDEX">Главная</a></li>
+
+              ${user==null?
+                             "<li><a href='do?command=SIGNIN'>Заказать талон</a></li>"
+                                  :
+                             "<li><a href='do?command=TAKETALON'>Заказать талон</a></li>"
+                             }
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
               <li><a href="do?command=SIGNUP">Зарегистрироваться</a></li>
-              <li><a href="do?command=SIGNIN">Войти</a></li>
-              <li><a href="do?command=SIGNOUT">Выйти</a></li>
-			  <li><a href="do?command=MYTALON">Мои талоны</a></li>
+              ${user==null?
+                              "<li><a href='do?command=SIGNIN'>Войти</a></li>"
+                                  :
+                              "<li><a href='do?command=MYTALON'>Мои талоны</a></li>"
+                            }
+               ${user==null?
+                              ""
+                                  :
+                              "<li><a href='do?command=SIGNOUT'>Выйти</a></li>"
+                            }
               <li><a href="/manager/html/list">Tomcat</a></li>
             </ul>
           </div><!--/.nav-collapse -->

@@ -13,45 +13,35 @@ import java.util.ResourceBundle;
  */
 public class ConnectionCreator {
 
-    private static String bdName = "aborisenok";
-
     static {
-        Driver driver = null;
-        try {
-            driver = new FabricMySQLDriver();
-            DriverManager.registerDriver(driver);
-        } catch (SQLException e) {
-            System.out.println("error: not register driver");
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //ниже способ, который работает, но ненадежно
+            //Driver driver = new FabricMySQLDriver();
+            //DriverManager.registerDriver(driver);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
+    //Памятка. Корректно держать настройки соединения вне кода (!)
+    private static final String URL_DB =
+            "jdbc:mysql://127.0.0.1:2016/aborisenok"
+                    +"?useUnicode=true&characterEncoding=UTF-8";
+    private static final String USER_DB = "root";
+    private static final String PASSWORD_DB = "";
 
+    //аналог синглтона на случай множественного обращения
     private static volatile Connection connection = null;
 
     public static Connection getConnection() throws SQLException {
-        ResourceBundle resource = ResourceBundle.getBundle("by.it.aborisenok.JD03_03.connection.config");
-        String url = resource.getString("db.url");
-        String user = resource.getString("db.user");
-        String password = resource.getString("db.password");
-        String useUnicode = resource.getString("db.useUnicode");
-        String encoding = resource.getString("db.encoding");
-
-
         if (connection == null || connection.isClosed()) {
-            synchronized (url) {
+            synchronized (URL_DB) {
                 if (connection == null || connection.isClosed())
-
-                    connection = DriverManager.getConnection(url +  getBdName() + useUnicode + encoding, user, password);
+                    connection = DriverManager.getConnection(URL_DB, USER_DB, PASSWORD_DB);
             }
         }
         return connection;
-    }
-
-    public static String getBdName() {
-        return bdName;
-    }
-
-    public static void setBdName(String Name) {
-        bdName = Name;
     }
 }

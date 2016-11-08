@@ -1,37 +1,30 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="do?command=BOOKINGSTEP4" method="POST">
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>Выбор доктора</legend>
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="selectbasic">Время визита</label>
+  <label class="col-md-4 control-label" for="selectbasic">Список докторов</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="1">Option one</option>
-      <option value="2">Option two</option>
+    <select id="Name" name="Name" class="form-control">
+       ${message}
     </select>
   </div>
 </div>
 
-<!-- Button (Double) -->
+<!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-    <button id="button1id" name="button1id" class="btn btn-primary" formaction="do?command=BOOKINGSTEP2" method="GET">Назад</button>
-    <button id="button2id" name="button2id" class="btn btn-success" formaction="do?command=GETTALON" method="POST">Вперёд</button>
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-success">Далее</button>
   </div>
 </div>
-
 </fieldset>
 </form>
-
-
-
-
 
 <%@ include file="include/end-html.jsp" %>

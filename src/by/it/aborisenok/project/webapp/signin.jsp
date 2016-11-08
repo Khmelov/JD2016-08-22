@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="do?command=SIGNIN" method="POST">
 
 <fieldset>
 
@@ -12,7 +12,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="textinput">Логин</label>  
   <div class="col-md-4">
-  <input id="textinput" name="textinput" type="text" placeholder="login" class="form-control input-md">
+  <input id="Login" name="Login" type="text" placeholder="login" class="form-control input-md">
   <span class="help-block">Введите ваш логин</span>  
   </div>
 </div>
@@ -21,18 +21,16 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="passwordinput">Пароль</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md">
+    <input id="Password" name="Password" type="password" placeholder="password" class="form-control input-md">
     <span class="help-block">Введите пароль</span>
   </div>
 </div>
 
-<!-- Button (Double) -->
+<!-- Button -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="button1id"></label>
-  <div class="col-md-8">
-  <form class="form-horizontal">
-    <button id="button1id" name="button1id" class="btn btn-success" formaction="do?command=SIGNIN" method="POST">Войти</button>
-    <button id="button2id" name="button2id" class="btn btn-success" formaction="do?command=SIGNUP" method="GET">Зарегистрироваться</button>
+  <label class="col-md-4 control-label" for="singlebutton"></label>
+  <div class="col-md-4">
+    <button id="singlebutton" name="singlebutton" class="btn btn-success">Войти</button>
   </div>
 </div>
 
