@@ -70,10 +70,17 @@ class TestTableCreation implements DB_TEST_COMMANDS {
                 if (UPDATE_USERS) {
                     statement.executeUpdate(UPDATE_TABLE_USERS_1);
                     statement.executeUpdate(UPDATE_TABLE_USERS_2);
+                    statement.executeUpdate(UPDATE_TABLE_USERS_3);
+                    statement.executeUpdate(UPDATE_TABLE_USERS_4);
+                    statement.executeUpdate(UPDATE_TABLE_USERS_5);
                     System.out.println("Таблица пользователей заполнена");
                 }
                 if (UPDATE_ARTICLE) {
-                    statement.executeUpdate(UPDATE_TABLE_ARTICLE);
+                    statement.executeUpdate(UPDATE_TABLE_ARTICLE_1);
+                    statement.executeUpdate(UPDATE_TABLE_ARTICLE_2);
+                    statement.executeUpdate(UPDATE_TABLE_ARTICLE_3);
+                    statement.executeUpdate(UPDATE_TABLE_ARTICLE_4);
+                    statement.executeUpdate(UPDATE_TABLE_ARTICLE_5);
                     System.out.println("Таблица статей заполнена");
                 }
 

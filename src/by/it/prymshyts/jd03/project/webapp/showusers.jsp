@@ -7,7 +7,8 @@
         <div class=col-md-1>ID</div>
         <div class=col-md-2>Имя</div>
         <div class=col-md-2>Пароль</div>
-        <div class=col-md-7>Email</div>
+        <div class=col-md-2>Email</div>
+        <div class=col-md-2>Роль</div>
     </b>
    </div>
    <br>
@@ -16,7 +17,7 @@
            <div class="row">
            <form class="form-user-${user.ID}" action="do?command=ShowUsers" method=POST>
                <div class=col-md-1>
-                   <input id="user_id_${user.ID}" name="ID" type="text"
+                   <input readonly id="user_id_${user.ID}" name="ID" type="text"
                    value="${user.ID}" class="form-control input-md">
                </div>
                <div class=col-md-2>

@@ -34,6 +34,18 @@ public enum Action {
             this.inPage  = "/showusers.jsp";
         }
     },
+    SHOWARTICLES {
+        {
+            this.command = new CommandShowArticles();
+            this.inPage  = "/showarticles.jsp";
+        }
+    },
+    CREATEARTICLE {
+        {
+            this.command = new CommandCreateArticle();
+            this.inPage  = "/createarticle.jsp";
+        }
+    },
     PROFILE {
         {
             this.command = new CommandProfile();

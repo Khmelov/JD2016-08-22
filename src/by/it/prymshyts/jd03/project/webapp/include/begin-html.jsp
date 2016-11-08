@@ -11,7 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="padding-bottom: 70px">
 
 <!-- Static navbar, смотрите пример тут: http://bootstrap-3.ru/examples/navbar/ -->
 
@@ -28,17 +28,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="do?command=CreateArticle">Создать статью</a></li>
                 <li><a href="do?command=ShowArticles">Список статей</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 ${user == null ?
                 "
-                <li><a href='do?command=SignUp'>Зарегистрироваться</a>
-                </li><li><a href='do?command=Login'>Войти</a></li>
+                <li><a href='do?command=SignUp'>Зарегистрироваться</a></li>
+                <li><a href='do?command=Login'>Войти</a></li>
                 "
                 :
                 "
+                <li><a href='do?command=CreateArticle'>Добавить статью</a></li>
                 <li><a href='do?command=ShowUsers'>Список пользователей</a></li>
                 <li><a href='do?command=Profile'>Профиль</a></li>
                 <li><a href='do?command=LogOut'>Выйти</a></li>

@@ -3,6 +3,7 @@ package by.it.prymshyts.jd03.project.java.controller;
 import by.it.prymshyts.jd03.project.java.beans.User;
 import by.it.prymshyts.jd03.project.java.dao.DAO;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;

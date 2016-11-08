@@ -35,10 +35,9 @@ public class ArticleDAO extends DAO implements InterfaceDAO<Article> {
     public boolean update(Article article) {
         String updateUserSQL = String.format(
                 "UPDATE Article SET Title='%s'," +
-                        " Post_date=%d, Info='%s'" +
+                        " Info='%s'" +
                         " WHERE Article.ID=%d;",
                 article.getTitle(),
-                article.getPost_date(),
                 article.getInfo(),
                 article.getID());
         return (0 < executeUpdate(updateUserSQL));
