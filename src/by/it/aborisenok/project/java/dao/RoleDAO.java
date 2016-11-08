@@ -17,7 +17,11 @@ import java.util.List;
 public class RoleDAO extends AbstractDAO implements InterfaceDAO<Role> {
     @Override
     public Role read(int id) {
-        return null;
+        List<Role> roles = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (roles.size() > 0) {
+            return roles.get(0);
+        } else
+            return null;
     }
 
     @Override

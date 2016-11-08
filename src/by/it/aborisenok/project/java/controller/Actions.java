@@ -16,6 +16,9 @@ public enum Actions {
     SIGNOUT {{
         this.action = new CmdSignout();
     }},
+    TAKETALON {{
+        this.action = new CmdTakeTalon();
+    }},
     BOOKINGSTEP1 {{
         this.action = new CmdBookingStep1();
     }},
@@ -25,8 +28,14 @@ public enum Actions {
     BOOKINGSTEP3 {{
         this.action = new CmdBookingStep3();
     }},
+    BOOKINGSTEP4 {{
+        this.action = new CmdBookingStep4();
+    }},
     GETTALON {{
         this.action = new CmdGetTalon();
+    }},
+    MYTALON {{
+        this.action = new CmdMyTalon();
     }},
     DOWNLOAD {{
         this.action = new CmdDownload();

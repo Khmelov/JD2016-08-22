@@ -30,10 +30,11 @@ public class CmdSignin extends Action {
                     ));
             if (users.size() > 0) {
                 user = users.get(0);
-                HttpSession session = req.getSession();
+                HttpSession session = req.getSession(true);
                 session.setAttribute("user", user);
                 return Actions.INDEX.action;
             }
+
             req.setAttribute(Messages.msgError, "NO SUCH USER");
         }
         return null;

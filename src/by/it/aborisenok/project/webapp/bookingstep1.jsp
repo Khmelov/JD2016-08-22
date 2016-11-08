@@ -5,15 +5,14 @@
 <fieldset>
 
 <!-- Form Name -->
-<legend>Form Name</legend>
+<legend>Выбор поликлиники</legend>
 
 <!-- Select Basic -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="selectbasic">Список поликлиник</label>
   <div class="col-md-4">
-    <select id="selectbasic" name="selectbasic" class="form-control">
-      <option value="">Option one</option>
-      <option value="">Option two</option>
+    <select id="Policlinic" name="Policlinic" class="form-control">
+     ${message}
     </select>
   </div>
 </div>

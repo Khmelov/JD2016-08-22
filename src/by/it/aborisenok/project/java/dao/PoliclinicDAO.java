@@ -17,7 +17,11 @@ import java.util.List;
 public class PoliclinicDAO extends AbstractDAO implements InterfaceDAO<Policlinic> {
     @Override
     public Policlinic read(int id) {
-        return null;
+        List<Policlinic> policlinics = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (policlinics.size() > 0) {
+            return policlinics.get(0);
+        } else
+            return null;
     }
 
     @Override

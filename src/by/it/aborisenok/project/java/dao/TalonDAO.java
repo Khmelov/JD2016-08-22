@@ -17,22 +17,50 @@ import java.util.List;
 public class TalonDAO extends AbstractDAO implements InterfaceDAO<Talon> {
     @Override
     public Talon read(int id) {
-        return null;
+        List<Talon> talons = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (talons.size() > 0) {
+            return talons.get(0);
+        } else
+            return null;
     }
 
     @Override
-    public boolean create(Talon entity) {
-        return false;
+    public boolean create(Talon talon) {
+        String createTalonSQL = String.format(
+                "INSERT INTO `talon` (FK_Policlinic, FK_User, FK_Doctor, FK_VisitDate) " +
+                        "values('%d','%d','%d','%d');",
+                talon.getFK_Policlinic(),
+                talon.getFK_User(),
+                talon.getFK_Doctor(),
+                talon.getFK_VisitDate());
+        talon.setID(executeUpdate(createTalonSQL));
+        return (talon.getID()>0);
     }
 
     @Override
-    public boolean update(Talon entity) {
-        return false;
+    public boolean update(Talon talon) {
+
+        String updateTalonSQL = String.format(
+                "UPDATE `talon` SET FK_Policlinic = '%d', " +
+                        "FK_User = '%d', " +
+                        "FK_Doctor = '%d', " +
+                        "FK_VisitDate = '%d'" +
+                        " WHERE talon.ID = %d",
+                talon.getFK_Policlinic(),
+                talon.getFK_User(),
+                talon.getFK_VisitDate(),
+                talon.getFK_VisitDate(),
+                talon.getID()
+        );
+        return (0 < executeUpdate(updateTalonSQL));
     }
 
     @Override
-    public boolean delete(Talon entity) {
-        return false;
+    public boolean delete(Talon talon) {
+        String sql = String.format(
+                "DELETE FROM `talon` WHERE `talon`.`ID` = %d;", talon.getID()
+        );
+        return (0 < executeUpdate(sql));
     }
 
     @Override

@@ -1,9 +1,11 @@
 package by.it.aborisenok.JD03_03.custom_dao;
 
-import by.it.akhmelev.jd03_03.connection.ConnectionCreator;
+
+import by.it.aborisenok.JD03_03.connection.ConnectionCreator;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public abstract class AbstractDAO{
@@ -17,8 +19,8 @@ public abstract class AbstractDAO{
                 ResultSet resultSet = statement.executeQuery("SELECT LAST_INSERT_ID();");
                 if (resultSet.next()) result = resultSet.getInt(1);
             }
-        } catch (Exception e) {
-            //тут нужно логгирование SQLException(e);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         //System.out.println(result+":"+sql); //проверить SQL можно снимая комментарий с этой строки
         return result;

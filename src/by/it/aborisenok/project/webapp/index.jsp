@@ -1,22 +1,15 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
 <%@ include file="include/begin-html.jsp" %>
 
-<form class="form-horizontal" action="do?command=BOOKINGSTEP1" method="GET">
-<fieldset>
-
-<!-- Form Name -->
-<legend></legend>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="singlebutton"></label>
-  <div class="col-md-4">
-    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Заказать талон</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
+<h2 align="center">Добро пожаловать на сайт заказа талонов в поликлиники Минска</h2>
+<br>
+<br>
+<ul type="disc">
+<li>На данный момент с нами сотрудничают ${policlinicCount} поликлиник.</li>
+<li>На данный момент с нами сотрудничают ${doctorCount} докторов.</li>
+</ul>
+<br>
+<h4 align="center">Удачных заказов!!!</h4>
 
 
 <%@ include file="include/end-html.jsp" %>

@@ -1,6 +1,7 @@
 package by.it.aborisenok.project.java.dao;
 
 import by.it.aborisenok.project.java.beans.Doctor;
+
 import by.it.aborisenok.project.java.connection.ConnectionCreator;
 
 import java.sql.Connection;
@@ -16,9 +17,12 @@ import java.util.List;
 public class DoctorDAO extends AbstractDAO implements InterfaceDAO<Doctor> {
     @Override
     public Doctor read(int id) {
-        return null;
-    }
-
+    List<Doctor>  doctors = getAll("WHERE ID=" + id + " LIMIT 0,1");
+    if (doctors.size() > 0) {
+        return doctors.get(0);
+    } else
+            return null;
+}
     @Override
     public boolean create(Doctor entity) {
         return false;
