@@ -1,41 +1,36 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <title>Моя страница</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-</head>
-<body>
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/grechishnikov/index.jsp">Империя обоев</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-                      <li><a href="/grechishnikov/index.jsp">Главная</a></li>
-                      <li class="active"><a href="/grechishnikov/controller/?command=catalog">Каталог</a></li>
-                      <li><a href="/grechishnikov/contacts.jsp">Контакты</a></li>
-                    </ul>
-          <form class="navbar-form navbar-right" role="form" action="signup.jsp">
-            <button type="submit" class="btn btn-danger">Зарегистрироваться</button>
-          </form>
-          <form class="navbar-form navbar-right" role="form" action="login.jsp">
-            <button type="submit" class="btn btn-success">Войти</button>
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </div>
+<%@ include file="include/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
     <br><br><br><br>
     <h1>Здесь будут мои данные и заказы. Страница будет видна залогиневшись</h1><br>
 
-</body>
+    <table class="table table-hover table-bordered align">
+        <tr>
+          <th class="align">№ заказа</th>
+          <th class="align">Название</th>
+          <th class="align">Описание</th>
+          <th class="align">Цена($)</th>
+          <th class="align">Удалить</th>
+        </tr>
+    <c:forEach var="list" items="${ordersList}">
+    <form action="controller/?command=order&type=sub" method="post">
+    <input name="id" value="${list.getId()}" type="hidden">
+        <tr>
+            <td><c:out value="${list.getId()}"/></td>
+            <td><c:out value="${catalog.get(list.getGoods() - 1).getName()}"/></td>
+            <td><c:out value="${catalog.get(list.getGoods() - 1).getDescription()}"/></td>
+            <td><c:out value="${catalog.get(list.getGoods() - 1).getPrice()}"/></td>
+            <td class="col-md-2"><button type="submit" class="btn btn-danger">Удалить</button></td>
+        </tr>
+    </form>
+    </c:forEach>
+    </table>
+    <form action="controller/?command=order&type=buy" method="post">
+    <div>
+        <input name="all" value="all" type="hidden">
+        <h3>Всего к оплате: <c:out value="${count}"/>$</h3>
+        <button type="submit" class="btn btn-info">Подтвердить заказ</button>
+    </div>
+    </form>
+    <br>

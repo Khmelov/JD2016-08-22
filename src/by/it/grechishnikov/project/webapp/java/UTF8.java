@@ -1,14 +1,8 @@
 package by.it.grechishnikov.project.webapp.java;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.annotation.WebInitParam;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/*"},
-            initParams = {
-                    @WebInitParam(name = "encoding", value = "UTF-8", description = "Encoding Param")
-            })
 public class UTF8 implements Filter {
     private String code;
 

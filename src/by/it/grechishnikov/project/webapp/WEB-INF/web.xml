@@ -13,7 +13,7 @@
         <servlet-name>Controller</servlet-name>
         <url-pattern>/controller/</url-pattern>
     </servlet-mapping>
-    
+
     <filter>
         <filter-name>EncodingUTF8</filter-name>
         <filter-class>by.it.grechishnikov.project.webapp.java.UTF8</filter-class>
