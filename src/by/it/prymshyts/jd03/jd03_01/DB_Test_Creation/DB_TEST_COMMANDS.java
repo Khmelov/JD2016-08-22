@@ -18,7 +18,7 @@ interface DB_TEST_COMMANDS {
             "  FOREIGN KEY (FK_Role)\n" +
             "  REFERENCES Role(ID)\n" +
             "  ON UPDATE CASCADE\n" +
-            "  ON DELETE SET NULL) ENGINE=INNODB;";
+            "  ON DELETE NO ACTION) ENGINE=INNODB;";
 
     String CREATE_TABLE_ARTICLE =
             "CREATE TABLE Article (\n" +
@@ -34,10 +34,8 @@ interface DB_TEST_COMMANDS {
             "  ON DELETE NO ACTION) ENGINE=INNODB;";
 
 
-    String DROP_TABLE_ROLE = "DROP TABLE IF EXISTS Role;";
-
-    String DROP_TABLE_USERS = "DROP TABLE IF EXISTS Users;";
-
+    String DROP_TABLE_ROLE    = "DROP TABLE IF EXISTS Role;";
+    String DROP_TABLE_USERS   = "DROP TABLE IF EXISTS Users;";
     String DROP_TABLE_ARTICLE = "DROP TABLE IF EXISTS Article;";
 
 
@@ -59,15 +57,52 @@ interface DB_TEST_COMMANDS {
             "  Mail, Login, Password, FK_Role)\n" +
             "  VALUES (\n" +
             "  'test2@mail.ru', 'test2', 'testpass', '2');";
+    String UPDATE_TABLE_USERS_3 =
+            "INSERT INTO Users (\n" +
+            "  Mail, Login, Password, FK_Role)\n" +
+            "  VALUES (\n" +
+            "  'test3@mail.ru', 'test3', 'testpass', '1');";
+    String UPDATE_TABLE_USERS_4 =
+            "INSERT INTO Users (\n" +
+            "  Mail, Login, Password, FK_Role)\n" +
+            "  VALUES (\n" +
+            "  'test4@mail.ru', 'test4', 'testpass', '1');";
+    String UPDATE_TABLE_USERS_5 =
+            "INSERT INTO Users (\n" +
+            "  Mail, Login, Password, FK_Role)\n" +
+            "  VALUES (\n" +
+            "  'test5@mail.ru', 'test5', 'testpass', '2');";
 
 
-    String UPDATE_TABLE_ARTICLE =
+    String LOREM_IPSUM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sed sapien eget mi tincidunt accumsan. " +
+            "Phasellus justo lorem, consectetur eget urna vitae, placerat pulvinar sem. Etiam pretium ligula libero, in porttitor lectus egestas ac. " +
+            "Quisque augue est, vehicula et est quis, suscipit vestibulum turpis. Curabitur mi nisl, lobortis at commodo eget, bibendum eget neque. " +
+            "Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec est justo, ultricies ac erat vel, egestas scelerisque nibh. " +
+            "Aenean sed mi sit amet libero placerat condimentum ut at nisl. In non erat tempor, ornare ex vitae, mattis felis. " +
+            "Nullam enim diam, vehicula vel enim ac, rhoncus aliquet eros.";
+
+    String UPDATE_TABLE_ARTICLE_1 =
             "INSERT INTO Article (\n" +
             "Title, Post_date, Info, FK_User)\n" +
-            "VALUES ('Test article title', CURRENT_TIMESTAMP, 'Test article info', 1);";
+            "VALUES ('Lorem Ipsum', CURRENT_TIMESTAMP, '" + LOREM_IPSUM + "', 1);";
+    String UPDATE_TABLE_ARTICLE_2 =
+            "INSERT INTO Article (\n" +
+            "Title, Post_date, Info, FK_User)\n" +
+            "VALUES ('Lorem Ipsum', CURRENT_TIMESTAMP, '" + LOREM_IPSUM + "', 2);";
+    String UPDATE_TABLE_ARTICLE_3 =
+            "INSERT INTO Article (\n" +
+            "Title, Post_date, Info, FK_User)\n" +
+            "VALUES ('Lorem Ipsum', CURRENT_TIMESTAMP, '" + LOREM_IPSUM + "', 3);";
+    String UPDATE_TABLE_ARTICLE_4 =
+            "INSERT INTO Article (\n" +
+            "Title, Post_date, Info, FK_User)\n" +
+            "VALUES ('Lorem Ipsum', CURRENT_TIMESTAMP, '" + LOREM_IPSUM + "', 4);";
+    String UPDATE_TABLE_ARTICLE_5 =
+            "INSERT INTO Article (\n" +
+            "Title, Post_date, Info, FK_User)\n" +
+            "VALUES ('Lorem Ipsum', CURRENT_TIMESTAMP, '" + LOREM_IPSUM + "', 5);";
 
 
     String FK_CHECK_OFF = "SET FOREIGN_KEY_CHECKS=0;";
-
-    String FK_CHECK_ON = "SET FOREIGN_KEY_CHECKS=1;";
+    String FK_CHECK_ON  = "SET FOREIGN_KEY_CHECKS=1;";
 }
