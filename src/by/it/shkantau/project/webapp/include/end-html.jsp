@@ -1,20 +1,19 @@
 <%@ page language="java" pageEncoding="UTF-8" %>
-<footer class="navbar-fixed-bottom row-fluid">
-    <div class="container">
-        <p>Server message: ${jsp_message}</p>
-        <p>Error Message:
-            <b>
-                <font color="red">
-                    ${jsp_error}
-                </font>
-            </b>
-        </p>
-        <p align="right">${curUser}</p>
-        <p>du4 © 2016 Shkantau Aliaksei</p>
     </div>
+    <div class="col-sm-1 sidenav"></div>
+</div>
+
+
+<footer class="container-fluid text-center">
+    <p align="right">${jsp_error}</p>
+    <p><p>du4 © 2016 Shkantau Aliaksei</p></p>
 </footer>
 
-</div> <!-- /container -->
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
 </body>
 </html>

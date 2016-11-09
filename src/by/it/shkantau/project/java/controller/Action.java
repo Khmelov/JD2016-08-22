@@ -1,9 +1,10 @@
-package by.it.shkantau.project.java;
+package by.it.shkantau.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 abstract public class Action {
-    abstract Action execute(HttpServletRequest request);
+    abstract Action execute(HttpServletRequest request, HttpServletResponse response);
 
     public Action getRedirectAction() {
         return redirectAction;

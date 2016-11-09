@@ -3,55 +3,110 @@
 <%@ include file="include/begin-html.jsp" %>
 
 
-<form class="form-horizontal" action="airport?command=Index" method="POST">
-    <fieldset>
+<div class="page-header">
+    <h3 align="center">Flight time-table</h3>
+</div>
 
-        <table width="100%" border="1" cellpadding="2" cellspacing="2">
-            <tbody>
-            <tr>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Code</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Company</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Departure Time</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Arrival Time</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Plane</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">From</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">To</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">Crew</th>
-                <th scope="col" bgcolor="#a9a9a9" align="center">User</th>
-            </tr>
+<div class="container">
 
+    <div class="panel panel-warning">
+        <div class="panel-heading">Find panel</div>
+        <div class="panel-body">
+            <div class="row">
+                <form class="form-find" action="airport?command=index" method=POST>
+                   <!-- Select Basic -->
+                    <div class="col-md-2">
+                        <select id="from" name="from"  class="form-control">
+                            <option value="" selected disabled>Departure</option>
+                            <c:forEach items="${airports}" var="airport">
+                                <option value=${airport.id}>${airport.acronim}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <!-- Select Basic -->
+                    <div class="col-md-2">
+                        <select id="to" name="to" class="form-control">
+                            <option value="" selected disabled>Destination</option>
+                            <c:forEach items="${airports}" var="airport">
+                                <option value=${airport.id}>${airport.acronim}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                    <%--<div class=col-md-1>Departure time</div>--%>
+                    <div class=col-md-2>
+                        <input name="departureTime" size="16" type="text" value="" placeholder="Departure time" class="form_datetime">
+                    </div>
+
+                    <%--<div class=col-md-1>Arrival time</div>--%>
+                    <div class=col-md-2>
+                        <input name="arrivalTime" size="16" type="text" value="" placeholder="Arrival time" class="form_datetime">
+                    </div>
+                    <!-- Button -->
+                    <div class="col-md-2">
+                        <button id="singlebutton" class="btn btn-success">Find</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Code</th>
+            <th>Company</th>
+            <th>Departure Time</th>
+            <th>Arrival Time</th>
+            <th>Plane</th>
+            <th>From</th>
+            <th>To</th>
+
+            <c:if test="${user.role<3}">
+                <th>Crew</th>
+                <th>User</th>
+            </c:if>
+
+        </tr>
+        </thead>
+        <tbody>
             <c:forEach items="${flights}" var="flight">
                 <tr>
-                    <td align="center"> ${flight.flightCode}</td>
-                    <td align="center">${flight.company}</td>
-                    <td align="center">${flight.departure_time}</td>
-                    <td align="center">${flight.arrival_time}</td>
-                    <td align="center">${flight.plane}</td>
-                    <td align="center">${flight.to}</td>
-                    <td align="center">${flight.from}</td>
-                    <td align="center">${flight.crew}</td>
-                    <td align="center">${flight.user}</td>
+                <td>${flight.flightCode} </td>
+                <td>${flight.company}</td>
+                <td>${flight.departure_time}</td>
+                <td>${flight.arrival_time}</td>
+                <td>${flight.plane}</td>
+                <td>${flight.from}</td>
+                <td>${flight.to}</td>
+                <c:if test="${user.role<3}">
+                    <td>${flight.crew}</td>
+                    <td>${flight.user}</td>
+                </c:if>
                 </tr>
             </c:forEach>
-            </tbody>
-        </table>
+        </tbody>
+    </table>
+    </div>
 
-        <br/>
-        <br/>
-
-        <!-- Button -->
-        <%--<div class="form-group">--%>
-            <%--<label class="col-md-4 control-label" for="singlebutton"></label>--%>
-            <%--<div class="col-md-4">--%>
-                <%--<button id="singlebutton" class="btn btn-success">Refresh</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
+    <br>(${adCount})
+    <t:paginator step="10" count="${adCount}" urlprefix="?startNumber="/>
 
     </fieldset>
-</form>
+    </form>
 
 
+<script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
 
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 2,
+        pickTime: false
+    });
+
+</script>
 
 
 <%@ include file="include/end-html.jsp" %>

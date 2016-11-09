@@ -1,4 +1,4 @@
-package by.it.shkantau.project.java;
+package by.it.shkantau.project.java.controller;
 
 interface AttrMessages {
     String msgMessage="jsp_message";

@@ -1,15 +1,15 @@
-package by.it.shkantau.project.java;
+package by.it.shkantau.project.java.controller;
 
+import by.it.shkantau.project.java.beans.Role;
 import by.it.shkantau.project.java.beans.User;
 import by.it.shkantau.project.java.dao.DAO;
 
-
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 class CmdSignUp extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
 
         if (request.getMethod().equals("POST")) {
             User user = new User();
@@ -17,8 +17,11 @@ class CmdSignUp extends Action {
             try {
                 user.setLogin(Form.getString(request, "login", Patterns.LOGIN));
                 user.setEmail(Form.getString(request, "email", Patterns.EMAIL));
+                if (!Form.getString(request, "pass", Patterns.PASSWORD).equals(Form.getString(request, "passConfirm", Patterns.PASSWORD))){
+                    throw  new IllegalArgumentException("Passwords don't match");
+                }
                 user.setPass(Form.getString(request, "pass", Patterns.PASSWORD));
-                user.setRole(Integer.parseInt(request.getParameter("role")));
+                user.setRole(Role.USER_ROLE);
 
             } catch (Exception e) {
                 request.setAttribute(AttrMessages.msgError, "Invalid field format. " + e.toString());
@@ -29,7 +32,7 @@ class CmdSignUp extends Action {
             // нужно "солить" и хешировать.
 
             //проверим поля (добавьте паттерны самостоятельно)
-            DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
+            DAO dao = DAO.getDAO();
             if (dao.userDAO.create(user) > 0) {
                 request.setAttribute(AttrMessages.msgMessage, "New user is created. Input new user login and password.");
 //                return Actions.SIGNUP.action;
@@ -37,24 +40,10 @@ class CmdSignUp extends Action {
                 request.setAttribute(AttrMessages.msgError, "User does not created. Create new user again. " + dao.userDAO.lastSQL);
             }
             return  Actions.INDEX.action;
-        }else {
-
-            HttpSessionAttrHelper.updateRole(request);
-//            Object o = request.getSession().getAttribute("roles");
-//            if (o != null) {
-//                if (o instanceof List) {
-//                    List<Role> roleList = (List<Role>) o;
-//                    request.setAttribute("roles", roleList);
-//                    request.getSession().setAttribute("roles",roleList);
-//                }
-//            }else {
-//                DAO dao = DAO.getDAO((String) request.getAttribute(FrontController.CSPATH));
-//                List<Role> roles = dao.roleDAO.getAll("");
-//                request.setAttribute("roles",roles);
-//                request.getSession().setAttribute("roles",roles);
-//            }
-
         }
+//        else {
+//            SessionAttrSesHelper.setRolesToAttribute(request);
+//        }
 
         return null;
     }

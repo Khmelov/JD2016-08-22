@@ -35,18 +35,27 @@
             </div>
         </div>
 
-
-        <!-- Select Basic -->
+        <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="role">Select role</label>
+            <label class="col-md-4 control-label" for="passConfirm">Confirm Password</label>
             <div class="col-md-4">
-                <select id="role" name="role"  class="form-control">
-                    <c:forEach items="${roles}" var="role">
-                        <option value=${role.id}>${role.role}</option>
-                    </c:forEach>
-                </select>
+                <input id="passConfirm" name="passConfirm"  type="password" placeholder="password" class="form-control input-md" required="Confirm the password.">
+                <%--<span class="help-block">Type your password.</span>--%>
             </div>
         </div>
+
+
+        <!-- Select Basic -->
+        <%--<div class="form-group">--%>
+            <%--<label class="col-md-4 control-label" for="role">Select role</label>--%>
+            <%--<div class="col-md-4">--%>
+                <%--<select id="role" name="role"  class="form-control">--%>
+                    <%--<c:forEach items="${roles}" var="role">--%>
+                        <%--<option value=${role.id}>${role.role}</option>--%>
+                    <%--</c:forEach>--%>
+                <%--</select>--%>
+            <%--</div>--%>
+        <%--</div>--%>
 
         <!-- Button -->
         <div class="form-group">

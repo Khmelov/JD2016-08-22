@@ -66,4 +66,20 @@ public class FlightDAO extends AbstractDAO implements IDAO<Flight> {
         }
         return flights;
     }
+
+    public int getCount(String WHERE){
+        int res=0;
+        String sql = "SELECT Count(*) FROM flights " + WHERE + " ;";
+        try (Connection connection = ConnectionCreator.getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(sql)
+        ) {
+            if (rs.next()) {
+                res=(rs.getInt(1));
+            }
+        } catch (SQLException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
 }

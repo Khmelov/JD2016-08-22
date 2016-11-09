@@ -1,6 +1,6 @@
-package by.it.shkantau.project.java;
+package by.it.shkantau.project.java.controller;
 
-public interface Patterns {
+interface Patterns {
     String LOGIN="[a-zA-Z0-9-_.:]+";
     String COMPANY="[a-Z0-9 ]+";
     String PASSWORD=".+";

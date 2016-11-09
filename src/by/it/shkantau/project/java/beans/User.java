@@ -10,6 +10,11 @@ public class User {
     public User() {
     }
 
+    public User(String login) {
+        this.login = login;
+        this.role = Role.USER_ROLE;
+    }
+
     public User(int id, String login, String email, String pass, int role) {
         this.id = id;
         this.login = login;

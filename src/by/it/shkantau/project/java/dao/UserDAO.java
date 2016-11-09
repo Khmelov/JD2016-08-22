@@ -39,7 +39,7 @@ public class UserDAO extends AbstractDAO implements IDAO<User> {
     @Override
     public boolean delete(User entity) {
         String sql = String.format("DELETE FROM `users` WHERE  `users`.`user_id`=%d;", entity.getId());
-        executeUpdate(sql);
+//        executeUpdate(sql);
         return (0<executeUpdate(sql));
     }
 

@@ -1,11 +1,12 @@
-package by.it.shkantau.project.java;
+package by.it.shkantau.project.java.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 class CmdLogout extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
+    public Action execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
 
         if (request.getMethod().equalsIgnoreCase("post")){
@@ -13,14 +14,6 @@ class CmdLogout extends Action {
             session.invalidate();
             return Actions.LOGIN.action;
         }
-
-//        Object o = session.getAttribute("user");
-//
-//        if (o instanceof User){
-//            request.setAttribute(AttrMessages.msgMessage, "OK login="+((User) o).getLogin());
-//            return null;
-//        }
-//        return Actions.LOGIN.action;
         return null;
     }
 }
