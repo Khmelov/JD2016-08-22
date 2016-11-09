@@ -15,7 +15,7 @@ public class _Connection {
             Driver driver = new FabricMySQLDriver();
             DriverManager.registerDriver(driver);
         } catch (SQLException e) {e.printStackTrace();}
-        try (java.sql.Connection connection=
+        try (Connection connection=
                      DriverManager.getConnection
                              (CN.URL_DB, CN.USER_DB, CN.PASSWORD_DB)){
                 if (!connection.isClosed())
