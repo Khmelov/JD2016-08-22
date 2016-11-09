@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<orders>
+    <order>
+        <client>
+            <FIO>
+                Ivanov I.I.
+            </FIO>
+            <passport>
+                MP 25895668
+            </passport>
+            <adress>
+                Gikalo, 14
+            </adress>
+            <phone>
+                80298745898
+            </phone>
+        </client>
+        <discription>
+            <category>
+                lux
+            </category>
+            <arrive>
+                28.01.16
+            </arrive>
+            <leave>
+                30.01.16
+            </leave>
+            <payment>
+                cash
+            </payment>
+        </discription>
+    </order>
+    <order>
+        <client>
+            <FIO>
+                Petrov I.I.
+            </FIO>
+            <passport>
+                MP 25895668
+            </passport>
+            <adress>
+                Gikalo, 14
+            </adress>
+            <phone>
+                80298745898
+            </phone>
+        </client>
+        <discription>
+            <category>
+                lux
+            </category>
+            <arrive>
+                28.01.16
+            </arrive>
+            <leave>
+                30.01.16
+            </leave>
+            <payment>
+                cash
+            </payment>
+        </discription>
+    </order>
+</orders>
