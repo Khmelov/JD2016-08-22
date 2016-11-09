@@ -60,19 +60,17 @@ public class DbManager {
 
 
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS flights (`flight_id` INT NOT NULL AUTO_INCREMENT," +
-                "  `flightCode` VARCHAR(5) NOT NULL,  `company` VARCHAR(45) NULL, `depatrure_time` DATETIME NOT NULL," +
+                "  `flightCode` VARCHAR(5) NOT NULL,  `company` VARCHAR(45) NULL, `departure_time` DATETIME NOT NULL," +
                 "  `arrival_time` DATETIME NOT NULL, `plane` INT NOT NULL, `to` INT NOT NULL," +
                 "  `from` INT NOT NULL," +
                 "  `crew` INT NOT NULL," +
-                "  `admin` INT NOT NULL," +
-                "  `dispatcher` INT NOT NULL," +
+                "  `user` INT NOT NULL," +
                 "  PRIMARY KEY (`flight_id`)," +
                 "  INDEX `planeFK_idx` (`plane` ASC)," +
                 "  INDEX `toFK_idx` (`to` ASC)," +
                 "  INDEX `fromFK_idx` (`from` ASC)," +
                 "  INDEX `crewFK_idx` (`crew` ASC)," +
-                "  INDEX `fk_userID_idx` (`admin` ASC)," +
-                "  INDEX `fk_dispatcherID_idx` (`dispatcher` ASC)," +
+                "  INDEX `fk_userID_idx` (`user` ASC)," +
                 "  CONSTRAINT `fk_plane`" +
                 "    FOREIGN KEY (`plane`)" +
                 "    REFERENCES planes (`plane_id`)" +
@@ -93,17 +91,12 @@ public class DbManager {
                 "    REFERENCES crews (`crews_id`)" +
                 "    ON DELETE NO ACTION" +
                 "    ON UPDATE NO ACTION," +
-                "  CONSTRAINT `fk_adminID`" +
-                "    FOREIGN KEY (`admin`)" +
-                "    REFERENCES users (`user_id`)" +
-                "    ON DELETE NO ACTION" +
-                "    ON UPDATE NO ACTION," +
-                "  CONSTRAINT `fk_dispatcherID`" +
-                "    FOREIGN KEY (`dispatcher`)" +
+                "  CONSTRAINT `fk_userID`" +
+                "    FOREIGN KEY (`user`)" +
                 "    REFERENCES users (`user_id`)" +
                 "    ON DELETE NO ACTION" +
                 "    ON UPDATE NO ACTION)" +
-                "ENGINE = InnoDB;");
+                " ENGINE = InnoDB;");
 
         statement.executeUpdate("CREATE TABLE IF NOT EXISTS cmd (`cmd_id` INT NOT NULL AUTO_INCREMENT," +
                 "  `action` VARCHAR(45) NOT NULL, `permission` TINYINT(1) NOT NULL," +

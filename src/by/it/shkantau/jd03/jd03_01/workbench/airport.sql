@@ -30,7 +30,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `airportDB`.`airports` (
   `airports_id` INT NOT NULL AUTO_INCREMENT,
   `acronim` VARCHAR(3) NOT NULL,
-  `name` VARCHAR(45) NULL,
+  `role` VARCHAR(45) NULL,
   PRIMARY KEY (`airports_id`))
 ENGINE = InnoDB;
 
@@ -40,7 +40,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airportDB`.`pilots` (
   `pilot_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
   `birthDay` DATETIME NULL,
   `phone` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`pilot_id`))
@@ -52,7 +52,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airportDB`.`airHostesses` (
   `airHostesses_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
   `birthDay` DATETIME NULL,
   PRIMARY KEY (`airHostesses_id`))
 ENGINE = InnoDB;
@@ -63,7 +63,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airportDB`.`crews` (
   `crews_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
+  `role` VARCHAR(45) NULL,
   `pilot1` INT NOT NULL,
   `pilot2` INT NULL,
   `airHostess1` INT NOT NULL,
@@ -101,7 +101,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `airportDB`.`roles` (
   `role_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NOT NULL,
+  `role` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`role_id`))
 ENGINE = InnoDB;
 
