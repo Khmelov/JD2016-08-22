@@ -17,6 +17,7 @@ public class CmdBookingStep4 extends Action {
 
         DAO dao = DAO.getDAO();
 
+
         String name = req.getParameter("Name");
         List<Doctor> doctors = dao.doctor.getAll("WHERE Name='" + name + "';");
         int i = doctors.get(0).getID();

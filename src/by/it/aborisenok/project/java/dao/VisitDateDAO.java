@@ -35,8 +35,11 @@ public class VisitDateDAO extends AbstractDAO implements InterfaceDAO<VisitDate>
     }
 
     @Override
-    public boolean delete(VisitDate entity) {
-        return false;
+    public boolean delete(VisitDate visitDate) {
+        String sql = String.format(
+                "DELETE FROM `visitdate` WHERE `visitdate`.`ID` = %d;", visitDate.getID()
+        );
+        return (0 < executeUpdate(sql));
     }
 
     @Override

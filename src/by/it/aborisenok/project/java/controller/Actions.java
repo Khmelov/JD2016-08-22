@@ -43,8 +43,14 @@ public enum Actions {
     DELETE {{
         this.action = new CmdDelete();
     }},
+    DELETEUSER {{
+        this.action = new CmdDeleteUser();
+    }},
     ERROR {{
         this.action = new CmdError();
+    }},
+    ADMINCAB {{
+        this.action = new CmdAdminCab();
     }};
 
     protected Action action = null;

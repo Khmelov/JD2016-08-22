@@ -1,7 +1,6 @@
 package by.it.aborisenok.project.java.filters;
 
 
-import by.it.aborisenok.project.java.dao.Messages;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +26,8 @@ public class FilterUTF8 implements Filter {
         String codeRequest = request.getCharacterEncoding();
         // установка кодировки запроса из параметров фильтра, если не установлена
         if (code != null && !code.equalsIgnoreCase(codeRequest)) {
-                request.setCharacterEncoding(code);
-            }
+            request.setCharacterEncoding(code);
+        }
 
         //пример обращения к сессии
         //Приведение запроса request к http
@@ -36,7 +35,7 @@ public class FilterUTF8 implements Filter {
 
         //получение сессии
         HttpSession session=req.getSession(true);
-      //  session.setAttribute(Messages.msgMessage,"Это сообщение из фильтра");
+        //session.setAttribute(Messages.msgMessage,"Это сообщение из фильтра");
         //обработка прочих фильтров сервлетов и jsp
         chain.doFilter(request, response);
 

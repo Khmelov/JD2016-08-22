@@ -19,7 +19,7 @@ public class CmdSignin extends Action {
                 user.setLogin(req.getParameter("Login"));
                 user.setPassword(req.getParameter("Password"));
             } catch (Exception e) {
-                req.setAttribute(Messages.msgError, "NO VALID FIELDS");
+                req.setAttribute(Messages.msgMessage, "NO VALID FIELDS");
                 return null;
             }
             DAO dao = DAO.getDAO();
@@ -35,7 +35,7 @@ public class CmdSignin extends Action {
                 return Actions.INDEX.action;
             }
 
-            req.setAttribute(Messages.msgError, "NO SUCH USER");
+            req.setAttribute(Messages.msgMessage, "NO SUCH USER");
         }
         return null;
     }

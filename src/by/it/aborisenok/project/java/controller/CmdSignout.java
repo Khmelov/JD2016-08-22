@@ -15,6 +15,6 @@ public class CmdSignout extends Action {
     else {
 
     }
-    return Actions.SIGNOUT.action;
+        return null;
     }
 }

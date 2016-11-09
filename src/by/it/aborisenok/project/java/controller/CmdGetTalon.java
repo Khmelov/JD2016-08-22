@@ -5,8 +5,7 @@ import by.it.aborisenok.project.java.beans.*;
 import by.it.aborisenok.project.java.dao.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -53,10 +52,11 @@ public class CmdGetTalon extends Action {
         talon.setFK_Doctor(doctor.getID());
         talon.setFK_VisitDate(visitDate.getID());
 
-
         dao.talon.create(talon);
 
         req.setAttribute("message",stringBuilder);
+
+        dao.visitDate.delete(visitDate);
         return null;
     }
 }

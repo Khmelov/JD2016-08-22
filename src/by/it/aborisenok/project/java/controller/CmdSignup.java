@@ -27,7 +27,7 @@ public class CmdSignup extends Action {
                 user.setStreet(req.getParameter("Street"));
                 user.setHouse(Integer.parseInt(req.getParameter("House")));
                 user.setFlat(Integer.parseInt(req.getParameter("Flat")));
-                user.setFK_Role(1);
+                user.setFK_Role(2);
 
             } catch (Exception e) {
                 req.setAttribute(Messages.msgMessage, "NO VALID FIELDS");

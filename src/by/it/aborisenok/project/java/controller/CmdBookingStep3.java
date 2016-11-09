@@ -2,9 +2,11 @@ package by.it.aborisenok.project.java.controller;
 
 
 import by.it.aborisenok.project.java.beans.Doctor;
+import by.it.aborisenok.project.java.beans.Policlinic;
 import by.it.aborisenok.project.java.dao.DAO;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Лёша on 01.11.2016.
@@ -18,13 +20,19 @@ public class CmdBookingStep3 extends Action {
 
         String specialization = req.getParameter("Specialization");
 
+        Policlinic policlinic = (Policlinic) req.getSession().getAttribute("Policlinic");
+
+
+
         for (Doctor doct : dao.doctor.getAll("WHERE Specialization='" + specialization + "';"))
         {
+            if (doct.getFK_Policlinic()==policlinic.getID()){
+                String name = doct.getName();
+                String surname = doct.getSurname();
 
-            String name = doct.getName();
-            String surname = doct.getSurname();
+                builder.append("<option value=\""+ name +"\">"+ name + " " + surname +"</option>\n");
+            }
 
-            builder.append("<option value=\""+ name +"\">"+ name + " " + surname +"</option>\n");
         }
         req.setAttribute("message", builder);
         return null;
