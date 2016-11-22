@@ -1,67 +1,28 @@
-<%@ page language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ include file="include/begin-html.jsp" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<legend>Все пользователи</legend>
    <div class="row">
-    <b>
-        <div class=col-md-1>ID</div>
-        <div class=col-md-2>Имя</div>
-        <div class=col-md-2>Пароль</div>
-        <div class=col-md-7>Email</div>
-    </b>
+        <div class=col-md-3>ID</div>
+        <div class=col-md-3>Name</div>
+        <div class=col-md-3>Password</div>
+        <div class=col-md-3>Email</div>
    </div>
    <br>
-   <!-- Коллекцию listUser мы получаем по get из команды сервлета UserForm -->
-   <c:forEach items="${users}" var="user">
-        <div class="row">
-        <form class="form-user-${user.id}" action="do?command=cmdShowUsers" method="POST">
-            <div class=col-md-1>
-                <input id="user_id_${user.id}" name="ID" type="text"
-                value="${user.id}" class="form-control input-md">
-            </div>
-            <div class=col-md-2>
-                <input id="textinput" name="Login" type="text"
-                value="${user.login}" class="form-control input-md">
-            </div>
-            <div class=col-md-2>
-                <input id="textinput" name="Password" type="text"
-                value="${user.password}" class="form-control input-md">
-            </div>
-            <div class=col-md-2>
-                <input id="textinput" name="Email" type="text"
-                value="${user.email}" class="form-control input-md">
-            </div>
-
-            <div class=col-md-2>
-                    <select id="role" name="FK_Role" class="form-control">
-                        <c:forEach items="${roles}" var="role">
-                            <option value="${role.id}" role=${role.id} ${role.id==user.FK_Role?"selected":""}>
-                                 ${role.role}
-                            </option>
-                        </c:forEach>
-                    </select>
-            </div>
-                <br><br>(${cmdShowUsers})
-                <t:paginator step="10" count="${showusers}" urlprefix="="/>
-
-            <div class=col-md-1>
-                <button id="singlebutton" name="singlebutton" class="btn btn-success">
-                    Обновить
-                </button>
-            </div>
-
-            <div class=col-md-1>
-                <button id="singlebutton" name="singlebutton"
-                class="btn btn-danger"
-                onclick="document.getElementById('user_id_${user.id}').value=-document.getElementById('user_id_${user.id}').value;"
-                >
-                    Удалить
-                </button>
-            </div>
-
-        </form>
-        </div>
-   <br>
-   </c:forEach>
-   и т.д.
-
+    <c:forEach items="${usersList}" var="user">
+             <br />
+             <div class="row">
+             <div class="col-md-3">${user.ID} </div>
+             <div class="col-md-3">${user.login}</div>
+             <div class="col-md-3">${user.password}</div>
+             <div class="col-md-3">${user.email}</div>
+             </div>
+    </tr>
+    </c:forEach>
+        <br><br>
+        <t:paginator step="5" count="${adCount}" urlprefix="do?command=ShowUsers&startNumber="/>
+</table>
 <%@ include file="include/end-html.jsp" %>

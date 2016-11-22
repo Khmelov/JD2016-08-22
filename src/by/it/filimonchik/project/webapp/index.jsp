@@ -10,10 +10,10 @@
       </div>
 
              <div class="row">
-               <div class="col-md-3">Модель</div>
-               <div class="col-md-3">Тип кузова</div>
-               <div class="col-md-3">Цвет</div>
-                <div class="col-md-3">Цена</div>
+               <div class="col-md-3">Model</div>
+               <div class="col-md-3">Car body style</div>
+               <div class="col-md-3">Color</div>
+                <div class="col-md-3">Price</div>
              </div>
           <c:forEach items="${ads}" var="ad">
              <br />
@@ -40,10 +40,10 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3">Модель</div>
-        <div class="col-md-3">Тип кузова</div>
-        <div class="col-md-3">Цвет</div>
-        <div class="col-md-3">Цена</div>
+        <div class="col-md-3">Model</div>
+        <div class="col-md-3">Car body style</div>
+        <div class="col-md-3">Color</div>
+        <div class="col-md-3">Price</div>
       </div>
 
      -->

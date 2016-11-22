@@ -9,19 +9,19 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Login">Логин</label>
+            <label class="col-md-4 control-label" for="Login">Login</label>
             <div class="col-md-4">
                 <input id="Login" name="Login" type="text" value="UserLogin" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Введите Ваш логин</span>
+                <span class="help-block">Type the login</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Password">Пароль</label>
+            <label class="col-md-4 control-label" for="Password">Password</label>
             <div class="col-md-4">
                 <input id="Password" name="Password" type="password" value="UserPassword" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Введите пароль</span>
+                <span class="help-block">Type the password</span>
             </div>
         </div>
 

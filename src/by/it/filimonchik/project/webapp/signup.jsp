@@ -10,19 +10,19 @@
 
         <!-- Text input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="Login">Логин</label>
+            <label class="col-md-4 control-label" for="Login">Login</label>
             <div class="col-md-4">
                 <input id="login" name="Login" type="text" value="UserLogin" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Введите Ваш логин</span>
+                <span class="help-block">Type the login</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="password">Пароль</label>
+            <label class="col-md-4 control-label" for="password">Password</label>
             <div class="col-md-4">
                 <input id="password" name="Password" type="password" value="UserPassword" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Введите пароль не менее 8 символов</span>
+                <span class="help-block">Type the password</span>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
             <label class="col-md-4 control-label" for="email">E-mail</label>
             <div class="col-md-4">
                 <input id="email" name="Email" type="text" value="email@gmail.com" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">Укажите E-mail</span>
+                <span class="help-block">Type the email</span>
             </div>
         </div>
 

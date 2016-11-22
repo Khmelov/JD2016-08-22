@@ -8,10 +8,10 @@
         <!-- Form Name -->
         <legend>Объявления ${user.login}</legend>
         <div class="row">
-             <div class="col-md-3">Модель</div>
-             <div class="col-md-3">Тип кузова</div>
-             <div class="col-md-3">Цвет</div>
-             <div class="col-md-3">Цена</div>
+             <div class="col-md-3">Model</div>
+             <div class="col-md-3">Car body style</div>
+             <div class="col-md-3">Color</div>
+             <div class="col-md-3">Price</div>
              </div>
           <c:forEach items="${ads}" var="ad">
              <br />
@@ -23,7 +23,7 @@
              </div>
           </c:forEach>
         <br><br>
-        <t:paginator step="5" count="${adCount}" urlprefix="?command=PROFILE&startNumber="/>
+        <t:paginator step="10" count="${adCount}" urlprefix="?command=PROFILE&startNumber="/>
 
         <!-- Button -->
         <br><br><br>

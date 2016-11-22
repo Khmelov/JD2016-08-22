@@ -35,7 +35,7 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <menu:li command="CreateAd" text="Создать объявление"/>
-              <menu:li command="cmdShowUsers" text="Список пользователей"/>
+              <menu:li command="ShowUsers" text="Список пользователей"/>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

@@ -1,7 +1,5 @@
 package by.it.filimonchik.project.java.filters;
 
-import by.it.filimonchik.project.java.controller.*;
-
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
