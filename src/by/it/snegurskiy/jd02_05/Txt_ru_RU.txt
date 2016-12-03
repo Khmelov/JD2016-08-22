@@ -1,3 +1,0 @@
-Hello = Привет, Николай!
-Howdoyoudo = Как дела?
-set.Language=Язык ввода русский

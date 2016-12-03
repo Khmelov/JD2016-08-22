@@ -1,1 +1,0 @@
-"C:\Program Files\Java\jdk1.7.0_79\bin\xjc.exe" D:\JavaProjects\JD2016-08-22\src\by\it\aborisenok\JD02_09\XSD.xsd -d D:\JavaProjects\JD2016-08-22\src\

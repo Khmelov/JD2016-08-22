@@ -1,6 +1,0 @@
-hello=Привет!
-howdoyoudo=Как дела?
-user=Алексей Борисёнок
-set.Language=Введите язык
-language=Выбран Русский язык
-time=Текущее время

@@ -1,4 +1,0 @@
-hello=Hello1!
-howdoyoudo=How do you do?
-user=Khmelov Alexander.
-set.language=Input language
