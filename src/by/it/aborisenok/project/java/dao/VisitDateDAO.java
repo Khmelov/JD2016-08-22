@@ -17,7 +17,11 @@ import java.util.List;
 public class VisitDateDAO extends AbstractDAO implements InterfaceDAO<VisitDate>{
     @Override
     public VisitDate read(int id) {
-        return null;
+        List<VisitDate> visitDates = getAll("WHERE ID=" + id + " LIMIT 0,1");
+        if (visitDates.size() > 0) {
+            return visitDates.get(0);
+        } else
+            return null;
     }
 
     @Override
@@ -31,8 +35,11 @@ public class VisitDateDAO extends AbstractDAO implements InterfaceDAO<VisitDate>
     }
 
     @Override
-    public boolean delete(VisitDate entity) {
-        return false;
+    public boolean delete(VisitDate visitDate) {
+        String sql = String.format(
+                "DELETE FROM `visitdate` WHERE `visitdate`.`ID` = %d;", visitDate.getID()
+        );
+        return (0 < executeUpdate(sql));
     }
 
     @Override
@@ -46,7 +53,7 @@ public class VisitDateDAO extends AbstractDAO implements InterfaceDAO<VisitDate>
             while (rs.next()) {
                 VisitDate visitDate = new VisitDate();
                 visitDate.setID(rs.getInt("ID"));
-                visitDate.setVisitTime(rs.getTimestamp("VisitTime"));
+                visitDate.setVisitTime(rs.getTimestamp("Time"));
                 visitDate.setFK_Doctor(rs.getInt("FK_Doctor"));
 
                 visitDates.add(visitDate);

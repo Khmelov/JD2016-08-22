@@ -3,12 +3,11 @@ package by.it.aborisenok.project.java.controller;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by Лёша on 01.11.2016.
+ * Created by Лёша on 06.11.2016.
  */
-public class CmdDownload extends Action {
+public class CmdTakeTalon extends Action{
     @Override
-    public Action execute(HttpServletRequest request) {
-
+    Action execute(HttpServletRequest reg) {
         return null;
     }
 }

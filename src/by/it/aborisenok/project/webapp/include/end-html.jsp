@@ -2,7 +2,8 @@
 
 <footer class="navbar-fixed-bottom row-fluid">
   <div class="container">
-     <p>Сообщение сервера: <b><font color="red">${jsp_msg_error}</font></b></p>
+
+     <p>Сообщение сервера: <b><font color="red">${jsp_message}</font></b></p>
 
     <p>Alexey Borisenok © 2016 <a href="#">Создание сайтов +375(29)570 23 38</a> </p>
   </div>
