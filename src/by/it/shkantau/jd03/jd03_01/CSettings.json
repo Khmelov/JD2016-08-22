@@ -1,5 +1,0 @@
-{
-  "URL_DB":"jdbc:mysql://127.0.0.1:3306/airportdb",
-  "USER_DB":"root",
-  "PASSWORD_DB":"root"
-}

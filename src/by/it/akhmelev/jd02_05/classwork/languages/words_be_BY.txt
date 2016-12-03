@@ -1,5 +1,0 @@
-hello=Прывітанне!
-howdoyoudo=Як справы?
-user=Хмялёў Аляксандр.
-set.language=Мову ўводу
-

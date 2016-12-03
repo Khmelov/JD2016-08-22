@@ -1,4 +1,0 @@
-hello = Привет!
-whatsup=Как дела?
-user = Влада Захарова.
-set.language=Введите язык

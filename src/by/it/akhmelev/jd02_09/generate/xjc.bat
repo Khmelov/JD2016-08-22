@@ -1,1 +1,0 @@
-"C:\Program Files\Java\jdk1.7.0_80\bin\xjc.exe" D:\students\agh\JD2016-08-22\src\by\it\akhmelev\jd02_09\generate\xml_schema.xsd -d D:\students\agh\JD2016-08-22\src\

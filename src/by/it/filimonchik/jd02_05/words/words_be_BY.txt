@@ -1,4 +1,0 @@
-hello=Прывiтанне!
-howdoyoudo=Як справы?
-user=Раман Фiлiмончык.
-set.language=Увядзiце язык

@@ -1,3 +1,0 @@
-hello = Hello
-name = Evgeniy
-native2ascii -encoding utf8 /Users/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_05/hello_en_EN.txt /Users/Evgeniy/Documents/java/JD2016-08-22/src/by/it/grechishnikov/jd02_05/hello_en_EN.properties

@@ -1,4 +1,0 @@
-hello=Привет!
-howdoyoudo=Как дела?
-user=Роман Филимончик.
-set.language=Введите язык
